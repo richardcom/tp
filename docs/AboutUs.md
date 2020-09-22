@@ -29,14 +29,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Huang Chengyu
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/hcy123902.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/HCY123902)] [[portfolio](team/hcy123902.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Implement storage and location functionality
 
 ### Jean Doe
 
