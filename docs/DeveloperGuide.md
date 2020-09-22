@@ -299,7 +299,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1b1. The application shows an error message that the location of the book is not recorded.
 
-      Use case ends
+      Use case ends.
       
 **Use case: view the stockings of different books**
 
@@ -322,7 +322,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1b1. The application shows an error message that the stocking of the book is not recorded.
 
-      Use case ends
+      Use case ends.
 
 **Use case: Delete a person**
 
