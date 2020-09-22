@@ -256,7 +256,7 @@ _{Explain here how the data archiving feature will be implemented}_
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
 | `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
 | `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
 | `* *`    | library administrator                      | get an auto-generated list of most popular books                                      |know what books to purchase in the future                                                                                 |
