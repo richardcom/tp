@@ -351,11 +351,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1.  Technical requirements: should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2.  Data requirements: should be able to hold up to 1000 books without a noticeable sluggishness in performance for typical usage.
+3.  Performance requirements: for core functions, the system should respond within two seconds.
+4.  Quality requirements: a user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5.  Process requirements: the project is expected to adhere to the course schedule and delivers weekly tasks on time.
+6.  Domain rules: the number of books at each library cannot be less than three.
 
 ### Glossary
 
