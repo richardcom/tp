@@ -46,7 +46,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/richardcom.md)]
 
 * Role: Developer
-* Responsibilities: Integration and Dev Ops
+* Responsibilities: Integration and Data Management
 
 
 ### James Doe
