@@ -234,8 +234,20 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 **Target user profile**:
+* library administrators
+* has a need to manage a large number of books stored in different libraries and locations
+* has a need to purchase books according to the current stock and borrow frequency
+* has a need to keep track of the borrow history of books 
+* prefer desktop apps over other types
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI apps
 
 **Value proposition**:
+* help to put books along with its related information, such as anthor, description, publisher, and library specific information, such as storage location, into appropriate categories. This not only makes the searching of the book itself easier but also provides convenience for managers to track the storage and borrow history.
+* help admin staff keep track of the popularity of different books, and help them predict the usage of different books to plan for book purchase
+* help admin staff to keep track of books from different libraries and locate books from different libraries easily
+* capable of providing more in-depth analyses and insights based on the user data, compared to other ordinary library management systems
 
 ### User stories
 
