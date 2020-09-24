@@ -85,35 +85,6 @@ Examples:
 * `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction
 `
 
-
-### Check location `[coming soon]`: `locate`
-
-Checks the list of locations of where a certain book is stored.
-
-Format: `locate /name NAME [/ISBN ISBN]`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
-</div>
-
-Examples:
-* `locate /name A brief history of time /ISBN 9780553175219`
-* `locate /name A brief history of time`
-
-### Check stocking `[coming soon]`: `stock`
-
-Check the stock of the book.
-
-Format: `stock /name NAME [/ISBN ISBN]`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
-</div>
-
-Examples:
-* `stock /name A brief history of time /ISBN /9780553175219`
-* `stock /name A brief history of time`
-
 ### View Sample Data `[coming soon]`: `view`
 
 Have a look at the sample data for the application when open app for the first time.
