@@ -244,15 +244,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
 | `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| `* * *`  | library administrator                      | purge all sample data in one go       |start using the app without further ado             |
+| `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not             |
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `ItelliBrary` and the **Actor** is the `user`, unless specified otherwise)
+
+**Use case: UC01 - Purge sample data**
+
+**MSS**
+  1. User requests to purge all sample data.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. Some or all sample data had already been deleted before the 'purge' request 
+    
+    * 1a1. The application deletes all remaining sample data.
+    
+      Use case ends.
 
 **Use case: UC02 - Add Books**
 
@@ -282,6 +295,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. The application shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
+      
+**Use case: UC03 - Delete Books**
 
 **MSS**
   1. User request to delete a book from the library.
@@ -298,29 +313,53 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
 
-**Use case: Delete a person**
+**Use case: UC04 - Check the location**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User request to check the location of a book using a command.
+2.  The application shows the relevant information of the book, including the storage location.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The book name or ISBN given by the user is not found in the record.
+    
+    * 1a1. The application shows an error message that the book is not found.
+    
+      Use case ends.
 
-  Use case ends.
+* 1b. The location of the book is not recorded or the list is empty.
 
-* 3a. The given index is invalid.
+    * 1b1. The application shows an error message that the location of the book is not recorded.
 
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
+      Use case ends.
       
+**Use case: UC05 - view the stockings of different books**
+
+**MSS**
+
+1.  User request to check the stocking of a book using a command.
+2.  The application shows the relevant information of the book, including the stocking of the book.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The book name or ISBN given by the user is not found in the record.
+    
+    * 1a1. The application shows an error message that the book is not found.
+    
+      Use case ends.
+
+* 1b. The stocking of the book is not recorded.
+
+    * 1b1. The application shows an error message that the stocking of the book is not recorded.
+
+      Use case ends.
+
+
 **Use case UC06 - View Sample Data**
 
 **MSS**
@@ -336,14 +375,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC07 - Edit a book**
+**Use case UC07 - Delete a book**
 
 **MSS**
 
 1.  User requests to list books
 2.  IntelliBrary shows a list of books
 3.  User requests to delete a specific book in the list
-4.  AddressBook deletes the book
+4.  IntelliBrary deletes the book
 
     Use case ends.
 
@@ -355,10 +394,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. IntelliBrary shows an error message.
 
       Use case resumes at step 2.
 
+**Use case: UC08 - Edit a book**
+
+**MSS**
+  1. User requests to edit a book and inputs new information.
+  2. IntelliBrary modifies the current information of that book.
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The book to be editted cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.
+      
+**Use case: UC09 - Check the borrowing status of a book**
+
+**MSS**
+  1. User requests to check the borrowing status of a book.
+  2. IntelliBrary tells the use whether there are available stockings of this book.
+  
+**Extensions**
+
+* 1a. The book to be checked cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.      
 *{More to be added}*
 
 ### Non-Functional Requirements
