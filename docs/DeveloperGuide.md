@@ -234,6 +234,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 **Target user profile**:
+* library administrators
+* has a need to manage a large number of books stored in different libraries and locations
+* has a need to purchase books according to the current stock and borrow frequency
+* has a need to keep track of the borrow history of books 
+* prefer desktop apps over other types
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI apps
 
 **Value proposition**:
 
