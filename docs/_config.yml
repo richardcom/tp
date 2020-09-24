@@ -1,5 +1,5 @@
-title: "AB-3"
-theme: jekyll-theme-minimal
+title: "IntelliBrary App"
+remote_theme: jekyll-theme-yat
 
 header_pages:
   - UserGuide.md
