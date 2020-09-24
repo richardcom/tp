@@ -261,13 +261,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
 | `* *`    | library administrator                      | get an auto-generated list of most popular books                                      |know what books to purchase in the future                                                                                 |
 | `* *`    | library administrator                      | view book reviews made by other readers                                               |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
+| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
 | `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
 | `* *`    | library administrator                      | make users grouped into different categories based on their reading appetite          |have a better understanding of the type of each of the user                                                               |
 | `* *`    | library administrator                      | see the books that are most frequently read by each category of users                 |know what books should be purchased for each category of users                                                            |
 | `* *`    | library administrator                      | keep track of the group of books where a large number of users read all of them       |transfer the books read by the same category of users to the same location to make it convenient for the user             |
 | `* *`    | expert user                                | add friendlier syntax                                                                 |boost efficiency                                                                                                          |
 | `* *`    | expert user                                | delete and add multiple book information within one command                           |it is more time efficient                                                                                                 |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
+| `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
@@ -376,6 +377,44 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  AddressBook shows a list of persons
 3.  User requests to delete a specific person in the list
 4.  AddressBook deletes the person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 2.
+      
+**Use case UC06 - View Sample Data**
+
+**MSS**
+
+1.  User requests to view the sample data of the app
+2.  IntelliBrary shows the information of a list of books
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. Sample Data is missing.
+
+  Use case ends.
+  
+**Use case UC07 - Edit a book**
+
+**MSS**
+
+1.  User requests to list books
+2.  IntelliBrary shows a list of books
+3.  User requests to delete a specific book in the list
+4.  AddressBook deletes the book
 
     Use case ends.
 
