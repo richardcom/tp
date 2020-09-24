@@ -49,11 +49,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: Integration and Data Management
 
 
-### James Doe
+### Jiang Siyuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/stefan-jiang.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/Stefan-Jiang)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
