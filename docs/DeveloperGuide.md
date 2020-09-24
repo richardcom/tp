@@ -278,7 +278,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Check the location**
+**Use case: UC02 - Add Books**
+
+**MSS**
+  1. User request to add a new book into the library.
+
+  2. The application adds the book to the library and shows a successfull message to the user.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The book to be added is already found in the library.
+    
+    * 1a1. The application shows an error message that the book is already stored in the library.
+    
+      Use case ends.
+
+* 1b. Some information about the book is not entered in the command.
+
+    * 1b1. The application shows an error message that the information about the book is incomplete.
+
+      Use case ends.
+      
+* 1c. The data type of some of the book information is incorrect.
+    
+    * 1c1. The application shows an error message that data type of some of the book information is incorrect.
+    
+      Use case ends.
+
+**MSS**
+  1. User request to delete a book from the library.
+
+  2. The application deletes the book from the library and shows a successfull message to the user.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The book to be deleted cannot be found in the library.
+    
+    * 1a1. The application shows an error message that the book to be deleted cannot be found in the library.
+    
+      Use case ends.
+
+**Use case: UC04 - Check the location**
 
 **MSS**
 
@@ -301,7 +345,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: view the stockings of different books**
+**Use case: UC05 - view the stockings of different books**
 
 **MSS**
 
