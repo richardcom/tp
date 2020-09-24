@@ -233,7 +233,6 @@ _{Explain here how the data archiving feature will be implemented}_
 ## **Appendix: Requirements**
 
 ### Product scope
-
 **Target user profile**:
 * library administrators
 * has a need to manage a large number of books stored in different libraries and locations
@@ -252,17 +251,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
-| `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books                                      |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view book reviews made by other readers                                               |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
-| `* *`    | library administrator                      | make users grouped into different categories based on their reading appetite          |have a better understanding of the type of each of the user                                                               |
-| `* *`    | library administrator                      | see the books that are most frequently read by each category of users                 |know what books should be purchased for each category of users                                                            |
-| `* *`    | library administrator                      | keep track of the group of books where a large number of users read all of them       |transfer the books read by the same category of users to the same location to make it convenient for the user             |
-| `* *`    | expert user                                | add friendlier syntax                                                                 |boost efficiency                                                                                                          |
-| `* *`    | expert user                                | delete and add multiple book information within one command                           |it is more time efficient                                                                                                 |
 | `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
 | `* * *`  | library administrator                      | purge all sample data in one go       |start using the app without further ado             |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not             |
