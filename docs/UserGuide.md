@@ -82,8 +82,35 @@ Format:
 Examples:
 * `deleteBookByISBN /9781316544938`
 * `deleteBookByTimes /0`
-* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction
-`
+* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction`
+
+### Check location `[coming soon]`: `locate`
+
+Checks the list of locations of where a certain book is stored.
+
+Format: `locate /name NAME [/ISBN ISBN]`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The ISBN of the book is an optional argument in the command.
+</div>
+
+Examples:
+* `locate /name A brief history of time /ISBN 9780553175219`
+* `locate /name A brief history of time`
+
+### Check stocking `[coming soon]`: `stock`
+
+Check the stock of the book.
+
+Format: `stock /name NAME [/ISBN ISBN]`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The ISBN of the book is an optional argument in the command.
+</div>
+
+Examples:
+* `stock /name A brief history of time /ISBN /9780553175219`
+* `stock /name A brief history of time`
 
 ### View Sample Data `[coming soon]`: `view`
 
