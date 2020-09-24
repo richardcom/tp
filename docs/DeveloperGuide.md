@@ -233,23 +233,9 @@ _{Explain here how the data archiving feature will be implemented}_
 ## **Appendix: Requirements**
 
 ### Product scope
-
 **Target user profile**:
 
-* library administrators
-* has a need to manage a large number of books stored in different libraries and locations
-* has a need to purchase books according to the current stock and borrow frequency
-* has a need to keep track of the borrow history of books 
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
-
 **Value proposition**:
-* help to put books along with its related information, such as anthor, description, publisher, and library specific information, such as storage location, into appropriate categories. This not only makes the searching of the book itself easier but also provides convenience for managers to track the storage and borrow history.
-* help admin staff keep track of the popularity of different books, and help them predict the usage of different books to plan for book purchase
-* help admin staff to keep track of books from different libraries and locate books from different libraries easily
-* capable of providing more in-depth analyses and insights based on the user data, compared to other ordinary library management systems
 
 ### User stories
 
@@ -257,17 +243,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
-| `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books                                      |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view book reviews made by other readers                                               |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
-| `* *`    | library administrator                      | make users grouped into different categories based on their reading appetite          |have a better understanding of the type of each of the user                                                               |
-| `* *`    | library administrator                      | see the books that are most frequently read by each category of users                 |know what books should be purchased for each category of users                                                            |
-| `* *`    | library administrator                      | keep track of the group of books where a large number of users read all of them       |transfer the books read by the same category of users to the same location to make it convenient for the user             |
-| `* *`    | expert user                                | add friendlier syntax                                                                 |boost efficiency                                                                                                          |
-| `* *`    | expert user                                | delete and add multiple book information within one command                           |it is more time efficient                                                                                                 |
 | `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
 | `* * *`  | library administrator                      | purge all sample data in one go       |start using the app without further ado             |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not             |
@@ -320,7 +295,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. The application shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
+      
 **Use case: UC03 - Delete Books**
+
 **MSS**
   1. User request to delete a book from the library.
 
@@ -335,53 +312,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. The application shows an error message that the book to be deleted cannot be found in the library.
     
       Use case ends.
-
-**Use case: UC04 - Check the location**
-
-**MSS**
-
-1.  User request to check the location of a book using a command.
-2.  The application shows the relevant information of the book, including the storage location.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. The application shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The location of the book is not recorded or the list is empty.
-
-    * 1b1. The application shows an error message that the location of the book is not recorded.
-
-      Use case ends.
-      
-**Use case: UC05 - view the stockings of different books**
-
-**MSS**
-
-1.  User request to check the stocking of a book using a command.
-2.  The application shows the relevant information of the book, including the stocking of the book.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. The application shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The stocking of the book is not recorded.
-
-    * 1b1. The application shows an error message that the stocking of the book is not recorded.
-
-      Use case ends.
-
 
 **Use case UC06 - View Sample Data**
 
