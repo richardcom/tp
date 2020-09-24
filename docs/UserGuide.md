@@ -57,6 +57,35 @@ IntelliBrary is an **app for managing storage, purchase, borrowing, and reader r
 
 </div>
 
+### Add books `[coming soon]` : `addBook`
+
+Checks the list of locations of where a certain book is stored.
+
+Format: `addBook /name:NAME /author:AUTHOR /publisher:PUBLISHER /ISBN:ISBN  /cat:CATEGORY /loc:LOCATION STORAGE`
+
+
+Examples:
+* `addBook /name: Numerical linear algebra [electronic resource] : an introduction /author: Holger Wendland /publisher: Cambridge University Press /ISBN: 9781316544938 /cat: Math /loc: Central Library /storage: 5`
+* `addBook /name: Artificial Intelligence, A mordern approach /author: Stuart Russell /publisher: PEARSON /ISBN: 978-0-13-461099-3 /cat: Computer Science /loc: Central Library /storage: 6`
+
+
+### Delete books `[coming soon]`: `deleteBookByIsbn, deleteBookByTimes, deleteBookByName`
+
+Checks the list of locations of where a certain book is stored.
+
+Format:  
+`deleteBookByISBN /ISBN`  
+`deleteBookByTimes /NUMBER_OF_TIMES_BEEN_BORROWED`  
+`deleteBookByName /NAMEOFBOOK`  
+
+
+Examples:
+* `deleteBookByISBN /9781316544938`
+* `deleteBookByTimes /0`
+* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction
+`
+
+
 ### Check location `[coming soon]`: `locate`
 
 Checks the list of locations of where a certain book is stored.
