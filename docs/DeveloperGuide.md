@@ -435,7 +435,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
   1. User requests to check the borrowing status of a book.
-  2. IntelliBrary tells the use whether there are available stockings of this book.
+  2. IntelliBrary tells the user whether there are available stockings of this book.
   
 **Extensions**
 
@@ -443,7 +443,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
     * 1a1. IntelliBrary shows an error message.
     
-      Use case ends.      
+      Use case ends.  
+      
+**Use case: UC10 - Get usage times of a book**
+
+**MSS**
+  1. User requests to get the usage times of a book and input book title.
+  2. IntelliBrary tells the user the usage times of the certain book.
+  
+**Extensions**
+
+* 1a. The book title to be checked cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.        
+
+**Use case: UC11 - Get number of books borrowed**
+
+**MSS**
+  1. User requests to get the number of books borrowed by the whole borrower cluster.
+  2. IntelliBrary tells the user the number of books borrowed by the whole borrower cluster.
+
+Use case ends.  
+
 *{More to be added}*
 
 ### Non-Functional Requirements
