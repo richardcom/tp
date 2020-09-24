@@ -114,6 +114,12 @@ Examples:
 * `stock /name A brief history of time /ISBN /9780553175219`
 * `stock /name A brief history of time`
 
+### View Sample Data `[coming soon]`: `view`
+
+Have a look at the sample data for the application when open app for the first time.
+
+Format: `view`
+
 ### Viewing help : `help`
 
 Shows a message explaning how to access the help page.
@@ -143,22 +149,21 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a book : `edit`
 
-Edits an existing person in the address book.
+Edits the information of a book in the database.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX /BOOK_NAME /NAME /AUTHOR /PUBLISHER /ISBN /CATEGORY /LOCATION /STORAGE`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* When editing tags, the existing tags of the book will be removed i.e adding of tags is not cumulative.
+* You can remove all the book’s tags by typing `t/` without
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  edit /BOOK_NAME: Numerical linear algebra [electronic resource] : an introduction /author: Holger Wendland /publisher: Cambridge University Press /ISBN: 9781316544938 /cat: Math /loc: Central Library /storage: 5
 
 ### Locating persons by name: `find`
 
