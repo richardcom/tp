@@ -58,3 +58,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+
+### Song Qifeng
+
+<img src="images/davidsqf.png" width="200px">
+
+[[github](http://github.com/davidsqf)] [[portfolio](team/davidsqf.md)]
+
+* Role: Developer
+* Responsibilities: Implement storage and Ui features
