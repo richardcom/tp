@@ -233,6 +233,7 @@ _{Explain here how the data archiving feature will be implemented}_
 ## **Appendix: Requirements**
 
 ### Product scope
+
 **Target user profile**:
 * library administrators
 * has a need to manage a large number of books stored in different libraries and locations
@@ -320,6 +321,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
       
 **Use case: UC03 - Delete Books**
+
 **MSS**
   1. User request to delete a book from the library.
 
