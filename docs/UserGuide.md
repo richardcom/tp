@@ -38,9 +38,7 @@ Format:
 Examples:
 * `deleteBookByISBN /9781316544938`
 * `deleteBookByTimes /0`
-* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction
-`
-
+* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction`
 
 ### Check location `[coming soon]`: `locate`
 
