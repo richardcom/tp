@@ -5,19 +5,9 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
 
 ### Xu Caiyi
 
@@ -26,8 +16,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/Caiyi34777)]
 [[portfolio](team/caiyi34777.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: Documentation. In charge of Model.
+
 
 ### Huang Chengyu
 
@@ -36,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/HCY123902)] [[portfolio](team/hcy123902.md)]
 
 * Role: Developer
-* Responsibilities: Implement storage and location functionality
+* Responsibilities: Integration. In charge of Storage.
 
 ### Liu Yangming
 
@@ -46,7 +37,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/richardcom.md)]
 
 * Role: Developer
-* Responsibilities: Integration and Data Management
+* Responsibilities: Testing. In charge of Storage.
 
 
 ### Jiang Siyuan
@@ -54,10 +45,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/stefan-jiang.png" width="200px">
 
 [[github](http://github.com/Stefan-Jiang)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/Stefan-Jiang.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Code Quality. In charge of UI.
 
 
 ### Song Qifeng
@@ -66,5 +57,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/davidsqf)] [[portfolio](team/davidsqf.md)]
 
-* Role: Deliverables and deadlines. 
-* Responsibilities: In charge of Logic.
+* Role: Developer
+* Responsibilities: Deliverables and deadlines. In charge of Logic.
