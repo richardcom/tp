@@ -9,6 +9,11 @@ import static java.util.Objects.requireNonNull;
 public class Times {
     public final String value;
 
+    /**
+     * Constructs a {@code Times}.
+     *
+     * @param times A valid times.
+     */
     public Times(String times) {
         requireNonNull(times);
         value = times;
