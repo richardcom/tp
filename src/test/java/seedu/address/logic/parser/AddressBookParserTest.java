@@ -27,6 +27,7 @@ import seedu.address.logic.commands.TimesCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Times;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -92,10 +93,10 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_times() throws Exception {
-        final String remark = "Some remark.";
+        final Times times = new Times("Some times");
         TimesCommand command = (TimesCommand) parser.parseCommand(TimesCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_TIMES + remark);
-        assertEquals(new TimesCommand(INDEX_FIRST_PERSON, remark), command);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_TIMES + times.value);
+        assertEquals(new TimesCommand(INDEX_FIRST_PERSON, times), command);
     }
 
     @Test

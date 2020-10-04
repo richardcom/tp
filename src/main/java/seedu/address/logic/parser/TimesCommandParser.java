@@ -8,6 +8,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.TimesCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Times;
 
 /**
  * Parses input arguments and creates a new {@code TimesCommand} object
@@ -29,8 +30,8 @@ public class TimesCommandParser implements Parser<TimesCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimesCommand.MESSAGE_USAGE), ive);
         }
 
-        String remark = argMultimap.getValue(PREFIX_TIMES).orElse("");
+        String times = argMultimap.getValue(PREFIX_TIMES).orElse("");
 
-        return new TimesCommand(index, remark);
+        return new TimesCommand(index, new Times(times));
     }
 }

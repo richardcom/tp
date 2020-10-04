@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Times;
 
 /**
  * Changes the remark of an existing person in the address book.
@@ -26,13 +27,13 @@ public class TimesCommand extends Command {
 
 
     private final Index index;
-    private final String times;
+    private final Times times;
 
     /**
      * @param index of the book in the filtered book list to edit the remark
      * @param times of the book to be updated to
      */
-    public TimesCommand(Index index, String times) {
+    public TimesCommand(Index index, Times times) {
         requireAllNonNull(index, times);
 
         this.index = index;

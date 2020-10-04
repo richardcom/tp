@@ -10,22 +10,23 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.TimesCommand;
+import seedu.address.model.person.Times;
 
 public class TimesCommandParserTest {
     private TimesCommandParser parser = new TimesCommandParser();
-    private final String nonEmptyRemark = "Some times";
+    private final String nonEmptyTimes = "Some times";
 
     @Test
     public void parse_indexSpecified_success() {
-        // have remark
+        // have times
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_TIMES + nonEmptyRemark;
-        TimesCommand expectedCommand = new TimesCommand(INDEX_FIRST_PERSON, nonEmptyRemark);
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_TIMES + nonEmptyTimes;
+        TimesCommand expectedCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(nonEmptyTimes));
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // no remark
+        // no times
         userInput = targetIndex.getOneBased() + " " + PREFIX_TIMES;
-        expectedCommand = new TimesCommand(INDEX_FIRST_PERSON, "");
+        expectedCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(""));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -37,6 +38,6 @@ public class TimesCommandParserTest {
         assertParseFailure(parser, TimesCommand.COMMAND_WORD, expectedMessage);
 
         // no index
-        assertParseFailure(parser, TimesCommand.COMMAND_WORD + " " + nonEmptyRemark, expectedMessage);
+        assertParseFailure(parser, TimesCommand.COMMAND_WORD + " " + nonEmptyTimes, expectedMessage);
     }
 }
