@@ -105,7 +105,7 @@ public class TimesCommandTest {
 
         assertCommandFailure(remarkCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
-        
+
     @Test
     public void equals() {
         final TimesCommand standardCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(VALID_TIMES_AMY));

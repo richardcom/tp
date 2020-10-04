@@ -25,7 +25,7 @@ public class TimesCommand extends Command {
             + PREFIX_TIMES + "[TIMES]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TIMES + "Likes to swim.";
-    
+
     public static final String MESSAGE_ADD_TIMES_SUCCESS = "Added times to Book: %1$s";
     public static final String MESSAGE_DELETE_TIMES_SUCCESS = "Removed times from Book: %1$s";
 
