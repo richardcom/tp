@@ -237,7 +237,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * library administrators
 * has a need to manage a large number of books stored in different libraries and locations
 * has a need to purchase books according to the current stock and borrow frequency
-* has a need to keep track of the borrow history of books 
+* has a need to keep track of the borrow history of books
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -275,15 +275,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
   1. User requests to purge all sample data.
-  
+
      Use case ends.
-  
+
 **Extensions**
 
-* 1a. Some or all sample data had already been deleted before the 'purge' request 
-    
+* 1a. Some or all sample data had already been deleted before the 'purge' request
+
     * 1a1. The application deletes all remaining sample data.
-    
+
       Use case ends.
 
 **Use case: UC02 - Add Books**
