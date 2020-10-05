@@ -19,12 +19,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.Mode;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -82,7 +79,7 @@ public class EditCommand extends Command {
         }
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
@@ -98,8 +95,10 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Stocking updatedStocking = editPersonDescriptor.getStocking().orElse(personToEdit.getStocking());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedStocking);
     }
 
     @Override
@@ -130,6 +129,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Stocking stocking;
 
         public EditPersonDescriptor() {}
 
@@ -143,6 +143,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setStocking(toCopy.stocking);
         }
 
         /**
@@ -201,6 +202,14 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setStocking(Stocking stocking) {
+            this.stocking = stocking;
+        }
+
+        public Optional<Stocking> getStocking() {
+            return Optional.ofNullable(stocking);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -220,7 +229,8 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getStocking().equals(e.stocking);
         }
     }
 }

@@ -17,17 +17,24 @@ public class PersonListPanel extends UiPart<Region> {
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
 
+    public static Mode MODE = Mode.NORMAL;
+
     @FXML
     private ListView<Person> personListView;
 
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public  PersonListPanel(ObservableList<Person> personList) {
         super(FXML);
         personListView.setItems(personList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
     }
+
+    public static void setMode(Mode mode) {
+        MODE = mode;
+    }
+
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
@@ -41,9 +48,14 @@ public class PersonListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(person, getIndex() + 1).getRoot());
+                if(MODE.equals(Mode.NORMAL)) {
+                    //System.out.println("In person list panel, the mode is normal mode");
+                    setGraphic(new PersonCard(person, getIndex() + 1).getRoot());
+                } else {
+                    //System.out.println("In person list panel, the mode is detail mode");
+                    setGraphic(new LibraryBookDetailCard(person, getIndex() + 1).getRoot());
+                }
             }
         }
     }
-
 }

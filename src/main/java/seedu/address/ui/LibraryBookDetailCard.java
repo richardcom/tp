@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -9,12 +7,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 
-/**
- * An UI component that displays information of a {@code Person}.
- */
-public class PersonCard extends UiPart<Region> {
+import java.util.Comparator;
 
-    private static final String FXML = "PersonListCard.fxml";
+public class LibraryBookDetailCard extends UiPart<Region> {
+    private static final String FXML = "LibraryBookDetailCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -26,7 +22,7 @@ public class PersonCard extends UiPart<Region> {
 
     public final Person person;
 
-    @FXML
+    @javafx.fxml.FXML
     private HBox cardPane;
     @FXML
     private Label name;
@@ -46,7 +42,7 @@ public class PersonCard extends UiPart<Region> {
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PersonCard(Person person, int displayedIndex) {
+    public LibraryBookDetailCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
@@ -57,11 +53,13 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        /*
+
         person.getStocking().storage.forEach((location, storage) -> {
-            stocking.getChildren().add(new Label(location + ": " + storage + " "));
+            if (storage > 0) {
+                stocking.getChildren().add(new Label(location + ": " + storage + " "));
+            }
         });
-        */
+
     }
 
     @Override
@@ -72,12 +70,12 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof LibraryBookDetailCard)) {
             return false;
         }
 
         // state check
-        PersonCard card = (PersonCard) other;
+        LibraryBookDetailCard card = (LibraryBookDetailCard) other;
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
     }

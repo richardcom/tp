@@ -3,16 +3,16 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -120,5 +120,32 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    public static Stocking parseStocking(String stocking) throws ParseException {
+        requireNonNull(stocking);
+        Pattern pattern = Pattern.compile(Stocking.VALIDATION_REGEX);
+        Matcher matcher = pattern.matcher(stocking);
+
+        int count = matcher.groupCount();
+        HashMap<String, Integer> stockingInLocation = new HashMap<>();
+
+        try {
+            if (matcher.find() && Stocking.isValidStocking(stocking)) {
+                for (int i = 1; i <= count; i = i + 2) {
+                    if (matcher.group(i).strip().toUpperCase().equals(Stocking.LOCATION[(i - 1) / 2].toUpperCase())) {
+                        //stockingInLocation[(i - 1) / 2] = Integer.parseInt(matcher.group(i + 1).strip().toUpperCase());
+                        stockingInLocation.put(Stocking.LOCATION[(i - 1) / 2], Integer.parseInt(matcher.group(i + 1).strip().toUpperCase()));
+                    } else {
+                        //stockingInLocation[(i - 1) / 2] = 0;
+                    }
+                }
+            } else {
+                throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+            }
+        } catch (Exception exception) {
+            throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+        }
+        return new Stocking(stockingInLocation);
     }
 }
