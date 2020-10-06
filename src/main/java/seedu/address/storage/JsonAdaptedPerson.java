@@ -10,7 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.Times;
+import seedu.address.model.person.Author;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -20,24 +26,28 @@ class JsonAdaptedPerson {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
-    private final String name;
-    private final String phone;
-    private final String email;
-    private final String address;
+    private String name;
+    private String phone;
+    private String email;
+    private String address;
+    private String times;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final String author;
+    private String author;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("author") String author) {
+                                    @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("times") String times, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                                    @JsonProperty("author") String author) {
+
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.times = times;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -52,6 +62,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        times = source.getTimes().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -100,7 +111,10 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
         final Address modelAddress = new Address(address);
-
+        if (times == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Times.class.getSimpleName()));
+        }
+        final Times modelTimes = new Times(times);
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         if (author == null) {
@@ -111,7 +125,8 @@ class JsonAdaptedPerson {
         }
         final Author modelAuthor = new Author(author);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelAuthor);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTimes, modelTags, modelAuthor);
+
     }
 
 }
