@@ -1,11 +1,11 @@
 ---
 layout: page
-title: John Doe's Project Portfolio Page
+title: Liu Yangming's Project Portfolio Page
 ---
 
 ## Project: IntelliBrary
 
-IntelliBrary is a desktop library management application used for library administrators to manage books. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+IntelliBrary is a desktop library management application used for library administrators to manage books. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.
 
 Given below are my contributions to the project.
 
@@ -13,11 +13,10 @@ Given below are my contributions to the project.
   * What it does: allows the user to add new books into the library.
   * Justification: This feature improves the product significantly because a user can make changes to the booklist in the library.
 
-* **Code contributed**: [RepoSense link]()
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `add` and `delete` [\#72]()
+    * Added documentation for the features `add` and `delete`
   * Developer Guide:
     * Added documentation for the features `add` and `delete`
     * Added documentation about Non-functional requirements of the project.
