@@ -26,19 +26,23 @@ public class Person {
     private final Times times;
     private final Set<Tag> tags = new HashSet<>();
 
+    private final Stocking stocking;
+
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Times times, Set<Tag> tags, Author author) {
+    public Person(Name name, Phone phone, Email email, Address address,
+                  Times times, Set<Tag> tags, Stocking stocking, Author author) {
         requireAllNonNull(name, phone, email, address, times, tags, author);
+
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.times = times;
         this.tags.addAll(tags);
-        // add
         this.author = author;
+        this.stocking = stocking;
     }
 
     public Name getName() {
@@ -74,6 +78,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Stocking getStocking() {
+        return this.stocking;
     }
 
     /**

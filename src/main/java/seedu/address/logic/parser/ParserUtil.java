@@ -2,9 +2,14 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
@@ -14,6 +19,7 @@ import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Stocking;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -137,5 +143,43 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String stocking} into a {@code Stocking}.
+     */
+    public static Stocking parseStocking(String stocking) throws ParseException {
+        requireNonNull(stocking);
+        Pattern pattern = Pattern.compile(Stocking.VALIDATION_REGEX);
+        Matcher matcher = pattern.matcher(stocking);
+
+        int count = matcher.groupCount();
+        HashMap<String, Integer> stockingInLocation = new HashMap<>();
+
+        try {
+            if (matcher.find() && Stocking.isValidStocking(stocking)) {
+                List<String> locations = Arrays.asList(Stocking.LOCATION);
+                locations.forEach((location) -> {
+                    stockingInLocation.put(location, 0);
+                });
+
+                for (int i = 1; i <= count; i = i + 2) {
+                    //if (matcher.group(i).strip().toUpperCase().equals(Stocking.LOCATION[(i - 1) / 2].toUpperCase())) {
+                    String currentLocation = matcher.group(i).strip();
+                    int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
+
+                    locations.forEach((location) -> {
+                        if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
+                            stockingInLocation.put(location, currentCount);
+                        }
+                    });
+                }
+            } else {
+                throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+            }
+        } catch (Exception exception) {
+            throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+        }
+        return new Stocking(stockingInLocation);
     }
 }

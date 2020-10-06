@@ -12,6 +12,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.ui.Mode;
+import seedu.address.ui.PersonListPanel;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -102,7 +104,7 @@ public class ModelManager implements Model {
     @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
     }
 
     @Override
@@ -124,6 +126,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate, Mode mode) {
+        requireNonNull(predicate);
+        PersonListPanel.setMode(mode);
+        filteredPersons.setPredicate(predicate);
+    }
+
+    /**
+     * Updates the person list with the predicate.
+     *
+     * @param predicate The predicate that is used to update the list.
+     */
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);

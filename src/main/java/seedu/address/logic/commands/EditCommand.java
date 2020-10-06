@@ -26,8 +26,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.Mode;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -86,7 +88,7 @@ public class EditCommand extends Command {
         }
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
@@ -104,10 +106,10 @@ public class EditCommand extends Command {
         Times updatedTimes = personToEdit.getTimes(); // edit command does not allow editing times
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Author updatedAuthor = editPersonDescriptor.getAuthor().orElse(personToEdit.getAuthor());
+        Stocking updatedStocking = editPersonDescriptor.getStocking().orElse(personToEdit.getStocking());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedTimes, updatedTags, updatedAuthor);
-
+        return new Person(updatedName, updatedPhone, updatedEmail,
+                updatedAddress, updatedTimes, updatedTags, updatedStocking, updatedAuthor);
 
     }
 
@@ -140,6 +142,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Author author;
+        private Stocking stocking;
 
         public EditPersonDescriptor() {}
 
@@ -154,6 +157,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setAuthor(toCopy.author);
+            setStocking(toCopy.stocking);
         }
 
         /**
@@ -212,12 +216,21 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+
         public void setAuthor(Author author) {
             this.author = author;
         }
 
         public Optional<Author> getAuthor() {
             return Optional.ofNullable(author);
+        }
+
+        public void setStocking(Stocking stocking) {
+            this.stocking = stocking;
+        }
+
+        public Optional<Stocking> getStocking() {
+            return Optional.ofNullable(stocking);
         }
 
         @Override
@@ -240,7 +253,9 @@ public class EditCommand extends Command {
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags())
+                    && getStocking().equals(e.getStocking())
                     && getAuthor().equals(e.getAuthor());
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +10,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -24,6 +26,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "";
     public static final String DEFAULT_AUTHOR = "a";
+    public static final HashMap<String, Integer> DEFAULT_STOCKING = new HashMap<>();
 
     private Name name;
     private Phone phone;
@@ -32,6 +35,7 @@ public class PersonBuilder {
     private Times times;
     private Set<Tag> tags;
     private Author author;
+    private Stocking stocking;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -44,6 +48,7 @@ public class PersonBuilder {
         times = new Times(DEFAULT_TIMES);
         tags = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);
+        stocking = new Stocking(DEFAULT_STOCKING);
     }
 
     /**
@@ -57,6 +62,7 @@ public class PersonBuilder {
         times = personToCopy.getTimes();
         tags = new HashSet<>(personToCopy.getTags());
         author = personToCopy.getAuthor();
+        stocking = personToCopy.getStocking();
     }
 
     /**
@@ -115,8 +121,15 @@ public class PersonBuilder {
         return this;
     }
 
-    public Person build() {
-        return new Person(name, phone, email, address, times, tags, author);
+    /**
+     * Sets the {@code Stocking} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withStocking(HashMap<String, Integer> map) {
+        this.stocking = new Stocking(map);
+        return this;
     }
 
+    public Person build() {
+        return new Person(name, phone, email, address, times, tags, stocking, author);
+    }
 }

@@ -6,6 +6,10 @@
     "address": "123, Jurong West Ave 6, #08-111",
     "times": "",
     "tagged": [ "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name": "Alice Pauline",
@@ -13,6 +17,10 @@
     "email": "pauline@example.com",
     "times": "",
     "address": "4th street",
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   } ]
 }
