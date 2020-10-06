@@ -19,6 +19,7 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Author author;
 
     // Data fields
     private final Address address;
@@ -28,14 +29,16 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Times times, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, times, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Times times, Set<Tag> tags, Author author) {
+        requireAllNonNull(name, phone, email, address, times, tags, author);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.times = times;
         this.tags.addAll(tags);
+        // add
+        this.author = author;
     }
 
     public Name getName() {
@@ -53,6 +56,12 @@ public class Person {
     public Address getAddress() {
         return address;
     }
+
+
+    public Author getAuthor() {
+        return author;
+    }
+
 
     public Times getTimes() {
         return times;
@@ -100,13 +109,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getAuthor().equals(getAuthor());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, author);
     }
 
     @Override
@@ -123,6 +133,7 @@ public class Person {
                 .append(getAddress())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
+        builder.append(" Author: ").append(getAuthor());
         return builder.toString();
     }
 

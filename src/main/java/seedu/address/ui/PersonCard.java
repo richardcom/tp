@@ -42,6 +42,8 @@ public class PersonCard extends UiPart<Region> {
     private Label times;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label author;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -58,6 +60,7 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        author.setText(person.getAuthor().author);
     }
 
     @Override
