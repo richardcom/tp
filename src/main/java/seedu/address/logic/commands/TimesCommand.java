@@ -49,7 +49,7 @@ public class TimesCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
+        Person editedPerson = new Person(personToEdit.getName(), personToEdit.getIsbn(), personToEdit.getEmail(),
                 personToEdit.getAddress(), times, personToEdit.getTags(), personToEdit.getAuthor());
 
         model.setPerson(personToEdit, editedPerson);

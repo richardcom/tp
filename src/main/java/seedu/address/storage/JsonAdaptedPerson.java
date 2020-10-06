@@ -13,9 +13,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Times;
 import seedu.address.model.tag.Tag;
 
@@ -27,7 +27,7 @@ class JsonAdaptedPerson {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
     private String name;
-    private String phone;
+    private String isbn;
     private String email;
     private String address;
     private String times;
@@ -38,13 +38,13 @@ class JsonAdaptedPerson {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
+    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("isbn") String isbn,
                                     @JsonProperty("email") String email, @JsonProperty("address") String address,
                              @JsonProperty("times") String times, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
                                     @JsonProperty("author") String author) {
 
         this.name = name;
-        this.phone = phone;
+        this.isbn = isbn;
         this.email = email;
         this.address = address;
         this.times = times;
@@ -59,7 +59,7 @@ class JsonAdaptedPerson {
      */
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
-        phone = source.getPhone().value;
+        isbn = source.getIsbn().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
         times = source.getTimes().value;
@@ -89,14 +89,14 @@ class JsonAdaptedPerson {
         }
         final Name modelName = new Name(name);
 
-        if (phone == null) {
+        if (isbn == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Phone.class.getSimpleName()));
+                    Isbn.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Isbn.isValidIsbn(isbn)) {
+            throw new IllegalValueException(Isbn.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Isbn modelIsbn = new Isbn(isbn);
 
         if (email == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -131,7 +131,7 @@ class JsonAdaptedPerson {
         }
         final Author modelAuthor = new Author(author);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTimes,
+        return new Person(modelName, modelIsbn, modelEmail, modelAddress, modelTimes,
                 modelTags, modelAuthor);
 
     }
