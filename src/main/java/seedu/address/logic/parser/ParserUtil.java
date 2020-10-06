@@ -9,10 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -108,6 +105,22 @@ public class ParserUtil {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
         return new Tag(trimmedTag);
+    }
+
+
+    /**
+     * Parses a {@code String author} into a {@code author}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code author} is invalid.
+     */
+    public static Author parseAuthor(String author) throws ParseException {
+        requireNonNull(author);
+        String trimmedAuthor = author.trim();
+        if (!Author.isValidAuthor(trimmedAuthor)) {
+            throw new ParseException(Author.MESSAGE_CONSTRAINTS);
+        }
+        return new Author(trimmedAuthor);
     }
 
     /**
