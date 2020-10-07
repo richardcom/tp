@@ -37,6 +37,8 @@ public class PersonUtil {
         person.getCategories().stream().forEach(
             s -> sb.append(PREFIX_CATEGORY + s.categoryName + " ")
         );
+        sb.append(PREFIX_AUTHOR + person.getAuthor().value + " ");
+        sb.append(PREFIX_PUBLISHER + person.getPublisher().value + " ");
         return sb.toString();
     }
 
