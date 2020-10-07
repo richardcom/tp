@@ -32,6 +32,7 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <Label fx:id="author" styleClass="cell_small_label" text="\$author" />
+      <Label fx:id="publisher" styleClass="cell_small_label" text="\$publisher" />
       <Label fx:id="times" styleClass="cell_small_label" text="\$times" />
     </VBox>
   </GridPane>

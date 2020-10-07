@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -27,6 +28,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Publisher;
 import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
 import seedu.address.ui.Mode;
@@ -48,6 +50,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
             + "[" + PREFIX_AUTHOR + "AUTHOR]"
+            + "[" + PREFIX_PUBLISHER + "PUBLISHER]"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ISBN + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -106,10 +109,11 @@ public class EditCommand extends Command {
         Times updatedTimes = personToEdit.getTimes(); // edit command does not allow editing times
         Set<Category> updatedCategories = editPersonDescriptor.getCategories().orElse(personToEdit.getCategories());
         Author updatedAuthor = editPersonDescriptor.getAuthor().orElse(personToEdit.getAuthor());
+        Publisher updatedPulisher = editPersonDescriptor.getPublisher().orElse(personToEdit.getPublisher());
         Stocking updatedStocking = editPersonDescriptor.getStocking().orElse(personToEdit.getStocking());
 
         return new Person(updatedName, updatedIsbn, updatedEmail,
-                updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor);
+                updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor, updatedPulisher);
 
     }
 
@@ -142,6 +146,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Category> categories;
         private Author author;
+        private Publisher publisher;
         private Stocking stocking;
 
         public EditPersonDescriptor() {}
@@ -157,6 +162,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setCategories(toCopy.categories);
             setAuthor(toCopy.author);
+            setPublisher(toCopy.publisher);
             setStocking(toCopy.stocking);
         }
 
@@ -225,6 +231,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(author);
         }
 
+        public void setPublisher(Publisher publisher) {
+            this.publisher = publisher;
+        }
+
+        public Optional<Publisher> getPublisher() {
+            return Optional.ofNullable(publisher);
+        }
+
         public void setStocking(Stocking stocking) {
             this.stocking = stocking;
         }
@@ -254,7 +268,8 @@ public class EditCommand extends Command {
                     && getAddress().equals(e.getAddress())
                     && getCategories().equals(e.getCategories())
                     && getStocking().equals(e.getStocking())
-                    && getAuthor().equals(e.getAuthor());
+                    && getAuthor().equals(e.getAuthor())
+                    && getPublisher().equals(e.getPublisher());
 
         }
     }

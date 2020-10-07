@@ -52,7 +52,7 @@ public class TimesCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getIsbn(), personToEdit.getEmail(),
                 personToEdit.getAddress(), times, personToEdit.getCategories(), personToEdit.getStocking(),
-                personToEdit.getAuthor());
+                personToEdit.getAuthor(), personToEdit.getPublisher());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);

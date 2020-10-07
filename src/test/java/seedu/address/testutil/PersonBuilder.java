@@ -11,6 +11,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Publisher;
 import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
 import seedu.address.model.util.SampleDataUtil;
@@ -26,6 +27,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "";
     public static final String DEFAULT_AUTHOR = "a";
+    public static final String DEFAULT_PUBLISHER = "pub";
     public static final HashMap<String, Integer> DEFAULT_STOCKING = new HashMap<>();
 
     private Name name;
@@ -35,6 +37,7 @@ public class PersonBuilder {
     private Times times;
     private Set<Category> categories;
     private Author author;
+    private Publisher publisher;
     private Stocking stocking;
 
     /**
@@ -48,6 +51,7 @@ public class PersonBuilder {
         times = new Times(DEFAULT_TIMES);
         categories = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);
+        publisher = new Publisher(DEFAULT_PUBLISHER);
         stocking = new Stocking(DEFAULT_STOCKING);
     }
 
@@ -62,6 +66,7 @@ public class PersonBuilder {
         times = personToCopy.getTimes();
         categories = new HashSet<>(personToCopy.getCategories());
         author = personToCopy.getAuthor();
+        publisher = personToCopy.getPublisher();
         stocking = personToCopy.getStocking();
     }
 
@@ -106,7 +111,7 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Times} of the {@code Book} that we are building.
+     * Sets the {@code Times} of the {@code Person} that we are building.
      */
     public PersonBuilder withTimes(String times) {
         this.times = new Times(times);
@@ -114,10 +119,18 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code Person} that we are building.
+     * Sets the {@code Author} of the {@code Person} that we are building.
      */
     public PersonBuilder withAuthor(String author) {
         this.author = new Author(author);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Publisher} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withPublisher(String publisher) {
+        this.publisher = new Publisher(publisher);
         return this;
     }
 
@@ -130,6 +143,6 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, isbn, email, address, times, categories, stocking, author);
+        return new Person(name, isbn, email, address, times, categories, stocking, author, publisher);
     }
 }

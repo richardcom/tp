@@ -11,7 +11,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "Benson Meier",
     "isbn" : "98765432",
@@ -23,7 +24,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "b"
+    "author": "b",
+    "publisher": "pub"
   }, {
     "name" : "Carl Kurz",
     "isbn" : "95352563",
@@ -35,7 +37,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "Daniel Meier",
     "isbn" : "87652533",
@@ -47,7 +50,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "Elle Meyer",
     "isbn" : "9482224",
@@ -59,7 +63,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "Fiona Kunz",
     "isbn" : "9482427",
@@ -71,7 +76,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "George Best",
     "isbn" : "9482442",
@@ -83,6 +89,7 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   } ]
 }

@@ -20,6 +20,7 @@ import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Publisher;
 import seedu.address.model.person.Stocking;
 
 /**
@@ -119,7 +120,7 @@ public class ParserUtil {
 
 
     /**
-     * Parses a {@code String author} into a {@code author}.
+     * Parses a {@code String author} into a {@code Author}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code author} is invalid.
@@ -131,6 +132,21 @@ public class ParserUtil {
             throw new ParseException(Author.MESSAGE_CONSTRAINTS);
         }
         return new Author(trimmedAuthor);
+    }
+
+    /**
+     * Parses a {@code String publisher} into a {@code Publisher}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code publisher} is invalid.
+     */
+    public static Publisher parsePublisher(String publisher) throws ParseException {
+        requireNonNull(publisher);
+        String trimmedPublisher = publisher.trim();
+        if (!Publisher.isValidPublisher(trimmedPublisher)) {
+            throw new ParseException(Publisher.MESSAGE_CONSTRAINTS);
+        }
+        return new Publisher(trimmedPublisher);
     }
 
     /**

@@ -44,6 +44,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane categories;
     @FXML
     private Label author;
+    @FXML
+    private java.awt.Label publisher;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -61,6 +63,7 @@ public class PersonCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText(person.getAuthor().author);
+        publisher.setText(person.getPublisher().publisher);
     }
 
     @Override

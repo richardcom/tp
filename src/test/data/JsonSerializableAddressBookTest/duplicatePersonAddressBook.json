@@ -10,7 +10,8 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name": "Alice Pauline",
     "isbn": "94351253",
@@ -22,6 +23,7 @@
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a"
+    "author": "a",
+    "publisher": "pub"
   } ]
 }
