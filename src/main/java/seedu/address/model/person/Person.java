@@ -29,7 +29,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Isbn isbn, Email email, Address address, Times times, Set<Category> categories, Author author) {
+    public Person(Name name, Isbn isbn, Email email, Address address,
+                  Times times, Set<Category> categories, Author author) {
         requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
         this.isbn = isbn;
