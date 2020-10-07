@@ -74,6 +74,7 @@ public class AddCommandParserTest {
                 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, new AddCommand(expectedPersonMultipleCategories));
     }
 
+    /*
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
@@ -82,6 +83,7 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_AMY + CATEGORY_DESC_FRIEND,
                 new AddCommand(expectedPerson));
     }
+    */
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
