@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -58,8 +59,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         parseCategoriesForEdit(argMultimap.getAllValues(PREFIX_CATEGORY))
                 .ifPresent(editPersonDescriptor::setCategories);
-
-
+        if (argMultimap.getValue(PREFIX_STOCKING).isPresent()) {
+            editPersonDescriptor.setStocking(ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get()));
+        }
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }

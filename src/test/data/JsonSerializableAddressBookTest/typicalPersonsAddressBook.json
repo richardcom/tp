@@ -7,6 +7,10 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "times": "12",
     "categorised" : [ "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name" : "Benson Meier",
@@ -15,6 +19,10 @@
     "address" : "311, Clementi Ave 2, #02-25",
     "times": "20",
     "categorised" : [ "owesMoney", "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "b"
   }, {
     "name" : "Carl Kurz",
@@ -23,6 +31,10 @@
     "address" : "wall street",
     "times": "",
     "categorised" : [ ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name" : "Daniel Meier",
@@ -31,6 +43,10 @@
     "address" : "10th street",
     "times": "",
     "categorised" : [ "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name" : "Elle Meyer",
@@ -39,6 +55,10 @@
     "address" : "michegan ave",
     "times": "",
     "categorised" : [ ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name" : "Fiona Kunz",
@@ -47,6 +67,10 @@
     "address" : "little tokyo",
     "times": "",
     "categorised" : [ ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   }, {
     "name" : "George Best",
@@ -55,6 +79,10 @@
     "address" : "4th street",
     "times": "",
     "categorised" : [ ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
     "author": "a"
   } ]
 }

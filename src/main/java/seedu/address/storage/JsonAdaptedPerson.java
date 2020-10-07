@@ -17,6 +17,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
 
 /**
@@ -33,6 +34,8 @@ class JsonAdaptedPerson {
     private String times;
     private final List<JsonAdaptedCategory> categorised = new ArrayList<>();
     private String author;
+    private final JsonAdaptedStocking stocking;
+
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -41,9 +44,9 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("isbn") String isbn,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
                              @JsonProperty("times") String times,
-                             @JsonProperty("categorised") List<JsonAdaptedCategory> categorised,
+                             @JsonProperty("tagged") List<JsonAdaptedCategory> categorised,
+                             @JsonProperty("stocking") JsonAdaptedStocking stocking,
                              @JsonProperty("author") String author) {
-
         this.name = name;
         this.isbn = isbn;
         this.email = email;
@@ -53,6 +56,7 @@ class JsonAdaptedPerson {
             this.categorised.addAll(categorised);
         }
         this.author = author;
+        this.stocking = stocking;
     }
 
     /**
@@ -68,6 +72,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedCategory::new)
                 .collect(Collectors.toList()));
         author = source.getAuthor().author;
+        stocking = new JsonAdaptedStocking(source.getStocking());
     }
 
     /**
@@ -132,9 +137,13 @@ class JsonAdaptedPerson {
         }
         final Author modelAuthor = new Author(author);
 
+        if (stocking == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    JsonAdaptedStocking.class.getSimpleName()));
+        }
+        final Stocking modelStocking = stocking.toModelType();
+
         return new Person(modelName, modelIsbn, modelEmail, modelAddress, modelTimes,
-                modelCategories, modelAuthor);
-
+                modelCategories, modelStocking, modelAuthor);
     }
-
 }

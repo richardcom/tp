@@ -26,11 +26,13 @@ public class Person {
     private final Times times;
     private final Set<Category> categories = new HashSet<>();
 
+    private final Stocking stocking;
+
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Isbn isbn, Email email, Address address,
-                  Times times, Set<Category> categories, Author author) {
+                  Times times, Set<Category> categories, Stocking stocking, Author author) {
         requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
         this.isbn = isbn;
@@ -40,6 +42,7 @@ public class Person {
         this.categories.addAll(categories);
         // add
         this.author = author;
+        this.stocking = stocking;
     }
 
     public Name getName() {
@@ -75,6 +78,10 @@ public class Person {
      */
     public Set<Category> getCategories() {
         return Collections.unmodifiableSet(categories);
+    }
+
+    public Stocking getStocking() {
+        return this.stocking;
     }
 
     /**

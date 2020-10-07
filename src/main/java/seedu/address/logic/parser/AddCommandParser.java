@@ -49,7 +49,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Times times = new Times(""); // add command does not allow adding remarks straight away
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
         Author author = new Author("a"); // to be implemented
-        Person person = new Person(name, isbn, email, address, times, categoryList, author);
+
+        //Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
+
+        Person person = new Person(name, isbn, email, address, times, categoryList, null, author);
 
         return new AddCommand(person);
     }
@@ -61,5 +64,4 @@ public class AddCommandParser implements Parser<AddCommand> {
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-
 }

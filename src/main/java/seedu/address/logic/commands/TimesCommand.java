@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Times;
+import seedu.address.ui.Mode;
 
 /**
  * Changes the times of an existing book in the database.
@@ -50,10 +51,11 @@ public class TimesCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getIsbn(), personToEdit.getEmail(),
-                personToEdit.getAddress(), times, personToEdit.getCategories(), personToEdit.getAuthor());
+                personToEdit.getAddress(), times, personToEdit.getCategories(), personToEdit.getStocking(),
+                personToEdit.getAuthor());
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
 
         return new CommandResult(generateSuccessMessage(editedPerson));
     }
