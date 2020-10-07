@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.category.Category;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
@@ -10,7 +11,6 @@ import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Times;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -30,7 +30,7 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Times times;
-    private Set<Tag> tags;
+    private Set<Category> categories;
     private Author author;
 
     /**
@@ -42,7 +42,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         times = new Times(DEFAULT_TIMES);
-        tags = new HashSet<>();
+        categories = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);
     }
 
@@ -55,7 +55,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         times = personToCopy.getTimes();
-        tags = new HashSet<>(personToCopy.getTags());
+        categories = new HashSet<>(personToCopy.getCategories());
         author = personToCopy.getAuthor();
     }
 
@@ -68,10 +68,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code categories} into a {@code Set<Category>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
+    public PersonBuilder withCategories(String ... categories) {
+        this.categories = SampleDataUtil.getCategorySet(categories);
         return this;
     }
 
@@ -116,7 +116,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, isbn, email, address, times, tags, author);
+        return new Person(name, isbn, email, address, times, categories, author);
     }
 
 }

@@ -2,14 +2,14 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,15 +26,15 @@ public class TypicalPersons {
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withIsbn("94351253").withTimes("12")
-            .withTags("friends").withAuthor("a").build();
+            .withCategories("friends").withAuthor("a").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25").withTimes("20")
             .withEmail("johnd@example.com").withIsbn("98765432")
-            .withTags("owesMoney", "friends").withAuthor("b").build();
+            .withCategories("owesMoney", "friends").withAuthor("b").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withIsbn("95352563")
             .withEmail("heinz@example.com").withAddress("wall street").withAuthor("a").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withIsbn("87652533")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends")
+            .withEmail("cornelia@example.com").withAddress("10th street").withCategories("friends")
             .withAuthor("a").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withIsbn("9482224")
             .withEmail("werner@example.com").withAddress("michegan ave").withAuthor("a").build();
@@ -51,10 +51,10 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

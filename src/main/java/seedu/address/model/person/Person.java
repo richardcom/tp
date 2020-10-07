@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
+import seedu.address.model.category.Category;
 
 /**
  * Represents a Person in the address book.
@@ -24,19 +24,20 @@ public class Person {
     // Data fields
     private final Address address;
     private final Times times;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Category> categories = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Isbn isbn, Email email, Address address, Times times, Set<Tag> tags, Author author) {
-        requireAllNonNull(name, isbn, email, address, times, tags, author);
+    public Person(Name name, Isbn isbn, Email email, Address address,
+                  Times times, Set<Category> categories, Author author) {
+        requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
         this.isbn = isbn;
         this.email = email;
         this.address = address;
         this.times = times;
-        this.tags.addAll(tags);
+        this.categories.addAll(categories);
         // add
         this.author = author;
     }
@@ -69,11 +70,11 @@ public class Person {
 
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable category set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Category> getCategories() {
+        return Collections.unmodifiableSet(categories);
     }
 
     /**
@@ -109,14 +110,14 @@ public class Person {
                 && otherPerson.getIsbn().equals(getIsbn())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getCategories().equals(getCategories())
                 && otherPerson.getAuthor().equals(getAuthor());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, isbn, email, address, tags, author);
+        return Objects.hash(name, isbn, email, address, categories, author);
     }
 
     @Override
@@ -131,8 +132,8 @@ public class Person {
                 .append(" Times: ")
                 .append(getTimes())
                 .append(getAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(" Categories: ");
+        getCategories().forEach(builder::append);
         builder.append(" Author: ").append(getAuthor());
         return builder.toString();
     }
