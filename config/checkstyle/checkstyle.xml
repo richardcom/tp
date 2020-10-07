@@ -232,7 +232,7 @@
     ORDER CHECKS
     -->
 
-    <!-- Checks that the order of at-clauses follows the tagOrder default property value order.
+    <!-- Checks that the order of at-clauses follows the categoryOrder default property value order.
          @author, @version, @param, @return, @throws, @exception, @see, @since, @serial, @serialField, @serialData, @deprecated
     -->
     <module name="AtclauseOrder"/>
@@ -378,7 +378,7 @@
 
     <!-- Checks that every class, enumeration and interface have a header comment. -->
     <module name="JavadocType">
-      <property name="allowMissingParamTags" value="true"/>
+      <property name="allowMissingParamCategories" value="true"/>
     </module>
 
     <!-- Checks that every public method (excluding getters, setters and constructors) has a header comment. -->

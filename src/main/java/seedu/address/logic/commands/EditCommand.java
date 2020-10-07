@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -27,7 +27,7 @@ import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Times;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.category.Category;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -44,7 +44,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ISBN + "ISBN] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
             + "[" + PREFIX_AUTHOR + "AUTHOR]"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ISBN + "91234567 "
@@ -102,11 +102,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Times updatedTimes = personToEdit.getTimes(); // edit command does not allow editing times
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Set<Category> updatedCategories = editPersonDescriptor.getCategories().orElse(personToEdit.getCategories());
         Author updatedAuthor = editPersonDescriptor.getAuthor().orElse(personToEdit.getAuthor());
 
         return new Person(updatedName, updatedIsbn, updatedEmail, updatedAddress,
-                updatedTimes, updatedTags, updatedAuthor);
+                updatedTimes, updatedCategories, updatedAuthor);
 
 
     }
@@ -138,21 +138,21 @@ public class EditCommand extends Command {
         private Isbn isbn;
         private Email email;
         private Address address;
-        private Set<Tag> tags;
+        private Set<Category> categories;
         private Author author;
 
         public EditPersonDescriptor() {}
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code categories} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
             setIsbn(toCopy.isbn);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
-            setTags(toCopy.tags);
+            setCategories(toCopy.categories);
             setAuthor(toCopy.author);
         }
 
@@ -160,7 +160,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, isbn, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, isbn, email, address, categories);
         }
 
         public void setName(Name name) {
@@ -196,20 +196,20 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code categories} to this object's {@code categories}.
+         * A defensive copy of {@code categories} is used internally.
          */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setCategories(Set<Category> categories) {
+            this.categories = (categories != null) ? new HashSet<>(categories) : null;
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable category set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Returns {@code Optional#empty()} if {@code categories} is null.
          */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Set<Category>> getCategories() {
+            return (categories != null) ? Optional.of(Collections.unmodifiableSet(categories)) : Optional.empty();
         }
 
         public void setAuthor(Author author) {
@@ -239,7 +239,7 @@ public class EditCommand extends Command {
                     && getIsbn().equals(e.getIsbn())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags())
+                    && getCategories().equals(e.getCategories())
                     && getAuthor().equals(e.getAuthor());
         }
     }
