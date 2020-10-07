@@ -63,17 +63,11 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
-            .withTimes(VALID_TIMES_AMY)
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND)
-            .withStocking(VALID_STOCKING_AMY)
-            .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
             .build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
-            .withTimes(VALID_TIME_BOB)
             .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
             .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND)
-            .withStocking(VALID_STOCKING_BOB)
-            .withAuthor(VALID_AUTHOR_BOB).withPublisher(VALID_PUBLISHER_BOB)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
