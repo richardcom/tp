@@ -1,10 +1,12 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 
 import java.util.Set;
 
@@ -37,8 +39,8 @@ public class PersonUtil {
         person.getCategories().stream().forEach(
             s -> sb.append(PREFIX_CATEGORY + s.categoryName + " ")
         );
-        sb.append(PREFIX_AUTHOR + person.getAuthor().value + " ");
-        sb.append(PREFIX_PUBLISHER + person.getPublisher().value + " ");
+        sb.append(PREFIX_AUTHOR + person.getAuthor().author + " ");
+        sb.append(PREFIX_PUBLISHER + person.getPublisher().publisher + " ");
         return sb.toString();
     }
 
