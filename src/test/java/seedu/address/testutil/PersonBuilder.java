@@ -6,9 +6,9 @@ import java.util.Set;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Times;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -19,14 +19,14 @@ import seedu.address.model.util.SampleDataUtil;
 public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "";
     public static final String DEFAULT_AUTHOR = "a";
 
     private Name name;
-    private Phone phone;
+    private Isbn isbn;
     private Email email;
     private Address address;
     private Times times;
@@ -38,7 +38,7 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        isbn = new Isbn(DEFAULT_ISBN);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         times = new Times(DEFAULT_TIMES);
@@ -51,7 +51,7 @@ public class PersonBuilder {
      */
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
-        phone = personToCopy.getPhone();
+        isbn = personToCopy.getIsbn();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         times = personToCopy.getTimes();
@@ -84,10 +84,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code Isbn} of the {@code Person} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+    public PersonBuilder withIsbn(String isbn) {
+        this.isbn = new Isbn(isbn);
         return this;
     }
 
@@ -116,7 +116,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, times, tags, author);
+        return new Person(name, isbn, email, address, times, tags, author);
     }
 
 }
