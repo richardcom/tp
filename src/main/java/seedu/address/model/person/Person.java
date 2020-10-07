@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
+import seedu.address.model.category.Category;
 
 /**
  * Represents a Person in the address book.
@@ -17,30 +17,30 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final Isbn isbn;
     private final Email email;
     private final Author author;
 
     // Data fields
     private final Address address;
     private final Times times;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Category> categories = new HashSet<>();
 
     private final Stocking stocking;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address,
-                  Times times, Set<Tag> tags, Stocking stocking, Author author) {
-        requireAllNonNull(name, phone, email, address, times, tags, author);
-
+    public Person(Name name, Isbn isbn, Email email, Address address,
+                  Times times, Set<Category> categories, Stocking stocking, Author author) {
+        requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
-        this.phone = phone;
+        this.isbn = isbn;
         this.email = email;
         this.address = address;
         this.times = times;
-        this.tags.addAll(tags);
+        this.categories.addAll(categories);
+        // add
         this.author = author;
         this.stocking = stocking;
     }
@@ -49,8 +49,8 @@ public class Person {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Isbn getIsbn() {
+        return isbn;
     }
 
     public Email getEmail() {
@@ -73,11 +73,11 @@ public class Person {
 
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable category set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Category> getCategories() {
+        return Collections.unmodifiableSet(categories);
     }
 
     public Stocking getStocking() {
@@ -95,7 +95,7 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+                && (otherPerson.getIsbn().equals(getIsbn()) || otherPerson.getEmail().equals(getEmail()));
     }
 
     /**
@@ -114,33 +114,33 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone())
+                && otherPerson.getIsbn().equals(getIsbn())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getCategories().equals(getCategories())
                 && otherPerson.getAuthor().equals(getAuthor());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, author);
+        return Objects.hash(name, isbn, email, address, categories, author);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
+                .append(" Isbn: ")
+                .append(getIsbn())
                 .append(" Email: ")
                 .append(getEmail())
                 .append(" Address: ")
                 .append(" Times: ")
                 .append(getTimes())
                 .append(getAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(" Categories: ");
+        getCategories().forEach(builder::append);
         builder.append(" Author: ").append(getAuthor());
         return builder.toString();
     }

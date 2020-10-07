@@ -32,7 +32,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
+    private Label isbn;
     @FXML
     private Label address;
     @FXML
@@ -42,7 +42,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     @FXML
     private Label author;
     @FXML
-    private FlowPane tags;
+    private FlowPane categories;
     @FXML
     private FlowPane stocking;
 
@@ -54,13 +54,13 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
+        isbn.setText(person.getIsbn().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         times.setText(person.getTimes().value);
-        person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        person.getCategories().stream()
+                .sorted(Comparator.comparing(category -> category.categoryName))
+                .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         person.getStocking().storage.forEach((location, storage) -> {
             if (storage > 0) {
                 stocking.getChildren().add(new Label(location + ": " + storage + " "));

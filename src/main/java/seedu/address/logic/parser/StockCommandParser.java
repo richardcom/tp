@@ -21,7 +21,7 @@ public class StockCommandParser implements Parser<StockCommand> {
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(
                 userInput,
                 CliSyntax.PREFIX_NAME,
-                CliSyntax.PREFIX_PHONE
+                CliSyntax.PREFIX_ISBN
         );
 
         List<String> names = null;
@@ -30,8 +30,8 @@ public class StockCommandParser implements Parser<StockCommand> {
         if (argumentMultimap.getValue(CliSyntax.PREFIX_NAME).isPresent()) {
             names = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_NAME).get().split("\\s+"));
         }
-        if (argumentMultimap.getValue(CliSyntax.PREFIX_PHONE).isPresent()) {
-            numbers = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_PHONE).get().split("\\s+"));
+        if (argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).isPresent()) {
+            numbers = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().split("\\s+"));
         }
         return new StockCommand(names, numbers);
     }

@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.category.Category;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Author;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -21,7 +21,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "";
@@ -29,11 +29,11 @@ public class PersonBuilder {
     public static final HashMap<String, Integer> DEFAULT_STOCKING = new HashMap<>();
 
     private Name name;
-    private Phone phone;
+    private Isbn isbn;
     private Email email;
     private Address address;
     private Times times;
-    private Set<Tag> tags;
+    private Set<Category> categories;
     private Author author;
     private Stocking stocking;
 
@@ -42,11 +42,11 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
+        isbn = new Isbn(DEFAULT_ISBN);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         times = new Times(DEFAULT_TIMES);
-        tags = new HashSet<>();
+        categories = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);
         stocking = new Stocking(DEFAULT_STOCKING);
     }
@@ -56,11 +56,11 @@ public class PersonBuilder {
      */
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
-        phone = personToCopy.getPhone();
+        isbn = personToCopy.getIsbn();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         times = personToCopy.getTimes();
-        tags = new HashSet<>(personToCopy.getTags());
+        categories = new HashSet<>(personToCopy.getCategories());
         author = personToCopy.getAuthor();
         stocking = personToCopy.getStocking();
     }
@@ -74,10 +74,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
+     * Parses the {@code categories} into a {@code Set<Category>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
+    public PersonBuilder withCategories(String ... categories) {
+        this.categories = SampleDataUtil.getCategorySet(categories);
         return this;
     }
 
@@ -90,10 +90,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code Isbn} of the {@code Person} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
+    public PersonBuilder withIsbn(String isbn) {
+        this.isbn = new Isbn(isbn);
         return this;
     }
 
@@ -130,6 +130,6 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, times, tags, stocking, author);
+        return new Person(name, isbn, email, address, times, categories, stocking, author);
     }
 }

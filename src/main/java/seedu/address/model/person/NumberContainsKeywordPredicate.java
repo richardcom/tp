@@ -24,7 +24,7 @@ public class NumberContainsKeywordPredicate implements Predicate<Person> {
         }
         */
         return keywords.stream()
-                .anyMatch((number) -> person.getPhone().value.toUpperCase().contains(number.toUpperCase()));
+                .anyMatch((number) -> person.getIsbn().value.toUpperCase().contains(number.toUpperCase()));
     }
 
     @Override

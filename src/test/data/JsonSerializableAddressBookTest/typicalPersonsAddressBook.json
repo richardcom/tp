@@ -2,11 +2,11 @@
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "persons" : [ {
     "name" : "Alice Pauline",
-    "phone" : "94351253",
+    "isbn" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "times": "12",
-    "tagged" : [ "friends" ],
+    "categorised" : [ "friends" ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -14,11 +14,11 @@
     "author": "a"
   }, {
     "name" : "Benson Meier",
-    "phone" : "98765432",
+    "isbn" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "times": "20",
-    "tagged" : [ "owesMoney", "friends" ],
+    "categorised" : [ "owesMoney", "friends" ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -26,11 +26,11 @@
     "author": "b"
   }, {
     "name" : "Carl Kurz",
-    "phone" : "95352563",
+    "isbn" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
     "times": "",
-    "tagged" : [ ],
+    "categorised" : [ ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -38,11 +38,11 @@
     "author": "a"
   }, {
     "name" : "Daniel Meier",
-    "phone" : "87652533",
+    "isbn" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "times": "",
-    "tagged" : [ "friends" ],
+    "categorised" : [ "friends" ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -50,11 +50,11 @@
     "author": "a"
   }, {
     "name" : "Elle Meyer",
-    "phone" : "9482224",
+    "isbn" : "9482224",
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "times": "",
-    "tagged" : [ ],
+    "categorised" : [ ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -62,11 +62,11 @@
     "author": "a"
   }, {
     "name" : "Fiona Kunz",
-    "phone" : "9482427",
+    "isbn" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "times": "",
-    "tagged" : [ ],
+    "categorised" : [ ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
@@ -74,11 +74,11 @@
     "author": "a"
   }, {
     "name" : "George Best",
-    "phone" : "9482442",
+    "isbn" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
     "times": "",
-    "tagged" : [ ],
+    "categorised" : [ ],
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
