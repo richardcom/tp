@@ -88,28 +88,28 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing name prefix
-        assertParseFailure(parser, VALID_NAME_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND,
+        assertParseFailure(parser, VALID_NAME_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB 
+                + CATEGORY_DESC_FRIEND,
                 expectedMessage);
 
         // missing isbn prefix
-        assertParseFailure(parser, NAME_DESC_BOB + VALID_ISBN_BOB + EMAIL_DESC_BOB 
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND,
+        assertParseFailure(parser, NAME_DESC_BOB + VALID_ISBN_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB 
+                + CATEGORY_DESC_FRIEND,
                 expectedMessage);
 
         // missing email prefix
-        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + VALID_EMAIL_BOB 
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND,
+        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + VALID_EMAIL_BOB + ADDRESS_DESC_BOB 
+                + CATEGORY_DESC_FRIEND,
                 expectedMessage);
 
         // missing address prefix
-        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB 
-                + VALID_ADDRESS_BOB + CATEGORY_DESC_FRIEND,
+        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + VALID_ADDRESS_BOB 
+                + CATEGORY_DESC_FRIEND,
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_ISBN_BOB + VALID_EMAIL_BOB 
-                + VALID_ADDRESS_BOB + CATEGORY_DESC_FRIEND,
+        assertParseFailure(parser, VALID_NAME_BOB + VALID_ISBN_BOB + VALID_EMAIL_BOB + VALID_ADDRESS_BOB 
+                + CATEGORY_DESC_FRIEND,
                 expectedMessage);
     }
 
