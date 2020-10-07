@@ -31,7 +31,7 @@ class JsonAdaptedPerson {
     private String email;
     private String address;
     private String times;
-    private final List<JsonAdaptedCategory> categoried = new ArrayList<>();
+    private final List<JsonAdaptedCategory> categorised = new ArrayList<>();
     private String author;
 
     /**
@@ -41,7 +41,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("isbn") String isbn,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
                              @JsonProperty("times") String times,
-                             @JsonProperty("categoried") List<JsonAdaptedCategory> categoried,
+                             @JsonProperty("categorised") List<JsonAdaptedCategory> categorised,
                              @JsonProperty("author") String author) {
 
         this.name = name;
@@ -49,8 +49,8 @@ class JsonAdaptedPerson {
         this.email = email;
         this.address = address;
         this.times = times;
-        if (categoried != null) {
-            this.categoried.addAll(categoried);
+        if (categorised != null) {
+            this.categorised.addAll(categorised);
         }
         this.author = author;
     }
@@ -64,7 +64,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         times = source.getTimes().value;
-        categoried.addAll(source.getCategories().stream()
+        categorised.addAll(source.getCategories().stream()
                 .map(JsonAdaptedCategory::new)
                 .collect(Collectors.toList()));
         author = source.getAuthor().author;
@@ -77,7 +77,7 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Category> personCategories = new ArrayList<>();
-        for (JsonAdaptedCategory category : categoried) {
+        for (JsonAdaptedCategory category : categorised) {
             personCategories.add(category.toModelType());
         }
 
