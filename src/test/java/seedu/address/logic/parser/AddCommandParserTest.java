@@ -1,4 +1,3 @@
-/*
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -27,6 +26,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -78,7 +79,7 @@ public class AddCommandParserTest {
         // zero categories
         Person expectedPerson = new PersonBuilder(AMY).withCategories().build();
         assertParseSuccess(parser, NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + CATEGORY_DESC_FRIEND,
+                + ADDRESS_DESC_AMY,
                 new AddCommand(expectedPerson));
     }
 
@@ -144,4 +145,3 @@ public class AddCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
-*/

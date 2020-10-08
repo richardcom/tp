@@ -149,7 +149,7 @@ public class Person {
                 .append(" Categories: ");
         getCategories().forEach(builder::append);
         builder.append(" Author: ").append(getAuthor());
-        builder.append("Publisher: ").append(getPublisher());
+        builder.append(" Publisher: ").append(getPublisher());
         return builder.toString();
     }
 
