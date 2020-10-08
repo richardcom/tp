@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -19,7 +20,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Isbn;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Publisher;
+import seedu.address.model.person.Stocking;
 import seedu.address.model.person.Times;
+
 
 
 /**
@@ -49,10 +53,12 @@ public class AddCommandParser implements Parser<AddCommand> {
         Times times = new Times(""); // add command does not allow adding remarks straight away
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
         Author author = new Author("a"); // to be implemented
+        Publisher publisher = new Publisher("pub");
 
         //Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
 
-        Person person = new Person(name, isbn, email, address, times, categoryList, null, author);
+        Person person = new Person(name, isbn, email, address, times, categoryList, new Stocking(new HashMap<>()),
+                author, publisher);
 
         return new AddCommand(person);
     }

@@ -33,7 +33,6 @@ public class StockCommand extends Command {
         //Predicate<Person> personPredicate;
         NameContainsKeywordsPredicate nameContainsKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
-
         if (names != null && numbers != null) {
             nameContainsKeywordsPredicate = new NameContainsKeywordsPredicate(names);
             numberContainsKeywordPredicate = new NumberContainsKeywordPredicate(numbers);

@@ -20,6 +20,7 @@ public class Person {
     private final Isbn isbn;
     private final Email email;
     private final Author author;
+    private final Publisher publisher;
 
     // Data fields
     private final Address address;
@@ -32,7 +33,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Isbn isbn, Email email, Address address,
-                  Times times, Set<Category> categories, Stocking stocking, Author author) {
+                  Times times, Set<Category> categories, Stocking stocking, Author author, Publisher publisher) {
         requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
         this.isbn = isbn;
@@ -42,6 +43,7 @@ public class Person {
         this.categories.addAll(categories);
         // add
         this.author = author;
+        this.publisher = publisher;
         this.stocking = stocking;
     }
 
@@ -64,6 +66,10 @@ public class Person {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
     }
 
 
@@ -118,13 +124,14 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getCategories().equals(getCategories())
-                && otherPerson.getAuthor().equals(getAuthor());
+                && otherPerson.getAuthor().equals(getAuthor())
+                && otherPerson.getPublisher().equals(getPublisher());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, isbn, email, address, categories, author);
+        return Objects.hash(name, isbn, email, address, categories, author, publisher);
     }
 
     @Override
@@ -142,6 +149,7 @@ public class Person {
                 .append(" Categories: ");
         getCategories().forEach(builder::append);
         builder.append(" Author: ").append(getAuthor());
+        builder.append(" Publisher: ").append(getPublisher());
         return builder.toString();
     }
 
