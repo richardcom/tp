@@ -32,7 +32,7 @@ public class TypicalBooks {
     public static final Book BENSON = new BookBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25").withTimes("20")
             .withEmail("johnd@example.com").withIsbn("98765432")
-            .withCategories("owesMoney", "friends").withAuthor("b")
+            .withCategories("owesMoney", "friends").withAuthor("a")
             .withPublisher("pub").withStocking(new HashMap<>()).build();
     public static final Book CARL = new BookBuilder().withName("Carl Kurz").withIsbn("95352563")
             .withEmail("heinz@example.com")
@@ -66,8 +66,8 @@ public class TypicalBooks {
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND)
             .withStocking(new HashMap<>()).withAuthor("a").withPublisher("pub").build();
     public static final Book BOB = new BookBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-            .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withAuthor("a").withPublisher("pub")
+            .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withStocking(new HashMap<>()).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -75,6 +76,30 @@ public class EditBookDescriptorBuilder {
     public EditBookDescriptorBuilder withCategories(String... categories) {
         Set<Category> categorySet = Stream.of(categories).map(Category::new).collect(Collectors.toSet());
         descriptor.setCategories(categorySet);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     */
+    public EditBookDescriptorBuilder withAuthor(String author) {
+        descriptor.setAuthor(new Author(author));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     */
+    public EditBookDescriptorBuilder withPublisher(String publisher) {
+        descriptor.setPublisher(new Publisher(publisher));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     */
+    public EditBookDescriptorBuilder withStockings(HashMap<String, Integer> stocking) {
+        descriptor.setStocking(new Stocking(stocking));
         return this;
     }
 

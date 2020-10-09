@@ -39,9 +39,6 @@ public class Stocking {
         this.storage.putAll(stocking);
     }
 
-    public Stocking() {
-
-    }
 
     /**
      * Returns true if a given string is a valid email.

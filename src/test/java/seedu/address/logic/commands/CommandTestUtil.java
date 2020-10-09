@@ -2,11 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.*;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -39,6 +35,10 @@ public class CommandTestUtil {
     public static final String VALID_TIMES_BOB = "2";
     public static final String VALID_CATEGORY_HUSBAND = "husband";
     public static final String VALID_CATEGORY_FRIEND = "friend";
+    public static final String VALID_AUTHOR_BOB = "a";
+    public static final String VALID_PUBLISHER_BOB = "pub";
+    public static final String VALID_AUTHOR_AMY = "a";
+    public static final String VALID_PUBLISHER_AMY = "pub";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -50,6 +50,10 @@ public class CommandTestUtil {
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_FRIEND;
     public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_HUSBAND;
+    public static final String AUTHOR_DESC_BOB = " " + PREFIX_AUTHOR + VALID_AUTHOR_BOB;
+    public static final String PUBLISHER_DESC_BOB = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_BOB;
+    public static final String AUTHOR_DESC_AMY = " " + PREFIX_AUTHOR + VALID_AUTHOR_AMY;
+    public static final String PUBLISHER_DESC_AMY = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_AMY;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_ISBN_DESC = " " + PREFIX_ISBN + "911a"; // 'a' not allowed in isbns
@@ -67,7 +71,7 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).build();
+                .withCategories(VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY).withStockings()build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
