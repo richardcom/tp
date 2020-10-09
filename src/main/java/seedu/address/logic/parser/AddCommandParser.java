@@ -35,16 +35,17 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
+        System.out.println("debug");
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Times times = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIMES).get()); // add command does not allow adding remarks straight away
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
+
         Author author = ParserUtil.parseAuthor(argMultimap.getValue(PREFIX_AUTHOR).get()); // to be implemented
 
         Publisher publisher = ParserUtil.parsePublisher(argMultimap.getValue(PREFIX_PUBLISHER).get());
-
         Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
 
         Book book = new Book(name, isbn, email, address, times, categoryList, stocking,
