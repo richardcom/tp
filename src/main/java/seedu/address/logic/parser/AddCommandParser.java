@@ -14,16 +14,8 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Author;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Publisher;
-import seedu.address.model.person.Stocking;
-import seedu.address.model.person.Times;
-
+import seedu.address.model.book.*;
+import seedu.address.model.book.Book;
 
 
 /**
@@ -57,10 +49,10 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         //Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
 
-        Person person = new Person(name, isbn, email, address, times, categoryList, new Stocking(new HashMap<>()),
+        Book book = new Book(name, isbn, email, address, times, categoryList, new Stocking(new HashMap<>()),
                 author, publisher);
 
-        return new AddCommand(person);
+        return new AddCommand(book);
     }
 
     /**

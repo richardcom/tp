@@ -26,61 +26,58 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalBooks.AMY;
+import static seedu.address.testutil.TypicalBooks.BOB;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.book.*;
+import seedu.address.model.book.Book;
+import seedu.address.testutil.BookBuilder;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND).build();
+        Book expectedBook = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedBook));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedBook));
 
         // multiple isbns - last isbn accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_AMY + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedBook));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_AMY + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedBook));
 
         // multiple addresses - last address accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_AMY
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedBook));
 
         // multiple categories - all accepted
-        Person expectedPersonMultipleCategories = new PersonBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND,
+        Book expectedBookMultipleCategories = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND,
                 VALID_CATEGORY_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, new AddCommand(expectedPersonMultipleCategories));
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, new AddCommand(expectedBookMultipleCategories));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Person expectedPerson = new PersonBuilder(AMY).withCategories().build();
+        Book expectedBook = new BookBuilder(AMY).withCategories().build();
         assertParseSuccess(parser, NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY,
-                new AddCommand(expectedPerson));
+                new AddCommand(expectedBook));
     }
 
     @Test

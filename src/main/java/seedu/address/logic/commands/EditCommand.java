@@ -22,26 +22,26 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Author;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Publisher;
-import seedu.address.model.person.Stocking;
-import seedu.address.model.person.Times;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Book;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
 import seedu.address.ui.Mode;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing book in the address book.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
+            + "by the index number used in the displayed book list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
@@ -55,16 +55,16 @@ public class EditCommand extends Command {
             + PREFIX_ISBN + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Book: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This book already exists in the address book.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
+     * @param index of the book in the filtered book list to edit
+     * @param editPersonDescriptor details to edit the book with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
         requireNonNull(index);
@@ -77,42 +77,42 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Book> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Book bookToEdit = lastShownList.get(index.getZeroBased());
+        Book editedBook = createEditedPerson(bookToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!bookToEdit.isSamePerson(editedBook) && model.hasPerson(editedBook)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(personToEdit, editedPerson);
+        model.setPerson(bookToEdit, editedBook);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedBook));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * Creates and returns a {@code Book} with the details of {@code bookToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private static Book createEditedPerson(Book bookToEdit, EditPersonDescriptor editPersonDescriptor) {
+        assert bookToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Isbn updatedIsbn = editPersonDescriptor.getIsbn().orElse(personToEdit.getIsbn());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Times updatedTimes = personToEdit.getTimes(); // edit command does not allow editing times
-        Set<Category> updatedCategories = editPersonDescriptor.getCategories().orElse(personToEdit.getCategories());
-        Author updatedAuthor = editPersonDescriptor.getAuthor().orElse(personToEdit.getAuthor());
-        Publisher updatedPulisher = editPersonDescriptor.getPublisher().orElse(personToEdit.getPublisher());
-        Stocking updatedStocking = editPersonDescriptor.getStocking().orElse(personToEdit.getStocking());
+        Name updatedName = editPersonDescriptor.getName().orElse(bookToEdit.getName());
+        Isbn updatedIsbn = editPersonDescriptor.getIsbn().orElse(bookToEdit.getIsbn());
+        Email updatedEmail = editPersonDescriptor.getEmail().orElse(bookToEdit.getEmail());
+        Address updatedAddress = editPersonDescriptor.getAddress().orElse(bookToEdit.getAddress());
+        Times updatedTimes = bookToEdit.getTimes(); // edit command does not allow editing times
+        Set<Category> updatedCategories = editPersonDescriptor.getCategories().orElse(bookToEdit.getCategories());
+        Author updatedAuthor = editPersonDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
+        Publisher updatedPulisher = editPersonDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
+        Stocking updatedStocking = editPersonDescriptor.getStocking().orElse(bookToEdit.getStocking());
 
-        return new Person(updatedName, updatedIsbn, updatedEmail,
+        return new Book(updatedName, updatedIsbn, updatedEmail,
                 updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor, updatedPulisher);
 
     }
@@ -136,8 +136,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the book with. Each non-empty field value will replace the
+     * corresponding field value of the book.
      */
     public static class EditPersonDescriptor {
         private Name name;

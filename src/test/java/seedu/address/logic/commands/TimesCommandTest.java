@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,9 +19,9 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Times;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.book.Book;
+import seedu.address.model.book.Times;
+import seedu.address.testutil.BookBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for TimesCommand.
@@ -34,31 +34,31 @@ public class TimesCommandTest {
 
     @Test
     public void execute_addRemarkUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withTimes(TIMES_STUB).build();
+        Book firstBook = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Book editedBook = new BookBuilder(firstBook).withTimes(TIMES_STUB).build();
 
-        TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(editedPerson.getTimes().value));
+        TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(editedBook.getTimes().value));
 
-        String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedPerson);
+        String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedBook);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.setPerson(firstBook, editedBook);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_deleteRemarkUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withTimes("").build();
+        Book firstBook = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Book editedBook = new BookBuilder(firstBook).withTimes("").build();
 
         TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_PERSON,
-                new Times(editedPerson.getTimes().toString()));
+                new Times(editedBook.getTimes().toString()));
 
-        String expectedMessage = String.format(TimesCommand.MESSAGE_DELETE_TIMES_SUCCESS, editedPerson);
+        String expectedMessage = String.format(TimesCommand.MESSAGE_DELETE_TIMES_SUCCESS, editedBook);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.setPerson(firstBook, editedBook);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
     }
@@ -67,16 +67,16 @@ public class TimesCommandTest {
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+        Book firstBook = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Book editedBook = new BookBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
                 .withTimes(TIMES_STUB).build();
 
-        TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(editedPerson.getTimes().value));
+        TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_PERSON, new Times(editedBook.getTimes().value));
 
-        String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedPerson);
+        String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedBook);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.setPerson(firstBook, editedBook);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
     }

@@ -8,9 +8,9 @@ import java.util.function.Predicate;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.NumberContainsKeywordPredicate;
-import seedu.address.model.person.Person;
+import seedu.address.model.book.NameContainsKeywordsPredicate;
+import seedu.address.model.book.NumberContainsKeywordPredicate;
+import seedu.address.model.book.Book;
 import seedu.address.ui.Mode;
 
 public class StockCommand extends Command {
@@ -21,7 +21,7 @@ public class StockCommand extends Command {
             + "Parameters: KEYWORD\n"
             + "Example: " + COMMAND_WORD + " n/ a brief history of time";
 
-    private Predicate<Person> predicate;
+    private Predicate<Book> predicate;
 
     /**
      * Creates a StockCommand to search for the stocking information in each location.
@@ -30,7 +30,7 @@ public class StockCommand extends Command {
      * @param numbers The list of numbers that are used as keyword.
      */
     public StockCommand(List<String> names, List<String> numbers) {
-        //Predicate<Person> personPredicate;
+        //Predicate<Book> personPredicate;
         NameContainsKeywordsPredicate nameContainsKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
         if (names != null && numbers != null) {

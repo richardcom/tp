@@ -10,8 +10,8 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Times;
+import seedu.address.model.book.Book;
+import seedu.address.model.book.Times;
 import seedu.address.ui.Mode;
 
 /**
@@ -19,7 +19,7 @@ import seedu.address.ui.Mode;
  */
 public class TimesCommand extends Command {
     public static final String COMMAND_WORD = "times";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the times of the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the times of the book identified "
             + "by the index number used in the last book listing. "
             + "Existing times will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -43,30 +43,30 @@ public class TimesCommand extends Command {
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Book> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = new Person(personToEdit.getName(), personToEdit.getIsbn(), personToEdit.getEmail(),
-                personToEdit.getAddress(), times, personToEdit.getCategories(), personToEdit.getStocking(),
-                personToEdit.getAuthor(), personToEdit.getPublisher());
+        Book bookToEdit = lastShownList.get(index.getZeroBased());
+        Book editedBook = new Book(bookToEdit.getName(), bookToEdit.getIsbn(), bookToEdit.getEmail(),
+                bookToEdit.getAddress(), times, bookToEdit.getCategories(), bookToEdit.getStocking(),
+                bookToEdit.getAuthor(), bookToEdit.getPublisher());
 
-        model.setPerson(personToEdit, editedPerson);
+        model.setPerson(bookToEdit, editedBook);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
 
-        return new CommandResult(generateSuccessMessage(editedPerson));
+        return new CommandResult(generateSuccessMessage(editedBook));
     }
 
     /**
      * Generates a command execution success message based on whether the times is added to or removed from
      * {@code bookToEdit}.
      */
-    private String generateSuccessMessage(Person personToEdit) {
+    private String generateSuccessMessage(Book bookToEdit) {
         String message = !times.value.isEmpty() ? MESSAGE_ADD_TIMES_SUCCESS : MESSAGE_DELETE_TIMES_SUCCESS;
-        return String.format(message, personToEdit);
+        return String.format(message, bookToEdit);
     }
 
     @Override
