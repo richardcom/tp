@@ -74,17 +74,17 @@ public class TypicalBooks {
     private TypicalBooks() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code AddressBook} with all the typical books.
      */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        for (Book book : getTypicalPersons()) {
-            ab.addPerson(book);
+        for (Book book : getTypicalBooks()) {
+            ab.addBook(book);
         }
         return ab;
     }
 
-    public static List<Book> getTypicalPersons() {
+    public static List<Book> getTypicalBooks() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

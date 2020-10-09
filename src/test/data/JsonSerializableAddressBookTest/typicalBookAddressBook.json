@@ -1,6 +1,6 @@
 {
-  "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
-  "persons" : [ {
+  "_comment": "AddressBook save file which contains the same Book values as in TypicalBooks#getTypicalAddressBook()",
+  "books" : [ {
     "name" : "Alice Pauline",
     "isbn" : "94351253",
     "email" : "alice@example.com",

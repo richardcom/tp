@@ -27,28 +27,28 @@ import seedu.address.ui.Mode;
 public class AddCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullBook_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+    public void execute_bookAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingBookAdded modelStub = new ModelStubAcceptingBookAdded();
         Book validBook = new BookBuilder().build();
 
         CommandResult commandResult = new AddCommand(validBook).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validBook), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validBook), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validBook), modelStub.booksAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateBook_throwsCommandException() {
         Book validBook = new BookBuilder().build();
         AddCommand addCommand = new AddCommand(validBook);
-        ModelStub modelStub = new ModelStubWithPerson(validBook);
+        ModelStub modelStub = new ModelStubWithBook(validBook);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_BOOK, () -> addCommand.execute(modelStub));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Book book) {
+        public void addBook(Book book) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -125,27 +125,27 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Book book) {
+        public boolean hasBook(Book book) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Book target) {
+        public void deleteBook(Book target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Book target, Book editedBook) {
+        public void setBook(Book target, Book editedBook) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Book> getFilteredPersonList() {
+        public ObservableList<Book> getFilteredBookList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Book> predicate, Mode mode) {
+        public void updateFilteredBookList(Predicate<Book> predicate, Mode mode) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -153,37 +153,37 @@ public class AddCommandTest {
     /**
      * A Model stub that contains a single book.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithBook extends ModelStub {
         private final Book book;
 
-        ModelStubWithPerson(Book book) {
+        ModelStubWithBook(Book book) {
             requireNonNull(book);
             this.book = book;
         }
 
         @Override
-        public boolean hasPerson(Book book) {
+        public boolean hasBook(Book book) {
             requireNonNull(book);
-            return this.book.isSamePerson(book);
+            return this.book.isSameBook(book);
         }
     }
 
     /**
      * A Model stub that always accept the book being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Book> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingBookAdded extends ModelStub {
+        final ArrayList<Book> booksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Book book) {
+        public boolean hasBook(Book book) {
             requireNonNull(book);
-            return personsAdded.stream().anyMatch(book::isSamePerson);
+            return booksAdded.stream().anyMatch(book::isSameBook);
         }
 
         @Override
-        public void addPerson(Book book) {
+        public void addBook(Book book) {
             requireNonNull(book);
-            personsAdded.add(book);
+            booksAdded.add(book);
         }
 
         @Override

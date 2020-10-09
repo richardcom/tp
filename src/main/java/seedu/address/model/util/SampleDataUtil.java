@@ -18,7 +18,7 @@ public class SampleDataUtil {
 
     public static final Times EMPTY_TIMES = new Times("");
 
-    public static Book[] getSamplePersons() {
+    public static Book[] getSampleBooks() {
         HashMap<String, Integer> storage = new HashMap<>();
         storage.put("centralLibrary", 10);
         storage.put("scienceLibrary", 10);
@@ -47,8 +47,8 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        for (Book sampleBook : getSamplePersons()) {
-            sampleAb.addPerson(sampleBook);
+        for (Book sampleBook : getSampleBooks()) {
+            sampleAb.addBook(sampleBook);
         }
         return sampleAb;
     }

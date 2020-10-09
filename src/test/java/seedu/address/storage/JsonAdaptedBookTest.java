@@ -38,87 +38,87 @@ public class JsonAdaptedBookTest {
     private static final JsonAdaptedStocking VALID_STOCKING = new JsonAdaptedStocking(BENSON.getStocking());
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedBook person = new JsonAdaptedBook(BENSON);
-        assertEquals(BENSON, person.toModelType());
+    public void toModelType_validBookDetails_returnsBook() throws Exception {
+        JsonAdaptedBook book = new JsonAdaptedBook(BENSON);
+        assertEquals(BENSON, book.toModelType());
     }
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedBook person =
+        JsonAdaptedBook book =
                 new JsonAdaptedBook(INVALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedBook person = new JsonAdaptedBook(null, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(null, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_invalidIsbn_throwsIllegalValueException() {
-        JsonAdaptedBook person =
+        JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, INVALID_ISBN, VALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Isbn.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_nullIsbn_throwsIllegalValueException() {
-        JsonAdaptedBook person = new JsonAdaptedBook(VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Isbn.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_invalidEmail_throwsIllegalValueException() {
-        JsonAdaptedBook person =
+        JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, VALID_ISBN, INVALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedBook person = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, null, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, null, VALID_ADDRESS,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_invalidAddress_throwsIllegalValueException() {
-        JsonAdaptedBook person =
+        JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, INVALID_ADDRESS, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
-        JsonAdaptedBook person = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, null,
+        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, null,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
     @Test
     public void toModelType_invalidCategories_throwsIllegalValueException() {
         List<JsonAdaptedCategory> invalidCategories = new ArrayList<>(VALID_CATEGORIES);
         invalidCategories.add(new JsonAdaptedCategory(INVALID_CATEGORY));
-        JsonAdaptedBook person =
+        JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS,
                         VALID_TIMES, invalidCategories, VALID_STOCKING, VALID_AUTHOR, VALID_PUBLISHER);
-        assertThrows(IllegalValueException.class, person::toModelType);
+        assertThrows(IllegalValueException.class, book::toModelType);
     }
 
 }

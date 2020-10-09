@@ -24,35 +24,35 @@ public class BookTest {
     }
 
     @Test
-    public void isSamePerson() {
+    public void isSameBook() {
         // same object -> returns true
-        assertTrue(ALICE.isSamePerson(ALICE));
+        assertTrue(ALICE.isSameBook(ALICE));
 
         // null -> returns false
-        assertFalse(ALICE.isSamePerson(null));
+        assertFalse(ALICE.isSameBook(null));
 
         // different isbn and email -> returns false
         Book editedAlice = new BookBuilder(ALICE).withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        assertFalse(ALICE.isSameBook(editedAlice));
 
         // different name -> returns false
         editedAlice = new BookBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        assertFalse(ALICE.isSameBook(editedAlice));
 
         // same name, same isbn, different attributes -> returns true
         editedAlice = new BookBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.isSameBook(editedAlice));
 
         // same name, same email, different attributes -> returns true
         editedAlice = new BookBuilder(ALICE).withIsbn(VALID_ISBN_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.isSameBook(editedAlice));
 
         // same name, same isbn, same email, different attributes -> returns true
         editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.isSameBook(editedAlice));
     }
 
     @Test

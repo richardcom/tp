@@ -5,7 +5,7 @@
 * This is implemented for **CS2103 Software Engineering Module**.<br>
   Example usages:
   * as a UI mock up for a actual library administration system.
-  * as a personal library management system.
+  * as a bookal library management system.
 * The project simulates an library administration software used for managing the details of library.
   * It is written in **OOP fashion**.
   * It comes with a **reasonable level of user and developer documentation**.

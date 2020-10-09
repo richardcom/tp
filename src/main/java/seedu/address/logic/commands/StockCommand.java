@@ -30,21 +30,21 @@ public class StockCommand extends Command {
      * @param numbers The list of numbers that are used as keyword.
      */
     public StockCommand(List<String> names, List<String> numbers) {
-        //Predicate<Book> personPredicate;
+        //Predicate<Book> bookPredicate;
         NameContainsKeywordsPredicate nameContainsKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
         if (names != null && numbers != null) {
             nameContainsKeywordsPredicate = new NameContainsKeywordsPredicate(names);
             numberContainsKeywordPredicate = new NumberContainsKeywordPredicate(numbers);
-            predicate = (person -> nameContainsKeywordsPredicate.test(person)
-                    || numberContainsKeywordPredicate.test(person));
+            predicate = (book -> nameContainsKeywordsPredicate.test(book)
+                    || numberContainsKeywordPredicate.test(book));
         } else if (names != null) {
             predicate = new NameContainsKeywordsPredicate(names);
         } else if (numbers != null) {
             System.out.println("In stock command, the number is used as the search key");
             predicate = new NumberContainsKeywordPredicate(numbers);
         } else {
-            predicate = Model.PREDICATE_SHOW_ALL_PERSONS;
+            predicate = Model.PREDICATE_SHOW_ALL_BOOKS;
         }
     };
 
@@ -52,11 +52,11 @@ public class StockCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        model.updateFilteredPersonList((person -> false), Mode.NORMAL);
-        model.updateFilteredPersonList(predicate, Mode.DETAIL);
+        model.updateFilteredBookList((book -> false), Mode.NORMAL);
+        model.updateFilteredBookList(predicate, Mode.DETAIL);
         System.out.println("In stock command, set the mode to detail mode");
-        return new CommandResult(String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
-                model.getFilteredPersonList().size()));
+        return new CommandResult(String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW,
+                model.getFilteredBookList().size()));
     }
 
     @Override

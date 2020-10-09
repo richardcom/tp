@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.book.Book;
-import seedu.address.model.book.exceptions.DuplicatePersonException;
+import seedu.address.model.book.exceptions.DuplicateBookException;
 import seedu.address.testutil.BookBuilder;
 
 public class AddressBookTest {
@@ -28,7 +28,7 @@ public class AddressBookTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getPersonList());
+        assertEquals(Collections.emptyList(), addressBook.getBookList());
     }
 
     @Test
@@ -44,43 +44,43 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateBooks_throwsDuplicateBookException() {
         // Two books with the same identity fields
         Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         List<Book> newBooks = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newBooks);
 
-        assertThrows(DuplicatePersonException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateBookException.class, () -> addressBook.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasPerson(null));
+    public void hasBook_nullBook_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasBook(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasPerson(ALICE));
+    public void hasBook_bookNotInAddressBook_returnsFalse() {
+        assertFalse(addressBook.hasBook(ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
-        assertTrue(addressBook.hasPerson(ALICE));
+    public void hasBook_bookInAddressBook_returnsTrue() {
+        addressBook.addBook(ALICE);
+        assertTrue(addressBook.hasBook(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
+    public void hasBook_bookWithSameIdentityFieldsInAddressBook_returnsTrue() {
+        addressBook.addBook(ALICE);
         Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(addressBook.hasPerson(editedAlice));
+        assertTrue(addressBook.hasBook(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+    public void getBookList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> addressBook.getBookList().remove(0));
     }
 
     /**
@@ -94,7 +94,7 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<Book> getPersonList() {
+        public ObservableList<Book> getBookList() {
             return books;
         }
     }

@@ -42,7 +42,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane bookListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -110,8 +110,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        bookListPanel = new BookListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(bookListPanel.getRoot());
+        bookListPanel = new BookListPanel(logic.getFilteredBookList());
+        bookListPanelPlaceholder.getChildren().add(bookListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

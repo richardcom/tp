@@ -9,7 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
 import seedu.address.model.category.Category;
 import seedu.address.model.book.Book;
 
@@ -22,13 +22,13 @@ public class BookUtil {
      * Returns an add command string for adding the {@code book}.
      */
     public static String getAddCommand(Book book) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(book);
+        return AddCommand.COMMAND_WORD + " " + getBookDetails(book);
     }
 
     /**
      * Returns the part of command string for the given {@code book}'s details.
      */
-    public static String getPersonDetails(Book book) {
+    public static String getBookDetails(Book book) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + book.getName().fullName + " ");
         sb.append(PREFIX_ISBN + book.getIsbn().value + " ");
@@ -41,9 +41,9 @@ public class BookUtil {
     }
 
     /**
-     * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
+     * Returns the part of command string for the given {@code EditBookDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
+    public static String getEditBookDescriptorDetails(EditBookDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getIsbn().ifPresent(isbn -> sb.append(PREFIX_ISBN).append(isbn.value).append(" "));

@@ -86,9 +86,9 @@ class JsonAdaptedBook {
      * @throws IllegalValueException if there were any data constraints violated in the adapted book.
      */
     public Book toModelType() throws IllegalValueException {
-        final List<Category> personCategories = new ArrayList<>();
+        final List<Category> bookCategories = new ArrayList<>();
         for (JsonAdaptedCategory category : categorised) {
-            personCategories.add(category.toModelType());
+            bookCategories.add(category.toModelType());
         }
 
         if (name == null) {
@@ -131,7 +131,7 @@ class JsonAdaptedBook {
                     Times.class.getSimpleName()));
         }
         final Times modelTimes = new Times(times);
-        final Set<Category> modelCategories = new HashSet<>(personCategories);
+        final Set<Category> modelCategories = new HashSet<>(bookCategories);
 
         if (author == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

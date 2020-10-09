@@ -36,7 +36,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredBooks = new FilteredList<>(this.addressBook.getPersonList());
+        filteredBooks = new FilteredList<>(this.addressBook.getBookList());
     }
 
     public ModelManager() {
@@ -91,27 +91,27 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Book book) {
+    public boolean hasBook(Book book) {
         requireNonNull(book);
-        return addressBook.hasPerson(book);
+        return addressBook.hasBook(book);
     }
 
     @Override
-    public void deletePerson(Book target) {
-        addressBook.removePerson(target);
+    public void deleteBook(Book target) {
+        addressBook.removeBook(target);
     }
 
     @Override
-    public void addPerson(Book book) {
-        addressBook.addPerson(book);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
+    public void addBook(Book book) {
+        addressBook.addBook(book);
+        updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
     }
 
     @Override
-    public void setPerson(Book target, Book editedBook) {
+    public void setBook(Book target, Book editedBook) {
         requireAllNonNull(target, editedBook);
 
-        addressBook.setPerson(target, editedBook);
+        addressBook.setBook(target, editedBook);
     }
 
     //=========== Filtered Book List Accessors =============================================================
@@ -121,12 +121,12 @@ public class ModelManager implements Model {
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Book> getFilteredPersonList() {
+    public ObservableList<Book> getFilteredBookList() {
         return filteredBooks;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Book> predicate, Mode mode) {
+    public void updateFilteredBookList(Predicate<Book> predicate, Mode mode) {
         requireNonNull(predicate);
         BookListPanel.setMode(mode);
         filteredBooks.setPredicate(predicate);
@@ -137,7 +137,7 @@ public class ModelManager implements Model {
      *
      * @param predicate The predicate that is used to update the list.
      */
-    public void updateFilteredPersonList(Predicate<Book> predicate) {
+    public void updateFilteredBookList(Predicate<Book> predicate) {
         requireNonNull(predicate);
         filteredBooks.setPredicate(predicate);
     }

@@ -1,11 +1,11 @@
 {
-  "persons": [ {
-    "name": "Valid Person",
+  "books": [ {
+    "name": "Valid Book",
     "isbn": "9482424",
     "email": "hans@example.com",
     "address": "4th street"
   }, {
-    "name": "Person With Invalid Isbn Field",
+    "name": "Book With Invalid Isbn Field",
     "isbn": "948asdf2424",
     "email": "hans@example.com",
     "address": "4th street"

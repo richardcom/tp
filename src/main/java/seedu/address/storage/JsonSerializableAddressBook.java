@@ -19,16 +19,16 @@ import seedu.address.model.book.Book;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate book(s).";
+    public static final String MESSAGE_DUPLICATE_BOOK = "Books list contains duplicate book(s).";
 
-    private final List<JsonAdaptedBook> persons = new ArrayList<>();
+    private final List<JsonAdaptedBook> books = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given books.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedBook> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableAddressBook(@JsonProperty("books") List<JsonAdaptedBook> books) {
+        this.books.addAll(books);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedBook::new).collect(Collectors.toList()));
+        books.addAll(source.getBookList().stream().map(JsonAdaptedBook::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,12 +47,12 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedBook jsonAdaptedBook : persons) {
+        for (JsonAdaptedBook jsonAdaptedBook : books) {
             Book book = jsonAdaptedBook.toModelType();
-            if (addressBook.hasPerson(book)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            if (addressBook.hasBook(book)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_BOOK);
             }
-            addressBook.addPerson(book);
+            addressBook.addBook(book);
         }
         return addressBook;
     }

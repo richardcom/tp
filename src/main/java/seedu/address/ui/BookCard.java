@@ -48,7 +48,7 @@ public class BookCard extends UiPart<Region> {
     private Label publisher;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Book} and index to display.
+     * Creates a {@code BookCode} with the given {@code Book} and index to display.
      */
     public BookCard(Book book, int displayedIndex) {
         super(FXML);

@@ -34,7 +34,7 @@ public class AddCommand extends Command {
             + PREFIX_CATEGORY + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This book already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the address book";
 
     private final Book toAdd;
 
@@ -50,11 +50,11 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        if (model.hasBook(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_BOOK);
         }
 
-        model.addPerson(toAdd);
+        model.addBook(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

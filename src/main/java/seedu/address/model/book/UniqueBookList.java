@@ -8,21 +8,21 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.book.exceptions.DuplicatePersonException;
-import seedu.address.model.book.exceptions.PersonNotFoundException;
+import seedu.address.model.book.exceptions.DuplicateBookException;
+import seedu.address.model.book.exceptions.BookNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A book is considered unique by comparing using {@code Book#isSamePerson(Book)}. As such, adding and updating of
- * persons uses Book#isSamePerson(Book) for equality so as to ensure that the book being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a book uses Book#equals(Object) so
+ * A list of books that enforces uniqueness between its elements and does not allow nulls.
+ * A book is considered unique by comparing using {@code Book#isSameBook(Book)}. As such, adding and updating of
+ * books uses Book#isSameBook(Book) for equality so as to ensure that the book being added or updated is
+ * unique in terms of identity in the UniqueBookList. However, the removal of a book uses Book#equals(Object) so
  * as to ensure that the book with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
- * @see Book#isSamePerson(Book)
+ * @see Book#isSameBook(Book)
  */
-public class UniquePersonList implements Iterable<Book> {
+public class UniqueBookList implements Iterable<Book> {
 
     private final ObservableList<Book> internalList = FXCollections.observableArrayList();
     private final ObservableList<Book> internalUnmodifiableList =
@@ -33,7 +33,7 @@ public class UniquePersonList implements Iterable<Book> {
      */
     public boolean contains(Book toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSamePerson);
+        return internalList.stream().anyMatch(toCheck::isSameBook);
     }
 
     /**
@@ -43,7 +43,7 @@ public class UniquePersonList implements Iterable<Book> {
     public void add(Book toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateBookException();
         }
         internalList.add(toAdd);
     }
@@ -53,16 +53,16 @@ public class UniquePersonList implements Iterable<Book> {
      * {@code target} must exist in the list.
      * The book identity of {@code editedBook} must not be the same as another existing book in the list.
      */
-    public void setPerson(Book target, Book editedBook) {
+    public void setBook(Book target, Book editedBook) {
         requireAllNonNull(target, editedBook);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new BookNotFoundException();
         }
 
-        if (!target.isSamePerson(editedBook) && contains(editedBook)) {
-            throw new DuplicatePersonException();
+        if (!target.isSameBook(editedBook) && contains(editedBook)) {
+            throw new DuplicateBookException();
         }
 
         internalList.set(index, editedBook);
@@ -75,11 +75,11 @@ public class UniquePersonList implements Iterable<Book> {
     public void remove(Book toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new BookNotFoundException();
         }
     }
 
-    public void setPersons(UniquePersonList replacement) {
+    public void setBooks(UniqueBookList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -88,10 +88,10 @@ public class UniquePersonList implements Iterable<Book> {
      * Replaces the contents of this list with {@code books}.
      * {@code books} must not contain duplicate books.
      */
-    public void setPersons(List<Book> books) {
+    public void setBooks(List<Book> books) {
         requireAllNonNull(books);
-        if (!personsAreUnique(books)) {
-            throw new DuplicatePersonException();
+        if (!booksAreUnique(books)) {
+            throw new DuplicateBookException();
         }
 
         internalList.setAll(books);
@@ -112,8 +112,8 @@ public class UniquePersonList implements Iterable<Book> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniquePersonList // instanceof handles nulls
-                        && internalList.equals(((UniquePersonList) other).internalList));
+                || (other instanceof UniqueBookList // instanceof handles nulls
+                        && internalList.equals(((UniqueBookList) other).internalList));
     }
 
     @Override
@@ -124,10 +124,10 @@ public class UniquePersonList implements Iterable<Book> {
     /**
      * Returns true if {@code books} contains only unique books.
      */
-    private boolean personsAreUnique(List<Book> books) {
+    private boolean booksAreUnique(List<Book> books) {
         for (int i = 0; i < books.size() - 1; i++) {
             for (int j = i + 1; j < books.size(); j++) {
-                if (books.get(i).isSamePerson(books.get(j))) {
+                if (books.get(i).isSameBook(books.get(j))) {
                     return false;
                 }
             }

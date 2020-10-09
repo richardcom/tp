@@ -47,7 +47,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     private FlowPane stocking;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Book} and index to display.
+     * Creates a {@code BookCode} with the given {@code Book} and index to display.
      */
     public LibraryBookDetailCard(Book book, int displayedIndex) {
         super(FXML);

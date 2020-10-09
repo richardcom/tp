@@ -4,31 +4,31 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
 import seedu.address.model.category.Category;
 import seedu.address.model.book.*;
 import seedu.address.model.book.Book;
 
 /**
- * A utility class to help with building EditPersonDescriptor objects.
+ * A utility class to help with building EditBookDescriptor objects.
  */
 public class EditBookDescriptorBuilder {
 
-    private EditPersonDescriptor descriptor;
+    private EditBookDescriptor descriptor;
 
     public EditBookDescriptorBuilder() {
-        descriptor = new EditPersonDescriptor();
+        descriptor = new EditBookDescriptor();
     }
 
-    public EditBookDescriptorBuilder(EditPersonDescriptor descriptor) {
-        this.descriptor = new EditPersonDescriptor(descriptor);
+    public EditBookDescriptorBuilder(EditBookDescriptor descriptor) {
+        this.descriptor = new EditBookDescriptor(descriptor);
     }
 
     /**
-     * Returns an {@code EditPersonDescriptor} with fields containing {@code book}'s details
+     * Returns an {@code EditBookDescriptor} with fields containing {@code book}'s details
      */
     public EditBookDescriptorBuilder(Book book) {
-        descriptor = new EditPersonDescriptor();
+        descriptor = new EditBookDescriptor();
         descriptor.setName(book.getName());
         descriptor.setIsbn(book.getIsbn());
         descriptor.setEmail(book.getEmail());
@@ -37,7 +37,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Name} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withName(String name) {
         descriptor.setName(new Name(name));
@@ -45,7 +45,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Isbn} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Isbn} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withIsbn(String isbn) {
         descriptor.setIsbn(new Isbn(isbn));
@@ -53,7 +53,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Email} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
@@ -61,7 +61,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withAddress(String address) {
         descriptor.setAddress(new Address(address));
@@ -69,7 +69,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code categories} into a {@code Set<Category>} and set it to the {@code EditPersonDescriptor}
+     * Parses the {@code categories} into a {@code Set<Category>} and set it to the {@code EditBookDescriptor}
      * that we are building.
      */
     public EditBookDescriptorBuilder withCategories(String... categories) {
@@ -78,7 +78,7 @@ public class EditBookDescriptorBuilder {
         return this;
     }
 
-    public EditPersonDescriptor build() {
+    public EditBookDescriptor build() {
         return descriptor;
     }
 }

@@ -61,8 +61,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditCommand.EditBookDescriptor DESC_AMY;
+    public static final EditCommand.EditBookDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
@@ -109,24 +109,24 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Book> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
+        List<Book> expectedFilteredList = new ArrayList<>(actualModel.getFilteredBookList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
-        assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
+        assertEquals(expectedFilteredList, actualModel.getFilteredBookList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the book at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    public static void showPersonAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
+    public static void showBookAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredBookList().size());
 
-        Book book = model.getFilteredPersonList().get(targetIndex.getZeroBased());
+        Book book = model.getFilteredBookList().get(targetIndex.getZeroBased());
         final String[] splitName = book.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])), Mode.NORMAL);
+        model.updateFilteredBookList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])), Mode.NORMAL);
 
-        assertEquals(1, model.getFilteredPersonList().size());
+        assertEquals(1, model.getFilteredBookList().size());
     }
 
 }

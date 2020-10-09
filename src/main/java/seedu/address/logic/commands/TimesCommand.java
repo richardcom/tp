@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
 
 import java.util.List;
 
@@ -43,10 +43,10 @@ public class TimesCommand extends Command {
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        List<Book> lastShownList = model.getFilteredPersonList();
+        List<Book> lastShownList = model.getFilteredBookList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
 
         Book bookToEdit = lastShownList.get(index.getZeroBased());
@@ -54,8 +54,8 @@ public class TimesCommand extends Command {
                 bookToEdit.getAddress(), times, bookToEdit.getCategories(), bookToEdit.getStocking(),
                 bookToEdit.getAuthor(), bookToEdit.getPublisher());
 
-        model.setPerson(bookToEdit, editedBook);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS, Mode.NORMAL);
+        model.setBook(bookToEdit, editedBook);
+        model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
 
         return new CommandResult(generateSuccessMessage(editedBook));
     }
