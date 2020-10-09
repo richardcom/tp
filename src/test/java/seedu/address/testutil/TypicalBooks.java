@@ -55,19 +55,21 @@ public class TypicalBooks {
             .withAddress("4th street").withAuthor("a")
             .withPublisher("pub").withStocking(new HashMap<>()).build();
 
+    // all newly added attributes need to be implemented here.
     // Manually added
     public static final Book HOON = new BookBuilder().withName("Hoon Meier").withIsbn("8482424")
-            .withEmail("stefan@example.com").withAddress("little india").build();
+            .withEmail("stefan@example.com").withAddress("little india").withTimes("12").build();
     public static final Book IDA = new BookBuilder().withName("Ida Mueller").withIsbn("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").build();
+            .withEmail("hans@example.com").withAddress("chicago ave").withTimes("12").build();
 
     // Manually added - Book's details found in {@code CommandTestUtil}
     public static final Book AMY = new BookBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND)
-            .withStocking(new HashMap<>()).withAuthor("a").withPublisher("pub").build();
+            .withTimes("12").withStocking(new HashMap<>()).withAuthor("a").withPublisher("pub").build();
     public static final Book BOB = new BookBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
             .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withAuthor("a").withPublisher("pub")
-            .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withStocking(new HashMap<>()).build();
+            .withTimes("12").withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND)
+            .withStocking(new HashMap<>()).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

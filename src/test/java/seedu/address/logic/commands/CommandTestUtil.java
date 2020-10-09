@@ -7,6 +7,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -68,13 +69,17 @@ public class CommandTestUtil {
     public static final EditCommand.EditBookDescriptor DESC_AMY;
     public static final EditCommand.EditBookDescriptor DESC_BOB;
 
+    // need to add times here
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY).withStockings()build();
+                .withCategories(VALID_CATEGORY_FRIEND).withStockings(new HashMap<>())
+                .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
+                .build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
+                .withStockings(new HashMap<>()).withPublisher(VALID_PUBLISHER_BOB)
+                .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }
 
     /**
