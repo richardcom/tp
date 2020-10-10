@@ -1,86 +1,62 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.*;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalBooks.AMY;
+import static seedu.address.testutil.TypicalBooks.BOB;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.book.*;
+import seedu.address.model.book.Book;
+import seedu.address.testutil.BookBuilder;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND).build();
+        Book expectedBook = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, new AddCommand(expectedBook));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, new AddCommand(expectedBook));
 
         // multiple isbns - last isbn accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_AMY + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, new AddCommand(expectedBook));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_AMY + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, new AddCommand(expectedBook));
 
         // multiple addresses - last address accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_AMY
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND, new AddCommand(expectedPerson));
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, new AddCommand(expectedBook));
 
         // multiple categories - all accepted
-        Person expectedPersonMultipleCategories = new PersonBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND,
+        Book expectedBookMultipleCategories = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND,
                 VALID_CATEGORY_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, new AddCommand(expectedPersonMultipleCategories));
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB,
+                new AddCommand(expectedBookMultipleCategories));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Person expectedPerson = new PersonBuilder(AMY).withCategories().build();
+        Book expectedBook = new BookBuilder(AMY).withCategories().build();
         assertParseSuccess(parser, NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY,
-                new AddCommand(expectedPerson));
+                new AddCommand(expectedBook));
     }
 
     @Test
@@ -113,35 +89,37 @@ public class AddCommandParserTest {
                 expectedMessage);
     }
 
+    // new attributes need to be added here
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, Name.MESSAGE_CONSTRAINTS);
 
         // invalid isbn
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_ISBN_DESC + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, Isbn.MESSAGE_CONSTRAINTS);
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, Isbn.MESSAGE_CONSTRAINTS);
 
         // invalid email
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + INVALID_EMAIL_DESC + ADDRESS_DESC_BOB
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, Email.MESSAGE_CONSTRAINTS);
 
         // invalid address
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
-                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND, Address.MESSAGE_CONSTRAINTS);
+                + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
 
         // invalid category
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + INVALID_CATEGORY_DESC + VALID_CATEGORY_FRIEND, Category.MESSAGE_CONSTRAINTS);
+                + INVALID_CATEGORY_DESC + VALID_CATEGORY_FRIEND + AUTHOR_DESC_BOB, Category.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC,
+        assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOB + EMAIL_DESC_BOB
+                        + INVALID_ADDRESS_DESC + AUTHOR_DESC_BOB,
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND,
+                + ADDRESS_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + AUTHOR_DESC_BOB,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }

@@ -1,11 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.*;
+
 
 import java.util.HashMap;
 import java.util.Set;
@@ -14,16 +11,8 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Author;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Publisher;
-import seedu.address.model.person.Stocking;
-import seedu.address.model.person.Times;
-
+import seedu.address.model.book.*;
+import seedu.address.model.book.Book;
 
 
 /**
@@ -39,28 +28,30 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_CATEGORY);
+                        PREFIX_CATEGORY, PREFIX_TIMES, PREFIX_AUTHOR, PREFIX_STOCKING, PREFIX_PUBLISHER);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_ISBN, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
+        System.out.println("debug");
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Times times = new Times(""); // add command does not allow adding remarks straight away
+        Times times = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIMES).get()); // add command does not allow adding remarks straight away
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
-        Author author = new Author("a"); // to be implemented
-        Publisher publisher = new Publisher("pub");
 
-        //Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
+        Author author = ParserUtil.parseAuthor(argMultimap.getValue(PREFIX_AUTHOR).get()); // to be implemented
 
-        Person person = new Person(name, isbn, email, address, times, categoryList, new Stocking(new HashMap<>()),
+        Publisher publisher = ParserUtil.parsePublisher(argMultimap.getValue(PREFIX_PUBLISHER).get());
+        Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
+
+        Book book = new Book(name, isbn, email, address, times, categoryList, stocking,
                 author, publisher);
 
-        return new AddCommand(person);
+        return new AddCommand(book);
     }
 
     /**

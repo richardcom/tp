@@ -1,0 +1,29 @@
+{
+  "books": [ {
+    "name": "Alice Pauline",
+    "isbn": "94351253",
+    "email": "alice@example.com",
+    "address": "123, Jurong West Ave 6, #08-111",
+    "times": "",
+    "categorised": [ "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
+    "author": "a",
+    "publisher": "pub"
+  }, {
+    "name": "Alice Pauline",
+    "isbn": "94351253",
+    "email": "pauline@example.com",
+    "times": "",
+    "address": "4th street",
+    "categorised": [ "friends" ],
+    "stocking" : {
+      "centralLibrary" : 10,
+      "scienceLibrary" : 10
+    },
+    "author": "a",
+    "publisher": "pub"
+  } ]
+}
