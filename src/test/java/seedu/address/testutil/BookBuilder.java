@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.category.Category;
 import seedu.address.model.book.*;
 import seedu.address.model.book.Book;
@@ -130,8 +131,13 @@ public class BookBuilder {
     /**
      * Sets the {@code Stocking} of the {@code Book} that we are building.
      */
-    public BookBuilder withStocking(HashMap<String, Integer> map) {
-        this.stocking = new Stocking(map);
+    public BookBuilder withStocking(String storage) {
+        try {
+            Stocking stocking = ParserUtil.parseStocking(storage);
+            this.stocking = stocking;
+        } catch (Exception exception) {
+            this.stocking = new Stocking(new HashMap<>());
+        }
         return this;
     }
 

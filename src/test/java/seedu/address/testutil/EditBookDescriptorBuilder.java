@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.category.Category;
 import seedu.address.model.book.*;
 import seedu.address.model.book.Book;
@@ -35,6 +36,7 @@ public class EditBookDescriptorBuilder {
         descriptor.setEmail(book.getEmail());
         descriptor.setAddress(book.getAddress());
         descriptor.setCategories(book.getCategories());
+        descriptor.setStocking(book.getStocking());
     }
 
     /**
@@ -96,10 +98,15 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Stocking} of the {@code EditBookDescriptor} that we are building.
      */
-    public EditBookDescriptorBuilder withStockings(HashMap<String, Integer> stocking) {
-        descriptor.setStocking(new Stocking(stocking));
+    public EditBookDescriptorBuilder withStockings(String storage) {
+        try {
+            Stocking stocking = ParserUtil.parseStocking(storage);
+            descriptor.setStocking(stocking);
+        } catch (Exception exception) {
+            descriptor.setStocking(new Stocking(new HashMap<>()));
+        }
         return this;
     }
 

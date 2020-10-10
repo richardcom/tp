@@ -16,6 +16,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.NameContainsKeywordsPredicate;
+import seedu.address.model.book.Stocking;
 import seedu.address.testutil.EditBookDescriptorBuilder;
 import seedu.address.ui.Mode;
 
@@ -36,6 +37,8 @@ public class CommandTestUtil {
     public static final String VALID_TIMES_BOB = "2";
     public static final String VALID_CATEGORY_HUSBAND = "husband";
     public static final String VALID_CATEGORY_FRIEND = "friend";
+    public static final String VALID_STOCKING_AMY = "central library 10 science library 10";
+    public static final String VALID_STOCKING_BOB = "central library 30 science library 15";
     public static final String VALID_AUTHOR_BOB = "a";
     public static final String VALID_PUBLISHER_BOB = "pub";
     public static final String VALID_AUTHOR_AMY = "a";
@@ -51,6 +54,8 @@ public class CommandTestUtil {
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_FRIEND;
     public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_HUSBAND;
+    public static final String STOCKING_DESC_AMY = " " + PREFIX_STOCKING + VALID_STOCKING_AMY;
+    public static final String STOCKING_DESC_BOB = " " + PREFIX_STOCKING + VALID_STOCKING_BOB;
     public static final String AUTHOR_DESC_BOB = " " + PREFIX_AUTHOR + VALID_AUTHOR_BOB;
     public static final String PUBLISHER_DESC_BOB = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_BOB;
     public static final String AUTHOR_DESC_AMY = " " + PREFIX_AUTHOR + VALID_AUTHOR_AMY;
@@ -62,6 +67,7 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_CATEGORY_DESC =
             " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
+    public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "the library 20";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -73,12 +79,12 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).withStockings(new HashMap<>())
+                .withCategories(VALID_CATEGORY_FRIEND).withStockings(VALID_STOCKING_AMY)
                 .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
                 .build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withStockings(new HashMap<>()).withPublisher(VALID_PUBLISHER_BOB)
+                .withStockings(VALID_STOCKING_BOB).withPublisher(VALID_PUBLISHER_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }
 

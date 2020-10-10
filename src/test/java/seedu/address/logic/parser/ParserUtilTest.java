@@ -6,19 +6,13 @@ import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_BOOK;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.book.*;
 import seedu.address.model.category.Category;
-import seedu.address.model.book.Address;
-import seedu.address.model.book.Email;
-import seedu.address.model.book.Isbn;
-import seedu.address.model.book.Name;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -33,6 +27,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_CATEGORY_1 = "friend";
     private static final String VALID_CATEGORY_2 = "neighbour";
+    private static final String VALID_STOCKING = "central library 30 science library 45";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -194,5 +189,16 @@ public class ParserUtilTest {
                 new Category(VALID_CATEGORY_2)));
 
         assertEquals(expectedCategorySet, actualCategorySet);
+    }
+
+    @Test
+    public void parseStocking_validValueWithoutWhitespace_returnsStocking() throws Exception {
+        HashMap<String, Integer> storage = new HashMap<>();
+
+        storage.put("central library", 10);
+        storage.put("science library", 10);
+
+        Stocking expectedStocking = new Stocking(storage);
+        assertEquals(expectedStocking, ParserUtil.parseStocking(VALID_STOCKING));
     }
 }
