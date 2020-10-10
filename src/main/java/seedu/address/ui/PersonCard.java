@@ -45,7 +45,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label author;
     @FXML
-    private java.awt.Label publisher;
+    private javafx.scene.control.Label publisher;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
