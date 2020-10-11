@@ -35,7 +35,8 @@ public class EditBookDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different name -> returns false
-        EditCommand.EditBookDescriptor editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
+        EditCommand.EditBookDescriptor editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB)
+                .build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different isbn -> returns false

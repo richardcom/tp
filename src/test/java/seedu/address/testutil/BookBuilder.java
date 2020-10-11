@@ -5,9 +5,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.logic.parser.ParserUtil;
-import seedu.address.model.category.Category;
-import seedu.address.model.book.*;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
+import seedu.address.model.category.Category;
 import seedu.address.model.util.SampleDataUtil;
 
 /**

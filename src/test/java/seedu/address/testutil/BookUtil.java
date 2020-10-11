@@ -10,8 +10,8 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
-import seedu.address.model.category.Category;
 import seedu.address.model.book.Book;
+import seedu.address.model.category.Category;
 
 /**
  * A utility class for Book.
