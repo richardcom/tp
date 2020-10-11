@@ -1,14 +1,13 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.book.Book;
-
-import static seedu.address.logic.commands.CommandTestUtil.*;
 
 /**
  * A utility class containing a list of {@code Book} objects to be used in tests.
@@ -25,23 +24,23 @@ public class TypicalBooks {
             .withCategories("owesMoney", "friends").withAuthor("a")
             .withPublisher("pub").withStocking("central library 10 science library 10").build();
     public static final Book CARL = new BookBuilder().withName("Carl Kurz").withIsbn("95352563")
-            .withEmail("heinz@example.com")
+            .withEmail("heinz@example.com").withTimes("20")
             .withAddress("wall street").withAuthor("a")
             .withPublisher("pub").withStocking("central library 10 science library 10").build();
     public static final Book DANIEL = new BookBuilder().withName("Daniel Meier").withIsbn("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street").withCategories("friends")
-            .withAuthor("a").withPublisher("pub")
+            .withAuthor("a").withPublisher("pub").withTimes("20")
             .withStocking("central library 10 science library 10").build();
     public static final Book ELLE = new BookBuilder().withName("Elle Meyer").withIsbn("9482224")
-            .withEmail("werner@example.com")
+            .withEmail("werner@example.com").withTimes("20")
             .withAddress("michegan ave").withAuthor("a")
             .withPublisher("pub").withStocking("central library 10 science library 10").build();
     public static final Book FIONA = new BookBuilder().withName("Fiona Kunz").withIsbn("9482427")
-            .withEmail("lydia@example.com")
+            .withEmail("lydia@example.com").withTimes("20")
             .withAddress("little tokyo").withAuthor("a")
             .withPublisher("pub").withStocking("central library 10 science library 10").build();
     public static final Book GEORGE = new BookBuilder().withName("George Best").withIsbn("9482442")
-            .withEmail("anna@example.com")
+            .withEmail("anna@example.com").withTimes("20")
             .withAddress("4th street").withAuthor("a")
             .withPublisher("pub").withStocking("central library 10 science library 10").build();
 

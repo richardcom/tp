@@ -62,6 +62,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_CATEGORY_DESC, Category.MESSAGE_CONSTRAINTS); // invalid category
         assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS);
 
         // invalid isbn followed by valid email
         assertParseFailure(parser, "1" + INVALID_ISBN_DESC + EMAIL_DESC_AMY, Isbn.MESSAGE_CONSTRAINTS);
@@ -144,9 +145,14 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // stocking
-        // address
         userInput = targetIndex.getOneBased() + STOCKING_DESC_AMY;
         descriptor = new EditBookDescriptorBuilder().withAddress(VALID_STOCKING_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // times
+        userInput = targetIndex.getOneBased() + TIMES_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_TIMES_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

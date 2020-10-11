@@ -32,6 +32,7 @@ public class EditBookDescriptorBuilder {
     public EditBookDescriptorBuilder(Book book) {
         descriptor = new EditBookDescriptor();
         descriptor.setName(book.getName());
+        descriptor.setTimes(book.getTimes());
         descriptor.setIsbn(book.getIsbn());
         descriptor.setEmail(book.getEmail());
         descriptor.setAddress(book.getAddress());
@@ -52,6 +53,14 @@ public class EditBookDescriptorBuilder {
      */
     public EditBookDescriptorBuilder withIsbn(String isbn) {
         descriptor.setIsbn(new Isbn(isbn));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Times} of the {@code EditBookDescriptor} that we are building.
+     */
+    public EditBookDescriptorBuilder withTimes(String times) {
+        descriptor.setTimes(new Times(times));
         return this;
     }
 

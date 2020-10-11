@@ -2,12 +2,19 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -16,7 +23,6 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.NameContainsKeywordsPredicate;
-import seedu.address.model.book.Stocking;
 import seedu.address.testutil.EditBookDescriptorBuilder;
 import seedu.address.ui.Mode;
 
@@ -52,6 +58,8 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+    public static final String TIMES_DESC_AMY = " " + PREFIX_TIMES + VALID_TIMES_AMY;
+    public static final String TIMES_DESC_BOB = " " + PREFIX_TIMES + VALID_TIMES_BOB;
     public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_FRIEND;
     public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_HUSBAND;
     public static final String STOCKING_DESC_AMY = " " + PREFIX_STOCKING + VALID_STOCKING_AMY;
@@ -68,6 +76,7 @@ public class CommandTestUtil {
     public static final String INVALID_CATEGORY_DESC =
             " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
     public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "the library 20";
+    public static final String INVALID_TIMES_DESC = " " + PREFIX_STOCKING + "the library 20";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -75,16 +84,15 @@ public class CommandTestUtil {
     public static final EditCommand.EditBookDescriptor DESC_AMY;
     public static final EditCommand.EditBookDescriptor DESC_BOB;
 
-    // need to add times here
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).withStockings(VALID_STOCKING_AMY)
+                .withCategories(VALID_CATEGORY_FRIEND).withTimes(VALID_TIMES_AMY).withStockings(VALID_STOCKING_AMY)
                 .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
                 .build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withStockings(VALID_STOCKING_BOB).withPublisher(VALID_PUBLISHER_BOB)
+                .withStockings(VALID_STOCKING_BOB).withTimes(VALID_TIMES_BOB).withPublisher(VALID_PUBLISHER_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }
 

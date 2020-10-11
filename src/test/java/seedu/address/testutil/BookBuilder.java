@@ -19,7 +19,7 @@ public class BookBuilder {
     public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_TIMES = "";
+    public static final String DEFAULT_TIMES = "10";
     public static final String DEFAULT_AUTHOR = "a";
     public static final String DEFAULT_PUBLISHER = "pub";
     public static final HashMap<String, Integer> DEFAULT_STOCKING = new HashMap<>();

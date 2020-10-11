@@ -88,7 +88,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static Times parseTime(String times) throws ParseException {
+    public static Times parseTimes(String times) throws ParseException {
         requireNonNull(times);
         String trimmedAddress = times.trim();
         if (times.charAt(0) - '0' < 0) {

@@ -144,6 +144,7 @@ public class EditCommand extends Command {
         private Isbn isbn;
         private Email email;
         private Address address;
+        private Times times;
         private Set<Category> categories;
         private Author author;
         private Publisher publisher;
@@ -160,6 +161,7 @@ public class EditCommand extends Command {
             setIsbn(toCopy.isbn);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setTimes(toCopy.times);
             setCategories(toCopy.categories);
             setAuthor(toCopy.author);
             setPublisher(toCopy.publisher);
@@ -170,7 +172,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, isbn, email, address, categories);
+            return CollectionUtil.isAnyNonNull(name, isbn, email, address, times, categories);
         }
 
         public void setName(Name name) {
@@ -195,6 +197,14 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
+        }
+
+        public void setTimes(Times times) {
+            this.times = times;
+        }
+
+        public Optional<Times> getTimes() {
+            return Optional.ofNullable(times);
         }
 
         public void setAddress(Address address) {
