@@ -187,7 +187,7 @@ public class AddCommandParserTest {
         // invalid author
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-                +  PUBLISHER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
+                + PUBLISHER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
 
         // invalid publisher
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB

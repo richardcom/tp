@@ -12,8 +12,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
