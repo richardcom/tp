@@ -20,17 +20,17 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
+import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.Book;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
-import seedu.address.model.Model;
 import seedu.address.ui.Mode;
 
 /**
