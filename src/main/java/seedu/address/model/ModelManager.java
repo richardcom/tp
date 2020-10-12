@@ -12,8 +12,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.book.Book;
-import seedu.address.ui.Mode;
 import seedu.address.ui.BookListPanel;
+import seedu.address.ui.Mode;
 
 /**
  * Represents the in-memory model of the address book data.

@@ -43,6 +43,7 @@ import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.BookBuilder;
 

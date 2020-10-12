@@ -14,7 +14,14 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.*;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
 
 /**

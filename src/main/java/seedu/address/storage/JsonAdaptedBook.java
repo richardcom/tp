@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.category.Category;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Email;
@@ -20,6 +19,7 @@ import seedu.address.model.book.Book;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
+import seedu.address.model.category.Category;
 
 /**
  * Jackson-friendly version of {@link Book}.
