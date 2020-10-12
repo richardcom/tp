@@ -9,12 +9,10 @@ import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
@@ -189,12 +187,12 @@ public class AddCommandParserTest {
         // invalid author
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-                + INVALID_AUTHOR_DESC + PUBLISHER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
+                +  PUBLISHER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
 
         // invalid publisher
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-                + AUTHOR_DESC_BOB + INVALID_PUBLISHER_DESC, Address.MESSAGE_CONSTRAINTS);
+                + AUTHOR_DESC_BOB , Address.MESSAGE_CONSTRAINTS);
 
         // invalid times
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB

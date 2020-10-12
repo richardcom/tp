@@ -8,12 +8,10 @@ import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
@@ -103,8 +101,8 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_CATEGORY_DESC, Category.MESSAGE_CONSTRAINTS); // invalid category
         assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS); // invalid stocking
         assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS); // invalid times
-        assertParseFailure(parser, "1" + INVALID_AUTHOR_DESC, Author.MESSAGE_CONSTRAINTS); // invalid author
-        assertParseFailure(parser, "1" + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS); // invalid publisher
+        assertParseFailure(parser, "1" , Author.MESSAGE_CONSTRAINTS); // invalid author
+        assertParseFailure(parser, "1" , Publisher.MESSAGE_CONSTRAINTS); // invalid publisher
 
         // invalid isbn followed by valid email
         assertParseFailure(parser, "1" + INVALID_ISBN_DESC + EMAIL_DESC_AMY, Isbn.MESSAGE_CONSTRAINTS);
