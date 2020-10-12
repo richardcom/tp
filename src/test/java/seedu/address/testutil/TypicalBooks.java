@@ -12,6 +12,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,9 +60,11 @@ public class TypicalBooks {
     // all newly added attributes need to be implemented here.
     // Manually added
     public static final Book HOON = new BookBuilder().withName("Hoon Meier").withIsbn("8482424")
-            .withEmail("stefan@example.com").withAddress("little india").withTimes("12").build();
+            .withEmail("stefan@example.com").withAddress("little india").withTimes("12")
+            .withPublisher("pub").build();
     public static final Book IDA = new BookBuilder().withName("Ida Mueller").withIsbn("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").withTimes("12").build();
+            .withEmail("hans@example.com").withAddress("chicago ave").withTimes("12")
+            .withPublisher("pub").build();
 
     // Manually added - Book's details found in {@code CommandTestUtil}
     public static final Book AMY = new BookBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)

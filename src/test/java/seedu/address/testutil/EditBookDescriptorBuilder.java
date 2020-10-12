@@ -45,6 +45,8 @@ public class EditBookDescriptorBuilder {
         descriptor.setAddress(book.getAddress());
         descriptor.setCategories(book.getCategories());
         descriptor.setStocking(book.getStocking());
+        descriptor.setAuthor(book.getAuthor());
+        descriptor.setPublisher(book.getPublisher());
     }
 
     /**
@@ -98,7 +100,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Author} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withAuthor(String author) {
         descriptor.setAuthor(new Author(author));
@@ -106,7 +108,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Publisher} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withPublisher(String publisher) {
         descriptor.setPublisher(new Publisher(publisher));

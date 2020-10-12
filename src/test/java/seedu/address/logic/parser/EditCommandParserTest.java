@@ -8,19 +8,24 @@ import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
@@ -28,6 +33,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
@@ -43,9 +49,11 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
 import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.EditBookDescriptorBuilder;
@@ -93,8 +101,10 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_CATEGORY_DESC, Category.MESSAGE_CONSTRAINTS); // invalid category
-        assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS); // invalid stocking
+        assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS); // invalid times
+        assertParseFailure(parser, "1" + INVALID_AUTHOR_DESC, Author.MESSAGE_CONSTRAINTS); // invalid author
+        assertParseFailure(parser, "1" + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS); // invalid publisher
 
         // invalid isbn followed by valid email
         assertParseFailure(parser, "1" + INVALID_ISBN_DESC + EMAIL_DESC_AMY, Isbn.MESSAGE_CONSTRAINTS);
@@ -185,6 +195,18 @@ public class EditCommandParserTest {
         // times
         userInput = targetIndex.getOneBased() + TIMES_DESC_AMY;
         descriptor = new EditBookDescriptorBuilder().withCategories(VALID_TIMES_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // author
+        userInput = targetIndex.getOneBased() + AUTHOR_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withAuthor(VALID_AUTHOR_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // publisher
+        userInput = targetIndex.getOneBased() + PUBLISHER_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withPublisher(VALID_PUBLISHER_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

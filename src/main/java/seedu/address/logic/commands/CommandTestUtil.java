@@ -60,7 +60,9 @@ public class CommandTestUtil {
     public static final String INVALID_CATEGORY_DESC =
             " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
     public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "the library 20";
-    public static final String INVALID_TIMES_DESC = " " + PREFIX_STOCKING + "the library 20";
+    public static final String INVALID_TIMES_DESC = " " + PREFIX_TIMES + "zero time";
+    public static final String INVALID_PUBLISHER_DESC = " " + PREFIX_PUBLISHER; // empty string not allowed for publishers
+    public static final String INVALID_AUTHOR_DESC = " " + PREFIX_AUTHOR; // empty string not allowed for authors
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
