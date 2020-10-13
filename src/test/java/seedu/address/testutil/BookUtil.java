@@ -1,17 +1,21 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
-import seedu.address.model.category.Category;
 import seedu.address.model.book.Book;
+import seedu.address.model.category.Category;
 
 /**
  * A utility class for Book.
@@ -37,6 +41,11 @@ public class BookUtil {
         book.getCategories().stream().forEach(
             s -> sb.append(PREFIX_CATEGORY + s.categoryName + " ")
         );
+        sb.append(PREFIX_STOCKING); // stock format here
+        sb.append(PREFIX_TIMES + book.getTimes().value + " ");
+        sb.append(PREFIX_AUTHOR + book.getAuthor().author + " ");
+        sb.append(PREFIX_PUBLISHER + book.getPublisher().publisher + " ");
+        sb.append(PREFIX_STOCKING + book.getStocking().toString() + " ");
         return sb.toString();
     }
 
@@ -49,6 +58,7 @@ public class BookUtil {
         descriptor.getIsbn().ifPresent(isbn -> sb.append(PREFIX_ISBN).append(isbn.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
+        // to implement new attributes as well.
         if (descriptor.getCategories().isPresent()) {
             Set<Category> categories = descriptor.getCategories().get();
             if (categories.isEmpty()) {

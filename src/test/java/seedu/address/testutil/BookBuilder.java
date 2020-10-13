@@ -4,9 +4,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.category.Category;
-import seedu.address.model.book.*;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
+import seedu.address.model.category.Category;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -18,7 +26,7 @@ public class BookBuilder {
     public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_TIMES = "";
+    public static final String DEFAULT_TIMES = "10";
     public static final String DEFAULT_AUTHOR = "a";
     public static final String DEFAULT_PUBLISHER = "pub";
     public static final HashMap<String, Integer> DEFAULT_STOCKING = new HashMap<>();
@@ -130,8 +138,13 @@ public class BookBuilder {
     /**
      * Sets the {@code Stocking} of the {@code Book} that we are building.
      */
-    public BookBuilder withStocking(HashMap<String, Integer> map) {
-        this.stocking = new Stocking(map);
+    public BookBuilder withStocking(String storage) {
+        try {
+            Stocking stocking = ParserUtil.parseStocking(storage);
+            this.stocking = stocking;
+        } catch (Exception exception) {
+            this.stocking = new Stocking(new HashMap<>());
+        }
         return this;
     }
 

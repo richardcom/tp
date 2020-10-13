@@ -2,12 +2,19 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -36,6 +43,8 @@ public class CommandTestUtil {
     public static final String VALID_TIMES_BOB = "2";
     public static final String VALID_CATEGORY_HUSBAND = "husband";
     public static final String VALID_CATEGORY_FRIEND = "friend";
+    public static final String VALID_STOCKING_AMY = "central library 10 science library 10";
+    public static final String VALID_STOCKING_BOB = "central library 30 science library 15";
     public static final String VALID_AUTHOR_BOB = "a";
     public static final String VALID_PUBLISHER_BOB = "pub";
     public static final String VALID_AUTHOR_AMY = "a";
@@ -49,8 +58,12 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+    public static final String TIMES_DESC_AMY = " " + PREFIX_TIMES + VALID_TIMES_AMY;
+    public static final String TIMES_DESC_BOB = " " + PREFIX_TIMES + VALID_TIMES_BOB;
     public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_FRIEND;
     public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_HUSBAND;
+    public static final String STOCKING_DESC_AMY = " " + PREFIX_STOCKING + VALID_STOCKING_AMY;
+    public static final String STOCKING_DESC_BOB = " " + PREFIX_STOCKING + VALID_STOCKING_BOB;
     public static final String AUTHOR_DESC_BOB = " " + PREFIX_AUTHOR + VALID_AUTHOR_BOB;
     public static final String PUBLISHER_DESC_BOB = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_BOB;
     public static final String AUTHOR_DESC_AMY = " " + PREFIX_AUTHOR + VALID_AUTHOR_AMY;
@@ -62,6 +75,11 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_CATEGORY_DESC =
             " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
+    public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "central library: 20 science library:10";
+    public static final String INVALID_TIMES_DESC = " " + PREFIX_TIMES + "r";
+    public static final String INVALID_AUTHOR_DESC = " " + PREFIX_AUTHOR + "james&&";
+    public static final String INVALID_PUBLISHER_DESC = " " + PREFIX_PUBLISHER + "david&&";
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -69,16 +87,15 @@ public class CommandTestUtil {
     public static final EditCommand.EditBookDescriptor DESC_AMY;
     public static final EditCommand.EditBookDescriptor DESC_BOB;
 
-    // need to add times here
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).withStockings(new HashMap<>())
+                .withCategories(VALID_CATEGORY_FRIEND).withTimes(VALID_TIMES_AMY).withStockings(VALID_STOCKING_AMY)
                 .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
                 .build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withStockings(new HashMap<>()).withPublisher(VALID_PUBLISHER_BOB)
+                .withStockings(VALID_STOCKING_BOB).withTimes(VALID_TIMES_BOB).withPublisher(VALID_PUBLISHER_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }
 

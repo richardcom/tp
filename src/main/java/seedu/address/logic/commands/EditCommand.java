@@ -21,16 +21,16 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.category.Category;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
+import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.Book;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
+import seedu.address.model.category.Category;
 import seedu.address.ui.Mode;
 
 /**
@@ -144,6 +144,7 @@ public class EditCommand extends Command {
         private Isbn isbn;
         private Email email;
         private Address address;
+        private Times times;
         private Set<Category> categories;
         private Author author;
         private Publisher publisher;
@@ -160,6 +161,7 @@ public class EditCommand extends Command {
             setIsbn(toCopy.isbn);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setTimes(toCopy.times);
             setCategories(toCopy.categories);
             setAuthor(toCopy.author);
             setPublisher(toCopy.publisher);
@@ -170,7 +172,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, isbn, email, address, categories);
+            return CollectionUtil.isAnyNonNull(name, isbn, email, address, times,
+                categories, publisher, author, stocking);
         }
 
         public void setName(Name name) {
@@ -195,6 +198,14 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
+        }
+
+        public void setTimes(Times times) {
+            this.times = times;
+        }
+
+        public Optional<Times> getTimes() {
+            return Optional.ofNullable(times);
         }
 
         public void setAddress(Address address) {

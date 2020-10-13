@@ -6,9 +6,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
-import seedu.address.model.category.Category;
-import seedu.address.model.book.*;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
+import seedu.address.model.category.Category;
 
 /**
  * A utility class to help with building EditBookDescriptor objects.
@@ -31,10 +39,14 @@ public class EditBookDescriptorBuilder {
     public EditBookDescriptorBuilder(Book book) {
         descriptor = new EditBookDescriptor();
         descriptor.setName(book.getName());
+        descriptor.setTimes(book.getTimes());
         descriptor.setIsbn(book.getIsbn());
         descriptor.setEmail(book.getEmail());
         descriptor.setAddress(book.getAddress());
         descriptor.setCategories(book.getCategories());
+        descriptor.setStocking(book.getStocking());
+        descriptor.setAuthor(book.getAuthor());
+        descriptor.setPublisher(book.getPublisher());
     }
 
     /**
@@ -50,6 +62,14 @@ public class EditBookDescriptorBuilder {
      */
     public EditBookDescriptorBuilder withIsbn(String isbn) {
         descriptor.setIsbn(new Isbn(isbn));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Times} of the {@code EditBookDescriptor} that we are building.
+     */
+    public EditBookDescriptorBuilder withTimes(String times) {
+        descriptor.setTimes(new Times(times));
         return this;
     }
 
@@ -80,7 +100,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Author} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withAuthor(String author) {
         descriptor.setAuthor(new Author(author));
@@ -88,7 +108,7 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Publisher} of the {@code EditBookDescriptor} that we are building.
      */
     public EditBookDescriptorBuilder withPublisher(String publisher) {
         descriptor.setPublisher(new Publisher(publisher));
@@ -96,10 +116,15 @@ public class EditBookDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditBookDescriptor} that we are building.
+     * Sets the {@code Stocking} of the {@code EditBookDescriptor} that we are building.
      */
-    public EditBookDescriptorBuilder withStockings(HashMap<String, Integer> stocking) {
-        descriptor.setStocking(new Stocking(stocking));
+    public EditBookDescriptorBuilder withStockings(String storage) {
+        try {
+            Stocking stocking = ParserUtil.parseStocking(storage);
+            descriptor.setStocking(stocking);
+        } catch (Exception exception) {
+            descriptor.setStocking(new Stocking(new HashMap<>()));
+        }
         return this;
     }
 
