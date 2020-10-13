@@ -14,33 +14,27 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.TimesCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.Book;
 import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.model.book.Times;
-import seedu.address.testutil.BookBuilder;
-import seedu.address.testutil.BookUtil;
-import seedu.address.testutil.EditBookDescriptorBuilder;
 
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
 
-//    @Test
-//    public void parseCommand_add() throws Exception {
-//        Book book = new BookBuilder().build();
-//        AddCommand command = (AddCommand) parser.parseCommand(BookUtil.getAddCommand(book));
-//        assertEquals(new AddCommand(book), command);
-//    } //After implementation of edit
+    /* @Test
+    public void parseCommand_add() throws Exception {
+        Book book = new BookBuilder().build();
+        AddCommand command = (AddCommand) parser.parseCommand(BookUtil.getAddCommand(book));
+        assertEquals(new AddCommand(book), command);
+    } //After implementation of edit */
 
     @Test
     public void parseCommand_clear() throws Exception {
@@ -55,14 +49,14 @@ public class AddressBookParserTest {
         assertEquals(new DeleteCommand(INDEX_FIRST_BOOK), command);
     }
 
-//    @Test
-//    public void parseCommand_edit() throws Exception {
-//        Book book = new BookBuilder().build();
-//        EditCommand.EditBookDescriptor descriptor = new EditBookDescriptorBuilder(book).build();
-//        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-//                + INDEX_FIRST_BOOK.getOneBased() + " " + BookUtil.getEditBookDescriptorDetails(descriptor));
-//        assertEquals(new EditCommand(INDEX_FIRST_BOOK, descriptor), command);
-//    } // After implementation of Edit
+    /* @Test
+    public void parseCommand_edit() throws Exception {
+        Book book = new BookBuilder().build();
+        EditCommand.EditBookDescriptor descriptor = new EditBookDescriptorBuilder(book).build();
+        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_BOOK.getOneBased() + " " + BookUtil.getEditBookDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_BOOK, descriptor), command);
+    } // After implementation of Edit */
 
     @Test
     public void parseCommand_exit() throws Exception {

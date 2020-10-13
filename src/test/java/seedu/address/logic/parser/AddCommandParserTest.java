@@ -10,14 +10,13 @@ import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -28,8 +27,8 @@ import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
@@ -48,7 +47,14 @@ import static seedu.address.testutil.TypicalBooks.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.book.*;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
+import seedu.address.model.book.Book;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.BookBuilder;
 
@@ -195,10 +201,10 @@ public class AddCommandParserTest {
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
                 + AUTHOR_DESC_BOB + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS);
 
-//        // invalid times
-//        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-//                + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-//                + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
+        // invalid times
+        //assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+        // + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
+        // + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
         // the times test need to implement ParserUtil.java first
 
         // two invalid values, only first invalid value reported

@@ -1,7 +1,29 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -15,12 +37,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
 import seedu.address.model.book.Address;
-import seedu.address.model.book.Author;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.Publisher;
-import seedu.address.model.book.Stocking;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.EditBookDescriptorBuilder;
 
@@ -67,10 +86,10 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_CATEGORY_DESC, Category.MESSAGE_CONSTRAINTS);
-       // assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS); // invalid stocking
-       // assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS); // invalid times
-//        assertParseFailure(parser, "1" + INVALID_AUTHOR_DESC, Author.MESSAGE_CONSTRAINTS); // invalid author
-//        assertParseFailure(parser, "1" + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS); // invalid publisher
+        // assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS); // invalid stocking
+        // assertParseFailure(parser, "1" + INVALID_TIMES_DESC, Category.MESSAGE_CONSTRAINTS); // invalid times
+        // assertParseFailure(parser, "1" + INVALID_AUTHOR_DESC, Author.MESSAGE_CONSTRAINTS); // invalid author
+        // assertParseFailure(parser, "1" + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS); // invalid publisher
 
         //All Failed
 
@@ -122,66 +141,66 @@ public class EditCommandParserTest {
     }
 
 
-    // The test should be fixed by EditBookDescripter
-//    @Test
-//    public void parse_oneFieldSpecified_success() {
-//        // name
-//        Index targetIndex = INDEX_THIRD_BOOK;
-//        String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-//        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY).build();
-//        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // isbn
-//        userInput = targetIndex.getOneBased() + ISBN_DESC_AMY;
-//        descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // email
-//        userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
-//        descriptor = new EditBookDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // address
-//        userInput = targetIndex.getOneBased() + ADDRESS_DESC_AMY;
-//        descriptor = new EditBookDescriptorBuilder().withAddress(VALID_ADDRESS_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // categories
-//        userInput = targetIndex.getOneBased() + CATEGORY_DESC_FRIEND;
-//        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_CATEGORY_FRIEND).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-////        // stocking
-////        userInput = targetIndex.getOneBased() + STOCKING_DESC_AMY;
-////        descriptor = new EditBookDescriptorBuilder().withStockings(VALID_STOCKING_AMY).build();
-////        expectedCommand = new EditCommand(targetIndex, descriptor);
-////        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//
-////        // times
-////        userInput = targetIndex.getOneBased() + TIMES_DESC_AMY;
-////        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_TIMES_AMY).build();
-////        expectedCommand = new EditCommand(targetIndex, descriptor);
-////        assertParseSuccess(parser, userInput, expectedCommand);
-//        // Invalid User Input
-//
-//        // author
-//        userInput = targetIndex.getOneBased() + AUTHOR_DESC_AMY;
-//        descriptor = new EditBookDescriptorBuilder().withAuthor(VALID_AUTHOR_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // publisher
-//        userInput = targetIndex.getOneBased() + PUBLISHER_DESC_AMY;
-//        descriptor = new EditBookDescriptorBuilder().withPublisher(VALID_PUBLISHER_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//    }
+    /* The test should be fixed by EditBookDescripter
+    @Test
+    public void parse_oneFieldSpecified_success() {
+        // name
+        Index targetIndex = INDEX_THIRD_BOOK;
+        String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
+        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // isbn
+        userInput = targetIndex.getOneBased() + ISBN_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // email
+        userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // address
+        userInput = targetIndex.getOneBased() + ADDRESS_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withAddress(VALID_ADDRESS_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // categories
+        userInput = targetIndex.getOneBased() + CATEGORY_DESC_FRIEND;
+        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_CATEGORY_FRIEND).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // stocking
+        userInput = targetIndex.getOneBased() + STOCKING_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withStockings(VALID_STOCKING_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+
+        // times
+        userInput = targetIndex.getOneBased() + TIMES_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_TIMES_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+         Invalid User Input
+
+        // author
+        userInput = targetIndex.getOneBased() + AUTHOR_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withAuthor(VALID_AUTHOR_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // publisher
+        userInput = targetIndex.getOneBased() + PUBLISHER_DESC_AMY;
+        descriptor = new EditBookDescriptorBuilder().withPublisher(VALID_PUBLISHER_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    } */
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
