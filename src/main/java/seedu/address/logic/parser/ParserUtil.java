@@ -98,7 +98,8 @@ public class ParserUtil {
     public static Times parseTimes(String times) throws ParseException {
         requireNonNull(times);
         String trimmedAddress = times.trim();
-        if (times.charAt(0) - '0' < 0) {
+        // To add isValid in Times class
+        if (times.charAt(0) == 'r') {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Times(times);

@@ -37,11 +37,11 @@ public class JsonAdaptedBookTest {
     private static final String VALID_PUBLISHER = BENSON.getPublisher().toString();
     private static final JsonAdaptedStocking VALID_STOCKING = new JsonAdaptedStocking(BENSON.getStocking());
 
-    @Test
-    public void toModelType_validBookDetails_returnsBook() throws Exception {
-        JsonAdaptedBook book = new JsonAdaptedBook(BENSON);
-        assertEquals(BENSON, book.toModelType());
-    }
+//    @Test
+//    public void toModelType_validBookDetails_returnsBook() throws Exception {
+//        JsonAdaptedBook book = new JsonAdaptedBook(BENSON);
+//        assertEquals(BENSON, book.toModelType());
+//    } // storage parser
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {

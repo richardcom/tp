@@ -7,6 +7,6 @@ class StockingTest {
 
     @Test
     void isValidStocking() {
-        Assertions.assertTrue(Stocking.isValidStocking("central library: 10 science library: 10"));
+        Assertions.assertTrue(Stocking.isValidStocking("central library 30 science library 10"));
     }
 }

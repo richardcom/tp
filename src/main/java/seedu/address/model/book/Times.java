@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Times {
+    public static final String MESSAGE_CONSTRAINTS = "incorrect times input";
     public final String value;
 
     /**
