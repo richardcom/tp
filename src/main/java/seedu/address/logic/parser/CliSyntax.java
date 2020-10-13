@@ -15,4 +15,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_STOCKING = new Prefix("s/");
     public static final Prefix PREFIX_AUTHOR = new Prefix("aut/");
     public static final Prefix PREFIX_PUBLISHER = new Prefix("pub/");
+
 }
