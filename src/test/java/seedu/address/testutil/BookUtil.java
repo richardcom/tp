@@ -45,7 +45,7 @@ public class BookUtil {
         sb.append(PREFIX_TIMES + book.getTimes().value + " ");
         sb.append(PREFIX_AUTHOR + book.getAuthor().author + " ");
         sb.append(PREFIX_PUBLISHER + book.getPublisher().publisher + " ");
-
+        sb.append(PREFIX_STOCKING + book.getStocking().toString() + " ");
         return sb.toString();
     }
 
