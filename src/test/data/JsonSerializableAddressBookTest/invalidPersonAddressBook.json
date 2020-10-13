@@ -1,8 +1,0 @@
-{
-  "persons": [ {
-    "name": "Hans Muster",
-    "isbn": "9482424",
-    "email": "invalid@email!3e",
-    "address": "4th street"
-  } ]
-}

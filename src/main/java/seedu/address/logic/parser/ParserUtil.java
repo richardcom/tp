@@ -14,14 +14,15 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Author;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+import seedu.address.model.book.Publisher;
+import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Author;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Publisher;
-import seedu.address.model.person.Stocking;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -86,6 +87,22 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Address(trimmedAddress);
+    }
+
+    /**
+     * Parses a {@code String address} into an {@code Address}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code address} is invalid.
+     */
+    public static Times parseTimes(String times) throws ParseException {
+        requireNonNull(times);
+        String trimmedAddress = times.trim();
+        // To add isValid in Times class
+        if (times.charAt(0) == 'r') {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new Times(times);
     }
 
     /**

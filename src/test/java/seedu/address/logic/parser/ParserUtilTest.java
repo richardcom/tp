@@ -4,21 +4,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_BOOK;
 
 import java.util.Arrays;
 import java.util.Collections;
+//import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.book.Address;
+import seedu.address.model.book.Email;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
+//import seedu.address.model.book.Stocking;
 import seedu.address.model.category.Category;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Isbn;
-import seedu.address.model.person.Name;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -33,6 +35,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_CATEGORY_1 = "friend";
     private static final String VALID_CATEGORY_2 = "neighbour";
+    private static final String VALID_STOCKING = "central library 0 science library 0";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -50,10 +53,10 @@ public class ParserUtilTest {
     @Test
     public void parseIndex_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("1"));
+        assertEquals(INDEX_FIRST_BOOK, ParserUtil.parseIndex("1"));
 
         // Leading and trailing whitespaces
-        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("  1  "));
+        assertEquals(INDEX_FIRST_BOOK, ParserUtil.parseIndex("  1  "));
     }
 
     @Test
@@ -195,4 +198,15 @@ public class ParserUtilTest {
 
         assertEquals(expectedCategorySet, actualCategorySet);
     }
+
+    /* @Test
+    public void parseStocking_validValueWithoutWhitespace_returnsStocking() throws Exception {
+        HashMap<String, Integer> storage = new HashMap<>();
+
+        storage.put("central library", 30);
+        storage.put("science library", 45);
+
+        Stocking expectedStocking = new Stocking(storage);
+        assertEquals(expectedStocking, ParserUtil.parseStocking(VALID_STOCKING));
+    } */
 }

@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.person.Person;
+import seedu.address.model.book.Book;
 
 /**
- * An UI component that displays detailed information of a {@code Person}.
+ * An UI component that displays detailed information of a {@code Book}.
  */
 public class LibraryBookDetailCard extends UiPart<Region> {
     private static final String FXML = "LibraryBookDetailCard.fxml";
@@ -23,7 +23,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Person person;
+    public final Book book;
 
     @javafx.fxml.FXML
     private HBox cardPane;
@@ -47,26 +47,26 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     private FlowPane stocking;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Person} and index to display.
+     * Creates a {@code BookCode} with the given {@code Book} and index to display.
      */
-    public LibraryBookDetailCard(Person person, int displayedIndex) {
+    public LibraryBookDetailCard(Book book, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.book = book;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        isbn.setText(person.getIsbn().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
-        times.setText(person.getTimes().value);
-        person.getCategories().stream()
+        name.setText(book.getName().fullName);
+        isbn.setText(book.getIsbn().value);
+        address.setText(book.getAddress().value);
+        email.setText(book.getEmail().value);
+        times.setText(book.getTimes().value);
+        book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        person.getStocking().storage.forEach((location, storage) -> {
+        book.getStocking().storage.forEach((location, storage) -> {
             if (storage > 0) {
                 stocking.getChildren().add(new Label(location + ": " + storage + " "));
             }
         });
-        author.setText(person.getAuthor().author);
+        author.setText(book.getAuthor().author);
     }
 
     @Override
@@ -84,6 +84,6 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         // state check
         LibraryBookDetailCard card = (LibraryBookDetailCard) other;
         return id.getText().equals(card.id.getText())
-                && person.equals(card.person);
+                && book.equals(card.book);
     }
 }
