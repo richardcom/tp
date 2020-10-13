@@ -1,17 +1,13 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
 import seedu.address.model.book.Book;
 import seedu.address.model.category.Category;
+
+import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * A utility class for Book.
@@ -37,6 +33,7 @@ public class BookUtil {
         book.getCategories().stream().forEach(
             s -> sb.append(PREFIX_CATEGORY + s.categoryName + " ")
         );
+        sb.append(PREFIX_STOCKING + book.getStocking().toString() + " ");
         return sb.toString();
     }
 

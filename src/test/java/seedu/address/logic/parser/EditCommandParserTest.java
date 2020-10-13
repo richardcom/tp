@@ -186,7 +186,7 @@ public class EditCommandParserTest {
 
         // stocking
         userInput = targetIndex.getOneBased() + STOCKING_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withAddress(VALID_STOCKING_AMY).build();
+        descriptor = new EditBookDescriptorBuilder().withStockings(VALID_STOCKING_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

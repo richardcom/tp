@@ -44,11 +44,7 @@ import static seedu.address.testutil.TypicalBooks.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.book.Address;
-import seedu.address.model.book.Book;
-import seedu.address.model.book.Email;
-import seedu.address.model.book.Isbn;
-import seedu.address.model.book.Name;
+import seedu.address.model.book.*;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.BookBuilder;
 
@@ -182,7 +178,7 @@ public class AddCommandParserTest {
         // invalid stocking
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + INVALID_STOCKING_DESC
-                + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
+                + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Stocking.MESSAGE_CONSTRAINTS);
 
         // invalid author
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB

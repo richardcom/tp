@@ -49,8 +49,8 @@ public class Stocking {
 
     @Override
     public String toString() {
-        return "central library: " + storage.getOrDefault("central library", 0) + "\n"
-                + "science library: " + storage.getOrDefault("scienece library", 0);
+        return "central library " + storage.getOrDefault("central library", 0) + " "
+                + "science library " + storage.getOrDefault("scienece library", 0);
     }
 
     @Override

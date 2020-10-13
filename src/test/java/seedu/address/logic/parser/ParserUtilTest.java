@@ -203,8 +203,8 @@ public class ParserUtilTest {
     public void parseStocking_validValueWithoutWhitespace_returnsStocking() throws Exception {
         HashMap<String, Integer> storage = new HashMap<>();
 
-        storage.put("central library", 10);
-        storage.put("science library", 10);
+        storage.put("central library", 30);
+        storage.put("science library", 45);
 
         Stocking expectedStocking = new Stocking(storage);
         assertEquals(expectedStocking, ParserUtil.parseStocking(VALID_STOCKING));
