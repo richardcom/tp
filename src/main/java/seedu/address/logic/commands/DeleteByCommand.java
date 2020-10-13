@@ -10,11 +10,11 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Deletes a book identified using it's displayed index from the address book.
+ * Deletes a book identified using name, isbn, or times.
  */
-public class DeleteByNameCommand extends Command {
+public class DeleteByCommand extends Command {
 
-    public static final String COMMAND_WORD = "deleteByName";
+    public static final String COMMAND_WORD = "deleteBy";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the book identified by the name.\n"
@@ -24,11 +24,18 @@ public class DeleteByNameCommand extends Command {
     public static final String MESSAGE_DELETE_BOOK_SUCCESS = "Deleted Book: %1$s";
 
     private final String targetName;
+    private final int attribute;
 
     // private NameMatchesKeywordPredicate predicate;
 
-    public DeleteByNameCommand(String targetName) {
+    /**
+     * Delete a book by name, isbn or times.
+     * @param targetName a string representing the input content.
+     * @param attribute indicating which attribute shall we refer to when deleting.
+     */
+    public DeleteByCommand(String targetName, int attribute) {
         this.targetName = targetName;
+        this.attribute = attribute;
     }
 
     @Override
@@ -38,9 +45,24 @@ public class DeleteByNameCommand extends Command {
         Book bookToDelete = null;
 
         for (Book book : lastShownList) {
-            if (book.getName().fullName.equals(targetName)) {
-                bookToDelete = book;
+            switch (attribute) {
+            case 0:
+                if (book.getName().fullName.equals(targetName)) {
+                    bookToDelete = book;
+                }
+                break;
+            case 1:
+                if (book.getIsbn().value.equals(targetName)) {
+                    bookToDelete = book;
+                }
+                break;
+            default:
+                if (Integer.parseInt(book.getTimes().value) >= Integer.parseInt(targetName)) {
+                    bookToDelete = book;
+                }
+                break;
             }
+
         }
 
         if (bookToDelete == null) {
@@ -55,8 +77,8 @@ public class DeleteByNameCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteByNameCommand // instanceof handles nulls
-                && targetName.equals(((DeleteByNameCommand) other).targetName)); // state check
+                || (other instanceof DeleteByCommand // instanceof handles nulls
+                && targetName.equals(((DeleteByCommand) other).targetName)); // state check
     }
 
 }

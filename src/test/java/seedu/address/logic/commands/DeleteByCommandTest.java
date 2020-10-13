@@ -20,7 +20,7 @@ import seedu.address.model.book.Book;
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
  * {@code DeleteCommand}.
  */
-public class DeleteByNameCommandTest {
+public class DeleteByCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -28,35 +28,35 @@ public class DeleteByNameCommandTest {
     public void execute_validBookToBeDeleted_success() {
         Book bookToDelete = model.getFilteredBookList().get(INDEX_FIRST_BOOK.getZeroBased());
         String name1 = bookToDelete.getName().fullName;
-        DeleteByNameCommand deleteByNameCommand = new DeleteByNameCommand(name1);
+        DeleteByCommand deleteByCommand = new DeleteByCommand(name1, 0);
 
-        String expectedMessage = String.format(DeleteByNameCommand.MESSAGE_DELETE_BOOK_SUCCESS, bookToDelete);
+        String expectedMessage = String.format(DeleteByCommand.MESSAGE_DELETE_BOOK_SUCCESS, bookToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteBook(bookToDelete);
 
-        assertCommandSuccess(deleteByNameCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteByCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidBookName_throwsCommandException() {
         String bookName = " ";
 
-        DeleteByNameCommand deleteByNameCommand = new DeleteByNameCommand(bookName);
+        DeleteByCommand deleteByCommand = new DeleteByCommand(bookName, 0);
 
-        assertCommandFailure(deleteByNameCommand, model, Messages.MESSAGE_INVALID_BOOK_DELETE_NAME);
+        assertCommandFailure(deleteByCommand, model, Messages.MESSAGE_INVALID_BOOK_DELETE_NAME);
     }
 
     @Test
     public void equals() {
-        DeleteByNameCommand deleteFirstCommand = new DeleteByNameCommand("TEST");
-        DeleteByNameCommand deleteSecondCommand = new DeleteByNameCommand("TEST2");
+        DeleteByCommand deleteFirstCommand = new DeleteByCommand("TEST", 0);
+        DeleteByCommand deleteSecondCommand = new DeleteByCommand("TEST2", 0);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteByNameCommand deleteFirstCommandCopy = new DeleteByNameCommand("TEST");
+        DeleteByCommand deleteFirstCommandCopy = new DeleteByCommand("TEST", 0);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
