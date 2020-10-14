@@ -1,18 +1,18 @@
 {
   "_comment": "AddressBook save file which contains the same Book values as in TypicalBooks#getTypicalAddressBook()",
   "books" : [ {
-    "name" : "Pride and Prejudice",
-    "isbn" : "9780141439518",
-    "email" : "",
-    "address" : "",
-    "times": "12",
-    "categorised" : [ "novels" ],
+    "name": "Alice Pauline",
+    "isbn": "94351253",
+    "email": "alice@example.com",
+    "address": "123, Jurong West Ave 6, #08-111",
+    "times": "",
+    "categorised": [ "friends" ],
     "stocking" : {
-      "centralLibrary" : 8,
+      "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "Jane Austen",
-    "publisher": "Penguin Publishing Group"
+    "author": "a",
+    "publisher": "pub"
   }, {
     "name" : "Benson Meier",
     "isbn" : "98765432",
