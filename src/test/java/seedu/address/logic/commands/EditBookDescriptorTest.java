@@ -5,10 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_AMY;
 
 import org.junit.jupiter.api.Test;
 
@@ -53,6 +56,18 @@ public class EditBookDescriptorTest {
 
         // different categories -> returns false
         editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_CATEGORY_HUSBAND).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different times -> returns false
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_TIMES_AMY).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different authors -> returns false
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_AUTHOR_AMY).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different publishers -> returns false
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_PUBLISHER_AMY).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 }
