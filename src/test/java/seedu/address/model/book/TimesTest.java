@@ -9,7 +9,7 @@ public class TimesTest {
 
     @Test
     public void equals() {
-        Times times = new Times("Hello");
+        Times times = new Times("20");
 
         // same object -> returns true
         assertTrue(times.equals(times));
@@ -25,7 +25,7 @@ public class TimesTest {
         assertFalse(times.equals(null));
 
         // different remark -> returns false
-        Times differentRemark = new Times("Bye");
+        Times differentRemark = new Times("15");
         assertFalse(times.equals(differentRemark));
     }
 }

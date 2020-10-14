@@ -14,7 +14,7 @@ import seedu.address.model.book.Times;
 
 public class TimesCommandParserTest {
     private TimesCommandParser parser = new TimesCommandParser();
-    private final String nonEmptyTimes = "Some times";
+    private final String nonEmptyTimes = "123";
 
     @Test
     public void parse_indexSpecified_success() {
@@ -22,11 +22,6 @@ public class TimesCommandParserTest {
         Index targetIndex = INDEX_FIRST_BOOK;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_TIMES + nonEmptyTimes;
         TimesCommand expectedCommand = new TimesCommand(INDEX_FIRST_BOOK, new Times(nonEmptyTimes));
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // no times
-        userInput = targetIndex.getOneBased() + " " + PREFIX_TIMES;
-        expectedCommand = new TimesCommand(INDEX_FIRST_BOOK, new Times(""));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 

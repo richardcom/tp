@@ -17,6 +17,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -55,6 +56,7 @@ import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
+import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.BookBuilder;
 
@@ -202,10 +204,9 @@ public class AddCommandParserTest {
                 + AUTHOR_DESC_BOB + INVALID_PUBLISHER_DESC, Publisher.MESSAGE_CONSTRAINTS);
 
         // invalid times
-        //assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-        // + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-        // + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
-        // the times test need to implement ParserUtil.java first
+        assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+         + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
+         + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
