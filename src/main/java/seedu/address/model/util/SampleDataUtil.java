@@ -28,9 +28,10 @@ public class SampleDataUtil {
         storage.put("scienceLibrary", 8);
         Stocking stocking = new Stocking(storage);
         return new Book[] {
-            new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"), new Email("pride&prejudice@example.com"),
-                new Address("English"), new Times("195"), getCategorySet("Novels"), stocking,
-                    new Author("Jane Austen"), new Publisher("Penguin Publishing Group")),
+            new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"),
+                    new Email("pride&prejudice@example.com"), new Address("English"), new Times("195"),
+                    getCategorySet("Novels"), stocking, new Author("Jane Austen"),
+                    new Publisher("Penguin Publishing Group")),
             new Book(new Name("A Brief History Of Time From Big Bang To Black Holes"), new Isbn("9780553175219"),
                     new Email("abriefhistoryoftime@example.com"), new Address("English"), new Times("20278"),
                 getCategorySet("Science"), stocking,
