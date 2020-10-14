@@ -86,7 +86,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_times() throws Exception {
-        final Times times = new Times("Some times");
+        final Times times = new Times("20");
         TimesCommand command = (TimesCommand) parser.parseCommand(TimesCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_BOOK.getOneBased() + " " + PREFIX_TIMES + times.value);
         assertEquals(new TimesCommand(INDEX_FIRST_BOOK, times), command);

@@ -1,13 +1,15 @@
 package seedu.address.model.book;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents how many times a book is borrowed before.
  * Guarantees: immutable; is always valid
  */
 public class Times {
-    public static final String MESSAGE_CONSTRAINTS = "incorrect times input";
+    public static final String MESSAGE_CONSTRAINTS = "times should be a non-negative number";
+    public static final String VALIDATION_REGEX = "[1-9]\\d*|0";
     public final String value;
 
     /**
@@ -17,8 +19,17 @@ public class Times {
      */
     public Times(String times) {
         requireNonNull(times);
+        checkArgument(isValidTimes(times), MESSAGE_CONSTRAINTS);
         value = times;
     }
+
+    /**
+     * Returns true if a given string is a valid times.
+     */
+    public static boolean isValidTimes(String test) {
+        return test.matches(VALIDATION_REGEX);
+    }
+
 
     @Override
     public String toString() {
