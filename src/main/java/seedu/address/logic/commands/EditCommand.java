@@ -140,7 +140,7 @@ public class EditCommand extends Command {
      * corresponding field value of the book.
      */
     public static class EditBookDescriptor {
-               private Name name;
+        private Name name;
         private Isbn isbn;
         private Email email;
         private Address address;
