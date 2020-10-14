@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents how many times a book is borrowed before.
- * Guarantees: immutable; is always valid
+ * Guarantees: immutable; is valid as declared in {@link #isValidTimes(String)}
  */
 public class Times {
     public static final String MESSAGE_CONSTRAINTS = "times should be a non-negative number";

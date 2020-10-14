@@ -106,7 +106,7 @@ public class EditCommand extends Command {
         Isbn updatedIsbn = editBookDescriptor.getIsbn().orElse(bookToEdit.getIsbn());
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
         Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
-        Times updatedTimes = bookToEdit.getTimes(); // edit command does not allow editing times
+        Times updatedTimes = bookToEdit.getTimes();
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
         Publisher updatedPulisher = editBookDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
@@ -140,7 +140,7 @@ public class EditCommand extends Command {
      * corresponding field value of the book.
      */
     public static class EditBookDescriptor {
-        private Name name;
+               private Name name;
         private Isbn isbn;
         private Email email;
         private Address address;
@@ -279,6 +279,7 @@ public class EditCommand extends Command {
                     && getAddress().equals(e.getAddress())
                     && getCategories().equals(e.getCategories())
                     && getStocking().equals(e.getStocking())
+                    && getTimes().equals(e.getTimes())
                     && getAuthor().equals(e.getAuthor())
                     && getPublisher().equals(e.getPublisher());
 
