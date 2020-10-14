@@ -44,6 +44,7 @@ public class EditBookDescriptorBuilder {
         descriptor.setEmail(book.getEmail());
         descriptor.setAddress(book.getAddress());
         descriptor.setCategories(book.getCategories());
+        descriptor.setTimes(book.getTimes());
         descriptor.setStocking(book.getStocking());
         descriptor.setAuthor(book.getAuthor());
         descriptor.setPublisher(book.getPublisher());
