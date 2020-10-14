@@ -205,8 +205,8 @@ public class AddCommandParserTest {
 
         // invalid times
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-         + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
-         + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
+                + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
+                + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, Times.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
