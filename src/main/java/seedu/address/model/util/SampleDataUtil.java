@@ -30,18 +30,19 @@ public class SampleDataUtil {
         return new Book[] {
             new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"), new Email("pride&prejudice@example.com"),
                 new Address("English"), new Times("195"), getCategorySet("Novels"), stocking,
-                    new Author("Jane Auste"), new Publisher("Penguin Publishing Group")),
+                    new Author("Jane Austen"), new Publisher("Penguin Publishing Group")),
             new Book(new Name("A Brief History Of Time From Big Bang To Black Holes"), new Isbn("9780553175219"),
                     new Email("abriefhistoryoftime@example.com"), new Address("English"), new Times("20278"),
                 getCategorySet("Science"), stocking,
                     new Author("Stephen Hawking"), new Publisher("Bantam")),
             new Book(new Name("The Great Gatsby"), new Isbn("9780743273565"), new Email("thegreatgatsby@example.com"),
                 new Address("English"), new Times("6529"), getCategorySet("Classics"), stocking,
-                    new Author("F. Scott Fitzgerald"), new Publisher("Scribner")),
+                    new Author("Scott Fitzgerald"), new Publisher("Scribner")),
             new Book(new Name("Introduction to Linear Algebra"), new Isbn("9780980232776"),
                     new Email("introtolinearalgebra@example.com"), new Address("English"), new Times("243"),
                 getCategorySet("Textbook"), stocking,
-                    new Author("Gilbert Strang"), new Publisher("Wellesley-Cambridge Press"))
+                    new Author("Gilbert Strang"), new Publisher("Wellesley Cambridge Press"))
+
         };
     }
 
