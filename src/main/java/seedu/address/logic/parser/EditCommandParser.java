@@ -1,13 +1,18 @@
 package seedu.address.logic.parser;
 
+
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -32,8 +37,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN,
-                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_CATEGORY, PREFIX_STOCKING);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_CATEGORY, PREFIX_STOCKING, PREFIX_TIMES, PREFIX_AUTHOR, PREFIX_PUBLISHER);
 
         Index index;
 
@@ -60,6 +65,15 @@ public class EditCommandParser implements Parser<EditCommand> {
                 .ifPresent(editBookDescriptor::setCategories);
         if (argMultimap.getValue(PREFIX_STOCKING).isPresent()) {
             editBookDescriptor.setStocking(ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get()));
+        }
+        if (argMultimap.getValue(PREFIX_TIMES).isPresent()) {
+            editBookDescriptor.setTimes(ParserUtil.parseTimes(argMultimap.getValue(PREFIX_TIMES).get()));
+        }
+        if (argMultimap.getValue(PREFIX_AUTHOR).isPresent()) {
+            editBookDescriptor.setAuthor(ParserUtil.parseAuthor(argMultimap.getValue(PREFIX_AUTHOR).get()));
+        }
+        if (argMultimap.getValue(PREFIX_PUBLISHER).isPresent()) {
+            editBookDescriptor.setPublisher(ParserUtil.parsePublisher(argMultimap.getValue(PREFIX_PUBLISHER).get()));
         }
         if (!editBookDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

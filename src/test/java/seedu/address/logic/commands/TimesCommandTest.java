@@ -28,7 +28,7 @@ import seedu.address.testutil.BookBuilder;
  */
 public class TimesCommandTest {
 
-    private static final String TIMES_STUB = "Some times";
+    private static final String TIMES_STUB = "12345";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -40,22 +40,6 @@ public class TimesCommandTest {
         TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_BOOK, new Times(editedBook.getTimes().value));
 
         String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedBook);
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setBook(firstBook, editedBook);
-
-        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_deleteRemarkUnfilteredList_success() {
-        Book firstBook = model.getFilteredBookList().get(INDEX_FIRST_BOOK.getZeroBased());
-        Book editedBook = new BookBuilder(firstBook).withTimes("").build();
-
-        TimesCommand remarkCommand = new TimesCommand(INDEX_FIRST_BOOK,
-                new Times(editedBook.getTimes().toString()));
-
-        String expectedMessage = String.format(TimesCommand.MESSAGE_DELETE_TIMES_SUCCESS, editedBook);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setBook(firstBook, editedBook);

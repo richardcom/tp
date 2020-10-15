@@ -22,33 +22,28 @@ import seedu.address.model.category.Category;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-
-    public static final Times EMPTY_TIMES = new Times("");
-
     public static Book[] getSampleBooks() {
         HashMap<String, Integer> storage = new HashMap<>();
         storage.put("centralLibrary", 10);
-        storage.put("scienceLibrary", 10);
+        storage.put("scienceLibrary", 8);
         Stocking stocking = new Stocking(storage);
         return new Book[] {
-            new Book(new Name("Alex Yeoh"), new Isbn("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), EMPTY_TIMES,
-                getCategorySet("friends"), stocking, new Author("abc"), new Publisher("PKU")),
-            new Book(new Name("Bernice Yu"), new Isbn("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), EMPTY_TIMES,
-                getCategorySet("colleagues", "friends"), stocking, new Author("abc"), new Publisher("PKU")),
-            new Book(new Name("Charlotte Oliveiro"), new Isbn("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), EMPTY_TIMES,
-                getCategorySet("neighbours"), stocking, new Author("abc"), new Publisher("PKU")),
-            new Book(new Name("David Li"), new Isbn("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), EMPTY_TIMES,
-                getCategorySet("family"), stocking, new Author("abc"), new Publisher("PKU")),
-            new Book(new Name("Irfan Ibrahim"), new Isbn("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"), EMPTY_TIMES,
-                getCategorySet("classmates"), stocking, new Author("abc"), new Publisher("PKU")),
-            new Book(new Name("Roy Balakrishnan"), new Isbn("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"), EMPTY_TIMES,
-                getCategorySet("colleagues"), stocking, new Author("abc"), new Publisher("PKU"))
+            new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"),
+                    new Email("pride&prejudice@example.com"), new Address("English"), new Times("195"),
+                    getCategorySet("Novels"), stocking, new Author("Jane Austen"),
+                    new Publisher("Penguin Publishing Group")),
+            new Book(new Name("A Brief History Of Time From Big Bang To Black Holes"), new Isbn("9780553175219"),
+                    new Email("abriefhistoryoftime@example.com"), new Address("English"), new Times("20278"),
+                getCategorySet("Science"), stocking,
+                    new Author("Stephen Hawking"), new Publisher("Bantam")),
+            new Book(new Name("The Great Gatsby"), new Isbn("9780743273565"), new Email("thegreatgatsby@example.com"),
+                new Address("English"), new Times("6529"), getCategorySet("Classics"), stocking,
+                    new Author("Scott Fitzgerald"), new Publisher("Scribner")),
+            new Book(new Name("Introduction to Linear Algebra"), new Isbn("9780980232776"),
+                    new Email("introtolinearalgebra@example.com"), new Address("English"), new Times("243"),
+                getCategorySet("Textbook"), stocking,
+                    new Author("Gilbert Strang"), new Publisher("Wellesley Cambridge Press"))
+
         };
     }
 
