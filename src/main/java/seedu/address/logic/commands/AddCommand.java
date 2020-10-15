@@ -2,11 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -26,15 +28,20 @@ public class AddCommand extends Command {
             + PREFIX_ISBN + "ISBN "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
+            + "[" + PREFIX_CATEGORY + "CATEGORY]..."
+            + PREFIX_TIMES + "TIMES "
+            + PREFIX_STOCKING + "STOCKINGS "
+            + PREFIX_AUTHOR + "AUTHOR "
+            + PREFIX_PUBLISHER + "PUBLISHER\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TIMES + "20"
-            + PREFIX_NAME + "John Doe "
+            + PREFIX_NAME + "Linear Algebra "
             + PREFIX_ISBN + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_CATEGORY + "friends "
-            + PREFIX_CATEGORY + "owesMoney"
+            + PREFIX_EMAIL + "xxxxxx@example.com "
+            + PREFIX_ADDRESS + "xxxxx "
+            + PREFIX_CATEGORY + "Science "
+            + PREFIX_CATEGORY + "Math "
+            + PREFIX_TIMES + "20 "
+            + PREFIX_STOCKING + "central library 0 science library 0 "
             + PREFIX_PUBLISHER + "pku";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";
