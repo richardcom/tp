@@ -42,6 +42,7 @@ public class AddCommand extends Command {
             + PREFIX_CATEGORY + "Math "
             + PREFIX_TIMES + "20 "
             + PREFIX_STOCKING + "central library 0 science library 0 "
+            + PREFIX_AUTHOR + "Victor "
             + PREFIX_PUBLISHER + "pku";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";

@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.DeleteByCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.book.Isbn;
@@ -44,7 +43,8 @@ public class DeleteByCommandParser implements Parser<DeleteByCommand> {
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN))
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeleteByCommand.MESSAGE_USAGE));
         }
 
         if (isNamePresent) {
