@@ -83,7 +83,7 @@ public class DeleteByCommand extends Command {
             model.deleteBook(book);
         }
 
-        return new CommandResult(String.format(MESSAGE_DELETE_BOOK_SUCCESS, bookToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_BOOK_SUCCESS, deleteList.toString()));
     }
 
     @Override

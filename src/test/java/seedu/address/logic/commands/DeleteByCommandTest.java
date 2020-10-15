@@ -7,6 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_BOOK;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
@@ -14,6 +17,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.book.Book;
+
 
 
 /**
@@ -28,9 +32,11 @@ public class DeleteByCommandTest {
     public void execute_validBookToBeDeleted_success() {
         Book bookToDelete = model.getFilteredBookList().get(INDEX_FIRST_BOOK.getZeroBased());
         String name1 = bookToDelete.getName().fullName;
+        List<Book> list = new ArrayList<>();
+        list.add(bookToDelete);
         DeleteByCommand deleteByCommand = new DeleteByCommand(name1, 0);
 
-        String expectedMessage = String.format(DeleteByCommand.MESSAGE_DELETE_BOOK_SUCCESS, bookToDelete);
+        String expectedMessage = String.format(DeleteByCommand.MESSAGE_DELETE_BOOK_SUCCESS, list.toString());
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteBook(bookToDelete);
