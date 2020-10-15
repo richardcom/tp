@@ -75,8 +75,11 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_CATEGORY_DESC =
             " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
-    public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "the library 20";
-    public static final String INVALID_TIMES_DESC = " " + PREFIX_STOCKING + "the library 20";
+    public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "central library: 20 science library:10";
+    public static final String INVALID_TIMES_DESC = " " + PREFIX_TIMES + "r";
+    public static final String INVALID_AUTHOR_DESC = " " + PREFIX_AUTHOR + "james&&";
+    public static final String INVALID_PUBLISHER_DESC = " " + PREFIX_PUBLISHER + "david&&";
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
