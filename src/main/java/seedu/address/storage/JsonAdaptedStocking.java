@@ -48,7 +48,7 @@ public class JsonAdaptedStocking {
     public Stocking toModelType() throws IllegalValueException {
         HashMap<String, Integer> storage = new HashMap<>();
 
-        if (!Stocking.isValidStocking("central library: " + centralLibrary + " science library: " + scienceLibrary)) {
+        if (!Stocking.isValidStocking("central library " + centralLibrary + " science library " + scienceLibrary)) {
             throw new IllegalValueException(Stocking.MESSAGE_CONSTRAINTS);
         }
         storage.put("central library", this.centralLibrary);
