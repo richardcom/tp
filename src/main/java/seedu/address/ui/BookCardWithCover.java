@@ -11,10 +11,10 @@ import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
 
 /**
- * An UI component that displays detailed information of a {@code Book}.
+ * An UI component that displays information of a {@code Book} with book cover.
  */
-public class LibraryBookDetailCard extends UiPart<Region> {
-    private static final String FXML = "LibraryBookDetailCard.fxml";
+public class BookCardWithCover extends UiPart<Region> {
+    private static final String FXML = "BookListCardWithCover.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
 
     /**
@@ -36,32 +36,40 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     @FXML
     private Label isbn;
     @FXML
-    private Label author;
+    private Label address;
+    @FXML
+    private Label email;
+    @FXML
+    private Label times;
     @FXML
     private FlowPane categories;
     @FXML
-    private FlowPane stocking;
+    private Label author;
+    @FXML
+    private Label publisher;
     @FXML
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code BookCardWithCover} with the given {@code Book} and index to display.
+     *
+     * @param book The corresponding book.
+     * @param displayedIndex The number corresponding to the order of the book.
      */
-    public LibraryBookDetailCard(Book book, int displayedIndex) {
+    public BookCardWithCover(Book book, int displayedIndex) {
         super(FXML);
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
         isbn.setText("isbn: " + book.getIsbn().value);
+        address.setText(book.getAddress().value);
+        email.setText("contact: " + book.getEmail().value);
+        times.setText("Number of time: " + book.getTimes().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        book.getStocking().storage.forEach((location, storage) -> {
-            if (storage > 0) {
-                stocking.getChildren().add(new Label(location + ": " + storage + " "));
-            }
-        });
         author.setText("author: " + book.getAuthor().author);
+        publisher.setText("publisher: " + book.getPublisher().publisher);
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }
@@ -74,12 +82,12 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof LibraryBookDetailCard)) {
+        if (!(other instanceof BookCardWithCover)) {
             return false;
         }
 
         // state check
-        LibraryBookDetailCard card = (LibraryBookDetailCard) other;
+        BookCardWithCover card = (BookCardWithCover) other;
         return id.getText().equals(card.id.getText())
                 && book.equals(card.book);
     }
