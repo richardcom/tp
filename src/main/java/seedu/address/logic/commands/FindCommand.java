@@ -30,7 +30,6 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredBookList(predicate, Mode.NORMAL);
-        //System.out.println("In find command, set mode to detail mode");
         return new CommandResult(
                 String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW, model.getFilteredBookList().size()));
     }
