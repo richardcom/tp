@@ -11,8 +11,6 @@ import seedu.address.logic.commands.UsageByCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.Times;
-
 
 /**
  * Parses input arguments and creates a new UsageByCommand object
@@ -34,7 +32,7 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
                 && !arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES);
         boolean isIsbnPresent = isPrefixesPresent(argMultimap, PREFIX_ISBN)
                 && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES);
-        
+
         if ((arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN))

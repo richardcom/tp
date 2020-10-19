@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
@@ -50,8 +49,9 @@ public class UsageByCommand extends Command {
             }
         }
 
-        if (bookToCheck == null)
+        if (bookToCheck == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_CHECK_NAME);
+        }
 
         return new CommandResult(String.format(MESSAGE_USAGE_BOOK_SUCCESS, bookToCheck.getTimes().getValue()));
     }
