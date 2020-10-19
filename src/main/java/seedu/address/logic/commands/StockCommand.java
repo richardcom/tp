@@ -41,7 +41,6 @@ public class StockCommand extends Command {
         } else if (names != null) {
             predicate = new NameContainsKeywordsPredicate(names);
         } else if (numbers != null) {
-            System.out.println("In stock command, the number is used as the search key");
             predicate = new NumberContainsKeywordPredicate(numbers);
         } else {
             predicate = Model.PREDICATE_SHOW_ALL_BOOKS;
@@ -54,7 +53,6 @@ public class StockCommand extends Command {
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(predicate, Mode.DETAIL);
-        //System.out.println("In stock command, set the mode to detail mode");
         return new CommandResult(String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW,
                 model.getFilteredBookList().size()));
     }
