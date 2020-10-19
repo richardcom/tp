@@ -31,6 +31,10 @@ public class Times {
     }
 
 
+    public int getValue() {
+        return Integer.parseInt(value);
+    }
+
     @Override
     public String toString() {
         return value;
