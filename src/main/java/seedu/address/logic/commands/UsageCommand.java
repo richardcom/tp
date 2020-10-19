@@ -11,10 +11,9 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Usages a book identified using it's displayed index from the address book.
+ * Check usage of a book identified using it's displayed index from the address book.
  */
 public class UsageCommand extends Command {
-
     public static final String COMMAND_WORD = "usage";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD

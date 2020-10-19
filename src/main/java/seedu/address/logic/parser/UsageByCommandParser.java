@@ -28,17 +28,13 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
     public UsageByCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_TIMES);
-        int attribute = 0;
         String content = "";
 
         boolean isNamePresent = isPrefixesPresent(argMultimap, PREFIX_NAME)
                 && !arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES);
         boolean isIsbnPresent = isPrefixesPresent(argMultimap, PREFIX_ISBN)
                 && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES);
-        boolean isTimesPresent = isPrefixesPresent(argMultimap, PREFIX_TIMES)
-                && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN);
-
-
+        
         if ((arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN))
@@ -50,15 +46,9 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
         if (isNamePresent) {
             Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
             content = name.fullName;
-            attribute = 0;
         } else if (isIsbnPresent) {
             Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
             content = isbn.value;
-            attribute = 1;
-        } else if (isTimesPresent) {
-            Times times = ParserUtil.parseTimes(argMultimap.getValue(PREFIX_TIMES).get());
-            content = times.value;
-            attribute = 2;
         }
         try {
             String trimmedArgs = content.trim();
@@ -66,7 +56,7 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
                 throw new ParseException(
                         String.format(MESSAGE_INVALID_COMMAND_FORMAT, UsageByCommand.MESSAGE_USAGE));
             }
-            return new UsageByCommand(trimmedArgs, attribute);
+            return new UsageByCommand(trimmedArgs);
         } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, UsageByCommand.MESSAGE_USAGE), pe);

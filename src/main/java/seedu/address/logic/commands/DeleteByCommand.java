@@ -70,7 +70,6 @@ public class DeleteByCommand extends Command {
                 }
                 break;
             }
-
         }
 
         if (bookToDelete == null) {

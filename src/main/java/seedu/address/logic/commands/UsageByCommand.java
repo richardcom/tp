@@ -7,12 +7,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Usages a book identified using name, isbn, or times.
+ * Check usage of a book identified using name, isbn, or times.
  */
 public class UsageByCommand extends Command {
 
@@ -27,32 +28,32 @@ public class UsageByCommand extends Command {
     public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 
     private final String target;
-    private final int attribute;
-
-    // private NameMatchesKeywordPredicate predicate;
 
     /**
-     * Usage a book by name, isbn or times.
+     * Check usage of a book by name or isbn.
      * @param target a string representing the input content.
-     * @param attribute indicating which attribute shall we refer to when deleting.
      */
-    public UsageByCommand(String target, int attribute) {
+    public UsageByCommand(String target) {
         this.target = target;
-        this.attribute = attribute;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Book> lastShownList = model.getFilteredBookList();
-        Book bookToUsage = null;
-        List<Book> usageList = new ArrayList<>();
+        Book bookToCheck = null;
 
         for (Book book : lastShownList) {
-
+            if (book.getName().fullName.equals(target) || book.getIsbn().value.equals(target)) {
+                bookToCheck = book;
+                break;
+            }
         }
 
-        return new CommandResult(String.format(MESSAGE_USAGE_BOOK_SUCCESS, usageList.toString()));
+        if (bookToCheck == null)
+            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_CHECK_NAME);
+
+        return new CommandResult(String.format(MESSAGE_USAGE_BOOK_SUCCESS, bookToCheck.getTimes().getValue()));
     }
 
     @Override
