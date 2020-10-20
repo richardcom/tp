@@ -133,6 +133,66 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Storing and retrieving of stocking information
+
+#### Existing implementation
+
+The existing implementation of the storing and retriving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
+
+The relevant methods are
+
+* `StockCommand#excecute()` — Execute the stock command according to the predicate specified by the book name and ISBN.
+* `JsonAdaptedStocking#JsonAdaptedStocking(int, int)` — Reads the stocking map from the json file and also changes the storage model into the json map to store the stocking information when necessary.
+* `JsonAdaptedStocking#JsonAdaptedStocking(Stocking)` — Transforms the stocking model into the json adapted model.
+* `JsonAdaptedStocking#toModelType(Stocking)` — Transforms the json adapted model into the stocking model.
+
+The relationship between the book and stocking and other components is shown as below.
+
+![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+
+These operations are incoperated into the storage read and write process in the execution.
+
+Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser which calls the add command parser.
+
+![The add command parser](images/AddStockingSequenceDiagram1.png)
+
+Step 2. The add command paser calss the ParseUtil, which parses the string and returns a stocking
+
+![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
+
+Step 3. The add command uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
+
+![Add book with stocking information](images/AddStockingSequenceDiagram.png)
+
+Given below is an example usage scenario of how the stocking command will be executed, 
+
+Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser which calls the stock command parser.
+
+![The stock command parser](images/StockCommandSequenceDiagram.png)
+
+Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of 
+
+![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
+
+Step 3. The stock command is returned and excecuted, updating the book list shown on the user interface.
+
+#### Design consideration:
+
+The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
+
+##### Aspect: How undo & redo executes
+
+* **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
+  * Pros: The command is clear and understandable.
+  * Cons: May bring some inconvenience when typing since some of the library name is a bit long.
+
+* **Alternative 2:** Enables the user to use abbreviation of the library location.
+  * Pros: Reduces the amount of typing and brings convenience to users.
+  * Cons: May cause confusion to new user because of the abbreviation of the library location.
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
