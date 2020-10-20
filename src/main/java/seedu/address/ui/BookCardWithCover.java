@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.book.Book;
 
 /**
@@ -16,7 +18,6 @@ import seedu.address.model.book.Book;
 public class BookCardWithCover extends UiPart<Region> {
     private static final String FXML = "BookListCardWithCover.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
-
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -26,6 +27,8 @@ public class BookCardWithCover extends UiPart<Region> {
      */
 
     public final Book book;
+
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     @javafx.fxml.FXML
     private HBox cardPane;
@@ -70,6 +73,7 @@ public class BookCardWithCover extends UiPart<Region> {
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText("author: " + book.getAuthor().author);
         publisher.setText("publisher: " + book.getPublisher().publisher);
+        logger.info("Get the book cover");
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }
