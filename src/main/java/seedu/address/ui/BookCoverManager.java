@@ -54,6 +54,19 @@ public class BookCoverManager {
      * Creates a new {@code BookCoverManager}.
      */
     public BookCoverManager() {
+        assert CATEGORY_MAP != null;
+        assert GENERAL_COVER != null;
+        assert SCIENCE_COVER != null;
+        assert HISTORY_COVER != null;
+        assert NOVEL_COVER != null;
+        assert PHYSICS_COVER != null;
+        assert CHEMISTRY_COVER != null;
+        assert MATHEMATICS_COVER != null;
+        assert MODERN_WAR_COVER != null;
+        assert ANCIENT_WAR_COVER != null;
+        assert MODERN_HISTORY_COVER != null;
+        assert ANCIENT_HISTORY_COVER != null;
+
         CATEGORY_MAP.putIfAbsent(GENERAL, GENERAL_COVER);
         CATEGORY_MAP.putIfAbsent(SCIENCE, SCIENCE_COVER);
         CATEGORY_MAP.putIfAbsent(HISTORY, HISTORY_COVER);
@@ -76,7 +89,7 @@ public class BookCoverManager {
      * @return The corresponding book cover of the book.
      */
     public Image getCategoryBookCover(String bookName, Set<Category> categorySet) {
-
+        assert bookName != null;
         if (categorySet == null || categorySet.size() == 0) {
             int number = (bookName.hashCode() % GENERAL_COVER.length);
             return new Image(this.getClass().getResourceAsStream((CATEGORY_MAP.get(GENERAL))[number]));
