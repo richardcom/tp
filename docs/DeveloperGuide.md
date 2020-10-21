@@ -507,7 +507,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: UC10 - Get usage times of a book**
 
 **MSS**
-  1. User requests to get the usage times of a book and input book title.
+  1. User requests to get the usage times of a book and input index/book title/book isbn.
   2. IntelliBrary tells the user the usage times of the certain book.
   
 **Extensions**
@@ -518,6 +518,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.        
 
+* 1b. The book isbn to be checked cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
+* 1c. The index is out of bound
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
 **Use case: UC11 - Get number of books borrowed**
 
 **MSS**

@@ -68,6 +68,32 @@ Examples:
 * `stock /name A brief history of time /ISBN /9780553175219`
 * `stock /name A brief history of time`
 
+### Check usage
+
+Checks usage times of a certain book specified by user. Book is specified by any of the followings:
+* one base index in storage.
+* book isbn
+* book name
+
+Format: 
+* `usage [INDEX]`
+* `usage i/[ISBN]`
+* `usage n/[BOOK_NAME]`
+
+Examples:
+* `usage 2`
+* `usageBy i/9780141439518`
+* `usageBy n/Pride and Prejudice`
+
+### Check history
+
+Checks borrowing times during the whole timeline.
+
+Format: `history`
+
+Examples:
+* `history`
+
 ### View Sample Data `[coming soon]`: `view`
 
 Have a look at the sample data for the application when open app for the first time.
