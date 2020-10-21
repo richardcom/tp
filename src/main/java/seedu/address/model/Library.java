@@ -9,10 +9,10 @@ import seedu.address.model.book.Book;
 import seedu.address.model.book.UniqueBookList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the library level
  * Duplicates are not allowed (by .isSameBook comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class Library implements ReadOnlyLibrary {
 
     private final UniqueBookList books;
 
@@ -27,12 +27,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         books = new UniqueBookList();
     }
 
-    public AddressBook() {}
+    public Library() {}
 
     /**
-     * Creates an AddressBook using the Books in the {@code toBeCopied}
+     * Creates an Library using the Books in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public Library(ReadOnlyLibrary toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -50,7 +50,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyLibrary newData) {
         requireNonNull(newData);
 
         setBooks(newData.getBookList());
@@ -59,7 +59,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// book-level operations
 
     /**
-     * Returns true if a book with the same identity as {@code book} exists in the address book.
+     * Returns true if a book with the same identity as {@code book} exists in the library.
      */
     public boolean hasBook(Book book) {
         requireNonNull(book);
@@ -67,8 +67,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a book to the address book.
-     * The book must not already exist in the address book.
+     * Adds a book to the library.
+     * The book must not already exist in the library.
      */
     public void addBook(Book p) {
         books.add(p);
@@ -76,8 +76,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given book {@code target} in the list with {@code editedBook}.
-     * {@code target} must exist in the address book.
-     * The book identity of {@code editedBook} must not be the same as another existing book in the address book.
+     * {@code target} must exist in the library.
+     * The book identity of {@code editedBook} must not be the same as another existing book in the library.
      */
     public void setBook(Book target, Book editedBook) {
         requireNonNull(editedBook);
@@ -86,7 +86,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code Library}.
      * {@code key} must exist in the address book.
      */
     public void removeBook(Book key) {
@@ -109,8 +109,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && books.equals(((AddressBook) other).books));
+                || (other instanceof Library // instanceof handles nulls
+                && books.equals(((Library) other).books));
     }
 
     @Override
