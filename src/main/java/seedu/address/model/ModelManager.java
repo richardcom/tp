@@ -16,31 +16,31 @@ import seedu.address.ui.BookListPanel;
 import seedu.address.ui.Mode;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the library data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final Library library;
     private final UserPrefs userPrefs;
     private final FilteredList<Book> filteredBooks;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given library and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyLibrary library, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(library, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with library: " + library + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.library = new Library(library);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredBooks = new FilteredList<>(this.addressBook.getBookList());
+        filteredBooks = new FilteredList<>(this.library.getBookList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new Library(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -68,42 +68,42 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getLibraryFilePath() {
+        return userPrefs.getLibraryFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setLibraryFilePath(Path libraryFilePath) {
+        requireNonNull(libraryFilePath);
+        userPrefs.setLibraryFilePath(libraryFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Library ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setLibrary(ReadOnlyLibrary addressBook) {
+        this.library.resetData(addressBook);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyLibrary getLibrary() {
+        return library;
     }
 
     @Override
     public boolean hasBook(Book book) {
         requireNonNull(book);
-        return addressBook.hasBook(book);
+        return library.hasBook(book);
     }
 
     @Override
     public void deleteBook(Book target) {
-        addressBook.removeBook(target);
+        library.removeBook(target);
     }
 
     @Override
     public void addBook(Book book) {
-        addressBook.addBook(book);
+        library.addBook(book);
         updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
     }
 
@@ -111,7 +111,7 @@ public class ModelManager implements Model {
     public void setBook(Book target, Book editedBook) {
         requireAllNonNull(target, editedBook);
 
-        addressBook.setBook(target, editedBook);
+        library.setBook(target, editedBook);
     }
 
     //=========== Filtered Book List Accessors =============================================================
@@ -156,7 +156,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return library.equals(other.library)
                 && userPrefs.equals(other.userPrefs)
                 && filteredBooks.equals(other.filteredBooks);
     }
