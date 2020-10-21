@@ -81,8 +81,8 @@ public class ModelManager implements Model {
     //=========== Library ================================================================================
 
     @Override
-    public void setLibrary(ReadOnlyLibrary addressBook) {
-        this.library.resetData(addressBook);
+    public void setLibrary(ReadOnlyLibrary library) {
+        this.library.resetData(library);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Book} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedLibrary}
      */
     @Override
     public ObservableList<Book> getFilteredBookList() {

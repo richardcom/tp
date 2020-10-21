@@ -233,7 +233,6 @@ public class EditCommand extends Command {
             return (categories != null) ? Optional.of(Collections.unmodifiableSet(categories)) : Optional.empty();
         }
 
-
         public void setAuthor(Author author) {
             this.author = author;
         }

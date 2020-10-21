@@ -48,6 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
+        assert logger != null;
         logger.info("=============================[ Initializing Library ]===========================");
         super.init();
 

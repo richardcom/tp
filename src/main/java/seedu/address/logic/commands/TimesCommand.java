@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
@@ -43,6 +44,7 @@ public class TimesCommand extends Command {
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
         List<Book> lastShownList = model.getFilteredBookList();
 
         if (index.getZeroBased() >= lastShownList.size()) {

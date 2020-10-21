@@ -74,6 +74,7 @@ public class LogsCenter {
      * Remove all the handlers from {@code logger}.
      */
     private static void removeHandlers(Logger logger) {
+        assert logger != null;
         Arrays.stream(logger.getHandlers())
                 .forEach(logger::removeHandler);
     }
