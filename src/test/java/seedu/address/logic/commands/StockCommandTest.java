@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_BOOKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalBooks.ELLE;
-import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Arrays;
 
@@ -20,8 +20,8 @@ import seedu.address.ui.Mode;
  * Contains integration tests (interaction with the Model) and unit tests for StockCommand.
  */
 class StockCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalLibrary(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalLibrary(), new UserPrefs());
 
     @Test
     void execute_oneKeyword_oneBookFound() {

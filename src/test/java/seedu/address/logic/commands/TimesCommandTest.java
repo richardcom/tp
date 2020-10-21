@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showBookAtIndex;
-import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_BOOK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_BOOK;
 
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.AddressBook;
+import seedu.address.model.Library;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -30,7 +30,7 @@ public class TimesCommandTest {
 
     private static final String TIMES_STUB = "12345";
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalLibrary(), new UserPrefs());
 
     @Test
     public void execute_addRemarkUnfilteredList_success() {
@@ -41,7 +41,7 @@ public class TimesCommandTest {
 
         String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedBook);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Library(model.getLibrary()), new UserPrefs());
         expectedModel.setBook(firstBook, editedBook);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -59,7 +59,7 @@ public class TimesCommandTest {
 
         String expectedMessage = String.format(TimesCommand.MESSAGE_ADD_TIMES_SUCCESS, editedBook);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Library(model.getLibrary()), new UserPrefs());
         expectedModel.setBook(firstBook, editedBook);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -81,8 +81,8 @@ public class TimesCommandTest {
     public void execute_invalidBookIndexFilteredList_failure() {
         showBookAtIndex(model, INDEX_FIRST_BOOK);
         Index outOfBoundIndex = INDEX_SECOND_BOOK;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getBookList().size());
+        // ensures that outOfBoundIndex is still in bounds of library list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getLibrary().getBookList().size());
 
         TimesCommand remarkCommand = new TimesCommand(outOfBoundIndex, new Times(VALID_TIMES_BOB));
 

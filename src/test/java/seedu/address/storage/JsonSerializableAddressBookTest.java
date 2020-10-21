@@ -31,8 +31,8 @@ public class JsonSerializableAddressBookTest {
 
     @Test
     public void toModelType_invalidBookFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(INVALID_BOOK_FILE,
-                JsonSerializableAddressBook.class).get();
+        JsonSerializableLibrary dataFromFile = JsonUtil.readJsonFile(INVALID_BOOK_FILE,
+                JsonSerializableLibrary.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 

@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.ALICE;
-import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,25 +22,25 @@ import seedu.address.model.book.Book;
 import seedu.address.model.book.exceptions.DuplicateBookException;
 import seedu.address.testutil.BookBuilder;
 
-public class AddressBookTest {
+public class LibraryTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final Library library = new Library();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getBookList());
+        assertEquals(Collections.emptyList(), library.getBookList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> library.resetData(null));
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+    public void resetData_withValidReadOnlyLibrary_replacesData() {
+        Library newData = getTypicalLibrary();
+        library.resetData(newData);
+        assertEquals(newData, library);
     }
 
     @Test
@@ -49,47 +49,47 @@ public class AddressBookTest {
         Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         List<Book> newBooks = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newBooks);
+        LibraryStub newData = new LibraryStub(newBooks);
 
-        assertThrows(DuplicateBookException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateBookException.class, () -> library.resetData(newData));
     }
 
     @Test
     public void hasBook_nullBook_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasBook(null));
+        assertThrows(NullPointerException.class, () -> library.hasBook(null));
     }
 
     @Test
     public void hasBook_bookNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasBook(ALICE));
+        assertFalse(library.hasBook(ALICE));
     }
 
     @Test
-    public void hasBook_bookInAddressBook_returnsTrue() {
-        addressBook.addBook(ALICE);
-        assertTrue(addressBook.hasBook(ALICE));
+    public void hasBook_bookInLibrary_returnsTrue() {
+        library.addBook(ALICE);
+        assertTrue(library.hasBook(ALICE));
     }
 
     @Test
     public void hasBook_bookWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addBook(ALICE);
+        library.addBook(ALICE);
         Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(addressBook.hasBook(editedAlice));
+        assertTrue(library.hasBook(editedAlice));
     }
 
     @Test
     public void getBookList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getBookList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> library.getBookList().remove(0));
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose books list can violate interface constraints.
+     * A stub ReadOnlyLibrary whose books list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class LibraryStub implements ReadOnlyLibrary {
         private final ObservableList<Book> books = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Book> books) {
+        LibraryStub(Collection<Book> books) {
             this.books.setAll(books);
         }
 
