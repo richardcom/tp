@@ -16,22 +16,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.Library;
+import seedu.address.model.ReadOnlyLibrary;
 
-public class JsonAddressBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+public class JsonLibraryStorageTest {
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonLibraryStorageTest");
 
     @TempDir
     public Path testFolder;
 
     @Test
-    public void readAddressBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> readAddressBook(null));
+    public void readLibrary_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> readLibrary(null));
     }
 
-    private java.util.Optional<ReadOnlyAddressBook> readAddressBook(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
+    private java.util.Optional<ReadOnlyLibrary> readLibrary(String filePath) throws Exception {
+        return new JsonLibraryStorage(Paths.get(filePath)).readLibrary(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -42,22 +42,22 @@ public class JsonAddressBookStorageTest {
 
     @Test
     public void read_missingFile_emptyResult() throws Exception {
-        assertFalse(readAddressBook("NonExistentFile.json").isPresent());
+        assertFalse(readLibrary("NonExistentFile.json").isPresent());
     }
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readLibrary("notJsonFormatLibrary.json"));
     }
 
     @Test
-    public void readAddressBook_invalidBookAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidBookAddressBook.json"));
+    public void readLibrary_invalidBookLibrary_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readLibrary("invalidBookLibrary.json"));
     }
 
     @Test
-    public void readAddressBook_invalidAndValidBookAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidBookAddressBook.json"));
+    public void readLibrary_invalidAndValidBookLibrary_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readLibrary("invalidAndValidBookLibrary.json"));
     }
 
     /* @Test
@@ -87,24 +87,24 @@ public class JsonAddressBookStorageTest {
     } // storage parser */
 
     @Test
-    public void saveAddressBook_nullAddressBook_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveAddressBook(null, "SomeFile.json"));
+    public void saveLibrary_nullLibrary_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveLibrary(null, "SomeFile.json"));
     }
 
     /**
-     * Saves {@code addressBook} at the specified {@code filePath}.
+     * Saves {@code library} at the specified {@code filePath}.
      */
-    private void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) {
+    private void saveLibrary(ReadOnlyLibrary library, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
-                    .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
+            new JsonLibraryStorage(Paths.get(filePath))
+                    .saveLibrary(library, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
     }
 
     @Test
-    public void saveAddressBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveAddressBook(new AddressBook(), null));
+    public void saveLibrary_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveLibrary(new Library(), null));
     }
 }

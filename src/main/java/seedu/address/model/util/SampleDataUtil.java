@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.Library;
+import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
@@ -19,7 +19,7 @@ import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Library} with sample data.
  */
 public class SampleDataUtil {
     public static Book[] getSampleBooks() {
@@ -47,12 +47,12 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyLibrary getSampleLibrary() {
+        Library sampleLib = new Library();
         for (Book sampleBook : getSampleBooks()) {
-            sampleAb.addBook(sampleBook);
+            sampleLib.addBook(sampleBook);
         }
-        return sampleAb;
+        return sampleLib;
     }
 
     /**

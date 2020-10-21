@@ -97,5 +97,4 @@ public class EditCommandParser implements Parser<EditCommand> {
                 && categories.contains("") ? Collections.emptySet() : categories;
         return Optional.of(ParserUtil.parseCategories(categorySet));
     }
-
 }

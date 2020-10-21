@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.Library;
 import seedu.address.model.book.Book;
 
 /**
@@ -78,14 +78,14 @@ public class TypicalBooks {
     private TypicalBooks() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical books.
+     * Returns an {@code Library} with all the typical books.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static Library getTypicalLibrary() {
+        Library lib = new Library();
         for (Book book : getTypicalBooks()) {
-            ab.addBook(book);
+            lib.addBook(book);
         }
-        return ab;
+        return lib;
     }
 
     public static List<Book> getTypicalBooks() {
