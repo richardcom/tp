@@ -25,7 +25,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.model.book.Times;
 
-public class AddressBookParserTest {
+public class LibraryParserTest {
 
     private final LibraryParser parser = new LibraryParser();
 

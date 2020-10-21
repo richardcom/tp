@@ -61,7 +61,7 @@ public class StorageManagerTest {
     } // storage parser */
 
     @Test
-    public void getAddressBookFilePath() {
+    public void getLibraryFilePath() {
         assertNotNull(storageManager.getLibraryFilePath());
     }
 

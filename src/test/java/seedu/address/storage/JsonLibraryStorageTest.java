@@ -19,14 +19,14 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.Library;
 import seedu.address.model.ReadOnlyLibrary;
 
-public class JsonAddressBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+public class JsonLibraryStorageTest {
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonLibraryStorageTest");
 
     @TempDir
     public Path testFolder;
 
     @Test
-    public void readAddressBook_nullFilePath_throwsNullPointerException() {
+    public void readLibrary_nullFilePath_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> readLibrary(null));
     }
 
@@ -47,17 +47,17 @@ public class JsonAddressBookStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readLibrary("notJsonFormatAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readLibrary("notJsonFormatLibrary.json"));
     }
 
     @Test
-    public void readAddressBook_invalidBookAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readLibrary("invalidBookAddressBook.json"));
+    public void readLibrary_invalidBookLibrary_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readLibrary("invalidBookLibrary.json"));
     }
 
     @Test
-    public void readAddressBook_invalidAndValidBookAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readLibrary("invalidAndValidBookAddressBook.json"));
+    public void readLibrary_invalidAndValidBookLibrary_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readLibrary("invalidAndValidBookLibrary.json"));
     }
 
     /* @Test

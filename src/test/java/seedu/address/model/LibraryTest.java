@@ -60,7 +60,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void hasBook_bookNotInAddressBook_returnsFalse() {
+    public void hasBook_bookNotInLibrary_returnsFalse() {
         assertFalse(library.hasBook(ALICE));
     }
 
@@ -71,7 +71,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void hasBook_bookWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasBook_bookWithSameIdentityFieldsInLibrary_returnsTrue() {
         library.addBook(ALICE);
         Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
