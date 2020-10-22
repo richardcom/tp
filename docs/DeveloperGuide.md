@@ -133,6 +133,39 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### \[New\] DeleteBy feature
+
+####  Implementation
+
+The current implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+
+Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
+
+Step 1. User input an input: `deleteBy n/Linear Algebra`
+Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command
+Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![DeleteByCommandDiagram](images/DeleteBySequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How undo & redo executes
+
+* **Alternative 1 :** Adopts the delete function of the original project
+  * Pros: Easy to implement.
+  * Cons: Not convenient for expert users and fast input.
+
+* **Alternative 2:** Individual command of DeleteByName, DeleteByISBN, DeleteByTimes
+  itself.
+  * Pros: Easier to implement without the need to parse different input types.
+  * Cons: A large portion of duplicated code for multiple commands.
+
+
+
+
 ### Enhanced Edit Command
 
 #### Existing implementation
