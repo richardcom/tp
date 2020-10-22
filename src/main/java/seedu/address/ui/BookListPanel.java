@@ -49,11 +49,9 @@ public class BookListPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 if (mode.equals(Mode.NORMAL)) {
-                    //System.out.println("In book list panel, the mode is normal mode");
                     //setGraphic(new BookCard(book, getIndex() + 1).getRoot());
                     setGraphic(new BookCardWithCover(book, getIndex() + 1).getRoot());
                 } else {
-                    //System.out.println("In book list panel, the mode is detail mode");
                     setGraphic(new LibraryBookDetailCard(book, getIndex() + 1).getRoot());
                 }
             }

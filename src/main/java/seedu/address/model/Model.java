@@ -36,44 +36,44 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' library file path.
      */
-    Path getAddressBookFilePath();
+    Path getLibraryFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' library file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setLibraryFilePath(Path libraryFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces library data with the data in {@code library}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setLibrary(ReadOnlyLibrary library);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the Library */
+    ReadOnlyLibrary getLibrary();
 
     /**
-     * Returns true if a book with the same identity as {@code book} exists in the address book.
+     * Returns true if a book with the same identity as {@code book} exists in the library.
      */
     boolean hasBook(Book book);
 
     /**
      * Deletes the given book.
-     * The book must exist in the address book.
+     * The book must exist in the library.
      */
     void deleteBook(Book target);
 
     /**
      * Adds the given book.
-     * {@code book} must not already exist in the address book.
+     * {@code book} must not already exist in the a library.
      */
     void addBook(Book book);
 
     /**
      * Replaces the given book {@code target} with {@code editedBook}.
-     * {@code target} must exist in the address book.
-     * The book identity of {@code editedBook} must not be the same as another existing book in the address book.
+     * {@code target} must exist in the library.
+     * The book identity of {@code editedBook} must not be the same as another existing book in the Llibrary.
      */
     void setBook(Book target, Book editedBook);
 

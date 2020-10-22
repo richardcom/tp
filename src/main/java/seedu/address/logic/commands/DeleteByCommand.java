@@ -32,8 +32,6 @@ public class DeleteByCommand extends Command {
     private final String target;
     private final int attribute;
 
-    // private NameMatchesKeywordPredicate predicate;
-
     /**
      * Delete a book by name, isbn or times.
      * @param target a string representing the input content.
@@ -72,7 +70,6 @@ public class DeleteByCommand extends Command {
                 }
                 break;
             }
-
         }
 
         if (bookToDelete == null) {

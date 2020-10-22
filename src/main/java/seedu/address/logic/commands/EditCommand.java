@@ -109,11 +109,11 @@ public class EditCommand extends Command {
         Times updatedTimes = bookToEdit.getTimes();
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
-        Publisher updatedPulisher = editBookDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
+        Publisher updatedPublisher = editBookDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
         Stocking updatedStocking = editBookDescriptor.getStocking().orElse(bookToEdit.getStocking());
 
         return new Book(updatedName, updatedIsbn, updatedEmail,
-                updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor, updatedPulisher);
+                updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor, updatedPublisher);
 
     }
 
@@ -232,7 +232,6 @@ public class EditCommand extends Command {
         public Optional<Set<Category>> getCategories() {
             return (categories != null) ? Optional.of(Collections.unmodifiableSet(categories)) : Optional.empty();
         }
-
 
         public void setAuthor(Author author) {
             this.author = author;

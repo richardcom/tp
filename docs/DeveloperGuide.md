@@ -80,7 +80,7 @@ The `UI` component,
 **API** :
 [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `LibraryParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding a book).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -107,7 +107,7 @@ The `Model`,
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `AddressBook`, which `Book` references. This allows `AddressBook` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `Library`, which `Book` references. This allows `Library` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -132,6 +132,100 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### Enhanced Edit Command
+
+#### Existing implementation
+
+The existing implementation for enhanced edit command is facilitated by updated versions of `EditCommand`, `EditCommandParser`.
+
+The relevant methods are
+
+* `EditCommand#createEditedBook(Book, EditBookDescriptor)` —  Creates and returns a Book with the details of Book
+edited with EditBookDescriptor.
+* `EditCommand#EditBookDescriptor()` — Creates a EditBookDescriptor for editing a book.
+* `EditCommandParser#parse(String)` — Parses the edit command created.
+
+The relationship between the updated book (including the newly added classes) and other components is shown as below.
+
+![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+
+Given below is an example usage scenario of how the edit command will be executed, 
+
+![EditCommandSequenceDiagram](images/EditSequenceDiagram.png)
+
+#### Design consideration:
+
+The current enhancement is in alignment with other components of the book, which is easy to integrate into the product.
+
+##### Aspect: How to enhance the edit command
+
+* **Alternative 1 (current choice):** Adopt the original format and structure.
+  * Pros: It is easier to make sure that the integration will go smoothly.
+  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+
+* **Alternative 2:** Tweak the format of the edit command
+  * Pros: The design will be more user-friendly and user-oriented.
+  * Cons: There is potential risk that the modified command will not fit well into the system.
+
+### Storing and retrieving of stocking information
+
+#### Existing implementation
+
+The existing implementation of the storing and retriving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
+
+The relevant methods are
+
+* `StockCommand#excecute()` — Execute the stock command according to the predicate specified by the book name and ISBN.
+* `JsonAdaptedStocking#JsonAdaptedStocking(int, int)` — Reads the stocking map from the json file and also changes the storage model into the json map to store the stocking information when necessary.
+* `JsonAdaptedStocking#JsonAdaptedStocking(Stocking)` — Transforms the stocking model into the json adapted model.
+* `JsonAdaptedStocking#toModelType(Stocking)` — Transforms the json adapted model into the stocking model.
+
+The relationship between the book and stocking and other components is shown as below.
+
+![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+
+These operations are incoperated into the storage read and write process in the execution.
+
+Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser which calls the add command parser.
+
+![The add command parser](images/AddStockingSequenceDiagram1.png)
+
+Step 2. The add command paser calss the ParseUtil, which parses the string and returns a stocking
+
+![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
+
+Step 3. The add command uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
+
+![Add book with stocking information](images/AddStockingSequenceDiagram.png)
+
+Given below is an example usage scenario of how the stocking command will be executed, 
+
+Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser which calls the stock command parser.
+
+![The stock command parser](images/StockCommandSequenceDiagram.png)
+
+Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of 
+
+![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
+
+Step 3. The stock command is returned and excecuted, updating the book list shown on the user interface.
+
+#### Design consideration:
+
+The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
+
+##### Aspect: How stocking executes
+
+* **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
+  * Pros: The command is clear and understandable.
+  * Cons: May bring some inconvenience when typing since some of the library name is a bit long.
+
+* **Alternative 2:** Enables the user to use abbreviation of the library location.
+  * Pros: Reduces the amount of typing and brings convenience to users.
+  * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -448,7 +542,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: UC10 - Get usage times of a book**
 
 **MSS**
-  1. User requests to get the usage times of a book and input book title.
+  1. User requests to get the usage times of a book and input index/book title/book isbn.
   2. IntelliBrary tells the user the usage times of the certain book.
   
 **Extensions**
@@ -459,6 +553,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.        
 
+* 1b. The book isbn to be checked cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
+* 1c. The index is out of bound
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
 **Use case: UC11 - Get number of books borrowed**
 
 **MSS**
