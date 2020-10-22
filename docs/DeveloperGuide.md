@@ -192,6 +192,15 @@ The current implementation of the stocking is consistent with other components o
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
+### \[Proposed\] Problem report feature
+
+#### Proposed Implementation
+
+The proposed problem report mechanism stores problems in the instances of Library. It implements the following commands:
+
+* `report` — Adds new problem report to Library.
+* `view report` — Shows the reports added before.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
