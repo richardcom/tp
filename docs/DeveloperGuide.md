@@ -80,7 +80,7 @@ The `UI` component,
 **API** :
 [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `LibraryParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding a book).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -107,7 +107,7 @@ The `Model`,
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `AddressBook`, which `Book` references. This allows `AddressBook` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `Library`, which `Book` references. This allows `Library` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -132,6 +132,41 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### Enhanced Edit Command
+
+#### Existing implementation
+
+The existing implementation for enhanced edit command is facilitated by updated versions of `EditCommand`, `EditCommandParser`.
+
+The relevant methods are
+
+* `EditCommand#createEditedBook(Book, EditBookDescriptor)` —  Creates and returns a Book with the details of Book
+edited with EditBookDescriptor.
+* `EditCommand#EditBookDescriptor()` — Creates a EditBookDescriptor for editing a book.
+* `EditCommandParser#parse(String)` — Parses the edit command created.
+
+The relationship between the updated book (including the newly added classes) and other components is shown as below.
+
+![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+
+Given below is an example usage scenario of how the edit command will be executed, 
+
+![EditCommandSequenceDiagram](images/EditSequenceDiagram.png)
+
+#### Design consideration:
+
+The current enhancement is in alignment with other components of the book, which is easy to integrate into the product.
+
+##### Aspect: How to enhance the edit command
+
+* **Alternative 1 (current choice):** Adopt the original format and structure.
+  * Pros: It is easier to make sure that the integration will go smoothly.
+  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+
+* **Alternative 2:** Tweak the format of the edit command
+  * Pros: The design will be more user-friendly and user-oriented.
+  * Cons: There is potential risk that the modified command will not fit well into the system.
 
 ### Storing and retrieving of stocking information
 
@@ -182,7 +217,7 @@ Step 3. The stock command is returned and excecuted, updating the book list show
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How undo & redo executes
+##### Aspect: How stocking executes
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
