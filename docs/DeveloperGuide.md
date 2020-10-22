@@ -269,6 +269,7 @@ The proposed problem report mechanism stores problems in the instances of Librar
 * `report` — Adds new problem report to Library.
 * `view report` — Shows the reports added before.
 
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
