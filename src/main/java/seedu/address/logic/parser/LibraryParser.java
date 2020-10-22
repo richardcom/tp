@@ -17,6 +17,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.RandomCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.TimesCommand;
@@ -80,6 +81,9 @@ public class LibraryParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case RandomCommand.COMMAND_WORD:
+            return new RandomCommandParser().parse(arguments);
 
         case StockCommand.COMMAND_WORD:
             return new StockCommandParser().parse(arguments);
