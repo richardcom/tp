@@ -35,7 +35,7 @@ public class UsageCommand extends Command {
 
         List<Book> lastShownList = model.getFilteredBookList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() >= lastShownList.size() || targetIndex.getZeroBased() <= 0) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
 
