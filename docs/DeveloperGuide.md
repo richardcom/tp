@@ -80,7 +80,7 @@ The `UI` component,
 **API** :
 [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `LibraryParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding a book).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -107,7 +107,7 @@ The `Model`,
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `AddressBook`, which `Book` references. This allows `AddressBook` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `Library`, which `Book` references. This allows `Library` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -132,6 +132,74 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### \[New\] DeleteBy feature
+
+####  Implementation
+
+The current implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+
+Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
+
+Step 1. User input an input: `deleteBy n/Linear Algebra`
+Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command
+Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![DeleteByCommandDiagram](images/DeleteBySequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How undo & redo executes
+
+* **Alternative 1 :** Adopts the delete function of the original project
+  * Pros: Easy to implement.
+  * Cons: Not convenient for expert users and fast input.
+
+* **Alternative 2:** Individual command of DeleteByName, DeleteByISBN, DeleteByTimes
+  itself.
+  * Pros: Easier to implement without the need to parse different input types.
+  * Cons: A large portion of duplicated code for multiple commands.
+
+
+
+
+### Enhanced Edit Command
+
+#### Existing implementation
+
+The existing implementation for enhanced edit command is facilitated by updated versions of `EditCommand`, `EditCommandParser`.
+
+The relevant methods are
+
+* `EditCommand#createEditedBook(Book, EditBookDescriptor)` —  Creates and returns a Book with the details of Book
+edited with EditBookDescriptor.
+* `EditCommand#EditBookDescriptor()` — Creates a EditBookDescriptor for editing a book.
+* `EditCommandParser#parse(String)` — Parses the edit command created.
+
+The relationship between the updated book (including the newly added classes) and other components is shown as below.
+
+![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+
+Given below is an example usage scenario of how the edit command will be executed, 
+
+![EditCommandSequenceDiagram](images/EditSequenceDiagram.png)
+
+#### Design consideration:
+
+The current enhancement is in alignment with other components of the book, which is easy to integrate into the product.
+
+##### Aspect: How to enhance the edit command
+
+* **Alternative 1 (current choice):** Adopt the original format and structure.
+  * Pros: It is easier to make sure that the integration will go smoothly.
+  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+
+* **Alternative 2:** Tweak the format of the edit command
+  * Pros: The design will be more user-friendly and user-oriented.
+  * Cons: There is potential risk that the modified command will not fit well into the system.
 
 ### Storing and retrieving of stocking information
 
@@ -182,7 +250,7 @@ Step 3. The stock command is returned and excecuted, updating the book list show
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How undo & redo executes
+##### Aspect: How stocking executes
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -191,6 +259,16 @@ The current implementation of the stocking is consistent with other components o
 * **Alternative 2:** Enables the user to use abbreviation of the library location.
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
+
+### \[Proposed\] Problem report feature
+
+#### Proposed Implementation
+
+The proposed problem report mechanism stores problems in the instances of Library. It implements the following commands:
+
+* `report` — Adds new problem report to Library.
+* `view report` — Shows the reports added before.
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -507,7 +585,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: UC10 - Get usage times of a book**
 
 **MSS**
-  1. User requests to get the usage times of a book and input book title.
+  1. User requests to get the usage times of a book and input index/book title/book isbn.
   2. IntelliBrary tells the user the usage times of the certain book.
   
 **Extensions**
@@ -518,6 +596,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.        
 
+* 1b. The book isbn to be checked cannot be found.
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
+* 1c. The index is out of bound
+    
+    * 1a1. IntelliBrary shows an error message.
+    
+      Use case ends.   
+      
 **Use case: UC11 - Get number of books borrowed**
 
 **MSS**
