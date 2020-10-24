@@ -23,6 +23,8 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.review.Rating;
+import seedu.address.model.review.ReviewContent;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -213,5 +215,40 @@ public class ParserUtil {
             throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
         }
         return new Stocking(stockingInLocation);
+    }
+
+    /**
+     * Parses {@code String rating} into a {@code Rating}.
+     */
+    public static Rating parseRating(String rating) throws ParseException {
+        requireNonNull(rating);
+        String trimmedRating = rating.trim();
+        int ratingNumber;
+
+        if (!Rating.isValidRating(trimmedRating)) {
+            throw new ParseException(Author.MESSAGE_CONSTRAINTS);
+        }
+
+        try {
+            ratingNumber = Integer.parseInt(rating);
+        } catch (Exception exception) {
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+        }
+
+        return new Rating(ratingNumber);
+    }
+
+    /**
+     * Parses {@code String reviewContent} into a {@code ReviewContent}.
+     */
+    public static ReviewContent parseReviewContent(String reviewContent) throws ParseException {
+        requireNonNull(reviewContent);
+        String trimmedContent = reviewContent.trim();
+
+        if (!ReviewContent.isValidContent(trimmedContent)) {
+            throw new ParseException(ReviewContent.MESSAGE_CONSTRAINTS);
+        }
+
+        return new ReviewContent(trimmedContent);
     }
 }
