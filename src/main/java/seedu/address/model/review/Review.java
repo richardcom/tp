@@ -1,9 +1,5 @@
 package seedu.address.model.review;
 
-import seedu.address.model.book.Stocking;
-
-import java.util.HashMap;
-
 import static java.util.Objects.requireNonNull;
 
 public class Review {
@@ -12,9 +8,10 @@ public class Review {
     private final ReviewContent reviewContent;
 
     /**
-     * Constructs an {@code Address}.
+     * Constructs an {@code Review}.
      *
-     * @param content A valid rating.
+     * @param rating A valid rating.
+     * @param content The review content.
      */
     public Review(Rating rating, ReviewContent content) {
         requireNonNull(rating);

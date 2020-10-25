@@ -4,19 +4,18 @@ import static java.util.Objects.requireNonNull;
 
 public class ReviewNumber {
     public static final String MESSAGE_CONSTRAINTS = "review index needs to be an integer";
-
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The review number string should represent an integer with a length from 1 to 5 and
+     * there can be white space.
      */
     public static final String VALIDATION_REGEX = "\\s*(\\d{1,5})\\s*";
 
     public final Integer reviewNumber;
 
     /**
-     * Constructs an {@code Address}.
+     * Constructs an {@code ReviewNumber}.
      *
-     * @param reviewNumber A valid rating.
+     * @param reviewNumber A valid review number.
      */
     public ReviewNumber(Integer reviewNumber) {
         requireNonNull(reviewNumber);
@@ -25,7 +24,7 @@ public class ReviewNumber {
 
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid review number.
      */
     public static boolean isValidReviewNumber(String test) {
         return test.matches(VALIDATION_REGEX);

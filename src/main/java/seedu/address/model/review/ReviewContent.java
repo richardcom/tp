@@ -1,28 +1,19 @@
 package seedu.address.model.review;
 
-import seedu.address.model.book.Stocking;
-
-import java.util.HashMap;
-
 import static java.util.Objects.requireNonNull;
 
 public class ReviewContent {
     public static final String MESSAGE_CONSTRAINTS = "review cannot be empty";
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The review should not be empty
      */
-
     public static final String VALIDATION_REGEX = "^\\s*(\\S.*)\\s*$";
 
     public final String content;
 
-    //public final int stockingInCentralLibrary;
-    //public final int stockingInScienceLibrary;
-
     /**
-     * Constructs an {@code Address}.
+     * Constructs an {@code ReviewContent}.
      *
      * @param content A valid stocking.
      */
@@ -30,10 +21,8 @@ public class ReviewContent {
         requireNonNull(content);
         this.content = content;
     }
-
-
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is valid review content.
      */
     public static boolean isValidContent(String test) {
         return test.matches(VALIDATION_REGEX);

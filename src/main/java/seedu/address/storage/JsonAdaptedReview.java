@@ -2,13 +2,11 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.book.Stocking;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
 import seedu.address.model.review.ReviewContent;
-
-import java.util.HashMap;
 
 public class JsonAdaptedReview {
     private final int ratingNumber;
@@ -45,7 +43,7 @@ public class JsonAdaptedReview {
     public Review toModelType() throws IllegalValueException {
         if (!Rating.isValidRating(String.valueOf(this.ratingNumber))) {
             throw new IllegalValueException(Rating.MESSAGE_CONSTRAINTS);
-        } else if (!ReviewContent.isValidContent(reviewContent)){
+        } else if (!ReviewContent.isValidContent(reviewContent)) {
             throw new IllegalValueException(ReviewContent.MESSAGE_CONSTRAINTS);
         }
 

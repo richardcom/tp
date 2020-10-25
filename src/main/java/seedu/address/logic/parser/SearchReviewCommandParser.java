@@ -1,11 +1,10 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.SearchReviewCommand;
-import seedu.address.logic.commands.StockCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import java.util.Arrays;
 import java.util.List;
+
+import seedu.address.logic.commands.SearchReviewCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
     /**

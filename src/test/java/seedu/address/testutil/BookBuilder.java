@@ -115,6 +115,9 @@ public class BookBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code reviews} of the {@code Book} that we are building.
+     */
     public BookBuilder withReviews(Review ... reviews) {
         this.reviews = SampleDataUtil.getReviews(reviews);
         return this;
@@ -158,6 +161,6 @@ public class BookBuilder {
     }
 
     public Book build() {
-        return new Book(name, isbn, email, address, times, categories, stocking, author, publisher);
+        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
     }
 }

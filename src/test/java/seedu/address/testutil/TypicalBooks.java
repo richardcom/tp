@@ -19,7 +19,6 @@ import java.util.List;
 
 import seedu.address.model.Library;
 import seedu.address.model.book.Book;
-import seedu.address.model.review.Review;
 
 /**
  * A utility class containing a list of {@code Book} objects to be used in tests.

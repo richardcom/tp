@@ -1,5 +1,10 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+import java.util.function.Predicate;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -9,11 +14,9 @@ import seedu.address.model.book.NumberContainsKeywordPredicate;
 import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
-import java.util.List;
-import java.util.function.Predicate;
-
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Searches for the review of the corresponding book.
+ */
 public class SearchReviewCommand extends Command {
     public static final String COMMAND_WORD = "searchReview";
 

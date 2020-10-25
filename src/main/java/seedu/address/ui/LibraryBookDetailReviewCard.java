@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
@@ -10,10 +14,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
 import seedu.address.model.review.Review;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class LibraryBookDetailReviewCard extends UiPart<Region> {
     private static final String FXML = "LibraryBookDetailReviewCard.fxml";

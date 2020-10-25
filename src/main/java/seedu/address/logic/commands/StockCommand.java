@@ -13,6 +13,9 @@ import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.model.book.NumberContainsKeywordPredicate;
 import seedu.address.ui.Mode;
 
+/**
+ * Searches for the stocking of the corresponding book.
+ */
 public class StockCommand extends Command {
     public static final String COMMAND_WORD = "stock";
 
