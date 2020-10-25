@@ -9,8 +9,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
+import seedu.address.model.review.Review;
 
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LibraryBookDetailReviewCard extends UiPart<Region> {
     private static final String FXML = "LibraryBookDetailReviewCard.fxml";
@@ -56,12 +59,17 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText("author: " + book.getAuthor().author);
-        book.getReviews().forEach(review -> {
-                    BookReviewCard bookReviewCard = new BookReviewCard(review);
-                    Separator separator = new Separator(Orientation.HORIZONTAL);
-                    reviews.getChildren().add(separator);
-                    reviews.getChildren().add(bookReviewCard.getRoot());
-                });
+
+        List<Review> reviewList = book.getReviews().stream()
+                .sorted(Comparator.comparing(review -> review.getContent().content))
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < reviewList.size(); i = i + 1) {
+            BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);
+            Separator separator = new Separator(Orientation.HORIZONTAL);
+            reviews.getChildren().add(separator);
+            reviews.getChildren().add(bookReviewCard.getRoot());
+        }
 
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);

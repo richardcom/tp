@@ -2,31 +2,28 @@ package seedu.address.logic.parser;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddReviewCommand;
+import seedu.address.logic.commands.DeleteReviewCommand;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
 import seedu.address.model.review.ReviewContent;
-
-import java.util.Arrays;
-import java.util.List;
+import seedu.address.model.review.ReviewNumber;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 
-public class AddReviewCommandParser implements Parser<AddReviewCommand>{
+public class DeleteReviewCommandParser implements Parser<DeleteReviewCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the AddReviewCommand
-     * and returns a AddReviewCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the DeleteReviewCommand
+     * and returns a DeleteReviewCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     @Override
-    public AddReviewCommand parse(String args) throws ParseException {
+    public DeleteReviewCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_RATING, PREFIX_REVIEW);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REVIEWNUMBER);
 
         Index index;
 
@@ -36,10 +33,8 @@ public class AddReviewCommandParser implements Parser<AddReviewCommand>{
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        Rating rating = ParserUtil.parseRating(argMultimap.getValue(PREFIX_RATING).get());
-        ReviewContent reviewContent = ParserUtil.parseReviewContent(argMultimap.getValue(PREFIX_REVIEW).get());
-        Review review = new Review(rating, reviewContent);
+        ReviewNumber reviewNumber = ParserUtil.parseReviewNumber(argMultimap.getValue(PREFIX_REVIEWNUMBER).get());
 
-        return new AddReviewCommand(index, review);
+        return new DeleteReviewCommand(index, reviewNumber);
     }
 }

@@ -15,6 +15,7 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.review.Review;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -40,6 +41,7 @@ public class BookBuilder {
     private Author author;
     private Publisher publisher;
     private Stocking stocking;
+    private Set<Review> reviews;
 
     /**
      * Creates a {@code BookBuilder} with the default details.
@@ -54,6 +56,7 @@ public class BookBuilder {
         author = new Author(DEFAULT_AUTHOR);
         publisher = new Publisher(DEFAULT_PUBLISHER);
         stocking = new Stocking(DEFAULT_STOCKING);
+        reviews = new HashSet<>();
     }
 
     /**
@@ -69,6 +72,7 @@ public class BookBuilder {
         author = bookToCopy.getAuthor();
         publisher = bookToCopy.getPublisher();
         stocking = bookToCopy.getStocking();
+        reviews = bookToCopy.getReviews();
     }
 
     /**
@@ -108,6 +112,11 @@ public class BookBuilder {
      */
     public BookBuilder withEmail(String email) {
         this.email = new Email(email);
+        return this;
+    }
+
+    public BookBuilder withReviews(Review ... reviews) {
+        this.reviews = SampleDataUtil.getReviews(reviews);
         return this;
     }
 

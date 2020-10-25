@@ -77,4 +77,7 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
+    public static Set<Review> getReviews(Review ... reviews) {
+        return new HashSet<Review>(Arrays.asList(reviews));
+    }
 }

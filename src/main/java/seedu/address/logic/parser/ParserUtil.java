@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -25,6 +26,7 @@ import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.ReviewContent;
+import seedu.address.model.review.ReviewNumber;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -226,7 +228,7 @@ public class ParserUtil {
         int ratingNumber;
 
         if (!Rating.isValidRating(trimmedRating)) {
-            throw new ParseException(Author.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }
 
         try {
@@ -250,5 +252,26 @@ public class ParserUtil {
         }
 
         return new ReviewContent(trimmedContent);
+    }
+
+    /**
+     * Parses {@code String rating} into a {@code Rating}.
+     */
+    public static ReviewNumber parseReviewNumber(String reviewNumber) throws ParseException {
+        requireNonNull(reviewNumber);
+        String trimmedReviewNumber = reviewNumber.trim();
+        int result;
+
+        if (!ReviewNumber.isValidReviewNumber(trimmedReviewNumber)) {
+            throw new ParseException(ReviewNumber.MESSAGE_CONSTRAINTS);
+        }
+
+        try {
+            result = Integer.parseInt(reviewNumber);
+        } catch (Exception exception) {
+            throw new ParseException(ReviewNumber.MESSAGE_CONSTRAINTS);
+        }
+
+        return new ReviewNumber(result);
     }
 }

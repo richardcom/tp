@@ -22,11 +22,9 @@ public class BookReviewCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    /*
+
     @FXML
     private Label id;
-    */
-
     @FXML
     private Label rating;
     @FXML
@@ -35,9 +33,9 @@ public class BookReviewCard extends UiPart<Region> {
     /**
      * Creates a {@code BookCode} with the given {@code Book} and index to display.
      */
-    public BookReviewCard(Review review) {
+    public BookReviewCard(Review review, int displayedIndex) {
         super(FXML);
-
+        id.setText("(" + displayedIndex + ")");
         String ratingStar = review.getRating().ratingNumber + " star ";
         for (int i = 0; i < review.getRating().ratingNumber; i = i + 1) {
             ratingStar = ratingStar + "*";

@@ -78,6 +78,9 @@ public class LibraryParser {
         case AddReviewCommand.COMMAND_WORD:
             return new AddReviewCommandParser().parse(arguments);
 
+        case DeleteReviewCommand.COMMAND_WORD:
+            return new DeleteReviewCommandParser().parse(arguments);
+
         case TimesCommand.COMMAND_WORD:
             return new TimesCommandParser().parse(arguments);
 
