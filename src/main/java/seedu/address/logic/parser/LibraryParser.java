@@ -100,7 +100,7 @@ public class LibraryParser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
-            
+
         case AddProblemCommand.COMMAND_WORD:
             return new AddProblemCommandParser().parse(arguments);
 
