@@ -11,20 +11,23 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.model.book.NumberContainsKeywordPredicate;
+import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
 /**
- * Searches for the stocking of the corresponding book.
+ * Searches for the review of the corresponding book.
  */
-public class StockCommand extends Command {
-    public static final String COMMAND_WORD = "stock";
+public class SearchReviewCommand extends Command {
+    public static final String COMMAND_WORD = "searchReview";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Show the review for all the books with"
             + "the corresponding keyword and shows them as a list.\n"
             + "Parameters: KEYWORD\n"
             + "Example: " + COMMAND_WORD + " n/ a brief history of time";
 
     private Predicate<Book> predicate;
+
+    private Review review;
 
     /**
      * Creates a StockCommand to search for the stocking information in each location.
@@ -32,7 +35,7 @@ public class StockCommand extends Command {
      * @param names The list of names that are used as keyword.
      * @param numbers The list of numbers that are used as keyword.
      */
-    public StockCommand(List<String> names, List<String> numbers) {
+    public SearchReviewCommand(List<String> names, List<String> numbers) {
         //Predicate<Book> bookPredicate;
         NameContainsKeywordsPredicate nameContainsKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
@@ -55,7 +58,7 @@ public class StockCommand extends Command {
         requireNonNull(model);
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
-        model.updateFilteredBookList(predicate, Mode.DETAIL);
+        model.updateFilteredBookList(predicate, Mode.REVIEW);
         return new CommandResult(String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW,
                 model.getFilteredBookList().size()));
     }
@@ -63,7 +66,7 @@ public class StockCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return this == other
-                || (other instanceof StockCommand
-                    && this.predicate.equals(((StockCommand) other).predicate));
+                || (other instanceof SearchReviewCommand
+                && this.predicate.equals(((SearchReviewCommand) other).predicate));
     }
 }
