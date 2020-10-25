@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.Problem.Problem;
+import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.UniqueBookList;
 
@@ -15,6 +17,7 @@ import seedu.address.model.book.UniqueBookList;
 public class Library implements ReadOnlyLibrary {
 
     private final UniqueBookList books;
+    private ProblemList problems;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +28,7 @@ public class Library implements ReadOnlyLibrary {
      */
     {
         books = new UniqueBookList();
+        problems = new ProblemList();
     }
 
     public Library() {}
@@ -116,5 +120,13 @@ public class Library implements ReadOnlyLibrary {
     @Override
     public int hashCode() {
         return books.hashCode();
+    }
+
+    /**
+     * Adds a book to the library.
+     * The book must not already exist in the library.
+     */
+    public void addProblem(Problem problem) {
+        problems.add(problem);
     }
 }

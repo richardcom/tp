@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.Problem.Problem;
 import seedu.address.model.book.Book;
 import seedu.address.ui.Mode;
 
@@ -85,4 +86,6 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredBookList(Predicate<Book> predicate, Mode mode);
+
+	void addProblem(Problem toAdd);
 }

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.Problem.Problem;
 import seedu.address.model.book.Book;
 import seedu.address.ui.BookListPanel;
 import seedu.address.ui.Mode;
@@ -43,7 +44,8 @@ public class ModelManager implements Model {
         this(new Library(), new UserPrefs());
     }
 
-    //=========== UserPrefs ==================================================================================
+    // =========== UserPrefs
+    // ==================================================================================
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -78,7 +80,8 @@ public class ModelManager implements Model {
         userPrefs.setLibraryFilePath(libraryFilePath);
     }
 
-    //=========== Library ================================================================================
+    // =========== Library
+    // ================================================================================
 
     @Override
     public void setLibrary(ReadOnlyLibrary library) {
@@ -114,11 +117,12 @@ public class ModelManager implements Model {
         library.setBook(target, editedBook);
     }
 
-    //=========== Filtered Book List Accessors =============================================================
+    // =========== Filtered Book List Accessors
+    // =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Book} backed by the internal list of
-     * {@code versionedLibrary}
+     * Returns an unmodifiable view of the list of {@code Book} backed by the
+     * internal list of {@code versionedLibrary}
      */
     @Override
     public ObservableList<Book> getFilteredBookList() {
@@ -156,9 +160,13 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return library.equals(other.library)
-                && userPrefs.equals(other.userPrefs)
+        return library.equals(other.library) && userPrefs.equals(other.userPrefs)
                 && filteredBooks.equals(other.filteredBooks);
+    }
+
+    @Override
+    public void addProblem(Problem problem) {
+        library.addProblem(problem);
     }
 
 }

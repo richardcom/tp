@@ -20,6 +20,7 @@ import seedu.address.model.Library;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.Problem.Problem;
 import seedu.address.model.book.Book;
 import seedu.address.testutil.BookBuilder;
 import seedu.address.ui.Mode;
@@ -146,6 +147,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredBookList(Predicate<Book> predicate, Mode mode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addProblem(Problem problem) {
             throw new AssertionError("This method should not be called.");
         }
     }
