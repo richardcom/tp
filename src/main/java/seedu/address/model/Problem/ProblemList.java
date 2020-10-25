@@ -13,7 +13,6 @@ public class ProblemList {
     public ProblemList() {
         this.list = new ArrayList<>();
     }
- 
     /**
      * Adds a problem to the list.
      */
