@@ -6,7 +6,9 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Problem.Problem;
+import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
+import seedu.address.storage.StorageForProblem;
 import seedu.address.ui.Mode;
 
 /**
@@ -88,4 +90,8 @@ public interface Model {
     void updateFilteredBookList(Predicate<Book> predicate, Mode mode);
 
 	void addProblem(Problem toAdd);
+
+	ProblemList getProblemList();
+
+	StorageForProblem getProblemStorage();
 }

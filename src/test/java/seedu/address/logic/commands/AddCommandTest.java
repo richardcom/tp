@@ -21,7 +21,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.Problem.Problem;
+import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
+import seedu.address.storage.StorageForProblem;
 import seedu.address.testutil.BookBuilder;
 import seedu.address.ui.Mode;
 
@@ -153,6 +155,18 @@ public class AddCommandTest {
         @Override
         public void addProblem(Problem problem) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ProblemList getProblemList() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public StorageForProblem getProblemStorage() {
+            // TODO Auto-generated method stub
+            return null;
         }
     }
 

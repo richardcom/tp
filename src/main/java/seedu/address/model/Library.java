@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.IOException;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -9,26 +10,35 @@ import seedu.address.model.Problem.Problem;
 import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.UniqueBookList;
+import seedu.address.storage.StorageForProblem;
 
 /**
- * Wraps all data at the library level
- * Duplicates are not allowed (by .isSameBook comparison)
+ * Wraps all data at the library level Duplicates are not allowed (by
+ * .isSameBook comparison)
  */
 public class Library implements ReadOnlyLibrary {
 
     private final UniqueBookList books;
     private ProblemList problems;
+    StorageForProblem storageForProblem;
 
     /*
-     * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+     * The 'unusual' code block below is a non-static initialization block,
+     * sometimes used to avoid duplication between constructors. See
+     * https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+     * Note that non-static init blocks are not recommended to use. There are other
+     * ways to avoid duplication among constructors.
      */
     {
         books = new UniqueBookList();
         problems = new ProblemList();
+        try {
+            storageForProblem = new StorageForProblem("File.txt");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public Library() {}
@@ -128,5 +138,13 @@ public class Library implements ReadOnlyLibrary {
      */
     public void addProblem(Problem problem) {
         problems.add(problem);
+    }
+
+    public ProblemList getProblemList() {
+        return problems;
+    }
+
+    public StorageForProblem getProblemStorage() {
+        return storageForProblem;
     }
 }

@@ -2,11 +2,16 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SEVERITY;
+
+import java.io.IOException;
+
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.Problem.Problem;
+import seedu.address.model.Problem.ProblemList;
+import seedu.address.storage.StorageForProblem;
 
 /**
  * Adds a book to the address book.
@@ -15,10 +20,8 @@ public class AddProblemCommand extends Command {
 
     public static final String COMMAND_WORD = "report";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reports a problem. "
-            + "Parameters: "
-            + PREFIX_SEVERITY + "severity "
-            + PREFIX_DESCRIPTION + "description ";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reports a problem. " + "Parameters: " + PREFIX_SEVERITY
+            + "severity " + PREFIX_DESCRIPTION + "description ";
 
     public static final String MESSAGE_SUCCESS = "Problem reported: %1$s";
 
@@ -33,10 +36,13 @@ public class AddProblemCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) throws CommandException, IOException {
         requireNonNull(model);
 
         model.addProblem(toAdd);
+        ProblemList problemList = model.getProblemList();
+        //StorageForProblem storageForProblem = model.getProblemStorage();
+        StorageForProblem.writeData(problemList.getList());
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

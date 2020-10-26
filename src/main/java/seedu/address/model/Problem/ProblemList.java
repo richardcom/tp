@@ -20,4 +20,8 @@ public class ProblemList {
         requireNonNull(toAdd);
         list.add(toAdd);
     }
+
+    public ArrayList<Problem> getList() {
+        return list;
+    }
 }

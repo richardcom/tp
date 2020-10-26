@@ -12,7 +12,9 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.Problem.Problem;
+import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
+import seedu.address.storage.StorageForProblem;
 import seedu.address.ui.BookListPanel;
 import seedu.address.ui.Mode;
 
@@ -169,4 +171,13 @@ public class ModelManager implements Model {
         library.addProblem(problem);
     }
 
+    public ProblemList getProblemList() {
+        return library.getProblemList();
+    }
+
+    @Override
+    public StorageForProblem getProblemStorage() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
