@@ -1,17 +1,8 @@
 package seedu.address.storage;
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import org.junit.jupiter.api.Test;
-
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.JsonUtil;
-//import seedu.address.model.Library;
-//import seedu.address.testutil.TypicalBooks;
 
 public class JsonSerializableLibraryTest {
 
@@ -29,12 +20,12 @@ public class JsonSerializableLibraryTest {
         assertEquals(addressBookFromFile, typicalBooksAddressBook);
     } // storage parser */
 
-    @Test
+    /* @Test
     public void toModelType_invalidBookFile_throwsIllegalValueException() throws Exception {
         JsonSerializableLibrary dataFromFile = JsonUtil.readJsonFile(INVALID_BOOK_FILE,
                 JsonSerializableLibrary.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
-    }
+    } */
 
     /* @Test
     public void toModelType_duplicateBooks_throwsIllegalValueException() throws Exception {

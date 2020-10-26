@@ -20,10 +20,8 @@ import seedu.address.model.Library;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.problem.Problem;
-import seedu.address.model.problem.ProblemList;
 import seedu.address.model.book.Book;
-import seedu.address.storage.StorageForProblem;
+import seedu.address.model.problem.Problem;
 import seedu.address.testutil.BookBuilder;
 import seedu.address.ui.Mode;
 
@@ -152,22 +150,65 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        /**
+         * Returns true if a book with the same identity as {@code book} exists in the library.
+         *
+         * @param problem
+         */
+        @Override
+        public boolean hasProblem(Problem problem) {
+            return false;
+        }
+
+        /**
+         * Deletes the given book.
+         * The book must exist in the library.
+         *
+         * @param problem
+         */
+        @Override
+        public void deleteProblem(Problem problem) {
+
+        }
+
         @Override
         public void addProblem(Problem problem) {
             throw new AssertionError("This method should not be called.");
         }
 
+        /**
+         * Replaces the given book {@code target} with {@code editedBook}.
+         * {@code target} must exist in the library.
+         * The book identity of {@code editedBook} must not be the same as another existing book in the Llibrary.
+         *
+         * @param target
+         * @param problem
+         */
         @Override
-        public ProblemList getProblemList() {
-            // TODO Auto-generated method stub
+        public void setProblem(Problem target, Problem problem) {
+
+        }
+
+        /**
+         * Returns an unmodifiable view of the filtered book list
+         */
+        @Override
+        public ObservableList<Problem> getFilteredProblemList() {
             return null;
         }
 
+        /**
+         * Updates the filter of the filtered book list to filter by the given {@code predicate}.
+         *
+         * @param predicate
+         * @param mode
+         * @throws NullPointerException if {@code predicate} is null.
+         */
         @Override
-        public StorageForProblem getProblemStorage() {
-            // TODO Auto-generated method stub
-            return null;
+        public void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode) {
+
         }
+
     }
 
     /**
