@@ -11,10 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.Problem.Problem;
-import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
-import seedu.address.storage.StorageForProblem;
+import seedu.address.model.problem.Problem;
 import seedu.address.ui.BookListPanel;
 import seedu.address.ui.Mode;
 
@@ -141,6 +139,16 @@ public class ModelManager implements Model {
         filteredBooks.setPredicate(predicate);
     }
 
+    /**
+     * Updates the book list with the predicate.
+     *
+     * @param predicate The predicate that is used to update the list.
+     */
+    public void updateFilteredBookList(Predicate<Book> predicate) {
+        requireNonNull(predicate);
+        filteredBooks.setPredicate(predicate);
+    }
+
     @Override
     public boolean hasProblem(Problem problem) {
         requireNonNull(problem);
@@ -160,15 +168,10 @@ public class ModelManager implements Model {
 
     @Override
     public void setProblem(Problem target, Problem problem) {
-        //TODO later
-    }
+        requireAllNonNull(target, problem);
 
-//    @Override
-//    public void setProblem(Problem target, Problem problem) {
-//        requireAllNonNull(target, problem);
-//
-//        library.setProblem(target, problem);
-//    }
+        library.setProblem(target, problem);
+    }
 
     @Override
     public ObservableList<Problem> getFilteredProblemList() {
@@ -179,16 +182,6 @@ public class ModelManager implements Model {
     public void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode) {
         requireNonNull(predicate);
         filteredProblems.setPredicate(predicate);
-    }
-
-    /**
-     * Updates the book list with the predicate.
-     *
-     * @param predicate The predicate that is used to update the list.
-     */
-    public void updateFilteredBookList(Predicate<Book> predicate) {
-        requireNonNull(predicate);
-        filteredBooks.setPredicate(predicate);
     }
 
     @Override

@@ -1,11 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.Problem.DescriptionContainsKeywordsPredicate;
+import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
 
-import static java.util.Objects.requireNonNull;
 
 public class FindProblemReportCommand extends Command {
 

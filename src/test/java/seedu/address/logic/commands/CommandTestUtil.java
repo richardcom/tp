@@ -75,7 +75,7 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in
-                                                                                         // categories
+    // categories
     public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "central library: 20 science library:10";
     public static final String INVALID_TIMES_DESC = " " + PREFIX_TIMES + "03282";
     public static final String INVALID_AUTHOR_DESC = " " + PREFIX_AUTHOR + "james&&";
@@ -105,7 +105,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -120,7 +120,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -141,6 +141,7 @@ public class CommandTestUtil {
         assertEquals(expectedLibrary, actualModel.getLibrary());
         assertEquals(expectedFilteredList, actualModel.getFilteredBookList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the book at the given {@code targetIndex} in the
      * {@code model}'s library.

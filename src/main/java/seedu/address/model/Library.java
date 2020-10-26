@@ -2,16 +2,14 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.Problem.Problem;
-import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.UniqueBookList;
-import seedu.address.storage.StorageForProblem;
+import seedu.address.model.problem.Problem;
+import seedu.address.model.problem.ProblemList;
+
 
 /**
  * Wraps all data at the library level Duplicates are not allowed (by
@@ -33,15 +31,10 @@ public class Library implements ReadOnlyLibrary {
     {
         books = new UniqueBookList();
         problems = new ProblemList();
-//        try {
-//            storageForProblem = new StorageForProblem("File.txt");
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
     }
 
-    public Library() {}
+    public Library() {
+    }
 
     /**
      * Creates an Library using the Books in the {@code toBeCopied}
@@ -69,6 +62,16 @@ public class Library implements ReadOnlyLibrary {
         this.problems.setProblems(problems);
     }
 
+    /**
+     * Replaces the given book {@code target} in the list with {@code editedBook}.
+     * {@code target} must exist in the library.
+     * The book identity of {@code editedBook} must not be the same as another existing book in the library.
+     */
+    public void setProblem(Problem problem, Problem editedProblem) {
+        requireNonNull(editedProblem);
+
+        problems.setProblem(problem, editedProblem);
+    }
 
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
@@ -89,6 +92,9 @@ public class Library implements ReadOnlyLibrary {
         return books.contains(book);
     }
 
+    /**
+     * Returns true if a problem with the same identity as {@code problem} exists in the library.
+     */
     public boolean hasProblem(Problem problem) {
         requireNonNull(problem);
         return problems.contains(problem);
@@ -130,17 +136,6 @@ public class Library implements ReadOnlyLibrary {
     public void addProblem(Problem p) {
         problems.add(p);
     }
-
-    /**
-     * Replaces the given book {@code target} in the list with {@code editedBook}.
-     * {@code target} must exist in the library.
-     * The book identity of {@code editedBook} must not be the same as another existing book in the library.
-     */
-//    public void setProblems(Problem problem, Book editedBook) {
-//        requireNonNull(editedBook);
-//
-//        problem.set(target, editedBook);
-//    }
 
     /**
      * Removes {@code key} from this {@code Library}.

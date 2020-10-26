@@ -2,10 +2,11 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.Problem.Description;
-import seedu.address.model.Problem.Problem;
-import seedu.address.model.Problem.Severity;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Problem;
+import seedu.address.model.problem.Severity;
 
 public class JsonAdaptedProblem {
 
@@ -20,7 +21,8 @@ public class JsonAdaptedProblem {
      * Constructs a {@code JsonAdaptedBook} with the given book details.
      */
     @JsonCreator
-    public JsonAdaptedProblem(@JsonProperty("severity") String severity, @JsonProperty("description") String description) {
+    public JsonAdaptedProblem(@JsonProperty("severity") String severity,
+                              @JsonProperty("description") String description) {
         this.severity = severity;
         this.description = description;
     }

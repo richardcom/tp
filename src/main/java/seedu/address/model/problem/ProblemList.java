@@ -1,16 +1,16 @@
-package seedu.address.model.Problem;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.book.Book;
-import seedu.address.model.book.UniqueBookList;
-import seedu.address.model.book.exceptions.DuplicateBookException;
+package seedu.address.model.problem;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.book.exceptions.BookNotFoundException;
+import seedu.address.model.book.exceptions.DuplicateBookException;
+
 
 public class ProblemList implements Iterable<Problem> {
     private final ObservableList<Problem> list = FXCollections.observableArrayList();
@@ -23,6 +23,26 @@ public class ProblemList implements Iterable<Problem> {
     public boolean contains(Problem toCheck) {
         requireNonNull(toCheck);
         return list.stream().anyMatch(toCheck::isSameProblem);
+    }
+
+    /**
+     * Replaces the problem {@code target} in the list with {@code editedBook}.
+     * {@code target} must exist in the list.
+     * The book identity of {@code editedBook} must not be the same as another existing book in the list.
+     */
+    public void setProblem(Problem target, Problem editedProblem) {
+        requireAllNonNull(target, editedProblem);
+
+        int index = list.indexOf(target);
+        if (index == -1) {
+            throw new BookNotFoundException();
+        }
+
+        if (!target.isSameProblem(editedProblem) && contains(editedProblem)) {
+            throw new DuplicateBookException();
+        }
+
+        list.set(index, editedProblem);
     }
 
     /**

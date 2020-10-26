@@ -1,4 +1,4 @@
-package seedu.address.model.Problem;
+package seedu.address.model.problem;
 
 import static java.util.Objects.requireNonNull;
 
@@ -13,11 +13,11 @@ public class Description {
     /**
      * Constructs a {@code description}.
      *
-     * @param name A valid description.
+     * @param description A valid description.
      */
     public Description(String description) {
         requireNonNull(description);
-        this.description= description;
+        this.description = description;
     }
 
     /**

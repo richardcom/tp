@@ -5,17 +5,17 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.Problem.Problem;
-import seedu.address.model.Problem.ProblemList;
 import seedu.address.model.book.Book;
-import seedu.address.storage.StorageForProblem;
+import seedu.address.model.problem.Problem;
 import seedu.address.ui.Mode;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Book> PREDICATE_SHOW_ALL_BOOKS = unused -> true;
     Predicate<Problem> PREDICATE_SHOW_ALL_PROBLEMS = unused -> true;
 
@@ -54,7 +54,9 @@ public interface Model {
      */
     void setLibrary(ReadOnlyLibrary library);
 
-    /** Returns the Library */
+    /**
+     * Returns the Library
+     */
     ReadOnlyLibrary getLibrary();
 
     /**
@@ -81,16 +83,20 @@ public interface Model {
      */
     void setBook(Book target, Book editedBook);
 
-    /** Returns an unmodifiable view of the filtered book list */
+    /**
+     * Returns an unmodifiable view of the filtered book list
+     */
     ObservableList<Book> getFilteredBookList();
 
     /**
      * Updates the filter of the filtered book list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredBookList(Predicate<Book> predicate, Mode mode);
 
-	// problems
+    // problems
+
     /**
      * Returns true if a book with the same identity as {@code book} exists in the library.
      */
@@ -115,11 +121,14 @@ public interface Model {
      */
     void setProblem(Problem target, Problem problem);
 
-    /** Returns an unmodifiable view of the filtered book list */
+    /**
+     * Returns an unmodifiable view of the filtered book list
+     */
     ObservableList<Problem> getFilteredProblemList();
 
     /**
      * Updates the filter of the filtered book list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode);
