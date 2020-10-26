@@ -48,6 +48,9 @@ public class LibraryParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
+        case DeleteProblemCommand.COMMAND_WORD:
+            return new DeleteProblemCommandParser().parse(arguments);
+
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
