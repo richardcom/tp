@@ -54,7 +54,7 @@ public class TimesCommand extends Command {
         Book bookToEdit = lastShownList.get(index.getZeroBased());
         Book editedBook = new Book(bookToEdit.getName(), bookToEdit.getIsbn(), bookToEdit.getEmail(),
                 bookToEdit.getAddress(), times, bookToEdit.getCategories(), bookToEdit.getStocking(),
-                bookToEdit.getAuthor(), bookToEdit.getPublisher());
+                bookToEdit.getReviews(), bookToEdit.getAuthor(), bookToEdit.getPublisher());
 
         model.setBook(bookToEdit, editedBook);
         model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
