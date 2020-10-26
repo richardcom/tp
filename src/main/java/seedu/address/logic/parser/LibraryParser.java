@@ -60,6 +60,9 @@ public class LibraryParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
+        case FindProblemReportCommand.COMMAND_WORD:
+            return new FindProblemReportCommandParser().parse(arguments);
+
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
 
