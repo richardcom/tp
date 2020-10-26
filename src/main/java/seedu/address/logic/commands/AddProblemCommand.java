@@ -22,7 +22,7 @@ public class AddProblemCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reports a problem. " + "Parameters: " + PREFIX_SEVERITY
             + "severity " + PREFIX_DESCRIPTION + "description ";
-
+    public static final String MESSAGE_DUPLICATE_Prob = "This problem already exists";
     public static final String MESSAGE_SUCCESS = "Problem reported: %1$s";
 
     private final Problem toAdd;
@@ -39,13 +39,19 @@ public class AddProblemCommand extends Command {
     public CommandResult execute(Model model) throws CommandException, IOException {
         requireNonNull(model);
 
+        if (model.hasProblem(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_Prob);
+        }
+
+        model.addProblem(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         //model.addProblem(toAdd);
-        ProblemList.setList(StorageForProblem.load());
-        ProblemList.add(toAdd);
+        // ProblemList.setList(StorageForProblem.load());
+        // ProblemList.add(toAdd);
         //ProblemList problemList = model.getProblemList();
         //StorageForProblem storageForProblem = model.getProblemStorage();
-        StorageForProblem.writeData(ProblemList.getList());
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        // StorageForProblem.writeData(ProblemList.getList());
+        // return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
     @Override
