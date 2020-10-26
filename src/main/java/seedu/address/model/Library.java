@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -20,7 +21,6 @@ public class Library implements ReadOnlyLibrary {
 
     private final UniqueBookList books;
     private ProblemList problems;
-    StorageForProblem storageForProblem;
 
     /*
      * The 'unusual' code block below is a non-static initialization block,
@@ -33,12 +33,12 @@ public class Library implements ReadOnlyLibrary {
     {
         books = new UniqueBookList();
         problems = new ProblemList();
-        try {
-            storageForProblem = new StorageForProblem("File.txt");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        try {
+//            storageForProblem = new StorageForProblem("File.txt");
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
     }
 
     public Library() {}
@@ -62,11 +62,20 @@ public class Library implements ReadOnlyLibrary {
     }
 
     /**
+     * Replaces the contents of the problem list with {@code books}.
+     * {@code books} must not contain duplicate books.
+     */
+    public void setProblems(List<Problem> problems) {
+        this.problems.setProblems(problems);
+    }
+
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyLibrary newData) {
         requireNonNull(newData);
-
+        setProblems(newData.getProblemList());
         setBooks(newData.getBookList());
     }
 
@@ -78,6 +87,11 @@ public class Library implements ReadOnlyLibrary {
     public boolean hasBook(Book book) {
         requireNonNull(book);
         return books.contains(book);
+    }
+
+    public boolean hasProblem(Problem problem) {
+        requireNonNull(problem);
+        return problems.contains(problem);
     }
 
     /**
@@ -107,6 +121,35 @@ public class Library implements ReadOnlyLibrary {
         books.remove(key);
     }
 
+    //// book-level operations
+
+    /**
+     * Adds a book to the library.
+     * The book must not already exist in the library.
+     */
+    public void addProblem(Problem p) {
+        problems.add(p);
+    }
+
+    /**
+     * Replaces the given book {@code target} in the list with {@code editedBook}.
+     * {@code target} must exist in the library.
+     * The book identity of {@code editedBook} must not be the same as another existing book in the library.
+     */
+//    public void setProblems(Problem problem, Book editedBook) {
+//        requireNonNull(editedBook);
+//
+//        problem.set(target, editedBook);
+//    }
+
+    /**
+     * Removes {@code key} from this {@code Library}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeProblem(Problem key) {
+        problems.delete(key);
+    }
+
     //// util methods
 
     @Override
@@ -121,6 +164,11 @@ public class Library implements ReadOnlyLibrary {
     }
 
     @Override
+    public ObservableList<Problem> getProblemList() {
+        return problems.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Library // instanceof handles nulls
@@ -132,19 +180,4 @@ public class Library implements ReadOnlyLibrary {
         return books.hashCode();
     }
 
-    /**
-     * Adds a book to the library.
-     * The book must not already exist in the library.
-     */
-    public void addProblem(Problem problem) {
-        problems.add(problem);
-    }
-
-    public ProblemList getProblemList() {
-        return problems;
-    }
-
-    public StorageForProblem getProblemStorage() {
-        return storageForProblem;
-    }
 }

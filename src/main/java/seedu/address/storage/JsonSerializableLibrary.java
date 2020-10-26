@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Library;
+import seedu.address.model.Problem.Problem;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Book;
 
@@ -22,13 +23,16 @@ class JsonSerializableLibrary {
     public static final String MESSAGE_DUPLICATE_BOOK = "Books list contains duplicate book(s).";
 
     private final List<JsonAdaptedBook> books = new ArrayList<>();
+    private final List<JsonAdaptedProblem> problems = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableLibrary} with the given books.
      */
     @JsonCreator
-    public JsonSerializableLibrary(@JsonProperty("books") List<JsonAdaptedBook> books) {
+    public JsonSerializableLibrary(@JsonProperty("books") List<JsonAdaptedBook> books,
+                                   @JsonProperty("problems") List<JsonAdaptedProblem> problems) {
         this.books.addAll(books);
+        this.problems.addAll(problems);
     }
 
     /**
@@ -38,6 +42,7 @@ class JsonSerializableLibrary {
      */
     public JsonSerializableLibrary(ReadOnlyLibrary source) {
         books.addAll(source.getBookList().stream().map(JsonAdaptedBook::new).collect(Collectors.toList()));
+        problems.addAll(source.getProblemList().stream().map(JsonAdaptedProblem::new).collect(Collectors.toList()));
     }
 
     /**
@@ -53,6 +58,14 @@ class JsonSerializableLibrary {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_BOOK);
             }
             library.addBook(book);
+        }
+
+        for (JsonAdaptedProblem jsonAdaptedProblem : problems) {
+            Problem problem = jsonAdaptedProblem.toModelType();
+            if (library.hasProblem(problem)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_BOOK);
+            }
+            library.addProblem(problem);
         }
         return library;
     }

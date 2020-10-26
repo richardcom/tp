@@ -27,6 +27,8 @@ public class ModelManager implements Model {
     private final Library library;
     private final UserPrefs userPrefs;
     private final FilteredList<Book> filteredBooks;
+    private final FilteredList<Problem> filteredProblems;
+
 
     /**
      * Initializes a ModelManager with the given library and userPrefs.
@@ -40,6 +42,7 @@ public class ModelManager implements Model {
         this.library = new Library(library);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredBooks = new FilteredList<>(this.library.getBookList());
+        filteredProblems = new FilteredList<>(this.library.getProblemList());
     }
 
     public ModelManager() {
@@ -138,6 +141,46 @@ public class ModelManager implements Model {
         filteredBooks.setPredicate(predicate);
     }
 
+    @Override
+    public boolean hasProblem(Problem problem) {
+        requireNonNull(problem);
+        return library.hasProblem(problem);
+    }
+
+    @Override
+    public void deleteProblem(Problem problem) {
+        library.removeProblem(problem);
+    }
+
+    @Override
+    public void addProblem(Problem problem) {
+        library.addProblem(problem);
+        updateFilteredProblemList(PREDICATE_SHOW_ALL_PROBLEMS, Mode.NORMAL);
+    }
+
+    @Override
+    public void setProblem(Problem target, Problem problem) {
+        //TODO later
+    }
+
+//    @Override
+//    public void setProblem(Problem target, Problem problem) {
+//        requireAllNonNull(target, problem);
+//
+//        library.setProblem(target, problem);
+//    }
+
+    @Override
+    public ObservableList<Problem> getFilteredProblemList() {
+        return filteredProblems;
+    }
+
+    @Override
+    public void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode) {
+        requireNonNull(predicate);
+        filteredProblems.setPredicate(predicate);
+    }
+
     /**
      * Updates the book list with the predicate.
      *
@@ -164,20 +207,5 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return library.equals(other.library) && userPrefs.equals(other.userPrefs)
                 && filteredBooks.equals(other.filteredBooks);
-    }
-
-    @Override
-    public void addProblem(Problem problem) {
-        library.addProblem(problem);
-    }
-
-    public ProblemList getProblemList() {
-        return library.getProblemList();
-    }
-
-    @Override
-    public StorageForProblem getProblemStorage() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }
