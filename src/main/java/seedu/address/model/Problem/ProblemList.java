@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 
 public class ProblemList {
-    private ArrayList<Problem> list;
+    private static ArrayList<Problem> list;
 
     /**
      * Creates a new ProblemList.
@@ -13,15 +13,20 @@ public class ProblemList {
     public ProblemList() {
         this.list = new ArrayList<>();
     }
+
     /**
      * Adds a problem to the list.
      */
-    public void add(Problem toAdd) {
+    public static void add(Problem toAdd) {
         requireNonNull(toAdd);
         list.add(toAdd);
     }
 
-    public ArrayList<Problem> getList() {
+    public static ArrayList<Problem> getList() {
         return list;
+    }
+
+    public static void setList(ArrayList<Problem> newlist) {
+        list = newlist;
     }
 }

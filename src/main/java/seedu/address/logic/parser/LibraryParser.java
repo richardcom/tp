@@ -24,6 +24,7 @@ import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.TimesCommand;
 import seedu.address.logic.commands.UsageByCommand;
 import seedu.address.logic.commands.UsageCommand;
+import seedu.address.logic.commands.ViewProblemCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -103,6 +104,9 @@ public class LibraryParser {
 
         case AddProblemCommand.COMMAND_WORD:
             return new AddProblemCommandParser().parse(arguments);
+
+        case ViewProblemCommand.COMMAND_WORD:
+            return new ViewProblemCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

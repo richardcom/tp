@@ -29,8 +29,8 @@ public class StorageForProblem {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public static List<Problem> load(File f) throws FileNotFoundException {
-        List<Problem> temp = new ArrayList<>();
+    public static ArrayList<Problem> load() throws FileNotFoundException {
+        ArrayList<Problem> temp = new ArrayList<>();
         Scanner scFile = new Scanner(f);
         while (scFile.hasNextLine()) {
             String data = scFile.nextLine();

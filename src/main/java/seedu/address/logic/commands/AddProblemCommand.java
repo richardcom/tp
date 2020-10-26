@@ -39,10 +39,12 @@ public class AddProblemCommand extends Command {
     public CommandResult execute(Model model) throws CommandException, IOException {
         requireNonNull(model);
 
-        model.addProblem(toAdd);
-        ProblemList problemList = model.getProblemList();
+        //model.addProblem(toAdd);
+        ProblemList.setList(StorageForProblem.load());
+        ProblemList.add(toAdd);
+        //ProblemList problemList = model.getProblemList();
         //StorageForProblem storageForProblem = model.getProblemStorage();
-        StorageForProblem.writeData(problemList.getList());
+        StorageForProblem.writeData(ProblemList.getList());
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
