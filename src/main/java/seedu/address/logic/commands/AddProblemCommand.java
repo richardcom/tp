@@ -48,8 +48,8 @@ public class AddProblemCommand extends Command {
         //model.addProblem(toAdd);
         // ProblemList.setList(StorageForProblem.load());
         // ProblemList.add(toAdd);
-        //ProblemList problemList = model.getProblemList();
-        //StorageForProblem storageForProblem = model.getProblemStorage();
+        // ProblemList problemList = model.getProblemList();
+        // StorageForProblem storageForProblem = model.getProblemStorage();
         // StorageForProblem.writeData(ProblemList.getList());
         // return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
