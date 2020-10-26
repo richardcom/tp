@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.Problem.Problem;
+import seedu.address.model.problem.Problem;
 import seedu.address.storage.StorageForProblem;
 
 public class ViewProblemCommand extends Command {
@@ -23,12 +23,12 @@ public class ViewProblemCommand extends Command {
         requireNonNull(model);
 
         ArrayList<Problem> list = StorageForProblem.load();
-        String problem_string = "";
+        StringBuilder problemString = new StringBuilder();
         for (Problem problem: list) {
-            problem_string += problem.toString();
-            problem_string += "\n";
+            problemString.append(problem.toString());
+            problemString.append("\n");
         }
-        //System.out.println(list_of_problems);
-        return new CommandResult(problem_string);
+
+        return new CommandResult(problemString.toString());
     }
 }

@@ -8,13 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import seedu.address.model.Problem.Description;
-import seedu.address.model.Problem.Problem;
-import seedu.address.model.Problem.Severity;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Problem;
+import seedu.address.model.problem.Severity;
 
 public class StorageForProblem {
-    public static String filePath;
-    public static File f;
+    private static String filePath;
+    private static File f;
+
+    /**
+     * Constructs a storage for problems.
+     * @param filePath
+     * @throws IOException
+     */
     public StorageForProblem(String filePath) throws IOException {
         this.filePath = filePath;
         this.f = new File(filePath);
@@ -24,7 +30,6 @@ public class StorageForProblem {
     /**
      * Loads the information written on File.txt.
      *
-     * @param f File.txt.
      * @return A list of problems loaded from the file.
      * @throws FileNotFoundException
      * @throws IOException
@@ -76,9 +81,6 @@ public class StorageForProblem {
      * @throws IOException
      */
     public static void writeData(List<Problem> list) throws IOException {
-        //f.deleteOnExit(); // delete the old file
-        //File file = new File(filePath);
-        //file.createNewFile();
         FileWriter fw = new FileWriter(filePath);
         for (Problem problem: list) {
             String temp = unparse(problem); // convert Task into String

@@ -1,11 +1,14 @@
-package seedu.address.model.Problem;
-
-import seedu.address.model.book.Book;
+package seedu.address.model.problem;
 
 public class Problem {
     private final Severity severity;
     private final Description description;
 
+    /**
+     * Creates a problem object.
+     * @param severity serverity of object.
+     * @param description description of object.
+     */
     public Problem(Severity severity, Description description) {
         this.severity = severity;
         this.description = description;
