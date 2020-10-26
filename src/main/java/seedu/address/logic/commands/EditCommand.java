@@ -31,6 +31,7 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
 /**
@@ -106,6 +107,7 @@ public class EditCommand extends Command {
         Isbn updatedIsbn = editBookDescriptor.getIsbn().orElse(bookToEdit.getIsbn());
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
         Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
+        Set<Review> bookReviews = bookToEdit.getReviews();
         Times updatedTimes = bookToEdit.getTimes();
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
@@ -113,7 +115,8 @@ public class EditCommand extends Command {
         Stocking updatedStocking = editBookDescriptor.getStocking().orElse(bookToEdit.getStocking());
 
         return new Book(updatedName, updatedIsbn, updatedEmail,
-                updatedAddress, updatedTimes, updatedCategories, updatedStocking, updatedAuthor, updatedPublisher);
+                updatedAddress, updatedTimes, updatedCategories, updatedStocking, bookReviews,
+                updatedAuthor, updatedPublisher);
 
     }
 

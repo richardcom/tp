@@ -51,6 +51,8 @@ public class BookListPanel extends UiPart<Region> {
                 if (mode.equals(Mode.NORMAL)) {
                     //setGraphic(new BookCard(book, getIndex() + 1).getRoot());
                     setGraphic(new BookCardWithCover(book, getIndex() + 1).getRoot());
+                } else if (mode.equals(Mode.REVIEW)) {
+                    setGraphic(new LibraryBookDetailReviewCard(book, getIndex() + 1).getRoot());
                 } else {
                     setGraphic(new LibraryBookDetailCard(book, getIndex() + 1).getRoot());
                 }

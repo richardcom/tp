@@ -1,23 +1,24 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
-import java.util.logging.Logger;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.book.Book;
+import seedu.address.model.review.Review;
 
-/**
- * An UI component that displays information of a {@code Book} with book cover.
- */
-public class BookCardWithCover extends UiPart<Region> {
-    private static final String FXML = "BookListCardWithCover.fxml";
+public class LibraryBookDetailReviewCard extends UiPart<Region> {
+    private static final String FXML = "LibraryBookDetailReviewCard.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -28,8 +29,6 @@ public class BookCardWithCover extends UiPart<Region> {
 
     public final Book book;
 
-    private final Logger logger = LogsCenter.getLogger(getClass());
-
     @FXML
     private HBox cardPane;
     @FXML
@@ -39,41 +38,39 @@ public class BookCardWithCover extends UiPart<Region> {
     @FXML
     private Label isbn;
     @FXML
-    private Label address;
-    @FXML
-    private Label email;
-    @FXML
-    private Label times;
+    private Label author;
     @FXML
     private FlowPane categories;
     @FXML
-    private Label author;
-    @FXML
-    private Label publisher;
+    private FlowPane reviews;
     @FXML
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCardWithCover} with the given {@code Book} and index to display.
-     *
-     * @param book The corresponding book.
-     * @param displayedIndex The number corresponding to the order of the book.
+     * Creates a {@code BookCode} with the given {@code Book} and index to display.
      */
-    public BookCardWithCover(Book book, int displayedIndex) {
+    public LibraryBookDetailReviewCard(Book book, int displayedIndex) {
         super(FXML);
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
         isbn.setText("isbn: " + book.getIsbn().value);
-        address.setText(book.getAddress().value);
-        email.setText("contact: " + book.getEmail().value);
-        times.setText("Number of time: " + book.getTimes().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText("author: " + book.getAuthor().author);
-        publisher.setText("publisher: " + book.getPublisher().publisher);
-        logger.info("Get the book cover");
+
+        List<Review> reviewList = book.getReviews().stream()
+                .sorted(Comparator.comparing(review -> review.getContent().content))
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < reviewList.size(); i = i + 1) {
+            BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);
+            Separator separator = new Separator(Orientation.HORIZONTAL);
+            reviews.getChildren().add(separator);
+            reviews.getChildren().add(bookReviewCard.getRoot());
+        }
+
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }
@@ -86,12 +83,12 @@ public class BookCardWithCover extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof BookCardWithCover)) {
+        if (!(other instanceof LibraryBookDetailReviewCard)) {
             return false;
         }
 
         // state check
-        BookCardWithCover card = (BookCardWithCover) other;
+        LibraryBookDetailReviewCard card = (LibraryBookDetailReviewCard) other;
         return id.getText().equals(card.id.getText())
                 && book.equals(card.book);
     }

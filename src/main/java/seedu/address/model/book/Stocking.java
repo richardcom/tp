@@ -10,28 +10,22 @@ public class Stocking {
 
     public static final String[] LOCATION = new String[]{"central library", "science library"};
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The stocking string should map from the location to
+     * the number of book in the location.
      */
     public static final String VALIDATION_REGEX =
             "^\\s*(central library)?\\s+(\\d{1,5})?\\s+(science library)?\\s+(\\d{1,5})?\\s*$";
 
     public final HashMap<String, Integer> storage = new HashMap<>();
 
-    //public final int stockingInCentralLibrary;
-    //public final int stockingInScienceLibrary;
-
     /**
-     * Constructs an {@code Address}.
+     * Constructs an {@code Stocking}.
      *
      * @param stocking A valid stocking.
      */
     public Stocking(HashMap<String, Integer> stocking) {
         requireNonNull(stocking);
-        //checkArgument(isValidAddress(stocking), MESSAGE_CONSTRAINTS);
-        //value = address;
-        //this.stockingInCentralLibrary = stocking[0];
-        //this.stockingInScienceLibrary = stocking[1];
+
         for (int i = 0; i < LOCATION.length; i = i + 1) {
             this.storage.put(LOCATION[i], 0);
         }
@@ -41,7 +35,7 @@ public class Stocking {
 
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid stocking.
      */
     public static boolean isValidStocking(String test) {
         return test.matches(VALIDATION_REGEX);
