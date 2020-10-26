@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Problem.Description;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Email;
@@ -23,6 +24,7 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.Problem.*;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.ReviewContent;
 import seedu.address.model.review.ReviewNumber;
@@ -218,6 +220,23 @@ public class ParserUtil {
         return new Stocking(stockingInLocation);
     }
 
+	public static Severity parseSeverity(String severity) throws ParseException {
+		requireNonNull(severity);
+        String trimmedSeverity = severity.trim();
+        if (!Severity.isValidSeverity(trimmedSeverity)) {
+            throw new ParseException(Severity.MESSAGE_CONSTRAINTS);
+        }
+        return new Severity(trimmedSeverity);
+	}
+
+	public static Description parseDescription(String description) throws ParseException {
+		requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(trimmedDescription)){
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+	}
     /**
      * Parses {@code String rating} into a {@code Rating}.
      */

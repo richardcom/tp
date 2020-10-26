@@ -13,6 +13,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,13 +74,12 @@ public class CommandTestUtil {
     public static final String INVALID_ISBN_DESC = " " + PREFIX_ISBN + "911a"; // 'a' not allowed in isbns
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_CATEGORY_DESC =
-            " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in categories
+    public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in
+                                                                                         // categories
     public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "central library: 20 science library:10";
     public static final String INVALID_TIMES_DESC = " " + PREFIX_TIMES + "03282";
     public static final String INVALID_AUTHOR_DESC = " " + PREFIX_AUTHOR + "james&&";
     public static final String INVALID_PUBLISHER_DESC = " " + PREFIX_PUBLISHER + "david&&";
-
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -88,20 +88,20 @@ public class CommandTestUtil {
     public static final EditCommand.EditBookDescriptor DESC_BOB;
 
     static {
-        DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withIsbn(VALID_ISBN_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withCategories(VALID_CATEGORY_FRIEND).withTimes(VALID_TIMES_AMY).withStockings(VALID_STOCKING_AMY)
-                .withAuthor(VALID_AUTHOR_AMY).withPublisher(VALID_PUBLISHER_AMY)
-                .build();
-        DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withStockings(VALID_STOCKING_BOB).withTimes(VALID_TIMES_BOB).withPublisher(VALID_PUBLISHER_BOB)
+        DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
+                .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND)
+                .withTimes(VALID_TIMES_AMY).withStockings(VALID_STOCKING_AMY).withAuthor(VALID_AUTHOR_AMY)
+                .withPublisher(VALID_PUBLISHER_AMY).build();
+        DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
+                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withStockings(VALID_STOCKING_BOB)
+                .withTimes(VALID_TIMES_BOB).withPublisher(VALID_PUBLISHER_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }
 
     /**
      * Executes the given {@code command}, confirms that <br>
-     * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
+     * - the returned {@link CommandResult} matches {@code expectedCommandResult}
+     * <br>
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
@@ -110,7 +110,7 @@ public class CommandTestUtil {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
-        } catch (CommandException ce) {
+        } catch (CommandException | IOException ce) {
             throw new AssertionError("Execution of command should not fail.", ce);
         }
     }

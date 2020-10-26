@@ -98,14 +98,16 @@ public class LogicManagerTest {
     }
 
     /**
-     * Executes the command and confirms that
-     * - no exceptions are thrown <br>
+     * Executes the command and confirms that - no exceptions are thrown <br>
      * - the feedback message is equal to {@code expectedMessage} <br>
-     * - the internal model manager state is the same as that in {@code expectedModel} <br>
+     * - the internal model manager state is the same as that in
+     * {@code expectedModel} <br>
+     * 
+     * @throws IOException
      * @see #assertCommandFailure(String, Class, String, Model)
      */
-    private void assertCommandSuccess(String inputCommand, String expectedMessage,
-            Model expectedModel) throws CommandException, ParseException {
+    private void assertCommandSuccess(String inputCommand, String expectedMessage, Model expectedModel)
+            throws CommandException, ParseException, IOException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);

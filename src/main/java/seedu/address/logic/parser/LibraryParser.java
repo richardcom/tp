@@ -93,6 +93,12 @@ public class LibraryParser {
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
 
+        case AddProblemCommand.COMMAND_WORD:
+            return new AddProblemCommandParser().parse(arguments);
+
+        case ViewProblemCommand.COMMAND_WORD:
+            return new ViewProblemCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
