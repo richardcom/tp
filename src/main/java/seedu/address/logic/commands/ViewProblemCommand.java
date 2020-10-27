@@ -21,7 +21,7 @@ public class ViewProblemCommand extends Command {
         model.updateFilteredProblemList((problem -> false), Mode.NORMAL);
         model.updateFilteredProblemList(PREDICATE_SHOW_ALL_PROBLEMS, Mode.NORMAL);
         //String problems_string = model.getFilteredProblemList().toString();
-        String problems_string = model.getProblemString();
-        return new CommandResult(problems_string);
+        String problemString = model.getProblemString();
+        return new CommandResult(problemString);
     }
 }

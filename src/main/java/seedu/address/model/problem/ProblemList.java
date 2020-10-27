@@ -89,7 +89,7 @@ public class ProblemList implements Iterable<Problem> {
 
     @Override
     public String toString() {
-        int i = 0;// i is to count the number of problems
+        int i = 0; // i is to count the number of problems
         String noProblem = "There is currently no problem.";
         String res = "";
         for (Problem problem: list) {
