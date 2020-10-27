@@ -54,11 +54,11 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
-        isbn.setText("isbn: " + book.getIsbn().value);
+        isbn.setText("ISBN " + book.getIsbn().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        author.setText("author: " + book.getAuthor().author);
+        author.setText("Author " + book.getAuthor().author);
 
         List<Review> reviewList = book.getReviews().stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))
