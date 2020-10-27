@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.StockCommand;
