@@ -179,6 +179,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public String getProblemString() {
+        return library.getProblemString();
+    }
+
+    @Override
     public void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode) {
         requireNonNull(predicate);
         filteredProblems.setPredicate(predicate);

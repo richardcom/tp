@@ -132,4 +132,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode);
+
+    /**
+     * @return a string that represents the problems.
+     */
+    String getProblemString();
 }
