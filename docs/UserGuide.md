@@ -59,16 +59,15 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 </div>
 
-### Adding a book `[coming soon]` : `addBook`
+### Adding a book: `addBook`
 
 Checks the list of locations of where a certain book is stored.
 
-Format: `addBook /name:NAME /author:AUTHOR /publisher:PUBLISHER /ISBN:ISBN  /cat:CATEGORY /loc:LOCATION STORAGE`
+Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
 
 Examples:
-* `addBook /name: Numerical linear algebra [electronic resource] : an introduction /author: Holger Wendland /publisher: Cambridge University Press /ISBN: 9781316544938 /cat: Math /loc: Central Library /storage: 5`
-* `addBook /name: Artificial Intelligence, A mordern approach /author: Stuart Russell /publisher: PEARSON /ISBN: 978-0-13-461099-3 /cat: Computer Science /loc: Central Library /storage: 6`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
 
 
 ### Deleting a book `[coming soon]`: `deleteBookByIsbn, deleteBookByTimes, deleteBookByName`
@@ -189,6 +188,26 @@ Format: `purge`
 
 Examples:
 * `purge`
+
+### Report problems: `report`
+
+Report a problem found in library.
+
+Format: `report severity/SEVERITY problem/PROBLEM`
+
+Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case insensitive.
+
+Examples:
+* `report severity/high problem/book is broken`
+
+### View problems: `view`
+
+View all reported problems.
+
+Format: `view`
+
+Examples:
+* `view`
 
 --------------------------------------------------------------------------------------------------------------------
 
