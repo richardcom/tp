@@ -11,6 +11,7 @@ import java.util.Set;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
@@ -31,6 +32,15 @@ import seedu.address.ui.Mode;
  */
 public class AddReviewCommand extends Command {
     public static final String COMMAND_WORD = "addReview";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the review to the book at"
+            + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
+            + "Parameters: "
+            + "INDEX "
+            + "[" + CliSyntax.PREFIX_RATING + "RATING] "
+            + "[" + CliSyntax.PREFIX_REVIEW + "REVIEW CONTENT]\n"
+            + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_RATING + "5" + " " + CliSyntax.PREFIX_REVIEW
+            + "The book is interesting";
 
     public static final String MESSAGE_ADD_REVIEW_SUCCESS = "The review has been added to the book %1$s";
 

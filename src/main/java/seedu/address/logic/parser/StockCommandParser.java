@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -23,6 +24,12 @@ public class StockCommandParser implements Parser<StockCommand> {
                 CliSyntax.PREFIX_NAME,
                 CliSyntax.PREFIX_ISBN
         );
+        if (!isPrefixPresent(argumentMultimap, CliSyntax.PREFIX_NAME)
+                && !isPrefixPresent(argumentMultimap, CliSyntax.PREFIX_ISBN)
+                && !userInput.strip().equals("")) {
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    StockCommand.MESSAGE_USAGE));
+        }
 
         List<String> names = null;
         List<String> numbers = null;
@@ -34,5 +41,13 @@ public class StockCommandParser implements Parser<StockCommand> {
             numbers = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().split("\\s+"));
         }
         return new StockCommand(names, numbers);
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
+        return argumentMultimap.getValue(prefix).isPresent();
     }
 }
