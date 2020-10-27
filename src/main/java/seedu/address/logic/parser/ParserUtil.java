@@ -23,9 +23,12 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Severity;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.ReviewContent;
 import seedu.address.model.review.ReviewNumber;
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -37,6 +40,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -216,6 +220,30 @@ public class ParserUtil {
             throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
         }
         return new Stocking(stockingInLocation);
+    }
+
+    /**
+     * Parses {@code String severity} into a {@code Severity}.
+     */
+    public static Severity parseSeverity(String severity) throws ParseException {
+        requireNonNull(severity);
+        String trimmedSeverity = severity.trim();
+        if (!Severity.isValidSeverity(trimmedSeverity)) {
+            throw new ParseException(Severity.MESSAGE_CONSTRAINTS);
+        }
+        return new Severity(trimmedSeverity);
+    }
+
+    /**
+     * Parses {@code String description} into a {@code Description}.
+     */
+    public static Description parseDescription(String description) throws ParseException {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(trimmedDescription)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
     }
 
     /**

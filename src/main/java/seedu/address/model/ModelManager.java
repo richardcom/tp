@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.book.Book;
+import seedu.address.model.problem.Problem;
 import seedu.address.ui.BookListPanel;
 import seedu.address.ui.Mode;
 
@@ -24,6 +25,8 @@ public class ModelManager implements Model {
     private final Library library;
     private final UserPrefs userPrefs;
     private final FilteredList<Book> filteredBooks;
+    private final FilteredList<Problem> filteredProblems;
+
 
     /**
      * Initializes a ModelManager with the given library and userPrefs.
@@ -37,13 +40,15 @@ public class ModelManager implements Model {
         this.library = new Library(library);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredBooks = new FilteredList<>(this.library.getBookList());
+        filteredProblems = new FilteredList<>(this.library.getProblemList());
     }
 
     public ModelManager() {
         this(new Library(), new UserPrefs());
     }
 
-    //=========== UserPrefs ==================================================================================
+    // =========== UserPrefs
+    // ==================================================================================
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -78,7 +83,8 @@ public class ModelManager implements Model {
         userPrefs.setLibraryFilePath(libraryFilePath);
     }
 
-    //=========== Library ================================================================================
+    // =========== Library
+    // ================================================================================
 
     @Override
     public void setLibrary(ReadOnlyLibrary library) {
@@ -114,11 +120,12 @@ public class ModelManager implements Model {
         library.setBook(target, editedBook);
     }
 
-    //=========== Filtered Book List Accessors =============================================================
+    // =========== Filtered Book List Accessors
+    // =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Book} backed by the internal list of
-     * {@code versionedLibrary}
+     * Returns an unmodifiable view of the list of {@code Book} backed by the
+     * internal list of {@code versionedLibrary}
      */
     @Override
     public ObservableList<Book> getFilteredBookList() {
@@ -143,6 +150,41 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasProblem(Problem problem) {
+        requireNonNull(problem);
+        return library.hasProblem(problem);
+    }
+
+    @Override
+    public void deleteProblem(Problem problem) {
+        library.removeProblem(problem);
+    }
+
+    @Override
+    public void addProblem(Problem problem) {
+        library.addProblem(problem);
+        updateFilteredProblemList(PREDICATE_SHOW_ALL_PROBLEMS, Mode.NORMAL);
+    }
+
+    @Override
+    public void setProblem(Problem target, Problem problem) {
+        requireAllNonNull(target, problem);
+
+        library.setProblem(target, problem);
+    }
+
+    @Override
+    public ObservableList<Problem> getFilteredProblemList() {
+        return filteredProblems;
+    }
+
+    @Override
+    public void updateFilteredProblemList(Predicate<Problem> predicate, Mode mode) {
+        requireNonNull(predicate);
+        filteredProblems.setPredicate(predicate);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
@@ -156,9 +198,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return library.equals(other.library)
-                && userPrefs.equals(other.userPrefs)
+        return library.equals(other.library) && userPrefs.equals(other.userPrefs)
                 && filteredBooks.equals(other.filteredBooks);
     }
-
 }

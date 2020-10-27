@@ -48,6 +48,9 @@ public class LibraryParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
+        case DeleteProblemCommand.COMMAND_WORD:
+            return new DeleteProblemCommandParser().parse(arguments);
+
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
@@ -56,6 +59,9 @@ public class LibraryParser {
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
+
+        case FindProblemReportCommand.COMMAND_WORD:
+            return new FindProblemReportCommandParser().parse(arguments);
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
@@ -92,6 +98,12 @@ public class LibraryParser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
+
+        case AddProblemCommand.COMMAND_WORD:
+            return new AddProblemCommandParser().parse(arguments);
+
+        case ViewProblemCommand.COMMAND_WORD:
+            return new ViewProblemCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
