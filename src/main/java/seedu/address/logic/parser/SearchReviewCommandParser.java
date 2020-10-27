@@ -3,7 +3,9 @@ package seedu.address.logic.parser;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.SearchReviewCommand;
+import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
@@ -19,6 +21,12 @@ public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
                 CliSyntax.PREFIX_NAME,
                 CliSyntax.PREFIX_ISBN
         );
+        if (!argumentMultimap.getValue(CliSyntax.PREFIX_NAME).isPresent()
+                && !argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).isPresent()
+                && !userInput.strip().equals("")) {
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    SearchReviewCommand.MESSAGE_USAGE));
+        }
 
         List<String> names = null;
         List<String> numbers = null;
