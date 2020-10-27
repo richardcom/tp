@@ -1,14 +1,10 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PROBLEMS;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.problem.Problem;
-import seedu.address.storage.StorageForProblem;
+import seedu.address.ui.Mode;
 
 public class ViewProblemCommand extends Command {
     public static final String COMMAND_WORD = "view";
@@ -19,16 +15,13 @@ public class ViewProblemCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException, FileNotFoundException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        ArrayList<Problem> list = StorageForProblem.load();
-        StringBuilder problemString = new StringBuilder();
-        for (Problem problem: list) {
-            problemString.append(problem.toString());
-            problemString.append("\n");
-        }
-
-        return new CommandResult(problemString.toString());
+        model.updateFilteredProblemList((problem -> false), Mode.NORMAL);
+        model.updateFilteredProblemList(PREDICATE_SHOW_ALL_PROBLEMS, Mode.NORMAL);
+        //String problems_string = model.getFilteredProblemList().toString();
+        String problems_string = model.getProblemString();
+        return new CommandResult(problems_string);
     }
 }

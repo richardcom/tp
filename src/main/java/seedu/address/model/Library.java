@@ -145,6 +145,13 @@ public class Library implements ReadOnlyLibrary {
         problems.delete(key);
     }
 
+    /**
+     * @return a string representing the problems.
+     */
+    public String getProblemString() {
+        return problems.toString();
+    }
+
     //// util methods
 
     @Override

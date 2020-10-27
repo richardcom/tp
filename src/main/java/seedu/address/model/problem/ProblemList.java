@@ -86,4 +86,27 @@ public class ProblemList implements Iterable<Problem> {
     public Iterator<Problem> iterator() {
         return list.iterator();
     }
+
+    @Override
+    public String toString() {
+        int i = 0;// i is to count the number of problems
+        String noProblem = "There is currently no problem.";
+        String res = "";
+        for (Problem problem: list) {
+            i++;
+            res += problem.toString();
+            res += "\n";
+        }
+
+        if (i == 0) {
+            return noProblem;
+        } else if (i == 1) {
+            String problemString = "There is only 1 problem: \n" + res;
+            return problemString;
+        } else {
+            String problemString = "There are " + Integer.toString(i)
+                + " problems: \n" + res;
+            return problemString;
+        }
+    }
 }
