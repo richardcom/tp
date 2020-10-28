@@ -2,6 +2,9 @@ package seedu.address.model.review;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a Book's review in the address book.
+ */
 public class Review {
 
     private final Rating rating;

@@ -15,7 +15,11 @@ import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
 import seedu.address.model.review.Review;
 
+/**
+ * An UI component that displays detailed review information of a {@code Book}.
+ */
 public class LibraryBookDetailReviewCard extends UiPart<Region> {
+
     private static final String FXML = "LibraryBookDetailReviewCard.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
 
@@ -47,7 +51,7 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code LibraryBookDetailReviewCard} with the given {@code Book} and index to display.
      */
     public LibraryBookDetailReviewCard(Book book, int displayedIndex) {
         super(FXML);

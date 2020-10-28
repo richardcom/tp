@@ -277,9 +277,6 @@ Examples:
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Stock** | `stock [n/BOOK NAME] [i/ISBN]`<br> e.g., `stock n/A brief history of time`
-**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]`<br> e.g., `searchReview n/A brief history of time`
-**AddReview** | `addReview INDEX ra/RATING re/REVIEW CONTENT`<br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`<br> e.g.,`edit 3 p/Scribner Publisher t/`

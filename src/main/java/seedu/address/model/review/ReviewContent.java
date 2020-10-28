@@ -2,6 +2,10 @@ package seedu.address.model.review;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents the review content of a review of a book in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidContent(String)}
+ */
 public class ReviewContent {
     public static final String MESSAGE_CONSTRAINTS = "review cannot be empty";
 

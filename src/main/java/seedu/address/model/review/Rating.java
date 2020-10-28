@@ -2,7 +2,12 @@ package seedu.address.model.review;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a rating of a review of a book in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidRating(String)}
+ */
 public class Rating {
+
     public static final String MESSAGE_CONSTRAINTS = "rating can only be an integer from 0 to 5";
 
     public static final String VALIDATION_REGEX = "\\s*(\\d{1})\\s*";

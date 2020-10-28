@@ -16,8 +16,10 @@ import seedu.address.model.book.Book;
  * An UI component that displays information of a {@code Book} with book cover.
  */
 public class BookCardWithCover extends UiPart<Region> {
+
     private static final String FXML = "BookListCardWithCover.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
