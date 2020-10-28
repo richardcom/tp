@@ -27,7 +27,6 @@ public class ReviewNumber {
         requireNonNull(reviewNumber);
         this.reviewNumber = reviewNumber;
     }
-    
     /**
      * Returns true if a given string is a valid review number.
      */
