@@ -59,21 +59,25 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 </div>
 
+
 ### Adding a book : `add`
 
-Checks the list of locations of where a certain book is stored.
+Add a book to the booklist.
 
-Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]… t/TIMES s/STORAGE a/AUTHOR p/PUBLISHER`
+Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
+
 
 
 Examples:
 * `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
+
 * `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/central library 2 science library 3 a/Stuart Russell p/PEARSON`
+
 
 
 ### Deleting a book: `deleteBy`
 
-Checks the list of locations of where a certain book is stored.
+Delete a book from the booklist.
 
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
@@ -82,33 +86,67 @@ Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
-### Check location `[coming soon]`: `locate`
+### Check stocking of book in every location: `stock`
 
 Checks the list of locations of where a certain book is stored.
+Currently only the science library and central library are available locations.
 
-Format: `locate /name NAME [/ISBN ISBN]`
+Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
+Both the name and the ISBN of the book are optional argument in the command.
+The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords.
+The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book number will need to contain some of the keywords.
+If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy either of the conditions.
+The keyword of book name is case insensitive
+If neither of them are present, then the command will return the stocking information of all the books.
+If the value after the prefix is empty, then the command will return the stocking information of all the books.
+For example, the command stock n/ and the command stock i/ will return the stocking information of all the books.
 </div>
 
 Examples:
-* `locate /name A brief history of time /ISBN 9780553175219`
-* `locate /name A brief history of time`
+* `stock n/A brief history of time i/9780553175219`
+* `stock n/A brief history of time`
+* `stock i/9780553175219`
+* `stock`
 
-### Check stocking `[coming soon]`: `stock`
+### Search for review of book: `searchReview`
 
-Check the stock of the book.
+Check the list of reviews of certain book.
 
-Format: `stock /name NAME [/ISBN ISBN]`
+Format: `searchReview [n/BOOK NAME] [i/ISBN]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
+The usage is similar to the stock command.
 </div>
 
 Examples:
-* `stock /name A brief history of time /ISBN /9780553175219`
-* `stock /name A brief history of time`
+* `searchReview n/A brief history of time i/9780553175219`
+* `searchReview n/A brief history of time`
+* `searchReview i/9780553175219`
+* `searchReview`
+
+### Add review: `addReview`
+
+Add a review to a certain book.
+
+Format: `addReview INDEX ra/RATING re/REVIEW CONTENT`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The book review will be added according to the index of the book in the current shown book list.
+The rating needs to be a string representing an integer from 0 to 5.
+The review content should not be empty.
+</div>
+
+### Delete review: `deleteReview`
+
+Delete a review of a certain book.
+
+Format: `deleteReview INDEX rn/REVIEW INDEX`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
+</div>
 
 ### Check usage
 
@@ -185,6 +223,26 @@ Format: `purge`
 
 Examples:
 * `purge`
+
+### Report problems: `report`
+
+Report a problem found in library.
+
+Format: `report severity/SEVERITY problem/PROBLEM`
+
+Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case insensitive.
+
+Examples:
+* `report severity/high problem/book is broken`
+
+### View problems: `view`
+
+View all reported problems.
+
+Format: `view`
+
+Examples:
+* `view`
 
 --------------------------------------------------------------------------------------------------------------------
 

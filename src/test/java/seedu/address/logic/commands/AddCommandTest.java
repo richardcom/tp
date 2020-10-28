@@ -209,6 +209,12 @@ public class AddCommandTest {
 
         }
 
+        @Override
+        public String getProblemString() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
     }
 
     /**

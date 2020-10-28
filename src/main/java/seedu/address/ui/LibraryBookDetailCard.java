@@ -52,7 +52,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
-        isbn.setText("isbn: " + book.getIsbn().value);
+        isbn.setText("ISBN " + book.getIsbn().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
@@ -61,7 +61,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
                 stocking.getChildren().add(new Label(location + ": " + storage + " "));
             }
         });
-        author.setText("author: " + book.getAuthor().author);
+        author.setText("Author " + book.getAuthor().author);
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }
