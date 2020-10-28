@@ -15,7 +15,11 @@ import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
 import seedu.address.model.review.Review;
 
+/**
+ * An UI component that displays detailed review information of a {@code Book}.
+ */
 public class LibraryBookDetailReviewCard extends UiPart<Region> {
+
     private static final String FXML = "LibraryBookDetailReviewCard.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
 
@@ -47,18 +51,18 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code LibraryBookDetailReviewCard} with the given {@code Book} and index to display.
      */
     public LibraryBookDetailReviewCard(Book book, int displayedIndex) {
         super(FXML);
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
-        isbn.setText("isbn: " + book.getIsbn().value);
+        isbn.setText("ISBN " + book.getIsbn().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        author.setText("author: " + book.getAuthor().author);
+        author.setText("Author " + book.getAuthor().author);
 
         List<Review> reviewList = book.getReviews().stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))

@@ -27,7 +27,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`add`**`n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
@@ -46,73 +46,126 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/The Graet Gasby`.
+  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Linear Algebra`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [c/CATEGORY]` can be used as `n/The Great Gatsby c/Novel` or as `n/John Doe`.
+  e.g `n/NAME [c/CATEGORY]` can be used as `n/The Great Gatsby c/Novel` or as `n/The Great Gatsby`.
 
 * Items with `…` after them can be used multiple times including zero times.<br>
-  e.g. `[c/CATEGORY]…` can be used as (i.e. 0 times), `c/Novel`, `c/Novel t/Classic` etc.
+  e.g. `[c/CATEGORY]…` can be used as (i.e. 0 times), `c/Novel`, `c/Novel c/Classic` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PUBLISHER`, `p/PUBLISHER n/NAME` is also acceptable.
 
 </div>
 
-### Adding a book `[coming soon]` : `addBook`
 
-Checks the list of locations of where a certain book is stored.
+### Adding a book : `add`
 
-Format: `addBook /name:NAME /author:AUTHOR /publisher:PUBLISHER /ISBN:ISBN  /cat:CATEGORY /loc:LOCATION STORAGE`
+Add a book to the booklist.
+
+Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
+
 
 
 Examples:
-* `addBook /name: Numerical linear algebra [electronic resource] : an introduction /author: Holger Wendland /publisher: Cambridge University Press /ISBN: 9781316544938 /cat: Math /loc: Central Library /storage: 5`
-* `addBook /name: Artificial Intelligence, A mordern approach /author: Stuart Russell /publisher: PEARSON /ISBN: 978-0-13-461099-3 /cat: Computer Science /loc: Central Library /storage: 6`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
+
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/central library 2 science library 3 a/Stuart Russell p/PEARSON`
 
 
-### Deleting a book `[coming soon]`: `deleteBookByIsbn, deleteBookByTimes, deleteBookByName`
 
-Checks the list of locations of where a certain book is stored.
+### Deleting a book: `deleteBy`
+
+Delete a book from the booklist.
 
 Format:  
-`deleteBookByISBN /ISBN`  
-`deleteBookByTimes /NUMBER_OF_TIMES_BEEN_BORROWED`  
-`deleteBookByName /NAMEOFBOOK`  
-
+`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
 Examples:
-* `deleteBookByISBN /9781316544938`
-* `deleteBookByTimes /0`
-* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction`
+* `deleteBy n/Linear Algebra`
+* `deleteBy i/123456 `
 
-### Check location `[coming soon]`: `locate`
+### Check stocking of book in every location: `stock`
 
 Checks the list of locations of where a certain book is stored.
+Currently only the science library and central library are available locations.
 
-Format: `locate /name NAME [/ISBN ISBN]`
+Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
+
+Both the name and the ISBN of the book are optional argument in the command.
+
+The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords.
+
+The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book number will need to contain some of the keywords.
+
+The keyword of book name is case insensitive.
+
+If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy either of the conditions.
+
+If neither of them are present, then the command will return the stocking information of all the books.
+
+If the value after the prefix is empty, then the command will return the stocking information of all the books.
+
+For example, the command stock n/ and the command stock i/ will return the stocking information of all the books.
 </div>
 
 Examples:
-* `locate /name A brief history of time /ISBN 9780553175219`
-* `locate /name A brief history of time`
+* `stock n/A brief history of time i/9780553175219`
+* `stock n/A brief history of time`
+* `stock i/9780553175219`
+* `stock`
 
-### Check stocking `[coming soon]`: `stock`
+### Search for review of book: `searchReview`
 
-Check the stock of the book.
+Check the list of reviews of certain book.
 
-Format: `stock /name NAME [/ISBN ISBN]`
+Format: `searchReview [n/BOOK NAME] [i/ISBN]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The ISBN of the book is an optional argument in the command.
+
+The usage is similar to the stock command.
 </div>
 
 Examples:
-* `stock /name A brief history of time /ISBN /9780553175219`
-* `stock /name A brief history of time`
+* `searchReview n/A brief history of time i/9780553175219`
+* `searchReview n/A brief history of time`
+* `searchReview i/9780553175219`
+* `searchReview`
+
+### Add review: `addReview`
+
+Add a review to a certain book.
+
+Format: `addReview INDEX ra/RATING re/REVIEW CONTENT`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+
+The book review will be added according to the index of the book in the current shown book list.
+
+The rating needs to be a string representing an integer from 0 to 5.
+
+The review content should not be empty.
+</div>
+
+Examples:
+* `addReview 1 ra/5 re/The book is interesing`
+
+### Delete review: `deleteReview`
+
+Delete a review of a certain book.
+
+Format: `deleteReview INDEX rn/REVIEW INDEX`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+
+The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
+</div>
+
+Examples:
+* `deleteReview 1 rn/1`
 
 ### Check usage
 
@@ -189,6 +242,26 @@ Format: `purge`
 
 Examples:
 * `purge`
+
+### Report problems: `report`
+
+Report a problem found in library.
+
+Format: `report severity/SEVERITY problem/PROBLEM`
+
+Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case insensitive.
+
+Examples:
+* `report severity/high problem/book is broken`
+
+### View problems: `view`
+
+View all reported problems.
+
+Format: `view`
+
+Examples:
+* `view`
 
 --------------------------------------------------------------------------------------------------------------------
 

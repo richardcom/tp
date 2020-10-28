@@ -203,7 +203,6 @@ public class ParserUtil {
                 });
 
                 for (int i = 1; i <= count; i = i + 2) {
-                    //if (matcher.group(i).strip().toUpperCase().equals(Stocking.LOCATION[(i - 1) / 2].toUpperCase())) {
                     String currentLocation = matcher.group(i).strip();
                     int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
 

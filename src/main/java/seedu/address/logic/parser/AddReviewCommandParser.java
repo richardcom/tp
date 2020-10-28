@@ -5,9 +5,9 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REVIEW;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddReviewCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
@@ -26,10 +26,15 @@ public class AddReviewCommandParser implements Parser<AddReviewCommand> {
 
         Index index;
 
+        if (!argMultimap.getValue(PREFIX_RATING).isPresent()
+                || !argMultimap.getValue(PREFIX_REVIEW).isPresent()) {
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddReviewCommand.MESSAGE_USAGE));
+        }
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddReviewCommand.MESSAGE_USAGE), pe);
         }
 
         Rating rating = ParserUtil.parseRating(argMultimap.getValue(PREFIX_RATING).get());

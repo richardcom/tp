@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
@@ -33,7 +34,15 @@ import seedu.address.ui.Mode;
  * Deletes the review of the corresponding book.
  */
 public class DeleteReviewCommand extends Command {
+
     public static final String COMMAND_WORD = "deleteReview";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete the review to the book at"
+            + "the corresponding position in the list.\n"
+            + "Parameters: "
+            + "INDEX "
+            + "[" + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW INDEX]\n"
+            + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_REVIEWNUMBER + "5";
 
     public static final String MESSAGE_DELETE_REVIEW_SUCCESS = "The review has been deleted for the book %1$s";
 
@@ -86,7 +95,6 @@ public class DeleteReviewCommand extends Command {
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
-        //Set<Review> reviews = new HashSet<>(book.getReviews());
         List<Review> reviewList = book.getReviews()
                 .stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))

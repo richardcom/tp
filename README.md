@@ -10,4 +10,6 @@
   * It is written in **OOP fashion**.
   * It comes with a **reasonable level of user and developer documentation**.
 * For the detailed documentation of this project, see the **[IntelliBrary Product Website](https://github.com/AY2021S1-CS2103-F09-3/tp/)**.
+#### Acknowledgement
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+* The design of UI takes references from peer team CS2103T-T10-4

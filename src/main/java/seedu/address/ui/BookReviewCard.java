@@ -5,18 +5,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.model.review.Review;
 
+/**
+ * An UI component that displays a single review of a {@code Review} of a book.
+ */
 public class BookReviewCard extends UiPart<Region> {
+
     private static final String FXML = "BookReviewCard.fxml";
-
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
-
     @FXML
     private Label id;
     @FXML
@@ -25,7 +19,7 @@ public class BookReviewCard extends UiPart<Region> {
     private Label content;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code BookReviewCard} with the given {@code Review} and index to display.
      */
     public BookReviewCard(Review review, int displayedIndex) {
         super(FXML);
@@ -34,8 +28,6 @@ public class BookReviewCard extends UiPart<Region> {
         for (int i = 0; i < review.getRating().ratingNumber; i = i + 1) {
             ratingStar = ratingStar + "*";
         }
-
-
         rating.setText(ratingStar);
         content.setText(review.getContent().content);
     }

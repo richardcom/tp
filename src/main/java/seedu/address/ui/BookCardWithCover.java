@@ -16,8 +16,10 @@ import seedu.address.model.book.Book;
  * An UI component that displays information of a {@code Book} with book cover.
  */
 public class BookCardWithCover extends UiPart<Region> {
+
     private static final String FXML = "BookListCardWithCover.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -64,15 +66,15 @@ public class BookCardWithCover extends UiPart<Region> {
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
-        isbn.setText("isbn: " + book.getIsbn().value);
-        address.setText(book.getAddress().value);
-        email.setText("contact: " + book.getEmail().value);
-        times.setText("Number of time: " + book.getTimes().value);
+        isbn.setText("ISBN              " + book.getIsbn().value);
+        address.setText("LANGUAGE   " + book.getAddress().value);
+        email.setText("CONTACT     " + book.getEmail().value);
+        times.setText("NUMBER OF TIMES BORROWED   " + book.getTimes().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        author.setText("author: " + book.getAuthor().author);
-        publisher.setText("publisher: " + book.getPublisher().publisher);
+        author.setText("AUTHOR       " + book.getAuthor().author);
+        publisher.setText("PUBLISHER   " + book.getPublisher().publisher);
         logger.info("Get the book cover");
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);

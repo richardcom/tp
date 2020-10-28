@@ -7,9 +7,10 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
-import seedu.address.model.book.NameContainsKeywordsPredicate;
+import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.NumberContainsKeywordPredicate;
 import seedu.address.ui.Mode;
 
@@ -17,12 +18,14 @@ import seedu.address.ui.Mode;
  * Searches for the stocking of the corresponding book.
  */
 public class StockCommand extends Command {
+
     public static final String COMMAND_WORD = "stock";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
             + "the corresponding keyword and shows them as a list.\n"
-            + "Parameters: KEYWORD\n"
-            + "Example: " + COMMAND_WORD + " n/ a brief history of time";
+            + "Parameters: [" + CliSyntax.PREFIX_NAME + "NAME] "
+            + "[" + CliSyntax.PREFIX_ISBN + "ISBN]\n"
+            + "Example: " + COMMAND_WORD + " " + CliSyntax.PREFIX_NAME + "a brief history of time";
 
     private Predicate<Book> predicate;
 
@@ -33,16 +36,15 @@ public class StockCommand extends Command {
      * @param numbers The list of numbers that are used as keyword.
      */
     public StockCommand(List<String> names, List<String> numbers) {
-        //Predicate<Book> bookPredicate;
-        NameContainsKeywordsPredicate nameContainsKeywordsPredicate;
+        NameMatchesKeywordPredicate nameMatchesKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
-        if (names != null && numbers != null) {
-            nameContainsKeywordsPredicate = new NameContainsKeywordsPredicate(names);
+        if (names != null && !names.get(0).equals("") && numbers != null) {
+            nameMatchesKeywordsPredicate = new NameMatchesKeywordPredicate(names);
             numberContainsKeywordPredicate = new NumberContainsKeywordPredicate(numbers);
-            predicate = (book -> nameContainsKeywordsPredicate.test(book)
+            predicate = (book -> nameMatchesKeywordsPredicate.test(book)
                     || numberContainsKeywordPredicate.test(book));
-        } else if (names != null) {
-            predicate = new NameContainsKeywordsPredicate(names);
+        } else if (names != null && !names.get(0).equals("")) {
+            predicate = new NameMatchesKeywordPredicate(names);
         } else if (numbers != null) {
             predicate = new NumberContainsKeywordPredicate(numbers);
         } else {
