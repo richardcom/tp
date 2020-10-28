@@ -34,6 +34,7 @@ import seedu.address.ui.Mode;
  * Deletes the review of the corresponding book.
  */
 public class DeleteReviewCommand extends Command {
+
     public static final String COMMAND_WORD = "deleteReview";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete the review to the book at"

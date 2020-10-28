@@ -11,10 +11,11 @@ import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
 
 /**
- * An UI component that displays detailed information of a {@code Book}.
+ * An UI component that displays detailed stocking information of a {@code Book}.
  */
-public class LibraryBookDetailCard extends UiPart<Region> {
-    private static final String FXML = "LibraryBookDetailCard.fxml";
+public class LibraryBookDetailStockingCard extends UiPart<Region> {
+
+    private static final String FXML = "LibraryBookDetailStockingCard.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
 
     /**
@@ -45,9 +46,9 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code LibraryBookDetailCard} with the given {@code Book} and index to display.
      */
-    public LibraryBookDetailCard(Book book, int displayedIndex) {
+    public LibraryBookDetailStockingCard(Book book, int displayedIndex) {
         super(FXML);
         this.book = book;
         id.setText(displayedIndex + ". ");
@@ -74,12 +75,12 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof LibraryBookDetailCard)) {
+        if (!(other instanceof LibraryBookDetailStockingCard)) {
             return false;
         }
 
         // state check
-        LibraryBookDetailCard card = (LibraryBookDetailCard) other;
+        LibraryBookDetailStockingCard card = (LibraryBookDetailStockingCard) other;
         return id.getText().equals(card.id.getText())
                 && book.equals(card.book);
     }

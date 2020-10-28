@@ -19,6 +19,7 @@ import seedu.address.ui.Mode;
  * Searches for the review of the corresponding book.
  */
 public class SearchReviewCommand extends Command {
+
     public static final String COMMAND_WORD = "searchReview";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"

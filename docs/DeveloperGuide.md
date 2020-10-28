@@ -220,37 +220,31 @@ The relationship between the book and stocking and other components is shown as 
 
 These operations are incoperated into the storage read and write process in the execution.
 
-Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+#####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser which calls the add command parser.
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser, which calls the add command parser.
 
-![The add command parser](images/AddStockingSequenceDiagram1.png)
-
-Step 2. The add command paser calss the ParseUtil, which parses the string and returns a stocking
+Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
 
 ![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
 
-Step 3. The add command uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The add command parser uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
 
-![Add book with stocking information](images/AddStockingSequenceDiagram.png)
+#####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Given below is an example usage scenario of how the stocking command will be executed, 
+Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser, which calls the stock command parser.
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser which calls the stock command parser.
-
-![The stock command parser](images/StockCommandSequenceDiagram.png)
-
-Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of 
+Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
 
 ![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
 
-Step 3. The stock command is returned and excecuted, updating the book list shown on the user interface.
+Step 3. The stock command is returned and executed, updating the book list shown on the user interface with the stocking information of the corresponding book.
 
 #### Design consideration:
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes
+##### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.

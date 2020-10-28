@@ -2,8 +2,14 @@ package seedu.address.model.review;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents the position of the review in the review list of a book in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidReviewNumber(String)}
+ */
 public class ReviewNumber {
+
     public static final String MESSAGE_CONSTRAINTS = "review index needs to be an integer";
+
     /*
      * The review number string should represent an integer with a length from 1 to 5 and
      * there can be white space.
