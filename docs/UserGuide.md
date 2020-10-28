@@ -27,7 +27,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * **`add`**`n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
@@ -46,45 +46,41 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/The Graet Gasby`.
+  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Linear Algebra`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [c/CATEGORY]` can be used as `n/The Great Gatsby c/Novel` or as `n/John Doe`.
+  e.g `n/NAME [c/CATEGORY]` can be used as `n/The Great Gatsby c/Novel` or as `n/The Great Gatsby`.
 
 * Items with `…` after them can be used multiple times including zero times.<br>
-  e.g. `[c/CATEGORY]…` can be used as (i.e. 0 times), `c/Novel`, `c/Novel t/Classic` etc.
+  e.g. `[c/CATEGORY]…` can be used as (i.e. 0 times), `c/Novel`, `c/Novel c/Classic` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PUBLISHER`, `p/PUBLISHER n/NAME` is also acceptable.
 
 </div>
 
-### Adding a book `[coming soon]` : `addBook`
+### Adding a book : `add`
 
 Checks the list of locations of where a certain book is stored.
 
-Format: `addBook /name:NAME /author:AUTHOR /publisher:PUBLISHER /ISBN:ISBN  /cat:CATEGORY /loc:LOCATION STORAGE`
+Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]… t/TIMES s/STORAGE a/AUTHOR p/PUBLISHER`
 
 
 Examples:
-* `addBook /name: Numerical linear algebra [electronic resource] : an introduction /author: Holger Wendland /publisher: Cambridge University Press /ISBN: 9781316544938 /cat: Math /loc: Central Library /storage: 5`
-* `addBook /name: Artificial Intelligence, A mordern approach /author: Stuart Russell /publisher: PEARSON /ISBN: 978-0-13-461099-3 /cat: Computer Science /loc: Central Library /storage: 6`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/central library 2 science library 3 a/Stuart Russell p/PEARSON`
 
 
-### Deleting a book `[coming soon]`: `deleteBookByIsbn, deleteBookByTimes, deleteBookByName`
+### Deleting a book: `deleteBy`
 
 Checks the list of locations of where a certain book is stored.
 
 Format:  
-`deleteBookByISBN /ISBN`  
-`deleteBookByTimes /NUMBER_OF_TIMES_BEEN_BORROWED`  
-`deleteBookByName /NAMEOFBOOK`  
-
+`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
 Examples:
-* `deleteBookByISBN /9781316544938`
-* `deleteBookByTimes /0`
-* `deleteBookByName /Numerical linear algebra [electronic resource] : an introduction`
+* `deleteBy n/Linear Algebra`
+* `deleteBy i/123456 `
 
 ### Check location `[coming soon]`: `locate`
 

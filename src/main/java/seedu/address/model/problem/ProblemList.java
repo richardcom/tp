@@ -58,7 +58,7 @@ public class ProblemList implements Iterable<Problem> {
      */
     public void delete(Problem toDelete) {
         requireNonNull(toDelete);
-        list.add(toDelete);
+        list.remove(toDelete);
     }
 
     public List<Problem> getList() {
