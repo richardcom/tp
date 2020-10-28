@@ -14,7 +14,7 @@ public class Stocking {
      * the number of book in the location.
      */
     public static final String VALIDATION_REGEX =
-            "^\\s*(central library)?\\s+(\\d{1,5})?\\s+(science library)?\\s+(\\d{1,5})?\\s*$";
+            "^\\s*(central library)?\\s*(\\d{1,5})?\\s*(science library)?\\s*(\\d{1,5})?\\s*$";
 
     public final HashMap<String, Integer> storage = new HashMap<>();
 

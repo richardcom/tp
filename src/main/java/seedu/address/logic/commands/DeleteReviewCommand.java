@@ -95,7 +95,6 @@ public class DeleteReviewCommand extends Command {
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
-        //Set<Review> reviews = new HashSet<>(book.getReviews());
         List<Review> reviewList = book.getReviews()
                 .stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))

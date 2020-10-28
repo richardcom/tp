@@ -39,7 +39,6 @@ public class SearchReviewCommand extends Command {
      * @param numbers The list of numbers that are used as keyword.
      */
     public SearchReviewCommand(List<String> names, List<String> numbers) {
-        //Predicate<Book> bookPredicate;
         NameMatchesKeywordPredicate nameMatchesKeywordsPredicate;
         NumberContainsKeywordPredicate numberContainsKeywordPredicate;
         if (names != null && !names.get(0).equals("") && numbers != null) {

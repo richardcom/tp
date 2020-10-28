@@ -25,6 +25,7 @@ public class ReviewContent {
         requireNonNull(content);
         this.content = content;
     }
+
     /**
      * Returns true if a given string is valid review content.
      */
