@@ -28,7 +28,7 @@ public class FindProblemReportCommand extends Command {
         requireNonNull(model);
         model.updateFilteredProblemList(predicate, Mode.NORMAL);
         return new CommandResult(
-                String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW, model.getFilteredBookList().size()));
+                String.format(Messages.MESSAGE_REPORT_LISTED_OVERVIEW, model.getFilteredProblemList().size()));
     }
 
     @Override
