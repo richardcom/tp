@@ -4,8 +4,8 @@
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
-participant ":DeleteByCommandParser" as DeleteByCommandParser LOGIC_COLOR
-participant "d:DeleteByCommand" as DeleteByCommand LOGIC_COLOR
+participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
+participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -13,56 +13,56 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("deleteBy n/Linear Algebra")
+[-> LogicManager : execute("delete 1")
 activate LogicManager
 
-LogicManager -> LibraryParser : parseCommand("deleteBy n/Linear Algebra")
+LogicManager -> AddressBookParser : parseCommand("delete 1")
 activate AddressBookParser
 
-create DeleteByByCommandParser
-AddressBookParser -> DeleteByByCommandParser
-activate DeleteByCommandParser
+create DeleteCommandParser
+AddressBookParser -> DeleteCommandParser
+activate DeleteCommandParser
 
-DeleteByCommandParser --> LibraryParser
-deactivate DeleteByCommandParser
+DeleteCommandParser --> AddressBookParser
+deactivate DeleteCommandParser
 
-LibraryParser -> DeleteByCommandParser : parse("Linear Algebra")
-activate DeleteByCommandParser
+AddressBookParser -> DeleteCommandParser : parse("1")
+activate DeleteCommandParser
 
-create DeleteByCommand
-DeleteByCommandParser -> DeleteByCommand
-activate DeleteByCommand
+create DeleteCommand
+DeleteCommandParser -> DeleteCommand
+activate DeleteCommand
 
-DeleteByCommand --> DeleteByCommandParser : d
-deactivate DeleteByCommand
+DeleteCommand --> DeleteCommandParser : d
+deactivate DeleteCommand
 
-DeleteByCommandParser --> LibraryParser : d
-deactivate DeleteByCommandParser
+DeleteCommandParser --> AddressBookParser : d
+deactivate DeleteCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteByCommandParser -[hidden]-> AddressBookParser
-destroy DeleteByCommandParser
+DeleteCommandParser -[hidden]-> AddressBookParser
+destroy DeleteCommandParser
 
 AddressBookParser --> LogicManager : d
 deactivate AddressBookParser
 
-LogicManager -> DeleteByCommand : execute()
-activate DeleteByCommand
+LogicManager -> DeleteCommand : execute()
+activate DeleteCommand
 
-DeleteByCommand -> Model : deleteByBook("Linear Algebra")
+DeleteCommand -> Model : deletePerson(1)
 activate Model
 
-Model --> DeleteByCommand
+Model --> DeleteCommand
 deactivate Model
 
 create CommandResult
-DeleteByCommand -> CommandResult
+DeleteCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteByCommand
+CommandResult --> DeleteCommand
 deactivate CommandResult
 
-DeleteByCommand --> LogicManager : result
-deactivate DeleteByCommand
+DeleteCommand --> LogicManager : result
+deactivate DeleteCommand
 
 [<--LogicManager
 deactivate LogicManager
