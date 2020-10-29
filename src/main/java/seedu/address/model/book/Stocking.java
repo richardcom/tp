@@ -6,7 +6,12 @@ import java.util.HashMap;
 
 public class Stocking {
     public static final String MESSAGE_CONSTRAINTS = "stocking needs to map from a location to the"
-            + " number of stocking in that location";
+            + " number of stocking in that location.\n"
+            + "The example is: central library 10 science library 10\n"
+            + "Note that only central library and science library are available "
+            + "and no stocking information of other library can be added currently.\n"
+            + "Additionally, stocking information of central library needs to be before the science library "
+            + "in order for the stocking information to be recorded";
 
     public static final String[] LOCATION = new String[]{"central library", "science library"};
     /*

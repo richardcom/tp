@@ -60,6 +60,8 @@ public class LibraryBookDetailStockingCard extends UiPart<Region> {
         book.getStocking().storage.forEach((location, storage) -> {
             if (storage > 0) {
                 stocking.getChildren().add(new Label(location + ": " + storage + " "));
+            } else {
+                stocking.getChildren().add(new Label(location + ": " + "Not available"));
             }
         });
         author.setText("Author " + book.getAuthor().author);

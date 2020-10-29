@@ -90,6 +90,7 @@ Examples:
 
 Checks the list of locations of where a certain book is stored.
 Currently only the science library and central library are available locations.
+This means only stocking information regarding the science library and central library are available.
 
 Format: `stock [n/BOOK NAME] [i/ISBN]`
 
