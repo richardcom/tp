@@ -257,7 +257,7 @@ The current implementation of the stocking is consistent with other components o
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
-### \[New\] Report Problem feature
+### \[New\] reportProblem feature
 
 ####  Implementation
 
