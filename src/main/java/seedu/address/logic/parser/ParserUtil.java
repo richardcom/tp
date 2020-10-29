@@ -201,21 +201,23 @@ public class ParserUtil {
                 locations.forEach((location) -> {
                     stockingInLocation.put(location, 0);
                 });
-
                 for (int i = 1; i <= count; i = i + 2) {
-                    String currentLocation = matcher.group(i).strip();
-                    int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
+                    if (matcher.group(i) != null && matcher.group(i + 1) != null) {
+                        String currentLocation = matcher.group(i).strip();
+                        int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
 
-                    locations.forEach((location) -> {
-                        if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
-                            stockingInLocation.put(location, currentCount);
-                        }
-                    });
+                        locations.forEach((location) -> {
+                            if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
+                                stockingInLocation.put(location, currentCount);
+                            }
+                        });
+                    }
                 }
             } else {
                 throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
             }
         } catch (Exception exception) {
+            exception.printStackTrace();
             throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
         }
         return new Stocking(stockingInLocation);
