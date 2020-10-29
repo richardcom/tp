@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.ArrayList;
 
 import seedu.address.model.category.Category;
 
@@ -26,6 +27,7 @@ public class Book {
     private final Address address;
     private final Times times;
     private final Set<Category> categories = new HashSet<>();
+    private ArrayList<Rate> rates;
 
     private final Stocking stocking;
 
@@ -63,6 +65,13 @@ public class Book {
         return address;
     }
 
+    public void setRate(String rate) {
+        rates.add(new Rate(rate));
+    }
+
+    public ArrayList<Rate> getRate() {
+        return rates;
+    }
 
     public Author getAuthor() {
         return author;
@@ -72,11 +81,9 @@ public class Book {
         return publisher;
     }
 
-
     public Times getTimes() {
         return times;
     }
-
 
     /**
      * Returns an immutable category set, which throws {@code UnsupportedOperationException}
