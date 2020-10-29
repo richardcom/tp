@@ -264,6 +264,37 @@ Format: `view`
 Examples:
 * `view`
 
+
+### Locating reports by keyword: `findpr`
+
+Finds reports whose descriptions contain any of the given keywords.
+
+Format: `findpr KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `chair` will match `Chair`
+* The order of the keywords does not matter. e.g. `table chair` will match `chair table`
+* Only the description is searched.
+* Only full words will be matched e.g. `chair` will not match `chairs`
+* Persons matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `table chair` will return `chair light`, `light table`
+
+Examples:
+* `findpr chair` returns report containing `chair` and `fix chair`
+* `findpr table chair` returns `table`, `chair`
+
+### Deleting a report : `deletepr`
+
+Deletes the specified person from the address book.
+
+Format: `deletepr INDEX`
+
+* Deletes the report at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
