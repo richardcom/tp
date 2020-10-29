@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
@@ -28,7 +27,8 @@ public class FindProblemReportCommand extends Command {
         requireNonNull(model);
         model.updateFilteredProblemList(predicate, Mode.NORMAL);
         return new CommandResult(
-                String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW, model.getFilteredBookList().size()));
+                // String.format(Messages.MESSAGE_REPORT_LISTED_OVERVIEW, model.getFilteredProblemList().size()));
+                model.getFilteredProblemList().toString());
     }
 
     @Override
