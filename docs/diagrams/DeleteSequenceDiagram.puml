@@ -16,17 +16,17 @@ end box
 [-> LogicManager : execute("deleteBy n/Linear Algebra")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("deleteBy n/Linear Algebra")
+LogicManager -> LibraryParser : parseCommand("deleteBy n/Linear Algebra")
 activate AddressBookParser
 
 create DeleteByByCommandParser
 AddressBookParser -> DeleteByByCommandParser
 activate DeleteByCommandParser
 
-DeleteByCommandParser --> AddressBookParser
+DeleteByCommandParser --> LibraryParser
 deactivate DeleteByCommandParser
 
-AddressBookParser -> DeleteByCommandParser : parse("Linear Algebra")
+LibraryParser -> DeleteByCommandParser : parse("Linear Algebra")
 activate DeleteByCommandParser
 
 create DeleteByCommand
@@ -36,7 +36,7 @@ activate DeleteByCommand
 DeleteByCommand --> DeleteByCommandParser : d
 deactivate DeleteByCommand
 
-DeleteByCommandParser --> AddressBookParser : d
+DeleteByCommandParser --> LibraryParser : d
 deactivate DeleteByCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 DeleteByCommandParser -[hidden]-> AddressBookParser
@@ -48,7 +48,7 @@ deactivate AddressBookParser
 LogicManager -> DeleteByCommand : execute()
 activate DeleteByCommand
 
-DeleteByCommand -> Model : deleteByBook(1)
+DeleteByCommand -> Model : deleteByBook("Linear Algebra")
 activate Model
 
 Model --> DeleteByCommand
