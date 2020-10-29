@@ -142,8 +142,11 @@ The current implementation of the DeleteBy command is supported by `DeleteByComm
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
 Step 1. User input an input: `deleteBy n/Linear Algebra`
-Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command
+
+Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command.
+
 Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+
 Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
@@ -254,14 +257,52 @@ The current implementation of the stocking is consistent with other components o
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
-### \[Proposed\] Problem report feature
+### \[New\] Report Problem feature
 
-#### Proposed Implementation
+####  Implementation
 
-The proposed problem report mechanism stores problems in the instances of Library. It implements the following commands:
+The current implementation of the reportProblem command is supported by `AddProblemCommand.java` and `AddProblemCommandParser.java` 
 
-* `report` — Adds new problem report to Library.
-* `view report` — Shows the reports added before.
+Given below is an example usage scenario and how the reportProblem mechanism behaves at each step.
+
+Step 1. User input an input: `report severity/high problem/book is broken`
+
+Step 2. Logic Manager would parse the input `report severity/high problem/book is broken`, and determines that it is a reportProblem command.
+
+Step 3. AddProblemCommandParser would then parse the problem reported (both severity and problem) and call the reportProblem Command.
+
+Step 4. Execution of add problem would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![AddProblemSequenceDiagram](images/AddProblemSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Why the feature is implemented this way:
+
+* To efficiently manage the reported problems, `severity` appears to be
+a useful attribute to add. Therefore a `problem` has two attributes:
+`severity` and `description`.
+
+* Unlike other commands such as `edit` and `deleteBy` which 
+manipulate with `book`, `reportProblem` has no relation with
+`book`, it adds `problem`. Therefore, a new model series of `problem`
+is created.  
+
+* There can be multiple problems, therefore `problem` is managed
+inside a list.
+
+
+* **Alternative 1 :** Link `problem` to `book`
+  * What: Problems in library are often related to books, for these
+  kind of book-related problems, we can store the (`problem` - `book`)
+  connection/mapping inside the `problem`.
+  
+  * Pros: Enhances the usefulness of `reportProblem` feature.
+  * Cons: Makes the relationship between models more complex
+  and may increase coupling inside the code.
+
 
 
 ### \[Proposed\] Undo/redo feature
