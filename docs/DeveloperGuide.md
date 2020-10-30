@@ -142,8 +142,11 @@ The current implementation of the DeleteBy command is supported by `DeleteByComm
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
 Step 1. User input an input: `deleteBy n/Linear Algebra`
-Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command
+
+Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command.
+
 Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+
 Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
@@ -220,37 +223,31 @@ The relationship between the book and stocking and other components is shown as 
 
 These operations are incoperated into the storage read and write process in the execution.
 
-Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+#####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser which calls the add command parser.
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser, which calls the add command parser.
 
-![The add command parser](images/AddStockingSequenceDiagram1.png)
-
-Step 2. The add command paser calss the ParseUtil, which parses the string and returns a stocking
+Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
 
 ![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
 
-Step 3. The add command uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The add command parser uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
 
-![Add book with stocking information](images/AddStockingSequenceDiagram.png)
+#####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Given below is an example usage scenario of how the stocking command will be executed, 
+Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser, which calls the stock command parser.
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser which calls the stock command parser.
-
-![The stock command parser](images/StockCommandSequenceDiagram.png)
-
-Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of 
+Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
 
 ![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
 
-Step 3. The stock command is returned and excecuted, updating the book list shown on the user interface.
+Step 3. The stock command is returned and executed, updating the book list shown on the user interface with the stocking information of the corresponding book.
 
 #### Design consideration:
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes
+##### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -260,14 +257,52 @@ The current implementation of the stocking is consistent with other components o
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
-### \[Proposed\] Problem report feature
+### \[New\] reportProblem feature
 
-#### Proposed Implementation
+####  Implementation
 
-The proposed problem report mechanism stores problems in the instances of Library. It implements the following commands:
+The current implementation of the reportProblem command is supported by `AddProblemCommand.java` and `AddProblemCommandParser.java` 
 
-* `report` — Adds new problem report to Library.
-* `view report` — Shows the reports added before.
+Given below is an example usage scenario and how the reportProblem mechanism behaves at each step.
+
+Step 1. User input an input: `report severity/high problem/book is broken`
+
+Step 2. Logic Manager would parse the input `report severity/high problem/book is broken`, and determines that it is a reportProblem command.
+
+Step 3. AddProblemCommandParser would then parse the problem reported (both severity and problem) and call the reportProblem Command.
+
+Step 4. Execution of add problem would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![AddProblemSequenceDiagram](images/AddProblemSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Why the feature is implemented this way:
+
+* To efficiently manage the reported problems, `severity` appears to be
+a useful attribute to add. Therefore a `problem` has two attributes:
+`severity` and `description`.
+
+* Unlike other commands such as `edit` and `deleteBy` which 
+manipulate with `book`, `reportProblem` has no relation with
+`book`, it adds `problem`. Therefore, a new model series of `problem`
+is created.  
+
+* There can be multiple problems, therefore `problem` is managed
+inside a list.
+
+
+* **Alternative 1 :** Link `problem` to `book`
+  * What: Problems in library are often related to books, for these
+  kind of book-related problems, we can store the (`problem` - `book`)
+  connection/mapping inside the `problem`.
+  
+  * Pros: Enhances the usefulness of `reportProblem` feature.
+  * Cons: Makes the relationship between models more complex
+  and may increase coupling inside the code.
+
 
 
 ### \[Proposed\] Undo/redo feature

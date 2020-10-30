@@ -23,6 +23,12 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Severity;
+import seedu.address.model.review.Rating;
+import seedu.address.model.review.ReviewContent;
+import seedu.address.model.review.ReviewNumber;
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -34,6 +40,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -194,24 +201,105 @@ public class ParserUtil {
                 locations.forEach((location) -> {
                     stockingInLocation.put(location, 0);
                 });
-
                 for (int i = 1; i <= count; i = i + 2) {
-                    //if (matcher.group(i).strip().toUpperCase().equals(Stocking.LOCATION[(i - 1) / 2].toUpperCase())) {
-                    String currentLocation = matcher.group(i).strip();
-                    int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
+                    if (matcher.group(i) != null && matcher.group(i + 1) != null) {
+                        String currentLocation = matcher.group(i).strip();
+                        int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
 
-                    locations.forEach((location) -> {
-                        if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
-                            stockingInLocation.put(location, currentCount);
-                        }
-                    });
+                        locations.forEach((location) -> {
+                            if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
+                                stockingInLocation.put(location, currentCount);
+                            }
+                        });
+                    }
                 }
             } else {
                 throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
             }
         } catch (Exception exception) {
+            exception.printStackTrace();
             throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
         }
         return new Stocking(stockingInLocation);
+    }
+
+    /**
+     * Parses {@code String severity} into a {@code Severity}.
+     */
+    public static Severity parseSeverity(String severity) throws ParseException {
+        requireNonNull(severity);
+        String trimmedSeverity = severity.trim();
+        if (!Severity.isValidSeverity(trimmedSeverity)) {
+            throw new ParseException(Severity.MESSAGE_CONSTRAINTS);
+        }
+        return new Severity(trimmedSeverity);
+    }
+
+    /**
+     * Parses {@code String description} into a {@code Description}.
+     */
+    public static Description parseDescription(String description) throws ParseException {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(trimmedDescription)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+    }
+
+    /**
+     * Parses {@code String rating} into a {@code Rating}.
+     */
+    public static Rating parseRating(String rating) throws ParseException {
+        requireNonNull(rating);
+        String trimmedRating = rating.trim();
+        int ratingNumber;
+
+        if (!Rating.isValidRating(trimmedRating)) {
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+        }
+
+        try {
+            ratingNumber = Integer.parseInt(rating);
+        } catch (Exception exception) {
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+        }
+
+        return new Rating(ratingNumber);
+    }
+
+    /**
+     * Parses {@code String reviewContent} into a {@code ReviewContent}.
+     */
+    public static ReviewContent parseReviewContent(String reviewContent) throws ParseException {
+        requireNonNull(reviewContent);
+        String trimmedContent = reviewContent.trim();
+
+        if (!ReviewContent.isValidContent(trimmedContent)) {
+            throw new ParseException(ReviewContent.MESSAGE_CONSTRAINTS);
+        }
+
+        return new ReviewContent(trimmedContent);
+    }
+
+    /**
+     * Parses {@code String rating} into a {@code Rating}.
+     */
+    public static ReviewNumber parseReviewNumber(String reviewNumber) throws ParseException {
+        requireNonNull(reviewNumber);
+        String trimmedReviewNumber = reviewNumber.trim();
+        int result;
+
+        if (!ReviewNumber.isValidReviewNumber(trimmedReviewNumber)) {
+            throw new ParseException(ReviewNumber.MESSAGE_CONSTRAINTS);
+        }
+
+        try {
+            result = Integer.parseInt(reviewNumber);
+        } catch (Exception exception) {
+            throw new ParseException(ReviewNumber.MESSAGE_CONSTRAINTS);
+        }
+
+        return new ReviewNumber(result);
     }
 }

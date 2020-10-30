@@ -1,95 +1,165 @@
 {
-  "_comment": "AddressBook save file which contains the same Book values as in TypicalBooks#getTypicalAddressBook()",
   "books" : [ {
-    "name": "Alice Pauline",
-    "isbn": "94351253",
-    "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
-    "times": "",
-    "categorised": [ "friends" ],
+    "name" : "Alice Pauline",
+    "isbn" : "94351253",
+    "email" : "alice@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "times" : "50",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "ModernWar", "History" ]
   }, {
     "name" : "Benson Meier",
     "isbn" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
-    "times": "20",
-    "categorised" : [ "owesMoney", "friends" ],
+    "times" : "20",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "b",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "b",
+    "publisher" : "pub",
+    "categorised" : [ "Science" ]
   }, {
     "name" : "Carl Kurz",
     "isbn" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
-    "times": "",
-    "categorised" : [ ],
+    "times" : "45",
     "stocking" : {
-      "centralLibrary" : 10,
-      "scienceLibrary" : 10
+      "centralLibrary" : 15,
+      "scienceLibrary" : 30
     },
-    "author": "a",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "Physics" ]
   }, {
     "name" : "Daniel Meier",
     "isbn" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
-    "times": "",
-    "categorised" : [ "friends" ],
+    "times" : "35",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "AncientHistory" ]
   }, {
     "name" : "Elle Meyer",
     "isbn" : "9482224",
     "email" : "werner@example.com",
     "address" : "michegan ave",
-    "times": "",
-    "categorised" : [ ],
+    "times" : "60",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "Novels" ]
   }, {
     "name" : "Fiona Kunz",
     "isbn" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
-    "times": "",
-    "categorised" : [ ],
+    "times" : "30",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a",
-    "publisher": "pub"
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "Mathematics" ]
   }, {
     "name" : "George Best",
     "isbn" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
-    "times": "",
-    "categorised" : [ ],
+    "times" : "15",
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 10
     },
-    "author": "a",
-    "publisher": "pub"
-  } ]
+    "reviews" : [ {
+      "ratingNumber" : 3,
+      "reviewContent" : "Some detail may not be shown in certain part of the book"
+    }, {
+      "ratingNumber" : 4,
+      "reviewContent" : "Exciting to see how the plot will develop"
+    }, {
+      "ratingNumber" : 5,
+      "reviewContent" : "Interesting book with insight into the history"
+    } ],
+    "author" : "a",
+    "publisher" : "pub",
+    "categorised" : [ "Chemistry" ]
+  } ],
+  "problems" : [ ]
 }

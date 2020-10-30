@@ -11,6 +11,7 @@ import seedu.address.model.category.Category;
  * An UI component that returns the book cover of the {@code Book}.
  */
 public class BookCoverManager {
+
     public static final String GENERAL = "General";
     public static final String SCIENCE = "Science";
     public static final String HISTORY = "History";

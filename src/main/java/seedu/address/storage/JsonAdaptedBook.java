@@ -20,6 +20,7 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.review.Review;
 
 /**
  * Jackson-friendly version of {@link Book}.
@@ -37,6 +38,7 @@ class JsonAdaptedBook {
     private String author;
     private String publisher;
     private final JsonAdaptedStocking stocking;
+    private final List<JsonAdaptedReview> reviews = new ArrayList<>();
 
 
     /**
@@ -48,6 +50,7 @@ class JsonAdaptedBook {
                            @JsonProperty("times") String times,
                            @JsonProperty("tagged") List<JsonAdaptedCategory> categorised,
                            @JsonProperty("stocking") JsonAdaptedStocking stocking,
+                           @JsonProperty("reviews") List<JsonAdaptedReview> reviews,
                            @JsonProperty("author") String author,
                            @JsonProperty("publisher") String publisher) {
         this.name = name;
@@ -61,6 +64,9 @@ class JsonAdaptedBook {
         this.author = author;
         this.publisher = publisher;
         this.stocking = stocking;
+        if (reviews != null) {
+            this.reviews.addAll(reviews);
+        }
     }
 
     /**
@@ -78,6 +84,9 @@ class JsonAdaptedBook {
         author = source.getAuthor().author;
         publisher = source.getPublisher().publisher;
         stocking = new JsonAdaptedStocking(source.getStocking());
+        reviews.addAll(source.getReviews().stream()
+                .map(JsonAdaptedReview::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -118,6 +127,12 @@ class JsonAdaptedBook {
         }
         final Email modelEmail = new Email(email);
 
+        final Set<Review> modelReviews = new HashSet<>();
+
+        for (JsonAdaptedReview review : reviews) {
+            modelReviews.add(review.toModelType());
+        }
+
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Address.class.getSimpleName()));
@@ -130,6 +145,7 @@ class JsonAdaptedBook {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Times.class.getSimpleName()));
         }
+
         final Times modelTimes = new Times(times);
         final Set<Category> modelCategories = new HashSet<>(bookCategories);
 
@@ -158,6 +174,6 @@ class JsonAdaptedBook {
         final Stocking modelStocking = stocking.toModelType();
 
         return new Book(modelName, modelIsbn, modelEmail, modelAddress, modelTimes,
-                modelCategories, modelStocking, modelAuthor, modelPublisher);
+                modelCategories, modelStocking, modelReviews, modelAuthor, modelPublisher);
     }
 }

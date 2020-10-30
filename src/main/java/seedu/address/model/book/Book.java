@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.ArrayList;
 
 import seedu.address.model.category.Category;
+import seedu.address.model.review.Review;
 
 /**
  * Represents a Book in the address book.
@@ -30,12 +31,14 @@ public class Book {
     private ArrayList<Rate> rates;
 
     private final Stocking stocking;
+    private final Set<Review> reviews = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Book(Name name, Isbn isbn, Email email, Address address,
-                Times times, Set<Category> categories, Stocking stocking, Author author, Publisher publisher) {
+                Times times, Set<Category> categories, Stocking stocking, Set<Review> reviews,
+                Author author, Publisher publisher) {
         requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
         this.isbn = isbn;
@@ -47,6 +50,7 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
         this.stocking = stocking;
+        this.reviews.addAll(reviews);
     }
 
     public Name getName() {
@@ -71,6 +75,9 @@ public class Book {
 
     public ArrayList<Rate> getRate() {
         return rates;
+
+    public Set<Review> getReviews() {
+            return this.reviews;
     }
 
     public Author getAuthor() {

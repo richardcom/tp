@@ -36,7 +36,7 @@ import seedu.address.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(1, 2, 1, true);
+    public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -87,7 +87,7 @@ public class MainApp extends Application {
             logger.warning("Data file not in the correct format. Will be starting with an empty Library");
             initialData = new Library();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty Library");
+            logger.warning("problem while reading from the file. Will be starting with an empty Library");
             initialData = new Library();
         }
 
@@ -152,7 +152,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("problem while reading from the file. Will be starting with an empty AddressBook");
             initializedPrefs = new UserPrefs();
         }
 

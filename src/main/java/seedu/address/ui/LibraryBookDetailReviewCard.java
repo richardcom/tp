@@ -1,20 +1,26 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.book.Book;
+import seedu.address.model.review.Review;
 
 /**
- * An UI component that displays detailed information of a {@code Book}.
+ * An UI component that displays detailed review information of a {@code Book}.
  */
-public class LibraryBookDetailCard extends UiPart<Region> {
-    private static final String FXML = "LibraryBookDetailCard.fxml";
+public class LibraryBookDetailReviewCard extends UiPart<Region> {
+
+    private static final String FXML = "LibraryBookDetailReviewCard.fxml";
     private static final BookCoverManager BOOK_COVER_MANAGER = new BookCoverManager();
 
     /**
@@ -27,7 +33,7 @@ public class LibraryBookDetailCard extends UiPart<Region> {
 
     public final Book book;
 
-    @javafx.fxml.FXML
+    @FXML
     private HBox cardPane;
     @FXML
     private Label name;
@@ -40,28 +46,35 @@ public class LibraryBookDetailCard extends UiPart<Region> {
     @FXML
     private FlowPane categories;
     @FXML
-    private FlowPane stocking;
+    private FlowPane reviews;
     @FXML
     private ImageView cover;
 
     /**
-     * Creates a {@code BookCode} with the given {@code Book} and index to display.
+     * Creates a {@code LibraryBookDetailReviewCard} with the given {@code Book} and index to display.
      */
-    public LibraryBookDetailCard(Book book, int displayedIndex) {
+    public LibraryBookDetailReviewCard(Book book, int displayedIndex) {
         super(FXML);
         this.book = book;
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
-        isbn.setText("isbn: " + book.getIsbn().value);
+        isbn.setText("ISBN " + book.getIsbn().value);
         book.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
-        book.getStocking().storage.forEach((location, storage) -> {
-            if (storage > 0) {
-                stocking.getChildren().add(new Label(location + ": " + storage + " "));
-            }
-        });
-        author.setText("author: " + book.getAuthor().author);
+        author.setText("Author " + book.getAuthor().author);
+
+        List<Review> reviewList = book.getReviews().stream()
+                .sorted(Comparator.comparing(review -> review.getContent().content))
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < reviewList.size(); i = i + 1) {
+            BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);
+            Separator separator = new Separator(Orientation.HORIZONTAL);
+            reviews.getChildren().add(separator);
+            reviews.getChildren().add(bookReviewCard.getRoot());
+        }
+
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }
@@ -74,12 +87,12 @@ public class LibraryBookDetailCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof LibraryBookDetailCard)) {
+        if (!(other instanceof LibraryBookDetailReviewCard)) {
             return false;
         }
 
         // state check
-        LibraryBookDetailCard card = (LibraryBookDetailCard) other;
+        LibraryBookDetailReviewCard card = (LibraryBookDetailReviewCard) other;
         return id.getText().equals(card.id.getText())
                 && book.equals(card.book);
     }

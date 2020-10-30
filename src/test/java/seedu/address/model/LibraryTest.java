@@ -9,17 +9,15 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.ALICE;
 import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.book.Book;
-import seedu.address.model.book.exceptions.DuplicateBookException;
+import seedu.address.model.problem.Problem;
 import seedu.address.testutil.BookBuilder;
 
 public class LibraryTest {
@@ -43,16 +41,6 @@ public class LibraryTest {
         assertEquals(newData, library);
     }
 
-    @Test
-    public void resetData_withDuplicateBooks_throwsDuplicateBookException() {
-        // Two books with the same identity fields
-        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
-        List<Book> newBooks = Arrays.asList(ALICE, editedAlice);
-        LibraryStub newData = new LibraryStub(newBooks);
-
-        assertThrows(DuplicateBookException.class, () -> library.resetData(newData));
-    }
 
     @Test
     public void hasBook_nullBook_throwsNullPointerException() {
@@ -96,6 +84,11 @@ public class LibraryTest {
         @Override
         public ObservableList<Book> getBookList() {
             return books;
+        }
+
+        @Override
+        public ObservableList<Problem> getProblemList() {
+            return getProblemList();
         }
     }
 
