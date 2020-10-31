@@ -185,7 +185,7 @@ Examples:
 
 Add a review to a certain book.
 
-Format: `addReview INDEX ra/RATING re/REVIEW CONTENT`
+Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 
@@ -203,7 +203,7 @@ Examples:
 
 Delete a review of a certain book.
 
-Format: `deleteReview INDEX rn/REVIEW INDEX`
+Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 
