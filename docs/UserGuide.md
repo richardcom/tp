@@ -183,7 +183,8 @@ Examples:
 
 ### Add review: `addReview`
 
-Add a review to a certain book.
+Add a review to a certain book. 
+
 
 Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
 
@@ -194,6 +195,10 @@ The book review will be added according to the index of the book in the current 
 The rating needs to be a string representing an integer from 0 to 5.
 
 The review content should not be empty and it should not contain more than 300 characters.
+
+If other command is executed before the add review command, then only the index corresponding to the book shown in the current book list will be valid.
+
+If the index is not in the currently shown book list, then a corresponding exception message will be shown.
 </div>
 
 Examples:
@@ -208,6 +213,10 @@ Format: `deleteReview INDEX rn/REVIEW_INDEX`
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
+
+If other command is executed before the delete review command, then only the index corresponding to the book shown in the current book list will be valid.
+
+If the index is not in the currently shown book list, then an exception message will be shown.
 </div>
 
 Examples:
