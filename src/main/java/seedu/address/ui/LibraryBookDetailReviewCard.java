@@ -75,6 +75,8 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
             reviews.getChildren().add(bookReviewCard.getRoot());
         }
 
+        reviews.setPrefHeight(85 * reviewList.size());
+
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }

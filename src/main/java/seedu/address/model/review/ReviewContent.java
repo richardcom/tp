@@ -7,12 +7,13 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is valid as declared in {@link #isValidContent(String)}
  */
 public class ReviewContent {
-    public static final String MESSAGE_CONSTRAINTS = "review cannot be empty";
+    public static final String MESSAGE_CONSTRAINTS = "review cannot be empty, and it cannot contain "
+            + "more than 300 characters";
 
     /*
      * The review should not be empty
      */
-    public static final String VALIDATION_REGEX = "^\\s*(\\S.*)\\s*$";
+    public static final String VALIDATION_REGEX = "^\\s*(\\S.{1,300})\\s*$";
 
     public final String content;
 
