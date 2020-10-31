@@ -62,29 +62,35 @@ public class DeleteReviewCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Book> lastShownList = model.getFilteredBookList();
+        try {
+            requireNonNull(model);
+            List<Book> lastShownList = model.getFilteredBookList();
 
-        if (bookIndex.getZeroBased() > lastShownList.size()) {
+            if (bookIndex.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+            }
+
+            Book bookToReview = lastShownList.get(bookIndex.getZeroBased());
+
+            if (bookToReview.getReviews().size() < reviewIndex) {
+                throw new CommandException(Messages.MESSAGE_INVALID_REVIEW_DISPLAYED_INDEX);
+            }
+
+            Book newBook = createdChangedBook(bookToReview, reviewIndex);
+
+            model.setBook(bookToReview, newBook);
+
+            List<String> keywords = new ArrayList<>(Arrays.asList((newBook.getName().fullName).split(" ")));
+
+            NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
+            model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
+
+            return new CommandResult(String.format(MESSAGE_DELETE_REVIEW_SUCCESS, newBook));
+        } catch (CommandException commandException) {
+            throw commandException;
+        } catch (IndexOutOfBoundsException indexOutOgBoundsException) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
-
-        Book bookToReview = lastShownList.get(bookIndex.getZeroBased());
-
-        if (bookToReview.getReviews().size() < reviewIndex) {
-            throw new CommandException(Messages.MESSAGE_INVALID_REVIEW_DISPLAYED_INDEX);
-        }
-
-        Book newBook = createdChangedBook(bookToReview, reviewIndex);
-
-        model.setBook(bookToReview, newBook);
-
-        List<String> keywords = new ArrayList<>(Arrays.asList((newBook.getName().fullName).split(" ")));
-
-        NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-        model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
-
-        return new CommandResult(String.format(MESSAGE_DELETE_REVIEW_SUCCESS, newBook));
     }
 
     private static Book createdChangedBook(Book book, int reviewIndex) {

@@ -66,7 +66,7 @@ public class AddReviewCommand extends Command {
         try {
             requireNonNull(model);
             List<Book> lastShownList = model.getFilteredBookList();
-            if (index.getZeroBased() > lastShownList.size()) {
+            if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
             }
             Book bookToReview = lastShownList.get(index.getZeroBased());
