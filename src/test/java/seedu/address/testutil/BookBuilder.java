@@ -1,7 +1,9 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.logic.parser.ParserUtil;
@@ -41,7 +43,7 @@ public class BookBuilder {
     private Author author;
     private Publisher publisher;
     private Stocking stocking;
-    private Set<Review> reviews;
+    private List<Review> reviews;
 
     /**
      * Creates a {@code BookBuilder} with the default details.
@@ -56,7 +58,7 @@ public class BookBuilder {
         author = new Author(DEFAULT_AUTHOR);
         publisher = new Publisher(DEFAULT_PUBLISHER);
         stocking = new Stocking(DEFAULT_STOCKING);
-        reviews = new HashSet<>();
+        reviews = new ArrayList<>();
     }
 
     /**

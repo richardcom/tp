@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -89,7 +88,7 @@ public class AddReviewCommand extends Command {
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
-        Set<Review> reviews = new HashSet<>(book.getReviews());
+        List<Review> reviews = book.getReviews();
         reviews.add(review);
         Times times = book.getTimes();
         Set<Category> categories = book.getCategories();

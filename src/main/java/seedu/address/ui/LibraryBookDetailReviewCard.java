@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
@@ -64,9 +63,13 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText("Author " + book.getAuthor().author);
 
+        /*
         List<Review> reviewList = book.getReviews().stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))
                 .collect(Collectors.toList());
+        */
+
+        List<Review> reviewList = book.getReviews();
 
         for (int i = 0; i < reviewList.size(); i = i + 1) {
             BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);

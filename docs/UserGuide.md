@@ -69,11 +69,9 @@ Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS
 
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/central library 2 science library 3 a/Stuart Russell p/PEARSON`
-
-
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
 ### Deleting a book: `deleteBy`
 
@@ -86,11 +84,58 @@ Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
+### Regarding stocking information in add and edit command
+
+The library location name is case sensitive.
+
+Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
+
+Given that there are only 3 locations available, the number of location argument can be at most 3.
+
+If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
+
+If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
+
+Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 1 and 99999.
+
+Examples:
+* `s/centralLb 30 scienceLb 20 HSSMLb 10`
+* `s/centralLb 10`
+* `s/`
+
+### Regarding categories and book cover
+
+The list of valid categories are given below in ascending order with respect to the priorit of the category.
+
+* `General`
+* `Novels`
+* `History`
+* `Science`
+* `AncientHistory`
+* `ModernHistory`
+* `AncientWar`
+* `ModernWar`
+* `Math`
+* `Chemistry`
+* `Physics`
+
+The book cover of a book depends on the categories of the book.
+
+The category name is case insensitive.
+
+If more than 1 category is given, the book cover will depend on the category with higher priority.
+
+If no category is given or none of the categories given is in the list above, then the book will have a book cover corresponding to the general category.
+
+For example, the book with categories Physics and Science will have a book cover corresponding to Physics
+
+To make the book cover more diversified, 2 books with the same categories may have different book cover corresponding to the categories.
+
 ### Check stocking of book in every location: `stock`
 
 Checks the list of locations of where a certain book is stored.
-Currently only the science library and central library are available locations.
-This means only stocking information regarding the science library and central library are available.
+Currently only the science library, central library, and HSSM library are available locations.
+This means only stocking information regarding the science library, central library, and HSSM library are available.
 
 Format: `stock [n/BOOK NAME] [i/ISBN]`
 
@@ -98,9 +143,9 @@ Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 Both the name and the ISBN of the book are optional argument in the command.
 
-The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords.
+The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords in order to be included in the result list.
 
-The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book number will need to contain some of the keywords.
+The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book ISBN will need to contain some of the keywords in order to be included in the result list.
 
 The keyword of book name is case insensitive.
 
@@ -148,7 +193,7 @@ The book review will be added according to the index of the book in the current 
 
 The rating needs to be a string representing an integer from 0 to 5.
 
-The review content should not be empty.
+The review content should not be empty and it should not contain more than 300 characters.
 </div>
 
 Examples:

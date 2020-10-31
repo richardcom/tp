@@ -107,7 +107,7 @@ public class EditCommand extends Command {
         Isbn updatedIsbn = editBookDescriptor.getIsbn().orElse(bookToEdit.getIsbn());
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
         Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
-        Set<Review> bookReviews = bookToEdit.getReviews();
+        List<Review> bookReviews = bookToEdit.getReviews();
         Times updatedTimes = bookToEdit.getTimes();
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());

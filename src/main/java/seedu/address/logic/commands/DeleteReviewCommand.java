@@ -4,11 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -95,13 +92,17 @@ public class DeleteReviewCommand extends Command {
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
+        /*
         List<Review> reviewList = book.getReviews()
                 .stream()
                 .sorted(Comparator.comparing(review -> review.getContent().content))
                 .collect(Collectors.toList());
+        */
+
+        List<Review> reviewList = book.getReviews();
         reviewList.remove(reviewIndex - 1);
 
-        HashSet<Review> reviews = new HashSet<>(reviewList);
+        //HashSet<Review> reviews = new HashSet<>(reviewList);
 
         Times times = book.getTimes();
         Set<Category> categories = book.getCategories();
@@ -109,7 +110,7 @@ public class DeleteReviewCommand extends Command {
         Publisher publisher = book.getPublisher();
         Stocking stocking = book.getStocking();
 
-        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+        return new Book(name, isbn, email, address, times, categories, stocking, reviewList, author, publisher);
 
     }
 }

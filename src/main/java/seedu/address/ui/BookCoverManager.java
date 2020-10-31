@@ -18,7 +18,7 @@ public class BookCoverManager {
     public static final String NOVEL = "Novels";
     public static final String PHYSICS = "Physics";
     public static final String CHEMISTRY = "Chemistry";
-    public static final String MATHEMATICS = "Mathematics";
+    public static final String MATHEMATICS = "Math";
     public static final String MODERN_WAR = "ModernWar";
     public static final String ANCIENT_WAR = "AncientWar";
     public static final String MODERN_HISTORY = "ModernHistory";

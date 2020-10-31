@@ -199,12 +199,16 @@ public class ParserUtil {
             if (matcher.find() && Stocking.isValidStocking(stocking)) {
                 List<String> locations = Arrays.asList(Stocking.LOCATION);
                 locations.forEach((location) -> {
-                    stockingInLocation.put(location, 0);
+                    stockingInLocation.put(location, -1);
                 });
                 for (int i = 1; i <= count; i = i + 2) {
                     if (matcher.group(i) != null && matcher.group(i + 1) != null) {
                         String currentLocation = matcher.group(i).strip();
                         int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
+
+                        if (currentCount < 0 || currentCount > 99999) {
+                            throw new ParseException(Stocking.NUMBER_CONSTRAINTS);
+                        }
 
                         locations.forEach((location) -> {
                             if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
@@ -261,6 +265,9 @@ public class ParserUtil {
 
         try {
             ratingNumber = Integer.parseInt(rating);
+            if (ratingNumber > 5 || ratingNumber < 0) {
+                throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+            }
         } catch (Exception exception) {
             throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }
