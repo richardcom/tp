@@ -199,7 +199,7 @@ public class ParserUtil {
             if (matcher.find() && Stocking.isValidStocking(stocking)) {
                 List<String> locations = Arrays.asList(Stocking.LOCATION);
                 locations.forEach((location) -> {
-                    stockingInLocation.put(location, -1);
+                    stockingInLocation.put(location, 0);
                 });
                 for (int i = 1; i <= count; i = i + 2) {
                     if (matcher.group(i) != null && matcher.group(i + 1) != null) {
