@@ -25,31 +25,31 @@ public class UsageCommandTest {
     }
 
     @Test
-    public void execute_first_book_success() {
+    public void execute_firstBook_success() {
         UsageCommand usageCommand = new UsageCommand(INDEX_FIRST_BOOK);
         assertCommandSuccess(usageCommand, model, String.format(MESSAGE_USAGE_BOOK_SUCCESS, 12), expectedModel);
     }
 
     @Test
-    public void execute_second_book_success() {
+    public void execute_secondBook_success() {
         UsageCommand usageCommand = new UsageCommand(INDEX_SECOND_BOOK);
         assertCommandSuccess(usageCommand, model, String.format(MESSAGE_USAGE_BOOK_SUCCESS, 20), expectedModel);
     }
 
     @Test
-    public void execute_third_book_success() {
+    public void execute_thirdBook_success() {
         UsageCommand usageCommand = new UsageCommand(INDEX_THIRD_BOOK);
         assertCommandSuccess(usageCommand, model, String.format(MESSAGE_USAGE_BOOK_SUCCESS, 20), expectedModel);
     }
 
     @Test
-    public void equals_same_object_success() {
+    public void equals_sameObject_success() {
         UsageCommand usageCommand = new UsageCommand(INDEX_FIRST_BOOK);
         assertTrue(usageCommand.equals(usageCommand));
     }
 
     @Test
-    public void equals_same_index_success() {
+    public void equals_sameIndex_success() {
         UsageCommand usageCommand = new UsageCommand(INDEX_FIRST_BOOK);
         UsageCommand other = new UsageCommand(INDEX_FIRST_BOOK);
         assertTrue(usageCommand.equals(other));
