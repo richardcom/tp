@@ -2,8 +2,10 @@ package seedu.address.model.book;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -29,13 +31,13 @@ public class Book {
     private final Set<Category> categories = new HashSet<>();
 
     private final Stocking stocking;
-    private final Set<Review> reviews = new HashSet<>();
+    private final List<Review> reviews = new ArrayList<>();
 
     /**
      * Every field must be present and not null.
      */
     public Book(Name name, Isbn isbn, Email email, Address address,
-                Times times, Set<Category> categories, Stocking stocking, Set<Review> reviews,
+                Times times, Set<Category> categories, Stocking stocking, List<Review> reviews,
                 Author author, Publisher publisher) {
         requireAllNonNull(name, isbn, email, address, times, categories, author);
         this.name = name;
@@ -67,7 +69,7 @@ public class Book {
         return address;
     }
 
-    public Set<Review> getReviews() {
+    public List<Review> getReviews() {
         return this.reviews;
     }
 
@@ -78,7 +80,6 @@ public class Book {
     public Publisher getPublisher() {
         return publisher;
     }
-
 
     public Times getTimes() {
         return times;

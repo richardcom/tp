@@ -11,7 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -60,7 +60,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Author author = ParserUtil.parseAuthor(argMultimap.getValue(PREFIX_AUTHOR).get()); // to be implemented
         Publisher publisher = ParserUtil.parsePublisher(argMultimap.getValue(PREFIX_PUBLISHER).get());
 
-        Book book = new Book(name, isbn, email, address, times, categoryList, stocking, new HashSet<Review>(),
+        Book book = new Book(name, isbn, email, address, times, categoryList, stocking, new ArrayList<Review>(),
                 author, publisher);
 
         return new AddCommand(book);

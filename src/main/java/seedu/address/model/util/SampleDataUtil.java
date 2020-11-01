@@ -1,8 +1,9 @@
 package seedu.address.model.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class SampleDataUtil {
         storage.put("scienceLibrary", 8);
         Stocking stocking = new Stocking(storage);
 
-        HashSet<Review> reviews = new HashSet<>();
+        List<Review> reviews = new ArrayList<>();
         Rating rating = new Rating(5);
         ReviewContent reviewContent = new ReviewContent("The book is interesting");
         Rating newRating = new Rating(4);
@@ -77,7 +78,7 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
-    public static Set<Review> getReviews(Review ... reviews) {
-        return new HashSet<Review>(Arrays.asList(reviews));
+    public static List<Review> getReviews(Review ... reviews) {
+        return new ArrayList<>(Arrays.asList(reviews));
     }
 }

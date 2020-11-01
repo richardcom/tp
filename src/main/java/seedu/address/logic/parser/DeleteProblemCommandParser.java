@@ -24,5 +24,4 @@ public class DeleteProblemCommandParser implements Parser<DeleteProblemCommand> 
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
         }
     }
-
 }

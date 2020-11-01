@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_TIMES_BOB = "2";
     public static final String VALID_CATEGORY_HUSBAND = "husband";
     public static final String VALID_CATEGORY_FRIEND = "friend";
-    public static final String VALID_STOCKING_AMY = "central library 10 science library 10";
-    public static final String VALID_STOCKING_BOB = "central library 30 science library 15";
+    public static final String VALID_STOCKING_AMY = "centralLb 10 scienceLb 10";
+    public static final String VALID_STOCKING_BOB = "centralLb 30 scienceLb 15";
     public static final String VALID_AUTHOR_BOB = "a";
     public static final String VALID_PUBLISHER_BOB = "pub";
     public static final String VALID_AUTHOR_AMY = "a";
