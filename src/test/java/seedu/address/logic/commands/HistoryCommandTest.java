@@ -1,10 +1,10 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.commons.core.Messages.MESSAGE_BORROWING_TIMES_HISTORY;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.EmptyList.getEmptyLibrary;
 import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +19,7 @@ class HistoryCommandTest {
     private Model expectedModel;
 
     @Test
-    void execute_example_listOfBooks_success() {
+    void execute_listOfBooks_success() {
         model = new ModelManager(getTypicalLibrary(), new UserPrefs());
         expectedModel = new ModelManager(model.getLibrary(), new UserPrefs());
         HistoryCommand historyCommand = new HistoryCommand();
