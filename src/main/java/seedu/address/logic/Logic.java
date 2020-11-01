@@ -2,6 +2,7 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -46,7 +47,12 @@ public interface Logic {
     GuiSettings getGuiSettings();
 
     /**
-     * Set the user prefs' GUI settings.
+     * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Gets smart suggestions from user input.
+     */
+    List<String> getSuggestions();
 }

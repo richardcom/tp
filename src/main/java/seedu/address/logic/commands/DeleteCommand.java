@@ -16,6 +16,7 @@ import seedu.address.model.book.Book;
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
+    public static final String SUGGESTION = "delete <index>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the book identified by the index number used in the displayed book list.\n"

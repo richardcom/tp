@@ -47,6 +47,18 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
+     * Set autocomplete listener.
+     *
+     * @author AY2021S1-CS2103-F10-3
+     * @param resultDisplay result display
+     */
+    public void setAutoCompleteListener(ResultDisplay resultDisplay) {
+        // calls resultDisplay.showAutoCompleteResult() whenever there is a change to the text of the command box.
+        commandTextField.textProperty().addListener((unused1, unused2, input) ->
+                resultDisplay.showAutoCompleteResult(input));
+    }
+
+    /**
      * Sets the command box style to use the default style.
      */
     private void setStyleToDefault() {

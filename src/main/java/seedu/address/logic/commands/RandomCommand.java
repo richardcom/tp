@@ -23,6 +23,7 @@ import seedu.address.ui.Mode;
 public class RandomCommand extends Command {
 
     public static final String COMMAND_WORD = "random";
+    public static final String SUGGESTION = "random <keywords>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sort the list of books"
             + "of a certain category by their popularity.\n"
