@@ -131,6 +131,11 @@ public class MainWindow extends UiPart<Stage> {
             }
             return null;
         });
+
+        // For autocompletion
+        // @author AY2021S1-CS2103-F10-3
+        resultDisplay.setSuggestionList(logic.getSuggestions());
+        commandBox.setAutoCompleteListener(resultDisplay);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
