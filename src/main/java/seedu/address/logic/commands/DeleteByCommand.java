@@ -19,6 +19,7 @@ import seedu.address.model.book.Book;
 public class DeleteByCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteBy";
+    public static final String SUGGESTION = "";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the book identified by the name, isbn or times borrowed.\n"
