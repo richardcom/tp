@@ -18,11 +18,7 @@ public class UsageByCommand extends Command {
 
     public static final String COMMAND_WORD = "usageBy";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Get the usage of the book identified by the name or isbn\n"
-            + "Parameters: NAME OR ISBN\n"
-            + "Example: " + "1. " + COMMAND_WORD + " " + PREFIX_NAME + "Linear Algebra" + "   "
-            + "2. " + COMMAND_WORD + " " + PREFIX_ISBN + "123456";
+
 
     public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 
