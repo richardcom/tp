@@ -67,19 +67,10 @@ public class Book {
         return address;
     }
 
-<<<<<<< HEAD
-    public void setRate(String rate) {
-        rates.add(new Rate(rate));
-    }
-
-    public ArrayList<Rate> getRate() {
-        return rates;
 
     public Set<Review> getReviews() {
-            return this.reviews;
+        return this.reviews;
     }
-=======
->>>>>>> parent of caa0efb9... Half-rate
 
     public Author getAuthor() {
         return author;
