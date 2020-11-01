@@ -28,32 +28,32 @@ public class TypicalBooks {
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com").withReviews()
             .withIsbn("94351253").withTimes("12")
             .withCategories("friends").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
     public static final Book BENSON = new BookBuilder().withName("Benson Meier").withReviews()
             .withAddress("311, Clementi Ave 2, #02-25").withTimes("20")
             .withEmail("johnd@example.com").withIsbn("98765432")
             .withCategories("owesMoney", "friends").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
     public static final Book CARL = new BookBuilder().withName("Carl Kurz").withIsbn("95352563")
             .withEmail("heinz@example.com").withReviews().withTimes("20")
             .withAddress("wall street").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
     public static final Book DANIEL = new BookBuilder().withName("Daniel Meier").withIsbn("87652533")
             .withEmail("cornelia@example.com").withReviews().withAddress("10th street").withCategories("friends")
             .withAuthor("a").withPublisher("pub").withTimes("20")
-            .withStocking("central library 10 science library 10").build();
+            .withStocking("centralLb 10 scienceLb 10").build();
     public static final Book ELLE = new BookBuilder().withName("Elle Meyer").withIsbn("9482224")
             .withEmail("werner@example.com").withReviews().withTimes("20")
             .withAddress("michegan ave").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
     public static final Book FIONA = new BookBuilder().withName("Fiona Kunz").withIsbn("9482427")
             .withEmail("lydia@example.com").withReviews().withTimes("20")
             .withAddress("little tokyo").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
     public static final Book GEORGE = new BookBuilder().withName("George Best").withIsbn("9482442")
             .withEmail("anna@example.com").withReviews().withTimes("20")
             .withAddress("4th street").withAuthor("a")
-            .withPublisher("pub").withStocking("central library 10 science library 10").build();
+            .withPublisher("pub").withStocking("centralLb 10 scienceLb 10").build();
 
     // all newly added attributes need to be implemented here.
     // Manually added

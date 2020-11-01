@@ -59,9 +59,11 @@ public class LibraryBookDetailStockingCard extends UiPart<Region> {
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         book.getStocking().storage.forEach((location, storage) -> {
             if (storage > 0) {
-                stocking.getChildren().add(new Label(location + ": " + storage + " "));
+                stocking.getChildren().add(new Label(location.substring(0, location.length() - 2)
+                        + " library: " + storage + " "));
             } else {
-                stocking.getChildren().add(new Label(location + ": " + "Not available"));
+                stocking.getChildren().add(new Label(location.substring(0, location.length() - 2)
+                        + " library: " + "Not available"));
             }
         });
         author.setText("Author " + book.getAuthor().author);

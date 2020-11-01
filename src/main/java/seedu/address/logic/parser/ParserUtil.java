@@ -206,6 +206,10 @@ public class ParserUtil {
                         String currentLocation = matcher.group(i).strip();
                         int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
 
+                        if (currentCount < 0 || currentCount > 99999) {
+                            throw new ParseException(Stocking.NUMBER_CONSTRAINTS);
+                        }
+
                         locations.forEach((location) -> {
                             if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
                                 stockingInLocation.put(location, currentCount);
@@ -261,6 +265,9 @@ public class ParserUtil {
 
         try {
             ratingNumber = Integer.parseInt(rating);
+            if (ratingNumber > 5 || ratingNumber < 0) {
+                throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+            }
         } catch (Exception exception) {
             throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }

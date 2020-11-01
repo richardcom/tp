@@ -16,15 +16,18 @@ import seedu.address.model.book.Stocking;
 public class JsonAdaptedStocking {
     private final int centralLibrary;
     private final int scienceLibrary;
+    private final int hssmLibrary;
 
     /**
      * Constructs a {@code JsonAdaptedStocking} with the given stocking information.
      */
     @JsonCreator
     public JsonAdaptedStocking(@JsonProperty("centralLibrary") int centralLibrary,
-                               @JsonProperty("scienceLibrary") int scienceLibrary) {
+                               @JsonProperty("scienceLibrary") int scienceLibrary,
+                               @JsonProperty("HSSMLibrary") int hssmLibrary) {
         this.centralLibrary = centralLibrary;
         this.scienceLibrary = scienceLibrary;
+        this.hssmLibrary = hssmLibrary;
     }
 
     /**
@@ -34,9 +37,11 @@ public class JsonAdaptedStocking {
         if (stocking == null) {
             this.centralLibrary = 0;
             this.scienceLibrary = 0;
+            this.hssmLibrary = 0;
         } else {
-            this.centralLibrary = stocking.storage.getOrDefault("central library", 0);
-            this.scienceLibrary = stocking.storage.getOrDefault("science library", 0);
+            this.centralLibrary = stocking.storage.getOrDefault("centralLb", 0);
+            this.scienceLibrary = stocking.storage.getOrDefault("scienceLb", 0);
+            this.hssmLibrary = stocking.storage.getOrDefault("HSSMLb", 0);
         }
     }
 
@@ -47,13 +52,13 @@ public class JsonAdaptedStocking {
      */
     public Stocking toModelType() throws IllegalValueException {
         HashMap<String, Integer> storage = new HashMap<>();
-
-        if (!Stocking.isValidStocking("central library " + centralLibrary + " science library " + scienceLibrary)) {
+        if (!Stocking.isValidStocking("centralLb " + centralLibrary + " scienceLb " + scienceLibrary
+                + " HSSMLb " + hssmLibrary)) {
             throw new IllegalValueException(Stocking.MESSAGE_CONSTRAINTS);
         }
-        storage.put("central library", this.centralLibrary);
-        storage.put("science library", this.scienceLibrary);
-
+        storage.put("centralLb", this.centralLibrary);
+        storage.put("scienceLb", this.scienceLibrary);
+        storage.put("HSSMLb", this.hssmLibrary);
         return new Stocking(storage);
     }
 }

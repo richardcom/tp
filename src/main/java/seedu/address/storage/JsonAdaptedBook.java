@@ -127,7 +127,7 @@ class JsonAdaptedBook {
         }
         final Email modelEmail = new Email(email);
 
-        final Set<Review> modelReviews = new HashSet<>();
+        final List<Review> modelReviews = new ArrayList<>();
 
         for (JsonAdaptedReview review : reviews) {
             modelReviews.add(review.toModelType());

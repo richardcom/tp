@@ -69,11 +69,9 @@ Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS
 
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/central library 2 science library 3 a/Stuart Russell p/PEARSON`
-
-
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
 ### Deleting a book: `deleteBy`
 
@@ -86,11 +84,60 @@ Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
+### Regarding stocking information in add and edit command
+
+The library location name is case sensitive.
+
+Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
+
+Given that there are only 3 locations available, the number of location argument can be at most 3.
+
+If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
+
+If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
+
+Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 0 and 99999.
+
+
+
+Examples:
+* `s/centralLb 30 scienceLb 20 HSSMLb 10`
+* `s/centralLb 10`
+* `s/`
+
+### Regarding categories and book cover
+
+The list of valid categories are given below in ascending order with respect to the priorit of the category.
+
+* `General`
+* `Novels`
+* `History`
+* `Science`
+* `AncientHistory`
+* `ModernHistory`
+* `AncientWar`
+* `ModernWar`
+* `Math`
+* `Chemistry`
+* `Physics`
+
+The book cover of a book depends on the categories of the book.
+
+The category name is case insensitive.
+
+If more than 1 category is given, the book cover will depend on the category with higher priority.
+
+If no category is given or none of the categories given is in the list above, then the book will have a book cover corresponding to the general category.
+
+For example, the book with categories Physics and Science will have a book cover corresponding to Physics
+
+To make the book cover more diversified, 2 books with the same categories may have different book cover corresponding to the categories.
+
 ### Check stocking of book in every location: `stock`
 
 Checks the list of locations of where a certain book is stored.
-Currently only the science library and central library are available locations.
-This means only stocking information regarding the science library and central library are available.
+Currently only the science library, central library, and HSSM library are available locations.
+This means only stocking information regarding the science library, central library, and HSSM library are available.
 
 Format: `stock [n/BOOK NAME] [i/ISBN]`
 
@@ -98,9 +145,9 @@ Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 Both the name and the ISBN of the book are optional argument in the command.
 
-The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords.
+The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords in order to be included in the result list.
 
-The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book number will need to contain some of the keywords.
+The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book ISBN will need to contain some of the keywords in order to be included in the result list.
 
 The keyword of book name is case insensitive.
 
@@ -118,6 +165,14 @@ Examples:
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
 * `stock`
+
+### Additional notes about review
+
+The purpose of the review functionality is for librarian to collect review and feedback from readers about a certain book, and estimates the general rating of the book among readers.
+
+Given that review is recorded on a person by person basis, there can be duplicate review added since 2 different people may give the same review.
+
+Since it is reasonable to assume that most review and feedback is collected anonymously in a library in real life situation, there will not be information about the reader giving the review.
 
 ### Search for review of book: `searchReview`
 
@@ -138,9 +193,10 @@ Examples:
 
 ### Add review: `addReview`
 
-Add a review to a certain book.
+Add a review to a certain book. 
 
-Format: `addReview INDEX ra/RATING re/REVIEW CONTENT`
+
+Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 
@@ -148,7 +204,11 @@ The book review will be added according to the index of the book in the current 
 
 The rating needs to be a string representing an integer from 0 to 5.
 
-The review content should not be empty.
+The review content should not be empty and it should not contain more than 300 characters.
+
+If other command is executed before the add review command, then only the index corresponding to the book shown in the current book list will be valid.
+
+If the index is not in the currently shown book list, then a corresponding exception message will be shown.
 </div>
 
 Examples:
@@ -158,11 +218,15 @@ Examples:
 
 Delete a review of a certain book.
 
-Format: `deleteReview INDEX rn/REVIEW INDEX`
+Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
+
+If other command is executed before the delete review command, then only the index corresponding to the book shown in the current book list will be valid.
+
+If the index is not in the currently shown book list, then an exception message will be shown.
 </div>
 
 Examples:
@@ -309,6 +373,10 @@ Examples:
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
+**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
+**AddReview** | `addReview INDEX ra/RATING re/REVIEW CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
+**DeleteReview** | `deleteReview INDEX rn/REVIEW INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`<br> e.g.,`edit 3 p/Scribner Publisher t/`

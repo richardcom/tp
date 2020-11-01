@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -64,24 +63,26 @@ public class AddReviewCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Book> lastShownList = model.getFilteredBookList();
+        try {
+            requireNonNull(model);
+            List<Book> lastShownList = model.getFilteredBookList();
+            if (index.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+            }
+            Book bookToReview = lastShownList.get(index.getZeroBased());
+            Book reviewedBook = createdChangedBook(bookToReview, review);
 
-        if (index.getZeroBased() > lastShownList.size()) {
+            model.setBook(bookToReview, reviewedBook);
+
+            List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
+
+            NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
+            model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
+
+            return new CommandResult(String.format(MESSAGE_ADD_REVIEW_SUCCESS, reviewedBook));
+        } catch (Exception exception) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
-
-        Book bookToReview = lastShownList.get(index.getZeroBased());
-        Book reviewedBook = createdChangedBook(bookToReview, review);
-
-        model.setBook(bookToReview, reviewedBook);
-
-        List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
-
-        NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-        model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
-
-        return new CommandResult(String.format(MESSAGE_ADD_REVIEW_SUCCESS, reviewedBook));
     }
 
     private static Book createdChangedBook(Book book, Review review) {
@@ -89,7 +90,7 @@ public class AddReviewCommand extends Command {
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
-        Set<Review> reviews = new HashSet<>(book.getReviews());
+        List<Review> reviews = book.getReviews();
         reviews.add(review);
         Times times = book.getTimes();
         Set<Category> categories = book.getCategories();
