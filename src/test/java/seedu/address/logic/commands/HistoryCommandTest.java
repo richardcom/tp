@@ -35,12 +35,12 @@ class HistoryCommandTest {
     }
 
     @Test
-    public void equals_same_type_success() {
+    public void equals_sameType_success() {
         assertTrue(new HistoryCommand().equals(new HistoryCommand()));
     }
 
     @Test
-    public void equals_same_object_success() {
+    public void equals_sameObject_success() {
         HistoryCommand historyCommand = new HistoryCommand();
         assertTrue(historyCommand.equals(historyCommand));
     }
