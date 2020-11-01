@@ -15,7 +15,6 @@ public class HitCommand extends Command {
     public static final String SHOWING_HIT_MESSAGE = "Wow! Max borrowed times are hit! What a popular library!"
             + "\n\nYou may want to use 'times' command to reset some borrowed times values";
 
-
     /**
      * Returns command result with hit message.
      *
