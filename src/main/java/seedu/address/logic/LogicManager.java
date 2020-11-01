@@ -2,14 +2,14 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.LibraryParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -77,5 +77,26 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public List<String> getSuggestions() {
+        List<String> keywords = new ArrayList<>();
+        keywords.add(AddCommand.SUGGESTION);
+        keywords.add(AddProblemCommand.SUGGESTION);
+        keywords.add(AddReviewCommand.SUGGESTION);
+        keywords.add(ClearCommand.COMMAND_WORD);
+        keywords.add(DeleteCommand.SUGGESTION);
+        keywords.add(DeleteByCommand.SUGGESTION);
+        keywords.add(DeleteProblemCommand.SUGGESTION);
+        keywords.add(DeleteReviewCommand.SUGGESTION);
+        keywords.add(EditCommand.SUGGESTION);
+        keywords.add(ExitCommand.COMMAND_WORD);
+        keywords.add(FindCommand.SUGGESTION);
+        keywords.add(FindProblemReportCommand.SUGGESTION);
+        keywords.add(HelpCommand.COMMAND_WORD);
+        keywords.add(HistoryCommand.COMMAND_WORD);
+        keywords.add(ListCommand.COMMAND_WORD);
+        return keywords;
     }
 }
