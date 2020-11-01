@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.HitCommand.SHOWING_HIT_MESSAGE;
 
@@ -16,5 +17,10 @@ public class HitCommandTest {
     public void execute_hit_success() {
         CommandResult expectedCommandResult = new CommandResult(SHOWING_HIT_MESSAGE);
         assertCommandSuccess(new HitCommand(), model, expectedCommandResult, expectedModel);
+    }
+
+    @Test
+    public void equals_success() {
+        assertTrue(new HitCommand().equals(new HitCommand()));
     }
 }
