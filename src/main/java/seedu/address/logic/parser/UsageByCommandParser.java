@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 
 import java.util.stream.Stream;
 
@@ -21,22 +20,21 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the UsageCommand
      * and returns a UsageByCommand object for execution.
-     * * @return UsageByCommand.
+     *
+     * @return UsageByCommand.
      * @throws ParseException if the user input does not conform the expected format
      */
     public UsageByCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_TIMES);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN);
         String content = "";
 
         boolean isNamePresent = isPrefixesPresent(argMultimap, PREFIX_NAME)
-                && !arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES);
+                && !arePrefixesPresent(argMultimap, PREFIX_ISBN);
         boolean isIsbnPresent = isPrefixesPresent(argMultimap, PREFIX_ISBN)
-                && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES);
+                && !arePrefixesPresent(argMultimap, PREFIX_NAME);
 
-        if ((arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES)
-                || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES)
-                || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN))
+        if ((arePrefixesPresent(argMultimap, PREFIX_ISBN)
+                || arePrefixesPresent(argMultimap, PREFIX_NAME))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     Messages.MESSAGE_USAGE_BY));
@@ -44,10 +42,10 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
 
         if (isNamePresent) {
             Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            content = name.fullName;
+            content = name.getName();
         } else if (isIsbnPresent) {
             Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
-            content = isbn.value;
+            content = isbn.getIsbn();
         }
         try {
             String trimmedArgs = content.trim();
