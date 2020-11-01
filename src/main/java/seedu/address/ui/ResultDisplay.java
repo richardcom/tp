@@ -2,11 +2,11 @@ package seedu.address.ui;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
-
-import java.util.List;
 
 /**
  * A ui for the status bar that is displayed at the header of the application.
@@ -35,9 +35,10 @@ public class ResultDisplay extends UiPart<Region> {
     /**
      * Gives smart suggestions on commands user attempts to input.
      *
+     * @author AY2021S1-CS2103-F10-3
      * @param input
      * @param commandSuggestionList
-     * @author AY2021S1-CS2103-F10-3
+     *
      * @return feedback string
      */
     public static String getAutoCompleteResult(String input, List<String> commandSuggestionList) {
@@ -60,9 +61,11 @@ public class ResultDisplay extends UiPart<Region> {
     }
 
     /**
-     * Show autocomplete result to user.
-     * @param input input of the user
+     * Shows autocomplete result to user.
+     *
      * @author AY2021S1-CS2103-F10-3
+     * @param input input of the user
+     *
      */
     public void showAutoCompleteResult(String input) {
         requireNonNull(input);
