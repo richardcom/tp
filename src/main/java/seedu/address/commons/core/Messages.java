@@ -13,11 +13,11 @@ public class Messages {
             + "Note that only index of book shown in the current book list is valid.\n"
             + "To execute the command on the books not shown in the current book list, try to use "
             + "the list command to list all the books and search for "
-            + "the corresponding book";
+            + "the corresponding book.";
     public static final String MESSAGE_INVALID_EDIT_REVIEW = "At least 1 of rating or review "
-            + "content needs to be present";
+            + "content needs to be present.";
     public static final String MESSAGE_REVIEW_NOT_EDITED = "At least 1 of rating or review "
-            + "content needs to be different";
+            + "content needs to be different.";
     public static final String MESSAGE_INVALID_BOOK_DELETE_NAME = "The book to delete is not found";
     public static final String MESSAGE_INVALID_BOOK_CHECK_NAME = "The book to check is not found";
     public static final String MESSAGE_BOOKS_LISTED_OVERVIEW = "%1$d books listed!";
