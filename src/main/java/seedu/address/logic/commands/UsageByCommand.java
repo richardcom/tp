@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.util.List;
 
@@ -17,12 +15,6 @@ import seedu.address.model.book.Book;
 public class UsageByCommand extends Command {
 
     public static final String COMMAND_WORD = "usageBy";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Get the usage of the book identified by the name or isbn\n"
-            + "Parameters: NAME OR ISBN\n"
-            + "Example: " + "1. " + COMMAND_WORD + " " + PREFIX_NAME + "Linear Algebra" + "   "
-            + "2. " + COMMAND_WORD + " " + PREFIX_ISBN + "123456";
 
     public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 
