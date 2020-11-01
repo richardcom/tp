@@ -28,6 +28,7 @@ public class UsageCommand extends Command {
 
         List<Book> lastShownList = model.getFilteredBookList();
         int size = lastShownList.size();
+
         if (invalidSizeComparedTo(size)) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
