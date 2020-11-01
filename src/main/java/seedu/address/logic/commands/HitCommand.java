@@ -25,4 +25,10 @@ public class HitCommand extends Command {
     public CommandResult execute(Model model) {
         return new CommandResult(SHOWING_HIT_MESSAGE);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return this == other
+                || (other instanceof HitCommand);
+    }
 }
