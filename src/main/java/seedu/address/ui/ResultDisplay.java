@@ -32,6 +32,14 @@ public class ResultDisplay extends UiPart<Region> {
         resultDisplay.setText(feedbackToUser);
     }
 
+    /**
+     * Gives smart suggestions on commands user attempts to input.
+     *
+     * @param input
+     * @param commandSuggestionList
+     * @author AY2021S1-CS2103-F10-3
+     * @return feedback string
+     */
     public static String getAutoCompleteResult(String input, List<String> commandSuggestionList) {
         String feedback = "";
         String[] inputArr = input.split(" ");
@@ -54,6 +62,7 @@ public class ResultDisplay extends UiPart<Region> {
     /**
      * Show autocomplete result to user.
      * @param input input of the user
+     * @author AY2021S1-CS2103-F10-3
      */
     public void showAutoCompleteResult(String input) {
         requireNonNull(input);

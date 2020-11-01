@@ -18,8 +18,6 @@ import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Book;
 import seedu.address.storage.Storage;
 
-import javax.swing.*;
-
 /**
  * The main LogicManager of the app.
  */
