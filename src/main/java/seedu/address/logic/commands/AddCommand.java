@@ -21,6 +21,9 @@ import seedu.address.model.book.Book;
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
+    public static final String SUGGESTION = "add n/<name>"
+            + "add i/<isbn>";
+            //+ "add "
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the address book. "
             + "Parameters: "

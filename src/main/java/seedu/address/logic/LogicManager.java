@@ -10,12 +10,15 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.LibraryParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Book;
 import seedu.address.storage.Storage;
+
+import javax.swing.*;
 
 /**
  * The main LogicManager of the app.
@@ -97,6 +100,13 @@ public class LogicManager implements Logic {
         keywords.add(HelpCommand.COMMAND_WORD);
         keywords.add(HistoryCommand.COMMAND_WORD);
         keywords.add(ListCommand.COMMAND_WORD);
+        keywords.add(RandomCommand.SUGGESTION);
+        keywords.add(SearchReviewCommand.SUGGESTION);
+        keywords.add(SortCommand.SUGGESTION);
+        keywords.add(TimesCommand.SUGGESTION);
+        keywords.add(UsageCommand.SUGGESTION);
+        keywords.add(UsageByCommand.SUGGESTION);
+        keywords.add(ViewProblemCommand.SUGGESTION);
         return keywords;
     }
 }

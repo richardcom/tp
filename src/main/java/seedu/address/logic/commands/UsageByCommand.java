@@ -15,6 +15,7 @@ import seedu.address.model.book.Book;
 public class UsageByCommand extends Command {
 
     public static final String COMMAND_WORD = "usageBy";
+    public static final String SUGGESTION = "usageBy n/<book name>\n" + "usageBy i/<isbn>";
 
     public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 
