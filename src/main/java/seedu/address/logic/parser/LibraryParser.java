@@ -16,6 +16,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteProblemCommand;
 import seedu.address.logic.commands.DeleteReviewCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditReviewCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindProblemReportCommand;
@@ -109,6 +110,9 @@ public class LibraryParser {
 
         case DeleteReviewCommand.COMMAND_WORD:
             return new DeleteReviewCommandParser().parse(arguments);
+
+        case EditReviewCommand.COMMAND_WORD:
+            return new EditReviewCommandParser().parse(arguments);
 
         case TimesCommand.COMMAND_WORD:
             return new TimesCommandParser().parse(arguments);

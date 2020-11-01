@@ -13,6 +13,9 @@ import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
 import seedu.address.model.review.ReviewContent;
 
+/**
+ * Parses input arguments and creates a new AddReviewCommand object
+ */
 public class AddReviewCommandParser implements Parser<AddReviewCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddReviewCommand
