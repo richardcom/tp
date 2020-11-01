@@ -124,8 +124,9 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(commandText -> {
             try {
                 return executeCommand(commandText);
+            } catch (NumberFormatException e) {
+                return executeCommand("hit");
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             return null;
@@ -180,7 +181,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Executes the command and returns the result.
      *
-     * @throws Exception
+     * @throws Exception exceptions if applicable
      * @see seedu.address.logic.Logic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws Exception {
