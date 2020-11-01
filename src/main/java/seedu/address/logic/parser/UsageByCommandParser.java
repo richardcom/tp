@@ -1,12 +1,12 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_USAGE_BY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.util.stream.Stream;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.UsageByCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.book.Isbn;
@@ -37,7 +37,7 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
                 || arePrefixesPresent(argMultimap, PREFIX_NAME))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    Messages.MESSAGE_USAGE_BY));
+                    MESSAGE_USAGE_BY));
         }
 
         if (isNamePresent) {
@@ -51,12 +51,12 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
             String trimmedArgs = content.trim();
             if (trimmedArgs.isEmpty()) {
                 throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, Messages.MESSAGE_USAGE_BY));
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE_BY));
             }
             return new UsageByCommand(trimmedArgs);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, Messages.MESSAGE_USAGE_BY), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE_BY), pe);
         }
     }
 
