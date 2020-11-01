@@ -40,10 +40,10 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
         }
 
         if (isNamePresent) {
-            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).orElse(""));
             content = name.getName();
         } else if (isIsbnPresent) {
-            Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
+            Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).orElse(""));
             content = isbn.getIsbn();
         }
         try {
