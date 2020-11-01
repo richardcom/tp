@@ -29,12 +29,11 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
         String content = "";
 
         boolean isNamePresent = isPrefixesPresent(argMultimap, PREFIX_NAME)
-                && !arePrefixesPresent(argMultimap, PREFIX_ISBN);
+                && !isPrefixesPresent(argMultimap, PREFIX_ISBN);
         boolean isIsbnPresent = isPrefixesPresent(argMultimap, PREFIX_ISBN)
-                && !arePrefixesPresent(argMultimap, PREFIX_NAME);
+                && !isPrefixesPresent(argMultimap, PREFIX_NAME);
 
-        if ((arePrefixesPresent(argMultimap, PREFIX_ISBN)
-                || arePrefixesPresent(argMultimap, PREFIX_NAME))
+        if (arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_USAGE_BY));
