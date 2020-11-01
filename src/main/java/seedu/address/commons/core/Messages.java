@@ -17,8 +17,11 @@ public class Messages {
             + "To execute the command on the books not shown in the current book list, try to use "
             + "the list command to list all the books and search for "
             + "the corresponding book";
-    public static final String MESSAGE_USAGE_BY = "usageBy n/<book name>\n"
-            + "or usageBy i/<isbn>";
+    public static final String MESSAGE_USAGE_BY = "usageBy"
+            + ": Get the usage of the book identified by the name or isbn\n"
+            + "Parameters: NAME or ISBN\n"
+            + "Example: " + "1. " + "usageBy" + " " + PREFIX_NAME + "Linear Algebra" + "\n"
+            + "2. " + "usageBy" + " " + PREFIX_ISBN + "1938431047490";
     public static final String MESSAGE_INVALID_BOOK_DELETE_NAME = "The book to delete is not found";
     public static final String MESSAGE_INVALID_BOOK_CHECK_NAME = "The book to check is not found";
     public static final String MESSAGE_BOOKS_LISTED_OVERVIEW = "%1$d books listed!";
