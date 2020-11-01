@@ -124,6 +124,8 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(commandText -> {
             try {
                 return executeCommand(commandText);
+            } catch (NumberFormatException E) {
+                return executeCommand("hit");
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
