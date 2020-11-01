@@ -29,7 +29,13 @@ public class Rating {
      * Returns true if a given string is a valid rating.
      */
     public static boolean isValidRating(String test) {
-        return test.matches(VALIDATION_REGEX);
+        try {
+            int value = Integer.parseInt(test);
+            return value >= 0 && value <= 5;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        //return test.matches(VALIDATION_REGEX);
     }
 
     @Override
