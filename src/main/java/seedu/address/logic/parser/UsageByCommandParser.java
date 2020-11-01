@@ -13,7 +13,7 @@ import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
 
 /**
- * Parses input arguments and creates a new UsageByCommand object
+ * Parses input arguments and creates a new UsageByCommand object.
  */
 public class UsageByCommandParser implements Parser<UsageByCommand> {
 
@@ -21,7 +21,7 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
      * Parses the given {@code String} of arguments in the context of the UsageCommand
      * and returns a UsageByCommand object for execution.
      *
-     * @return UsageByCommand.
+     * @return UsageByCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public UsageByCommand parse(String args) throws ParseException {
@@ -60,10 +60,24 @@ public class UsageByCommandParser implements Parser<UsageByCommand> {
         }
     }
 
+    /**
+     * Checks whether prefix is present.
+     *
+     * @param argumentMultimap argument multimap
+     * @param prefix prefix
+     * @return boolean value
+     */
     private static boolean isPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
         return argumentMultimap.getValue(prefix).isPresent();
     }
 
+    /**
+     * Checks whether prefixes are present.
+     *
+     * @param argumentMultimap argument multimap
+     * @param prefixes prefixes
+     * @return boolean value
+     */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
