@@ -15,7 +15,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intellibrary.jar` from [here].
+2. Download the latest `intelLibrary.jar` from [here].
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
@@ -107,7 +107,7 @@ Examples:
 
 ### Regarding categories and book cover
 
-The list of valid categories are given below in ascending order with respect to the priorit of the category.
+The list of valid categories are given below in ascending order with respect to the priority of the category.
 
 * `General`
 * `Novels`
@@ -141,7 +141,7 @@ This means only stocking information regarding the science library, central libr
 
 Format: `stock [n/BOOK NAME] [i/ISBN]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 Both the name and the ISBN of the book are optional argument in the command.
 
@@ -180,7 +180,7 @@ Check the list of reviews of certain book.
 
 Format: `searchReview [n/BOOK NAME] [i/ISBN]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The usage is similar to the stock command.
 </div>
@@ -198,7 +198,7 @@ Add a review to a certain book.
 
 Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be added according to the index of the book in the current shown book list.
 
@@ -220,7 +220,7 @@ Delete a review of a certain book.
 
 Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
 
@@ -232,20 +232,26 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-### Check usage
+### Check usage 
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
 * book isbn
 * book name
 
-Format: 
+#### by Index
+Format:
 * `usage [INDEX]`
-* `usage i/[ISBN]`
-* `usage n/[BOOK_NAME]`
 
 Examples:
 * `usage 2`
+
+#### by Book Name or ISBN
+Format: 
+* `usageBy i/[ISBN]`
+* `usageBy n/[BOOK_NAME]`
+
+Examples:
 * `usageBy i/9780141439518`
 * `usageBy n/Pride and Prejudice`
 
