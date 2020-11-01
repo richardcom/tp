@@ -35,7 +35,6 @@ public class Rating {
         } catch (NumberFormatException e) {
             return false;
         }
-        //return test.matches(VALIDATION_REGEX);
     }
 
     @Override
