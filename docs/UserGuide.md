@@ -96,7 +96,9 @@ If there are duplicate location argument, such as centralLb 10 centralLb 20, the
 
 If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
 
-Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 1 and 99999.
+Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 0 and 99999.
+
+
 
 Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
@@ -163,6 +165,14 @@ Examples:
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
 * `stock`
+
+### Additional notes about review
+
+The purpose of the review functionality is for librarian to collect review and feedback from readers about a certain book, and estimates the general rating of the book among readers.
+
+Given that review is recorded on a person by person basis, there can be duplicate review added since 2 different people may give the same review.
+
+Since it is reasonable to assume that most review and feedback is collected anonymously in a library in real life situation, there will not be information about the reader giving the review.
 
 ### Search for review of book: `searchReview`
 

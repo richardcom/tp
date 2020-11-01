@@ -15,9 +15,11 @@ public class Stocking {
             + "If there are duplicate location argument, such as centralLb 10 centralLb 20, then "
             + "the later one will cover the previous one.\n"
             + "Additionally, to make the recorded stocking more reasonable, the stocking of a "
-            + "book in a location should be an integer between 1 and 99999.\n"
+            + "book in a location should be an integer between 0 and 99999.\n"
+            + "If the stocking of a location has a value of 0, then the stocking information shown for "
+            + "the book in that location will be: Not available.\n"
             + "Note that if the stocking information of some of the libraries is not provided, then the stocking "
-            + "information shown for the book in that location will be: Not Available";
+            + "information shown for the book in that location will be: Not available";
 
     public static final String NUMBER_CONSTRAINTS = "to make the recorded stocking more reasonable, the stocking of a "
             + "book in a location should be an integer between 1 and 99999.\n";

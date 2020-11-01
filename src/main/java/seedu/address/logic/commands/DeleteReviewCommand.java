@@ -67,7 +67,7 @@ public class DeleteReviewCommand extends Command {
             List<Book> lastShownList = model.getFilteredBookList();
 
             if (bookIndex.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW);
             }
 
             Book bookToReview = lastShownList.get(bookIndex.getZeroBased());
@@ -89,7 +89,7 @@ public class DeleteReviewCommand extends Command {
         } catch (CommandException commandException) {
             throw commandException;
         } catch (IndexOutOfBoundsException indexOutOgBoundsException) {
-            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW);
         }
     }
 
@@ -117,6 +117,5 @@ public class DeleteReviewCommand extends Command {
         Stocking stocking = book.getStocking();
 
         return new Book(name, isbn, email, address, times, categories, stocking, reviewList, author, publisher);
-
     }
 }
