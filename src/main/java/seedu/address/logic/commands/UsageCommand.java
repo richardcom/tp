@@ -16,6 +16,7 @@ import seedu.address.model.book.Book;
  */
 public class UsageCommand extends Command {
     public static final String COMMAND_WORD = "usage";
+    public static final String SUGGESTION = "usage <index>";
     private final Index targetIndex;
 
     /**
