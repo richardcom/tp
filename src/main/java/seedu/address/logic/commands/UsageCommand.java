@@ -11,17 +11,10 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Check usage of a book identified using it's displayed index from the address book.
+ * Check usage of a book identified using its displayed index from the list.
  */
 public class UsageCommand extends Command {
     public static final String COMMAND_WORD = "usage";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Usages the book identified by the index number used in the displayed book list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-
-    public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 
     private final Index targetIndex;
 
@@ -34,13 +27,21 @@ public class UsageCommand extends Command {
         requireNonNull(model);
 
         List<Book> lastShownList = model.getFilteredBookList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size() || targetIndex.getZeroBased() <= 0) {
+        int size = lastShownList.size();
+        if (invalidSizeComparedTo(size)) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
         }
 
-        return new CommandResult(String.format(MESSAGE_USAGE_BOOK_SUCCESS,
-                lastShownList.get(targetIndex.getZeroBased()).getTimes().getValue()));
+        return new CommandResult(String.format(Messages.MESSAGE_USAGE_BOOK_SUCCESS,
+                getUsage(lastShownList.get(targetIndex.getZeroBased()))));
+    }
+
+    private boolean invalidSizeComparedTo(int size) {
+        return targetIndex.getZeroBased() >= size || targetIndex.getZeroBased() < 0;
+    }
+
+    private int getUsage(Book book) {
+        return book.getTimes().getValue();
     }
 
     @Override

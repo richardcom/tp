@@ -9,7 +9,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_BOOK_DISPLAYED_INDEX = "The book index provided is invalid";
     public static final String MESSAGE_INVALID_REVIEW_DISPLAYED_INDEX = "The review index provided is invalid";
-    public static final String MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW = "The book index provided is invalid.\n"
+    public static final String MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW = "The review book index provided is invalid.\n"
             + "Note that only index of book shown in the current book list is valid.\n"
             + "To execute the command on the books not shown in the current book list, try to use "
             + "the list command to list all the books and search for "
@@ -19,4 +19,9 @@ public class Messages {
     public static final String MESSAGE_BOOKS_LISTED_OVERVIEW = "%1$d books listed!";
     public static final String MESSAGE_REPORT_LISTED_OVERVIEW = "%1$d reports listed!";
     public static final String MESSAGE_BORROWING_TIMES_HISTORY = "All history borrowing times sum up to %1$d";
+    public static final String MESSAGE_USAGE = "usage"
+            + ": Usages the book identified by the index number used in the displayed book list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: usage 1";
+    public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
 }
