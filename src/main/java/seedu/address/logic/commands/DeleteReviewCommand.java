@@ -33,7 +33,7 @@ import seedu.address.ui.Mode;
 public class DeleteReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteReview";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "deleteReview <index> rn/<review number>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete the review to the book at "
             + "the corresponding position in the list.\n"

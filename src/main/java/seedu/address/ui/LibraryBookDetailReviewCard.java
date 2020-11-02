@@ -63,15 +63,19 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
                 .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         author.setText("Author " + book.getAuthor().author);
         List<Review> reviewList = book.getReviews();
+        double reviewListHeight = 0;
 
         for (int i = 0; i < reviewList.size(); i = i + 1) {
             BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);
+            reviewListHeight = reviewListHeight + 78
+                    + 13.2 * ((double) (reviewList.get(i).getContent().content.length() / 45));
             Separator separator = new Separator(Orientation.HORIZONTAL);
+            separator.setMaxWidth(400);
             reviews.getChildren().add(separator);
             reviews.getChildren().add(bookReviewCard.getRoot());
         }
 
-        reviews.setPrefHeight(85 * reviewList.size());
+        reviews.setPrefHeight(reviewListHeight);
         cover.setImage(BOOK_COVER_MANAGER.getCategoryBookCover(book.getName().fullName, book.getCategories()));
         cover.setPreserveRatio(false);
     }

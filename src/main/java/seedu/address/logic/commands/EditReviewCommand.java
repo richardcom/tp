@@ -2,7 +2,11 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -29,6 +33,7 @@ import seedu.address.ui.Mode;
 public class EditReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "editReview";
+    public static final String SUGGESTION = "editReview <index> rn/<review number> ra/<rating> re/<review content>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit the review to the book at "
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
