@@ -109,7 +109,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
         Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
         List<Review> bookReviews = bookToEdit.getReviews();
-        Times updatedTimes = bookToEdit.getTimes();
+        Times updatedTimes = editBookDescriptor.getTimes().orElse(bookToEdit.getTimes());
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
         Publisher updatedPublisher = editBookDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
