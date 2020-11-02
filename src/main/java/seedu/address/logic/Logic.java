@@ -11,6 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Book;
+import seedu.address.model.problem.Problem;
 
 /**
  * API of the Logic component
@@ -35,6 +36,8 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of books */
     ObservableList<Book> getFilteredBookList();
+
+    ObservableList<Problem> getFilteredProblemReportList();
 
     /**
      * Returns the user prefs' library file path.
