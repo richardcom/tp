@@ -35,7 +35,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
