@@ -33,13 +33,13 @@ import seedu.address.ui.Mode;
 public class DeleteReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteReview";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "deleteReview <index> rn/<review number>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete the review to the book at"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete the review to the book at "
             + "the corresponding position in the list.\n"
             + "Parameters: "
             + "INDEX "
-            + "[" + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW INDEX]\n"
+            + "[" + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW_INDEX]\n"
             + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_REVIEWNUMBER + "5";
 
     public static final String MESSAGE_DELETE_REVIEW_SUCCESS = "The review has been deleted for the book %1$s";
@@ -94,22 +94,20 @@ public class DeleteReviewCommand extends Command {
         }
     }
 
+    /**
+     * Creates the book with the review removed from the book.
+     *
+     * @param book The corresponding book.
+     * @param reviewIndex The review number of the review.
+     * @return The book with the new review list.
+     */
     private static Book createdChangedBook(Book book, int reviewIndex) {
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
         Address address = book.getAddress();
-        /*
-        List<Review> reviewList = book.getReviews()
-                .stream()
-                .sorted(Comparator.comparing(review -> review.getContent().content))
-                .collect(Collectors.toList());
-        */
-
         List<Review> reviewList = book.getReviews();
         reviewList.remove(reviewIndex - 1);
-
-        //HashSet<Review> reviews = new HashSet<>(reviewList);
 
         Times times = book.getTimes();
         Set<Category> categories = book.getCategories();

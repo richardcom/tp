@@ -232,7 +232,28 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-### Check usage 
+### Edit review: `editReview`
+
+Edit a review of a certain book. 
+
+
+Format: `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+
+The explanation about index is similar to add review and delete review command.
+
+If neither rating or review content is present, then an exception message will be shown.
+
+If the edited review is the same as the original review, then a corresponding exception message will be shown. 
+</div>
+
+Examples:
+* `editReview 1 rn/7 ra/5 re/The book is interesing`
+* `editReview 1 rn/7 ra/5`
+* `editReview 1 rn/7 re/The book is interesing`
+
+### Check usage
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
@@ -374,8 +395,9 @@ Action | Format, Examples
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
-**AddReview** | `addReview INDEX ra/RATING re/REVIEW CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
-**DeleteReview** | `deleteReview INDEX rn/REVIEW INDEX` <br> e.g., `deleteReview 1 rn/1`
+**AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
+**DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
+**EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`<br> e.g.,`edit 3 p/Scribner Publisher t/`

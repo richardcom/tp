@@ -98,6 +98,7 @@ public class LogicManager implements Logic {
         keywords.add(DeleteProblemCommand.SUGGESTION);
         keywords.add(DeleteReviewCommand.SUGGESTION);
         keywords.add(EditCommand.SUGGESTION);
+        keywords.add(EditReviewCommand.SUGGESTION);
         keywords.add(ExitCommand.COMMAND_WORD);
         keywords.add(FindCommand.SUGGESTION);
         keywords.add(FindProblemReportCommand.SUGGESTION);
@@ -107,6 +108,7 @@ public class LogicManager implements Logic {
         keywords.add(RandomCommand.SUGGESTION);
         keywords.add(SearchReviewCommand.SUGGESTION);
         keywords.add(SortCommand.SUGGESTION);
+        keywords.add(StockCommand.SUGGESTION);
         keywords.add(TimesCommand.SUGGESTION);
         keywords.add(UsageCommand.SUGGESTION);
         keywords.add(UsageByCommand.SUGGESTION);

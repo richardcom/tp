@@ -17,7 +17,11 @@ public class Messages {
             + "Note that only index of book shown in the current book list is valid.\n"
             + "To execute the command on the books not shown in the current book list, try to use "
             + "the list command to list all the books and search for "
-            + "the corresponding book";
+            + "the corresponding book.";
+    public static final String MESSAGE_INVALID_EDIT_REVIEW = "At least 1 of rating or review "
+            + "content needs to be present.";
+    public static final String MESSAGE_REVIEW_NOT_EDITED = "At least 1 of rating or review "
+            + "content needs to be different.";
     public static final String MESSAGE_USAGE_BY = "usageBy"
             + ": Get the usage of the book identified by the name or isbn\n"
             + "Parameters: NAME or ISBN\n"
