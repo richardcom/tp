@@ -2,6 +2,7 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -10,6 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyLibrary;
 import seedu.address.model.book.Book;
+import seedu.address.model.problem.Problem;
 
 /**
  * API of the Logic component
@@ -35,6 +37,8 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of books */
     ObservableList<Book> getFilteredBookList();
 
+    ObservableList<Problem> getFilteredProblemReportList();
+
     /**
      * Returns the user prefs' library file path.
      */
@@ -46,7 +50,12 @@ public interface Logic {
     GuiSettings getGuiSettings();
 
     /**
-     * Set the user prefs' GUI settings.
+     * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Gets smart suggestions from user input.
+     */
+    List<String> getSuggestions();
 }

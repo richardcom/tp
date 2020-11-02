@@ -45,6 +45,10 @@ public class Isbn {
                 && value.equals(((Isbn) other).value)); // state check
     }
 
+    public String getIsbn() {
+        return value;
+    }
+
     @Override
     public int hashCode() {
         return value.hashCode();

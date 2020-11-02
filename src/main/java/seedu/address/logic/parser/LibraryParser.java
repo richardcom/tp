@@ -22,6 +22,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindProblemReportCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.HitCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RandomCommand;
 import seedu.address.logic.commands.SearchReviewCommand;
@@ -89,6 +90,9 @@ public class LibraryParser {
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
+
+        case HitCommand.COMMAND_WORD:
+            return new HitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();

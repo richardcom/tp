@@ -20,6 +20,8 @@ import seedu.address.ui.Mode;
  */
 public class TimesCommand extends Command {
     public static final String COMMAND_WORD = "times";
+    public static final String SUGGESTION = "";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the times of the book identified "
             + "by the index number used in the last book listing. "
             + "Existing times will be overwritten by the input.\n"

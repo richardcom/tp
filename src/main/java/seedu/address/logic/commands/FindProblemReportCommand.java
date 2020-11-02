@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
@@ -10,6 +11,7 @@ import seedu.address.ui.Mode;
 public class FindProblemReportCommand extends Command {
 
     public static final String COMMAND_WORD = "findpr";
+    public static final String SUGGESTION = "";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all problem reports whose description contain "
             + "any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
@@ -27,8 +29,7 @@ public class FindProblemReportCommand extends Command {
         requireNonNull(model);
         model.updateFilteredProblemList(predicate, Mode.NORMAL);
         return new CommandResult(
-                // String.format(Messages.MESSAGE_REPORT_LISTED_OVERVIEW, model.getFilteredProblemList().size()));
-                model.getFilteredProblemList().toString());
+                String.format(Messages.MESSAGE_REPORT_LISTED_OVERVIEW, model.getFilteredProblemList().size()));
     }
 
     @Override

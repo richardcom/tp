@@ -9,6 +9,7 @@ import seedu.address.ui.Mode;
 public class ViewProblemCommand extends Command {
     public static final String COMMAND_WORD = "view";
     public static final String MESSAGE_SUCCESS = "View problems";
+    public static final String SUGGESTION = "";
 
     public ViewProblemCommand() {
 
@@ -20,8 +21,6 @@ public class ViewProblemCommand extends Command {
 
         model.updateFilteredProblemList((problem -> false), Mode.NORMAL);
         model.updateFilteredProblemList(PREDICATE_SHOW_ALL_PROBLEMS, Mode.NORMAL);
-        //String problems_string = model.getFilteredProblemList().toString();
-        String problemString = model.getProblemString();
-        return new CommandResult(problemString);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }

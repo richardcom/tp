@@ -15,7 +15,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intellibrary.jar` from [here].
+2. Download the latest `intelLibrary.jar` from [here].
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
@@ -35,7 +35,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ Examples:
 
 ### Regarding categories and book cover
 
-The list of valid categories are given below in ascending order with respect to the priorit of the category.
+The list of valid categories are given below in ascending order with respect to the priority of the category.
 
 * `General`
 * `Novels`
@@ -141,7 +141,7 @@ This means only stocking information regarding the science library, central libr
 
 Format: `stock [n/BOOK NAME] [i/ISBN]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 Both the name and the ISBN of the book are optional argument in the command.
 
@@ -180,7 +180,7 @@ Check the list of reviews of certain book.
 
 Format: `searchReview [n/BOOK NAME] [i/ISBN]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The usage is similar to the stock command.
 </div>
@@ -198,7 +198,7 @@ Add a review to a certain book.
 
 Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be added according to the index of the book in the current shown book list.
 
@@ -220,7 +220,7 @@ Delete a review of a certain book.
 
 Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
 
@@ -232,6 +232,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
+<<<<<<< HEAD
 ### Edit review: `editReview`
 
 Edit a review of a certain book. 
@@ -254,19 +255,28 @@ Examples:
 * `editReview 1 rn/7 re/The book is interesing`
 
 ### Check usage
+=======
+### Check usage 
+>>>>>>> d8c0c2cb7173f4f6483d874014f161c0301b74c2
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
 * book isbn
 * book name
 
-Format: 
+#### by Index
+Format:
 * `usage [INDEX]`
-* `usage i/[ISBN]`
-* `usage n/[BOOK_NAME]`
 
 Examples:
 * `usage 2`
+
+#### by Book Name or ISBN
+Format: 
+* `usageBy i/[ISBN]`
+* `usageBy n/[BOOK_NAME]`
+
+Examples:
 * `usageBy i/9780141439518`
 * `usageBy n/Pride and Prejudice`
 
@@ -297,10 +307,10 @@ Format: `help`
 
 Edits the information of an existing book in the library.
 
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`
 
 * Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
-* All fileds are optional but at least one of the optional fields must be provided.
+* All fields are optional but at least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
 * You can remove all the book’s categories by typing `c/` without
@@ -379,13 +389,6 @@ Format: `deletepr INDEX`
 
 Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
-
---------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous IntelliBrary home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 

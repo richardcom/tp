@@ -33,6 +33,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private BookListPanel bookListPanel;
+    private ProblemReportListPanel problemReportListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -44,6 +45,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane bookListPanelPlaceholder;
+
+    @FXML
+    private StackPane problemReportListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -115,6 +119,9 @@ public class MainWindow extends UiPart<Stage> {
         bookListPanel = new BookListPanel(logic.getFilteredBookList());
         bookListPanelPlaceholder.getChildren().add(bookListPanel.getRoot());
 
+        problemReportListPanel = new ProblemReportListPanel(logic.getFilteredProblemReportList());
+        problemReportListPanelPlaceholder.getChildren().add(problemReportListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -124,12 +131,18 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(commandText -> {
             try {
                 return executeCommand(commandText);
+            } catch (NumberFormatException e) {
+                return executeCommand("hit");
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             return null;
         });
+
+        // For autocompletion
+        // @author AY2021S1-CS2103-F10-3
+        resultDisplay.setSuggestionList(logic.getSuggestions());
+        commandBox.setAutoCompleteListener(resultDisplay);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -177,10 +190,14 @@ public class MainWindow extends UiPart<Stage> {
         return bookListPanel;
     }
 
+    public ProblemReportListPanel getProblemReportListPanel() {
+        return problemReportListPanel;
+    }
+
     /**
      * Executes the command and returns the result.
      *
-     * @throws Exception
+     * @throws Exception exceptions if applicable
      * @see seedu.address.logic.Logic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws Exception {

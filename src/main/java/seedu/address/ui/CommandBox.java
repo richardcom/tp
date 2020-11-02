@@ -41,7 +41,21 @@ public class CommandBox extends UiPart<Region> {
             commandTextField.setText("");
         } catch (CommandException | ParseException e) {
             setStyleToIndicateCommandFailure();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    /**
+     * Set autocomplete listener.
+     *
+     * @author AY2021S1-CS2103-F10-3
+     * @param resultDisplay result display
+     */
+    public void setAutoCompleteListener(ResultDisplay resultDisplay) {
+        // calls resultDisplay.showAutoCompleteResult() whenever there is a change to the text of the command box.
+        commandTextField.textProperty().addListener((unused1, unused2, input) ->
+                resultDisplay.showAutoCompleteResult(input));
     }
 
     /**
@@ -74,7 +88,7 @@ public class CommandBox extends UiPart<Region> {
          *
          * @see seedu.address.logic.Logic#execute(String)
          */
-        CommandResult execute(String commandText) throws CommandException, ParseException;
+        CommandResult execute(String commandText) throws Exception;
     }
 
 }

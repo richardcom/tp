@@ -32,6 +32,7 @@ import seedu.address.ui.Mode;
 public class AddReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "addReview";
+    public static final String SUGGESTION = "";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the review to the book at "
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"

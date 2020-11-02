@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_BORROWING_TIMES_HISTORY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
 
 import java.util.List;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.ui.Mode;
@@ -26,7 +26,7 @@ public class HistoryCommand extends Command {
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
 
-        return new CommandResult(String.format(Messages.MESSAGE_BORROWING_TIMES_HISTORY,
+        return new CommandResult(String.format(MESSAGE_BORROWING_TIMES_HISTORY,
                 history));
     }
 
