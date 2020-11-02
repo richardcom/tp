@@ -232,7 +232,6 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-<<<<<<< HEAD
 ### Edit review: `editReview`
 
 Edit a review of a certain book. 
@@ -255,9 +254,6 @@ Examples:
 * `editReview 1 rn/7 re/The book is interesing`
 
 ### Check usage
-=======
-### Check usage 
->>>>>>> d8c0c2cb7173f4f6483d874014f161c0301b74c2
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
