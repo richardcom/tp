@@ -32,14 +32,14 @@ import seedu.address.ui.Mode;
 public class AddReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "addReview";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "addReview <index> ra/<rating> re/<review content>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the review to the book at"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Add the review to the book at "
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
             + "Parameters: "
             + "INDEX "
             + "[" + CliSyntax.PREFIX_RATING + "RATING] "
-            + "[" + CliSyntax.PREFIX_REVIEW + "REVIEW CONTENT]\n"
+            + "[" + CliSyntax.PREFIX_REVIEW + "REVIEW_CONTENT]\n"
             + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_RATING + "5" + " " + CliSyntax.PREFIX_REVIEW
             + "The book is interesting";
 
@@ -68,7 +68,7 @@ public class AddReviewCommand extends Command {
             requireNonNull(model);
             List<Book> lastShownList = model.getFilteredBookList();
             if (index.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW);
             }
             Book bookToReview = lastShownList.get(index.getZeroBased());
             Book reviewedBook = createdChangedBook(bookToReview, review);
@@ -82,10 +82,17 @@ public class AddReviewCommand extends Command {
 
             return new CommandResult(String.format(MESSAGE_ADD_REVIEW_SUCCESS, reviewedBook));
         } catch (Exception exception) {
-            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW);
         }
     }
 
+    /**
+     * Creates the book with the new review added to the review list of the book.
+     *
+     * @param book The corresponding book.
+     * @param review The review to add.
+     * @return The book with the new review list.
+     */
     private static Book createdChangedBook(Book book, Review review) {
         Name name = book.getName();
         Isbn isbn = book.getIsbn();

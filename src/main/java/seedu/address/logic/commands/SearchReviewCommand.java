@@ -21,7 +21,8 @@ import seedu.address.ui.Mode;
 public class SearchReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "searchReview";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "searchReview n/<book name>\n" + "searchReview i/<isbn>\n"
+            + "searchReview n/<book name> i/<isbn>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
             + "the corresponding keyword and shows them as a list.\n"

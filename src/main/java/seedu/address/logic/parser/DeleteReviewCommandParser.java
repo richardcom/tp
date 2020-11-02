@@ -10,6 +10,9 @@ import seedu.address.logic.commands.DeleteReviewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.review.ReviewNumber;
 
+/**
+ * Parses input arguments and creates a new DeleteReviewCommand object
+ */
 public class DeleteReviewCommandParser implements Parser<DeleteReviewCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteReviewCommand
