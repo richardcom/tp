@@ -1,6 +1,7 @@
 package seedu.address.model.problem;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Description {
     public static final String MESSAGE_CONSTRAINTS =
@@ -17,6 +18,7 @@ public class Description {
      */
     public Description(String description) {
         requireNonNull(description);
+        checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
         this.description = description;
     }
 
