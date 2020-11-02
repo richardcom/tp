@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidTimes(String)}
  */
 public class Times {
-    public static final String MESSAGE_CONSTRAINTS = "times should be a non-negative number";
+    public static final String MESSAGE_CONSTRAINTS = "times should be a non-negative integer";
     public static final String VALIDATION_REGEX = "[1-9]\\d*|0";
     public final String value;
 
