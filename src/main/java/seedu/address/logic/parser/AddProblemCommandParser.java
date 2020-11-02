@@ -27,7 +27,7 @@ public class AddProblemCommandParser implements Parser<AddProblemCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_SEVERITY, PREFIX_DESCRIPTION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DESCRIPTION)
+        if (!arePrefixesPresent(argMultimap, PREFIX_SEVERITY, PREFIX_DESCRIPTION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddProblemCommand.MESSAGE_USAGE));
         }
