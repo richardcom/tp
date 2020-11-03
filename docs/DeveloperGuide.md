@@ -444,7 +444,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
 | `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
 | `* *`    | library administrator                      | get an auto-generated list of most popular books                                      |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view book reviews made by other readers                                               |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
+| `* *`    | library administrator                      | record and view book rating and reviews collected from the readers                    |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
 | `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
 | `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
 | `* *`    | library administrator                      | make users grouped into different categories based on their reading appetite          |have a better understanding of the type of each of the user                                                               |
@@ -527,6 +527,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User request to check the location of a book using a command.
+
 2.  The application shows the relevant information of the book, including the storage location.
 
     Use case ends.
@@ -550,6 +551,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User request to check the stocking of a book using a command.
+
 2.  The application shows the relevant information of the book, including the stocking of the book.
 
     Use case ends.
@@ -558,17 +560,101 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The book name or ISBN given by the user is not found in the record.
     
-    * 1a1. The application shows an error message that the book is not found.
+    * 1a1. The application shows an error message that the book is not found and 0 book is listed.
     
       Use case ends.
 
 * 1b. The stocking of the book is not recorded.
 
-    * 1b1. The application shows an error message that the stocking of the book is not recorded.
+    * 1b1. The application shows that the stocking information of the book in some locations is not available.
+
+      Use case ends.
+      
+**Use case: UC06 - add the review for a book**
+
+**MSS**
+
+1.  User requests to add a review record of a certain book.
+
+2.  The application adds the review to the review list of the book, and shows the new review list.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The book specified by the user is not found in the current shown book list.
+
+    * 1a1. The application shows an error message that the book specified is not valid.
 
       Use case ends.
 
-**Use case UC06 - View Sample Data**
+* 1b. The review given by the user has an invalid format, with the rating or review content missing or having incorrect format or value.
+
+    * 1b1. The application shows an error message that the review given by the user is invalid and gives the suggestion on valid review. 
+
+      Use case ends.
+
+**Use case: UC07 - delete the review for a book**
+
+**MSS**
+
+1.  User requests to delete a review record of a certain book.
+
+2.  The application deletes the review to the review list of the book, and shows the updated review list.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The book specified by the user is not found in the current shown book list.
+
+    * 1a1. The application shows an error message that the book specified is not valid.
+
+      Use case ends.
+
+* 1b. The book review specified by the user is not found in the review list of the book.
+
+    * 1a1. The application shows an error message that the review specified is not valid.
+
+      Use case ends.
+
+**Use case: UC08 - edit the review for a book**
+
+**MSS**
+
+1.  User requests to edit a review record of a certain book.
+
+2.  The application edits the review to the review list of the book, and shows the updated review list.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The book specified by the user is not found in the current shown book list.
+
+    * 1a1. The application shows an error message that the book specified is not valid.
+
+      Use case ends.
+
+* 1b. The book review specified by the user is not found in the review list of the book.
+
+    * 1a1. The application shows an error message that the review specified is not valid.
+
+      Use case ends.
+
+* 1c. The new review given by the user has an invalid format, with the rating or review content missing or having incorrect format or value.
+
+    * 1c1. The application shows an error message that the review given by the user is invalid and gives the suggestion on valid review. 
+
+      Use case ends.
+
+* 1c. The new review given by the user is equivalent to the original review.
+
+    * 1c1. The application shows an error message that the review given by the user does not make changes to the original review and the value of the edited review needs to be different. 
+
+      Use case ends.
+
+**Use case UC09 - View Sample Data**
 
 **MSS**
 
@@ -583,7 +669,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC07 - Delete a book**
+**Use case UC10 - Delete a book**
 
 **MSS**
 
@@ -606,7 +692,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC08 - Edit a book**
+**Use case: UC11 - Edit a book**
 
 **MSS**
   1. User requests to edit a book and inputs new information.
@@ -621,7 +707,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
-**Use case: UC09 - Check the borrowing status of a book**
+**Use case: UC12 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -635,7 +721,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC10 - Get usage times of a book**
+**Use case: UC13 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -661,7 +747,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC11 - Get number of books borrowed**
+**Use case: UC14 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
