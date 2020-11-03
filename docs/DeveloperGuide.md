@@ -424,16 +424,19 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 **Target user profile**:
-* library administrators
+* library administrator, librarian
 * has a need to manage a large number of books stored in different libraries and locations
 * has a need to purchase books according to the current stock and borrow frequency
 * has a need to keep track of the borrow history of books 
+* has a need to collect and record the rating and review of a book from the readers anonymously
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
 **Value proposition**:
+
+
 
 ### User stories
 
@@ -570,7 +573,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - add the review for a book**
+**Use case: UC06 - search for the review of a book**
+
+**MSS**
+
+1.  User requests to search for the review of a certain book.
+
+2.  The application shows the review list of the book.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The book specified by the user is not found in the available books record.
+
+    * 1a1. The application shows an empty book list.
+
+      Use case ends.
+
+* 1b. The search key given by the user has an invalid format.
+
+    * 1b1. The application shows an error message that the entered command format is not correct and shows the examples of the correct usage of the command. 
+
+      Use case ends.
+      
+**Use case: UC07 - add the review for a book**
 
 **MSS**
 
@@ -594,7 +621,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC07 - delete the review for a book**
+**Use case: UC08 - delete the review for a book**
 
 **MSS**
 
@@ -618,7 +645,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - edit the review for a book**
+**Use case: UC09 - edit the review for a book**
 
 **MSS**
 
@@ -654,7 +681,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC09 - View Sample Data**
+**Use case UC010 - View Sample Data**
 
 **MSS**
 
@@ -669,7 +696,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC10 - Delete a book**
+**Use case UC11 - Delete a book**
 
 **MSS**
 
@@ -692,7 +719,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC11 - Edit a book**
+**Use case: UC12 - Edit a book**
 
 **MSS**
   1. User requests to edit a book and inputs new information.
@@ -707,7 +734,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
-**Use case: UC12 - Check the borrowing status of a book**
+**Use case: UC13 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -721,7 +748,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC13 - Get usage times of a book**
+**Use case: UC14 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -747,7 +774,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC14 - Get number of books borrowed**
+**Use case: UC15 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.

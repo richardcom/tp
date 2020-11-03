@@ -180,11 +180,15 @@ Examples:
 
 ### Additional notes about review
 
-The purpose of the review functionality is for librarian to collect review and feedback from readers about a certain book, and estimates the general rating of the book among readers.
+The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
 Given that review is recorded on a person by person basis, there can be duplicate review added since 2 different people may give the same review.
 
-Since it is reasonable to assume that most review and feedback is collected anonymously in a library in real life situation, there will not be information about the reader giving the review.
+It is reasonable to assume that most review and feedback is collected anonymously in a library in real life situation.
+
+Additionally, the purpose of recording the review is to estimate the popularity of a certain book among the readers and decide whether the library should keep more copies of the book accordingly, and it is less concerned about what the opinion of a specific reader is.
+
+Therefore, will be no personal information recorded in the review.
 
 ### Search for review of book: `searchReview`
 
@@ -246,7 +250,6 @@ Examples:
 ### Edit review: `editReview`
 
 Edit a review of a certain book. 
-
 
 Format: `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]`
 
@@ -327,16 +330,6 @@ Examples:
 * 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
 * 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
-### Check borrowed status `[coming soon]`: `check`
-
-Check the status of a certain book- whether it is available or not.
-
-Format: `status /BOOK_NAME`
-
-Examples:
-* `status /Harry Potter`
-* `status /Linear Algebra`
-
 ### Purge sample data `[coming soon]`: `purge`
 
 Purge all sample data in one go.
@@ -416,6 +409,10 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`<br> e.g.,`edit 3 p/Scribner Publisher t/`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
+**Times**| `times [INDEX] t/[TIMES]` <br> e.g., `times 1 t/5`
+**Usage**| `usage [INDEX]` <br> e.g., `usage 1`
+**UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
+**Histroy**| `history`
 **ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
 **ViewProblems** | `view`
 **Help** | `help`
