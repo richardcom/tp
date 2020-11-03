@@ -45,7 +45,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/stefan-jiang.png" width="200px">
 
 [[github](http://github.com/Stefan-Jiang)]
-[[portfolio](team/Stefan-Jiang.md)]
+[[portfolio](team/stefan-jiang.md)]
 
 * Role: Developer
 * Responsibilities: Code Quality. In charge of UI.
