@@ -24,7 +24,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 <img src="images/hcy123902.png" width="200px">
 
-[[github](http://github.com/HCY123902)] [[portfolio](team/hcy123902.md)]
+[[github](http://github.com/HCY123902)] 
+[[portfolio](team/hcy123902.md)]
 
 * Role: Developer
 * Responsibilities: Integration. In charge of Storage.
