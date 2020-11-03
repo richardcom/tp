@@ -14,7 +14,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.book.Book;
-import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.NumberContainsKeywordPredicate;
 import seedu.address.ui.Mode;
