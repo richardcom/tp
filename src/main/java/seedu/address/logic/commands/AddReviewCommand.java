@@ -2,10 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -107,5 +104,18 @@ public class AddReviewCommand extends Command {
         Stocking stocking = book.getStocking();
 
         return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        } else if (!(o instanceof AddReviewCommand)) {
+            return false;
+        } else {
+            AddReviewCommand that = (AddReviewCommand) o;
+            return Objects.equals(index, that.index)
+                   && Objects.equals(review, that.review);
+        }
     }
 }
