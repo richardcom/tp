@@ -68,8 +68,6 @@ Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
-
-
 Examples:
 * `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
 
@@ -85,6 +83,47 @@ Format:
 Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
+
+
+### Listing all books : `list`
+
+Shows a list of all books in the library.
+
+Format: `list`
+
+### Editing a book : `edit`
+
+Edits the information of an existing book in the library.
+
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`
+
+* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
+* All fields are optional but at least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
+* You can remove all the book’s categories by typing `c/` without
+    specifying any categories after it.
+
+Examples:
+* 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
+* 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
+
+### Locating persons by name: `find`
+
+Finds books whose names contain any of the given keywords.
+
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `novel` will match `Novel`
+* The order of the keywords does not matter. e.g. `Linear Algebra` will match `Algebra Linear`
+* Only the names are searched.
+* Only full words will be matched e.g. `Novel` will not match `Novels`
+* Books matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Linear Algebra` will return `Basic Algebra`, `Linear Mathematics`
+
+Examples:
+* `find novel` returns `novel` and `Selected Novels`
+* `find linear algebra` returns `Basic Algebra`, `linear math`
 
 ### Regarding stocking information in add and edit command
 
@@ -313,24 +352,6 @@ Shows a message explaning how to access the help page.
 ![help message](images/helpMessage.png)
 
 Format: `help`
-
-
-### Editing a book : `edit`
-
-Edits the information of an existing book in the library.
-
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`
-
-* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
-* All fields are optional but at least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
-* You can remove all the book’s categories by typing `c/` without
-    specifying any categories after it.
-
-Examples:
-* 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
-* 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
 ### Purge sample data `[coming soon]`: `purge`
 
