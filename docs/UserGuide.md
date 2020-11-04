@@ -130,12 +130,11 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGO
 * All fields are optional but at least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
-* You can remove all the book’s categories by typing `c/` without
-    specifying any categories after it.
+* You can remove all the book’s categories by typing `c/` without specifying any categories after it.
 
 Examples:
-* 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
-* 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
+* `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
+* `edit 3 p/Scribner Publisher t/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
 #### _Additional information regarding stocking in add and edit command_
 
@@ -181,6 +180,16 @@ Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
+### Modify the times
+
+Changes the number of times that a book has been borrowed to the latest record.
+
+Format:  
+`times INDEX t/TIMES`
+
+Examples:
+* `times 1 t/25` Modifies the number of times the 1st book in the library being borrowed to 25.
+
 ### Check stocking of book in every location: `stock`
 
 Checks the list of stocking information in every location where a certain book is stored.
@@ -224,7 +233,9 @@ Examples:
 * `stock i/9780553175219`
 * `stock`
 
-### Additional information regarding review
+### Features related to Review
+
+#### _Introduction_
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -253,7 +264,7 @@ Examples:
 * `searchReview i/9780553175219`
 * `searchReview`
 
-### Add review: `addReview`
+#### Add review: `addReview`
 
 Add a review to a certain book. 
 
@@ -345,7 +356,9 @@ Format: `history`
 Examples:
 * `history`
 
-### Report problems: `report`
+### Features related to reprting problems
+
+#### Report problems: `report`
 
 Report a problem found in library.
 
@@ -361,7 +374,7 @@ they have **both** the same severity and the same description.
 Examples:
 * `report severity/high problem/book is broken`
 
-### View problems: `view`
+#### View problems: `view`
 
 View all reported problems.
 
@@ -371,7 +384,7 @@ Examples:
 * `view`
 
 
-### Locating reports by keyword: `findpr`
+#### Locating reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
@@ -388,7 +401,7 @@ Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
 * `findpr table chair` returns `table`, `chair`
 
-### Deleting a report : `deletepr`
+#### Deleting a report : `deletepr`
 
 Deletes the specified person from the address book.
 
@@ -439,21 +452,22 @@ To make the book cover more diversified, 2 books with the same categories may ha
 
 Action | Format, Examples
 --------|------------------
+**Help** | `help`
+**Exit** | `exit`
+**List** | `list`
+**Clear** | `clear`
+**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
+**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Usage**| `usage [INDEX]` <br> e.g., `usage 1`
 **UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
 **History**| `history`
 **ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
 **ViewProblems** | `view`
-**Help** | `help`
