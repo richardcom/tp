@@ -59,7 +59,7 @@ significant contributions are recorded here.)
   [\#242](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/242),
   [\#215](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/215),
   [\#109](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/109), 
-  \#116](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/116))
+  [\#116](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/116))
   * Contributed to forum discussions ([example](https://github.com/nus-cs2103-AY2021S1/forum/issues/90))
   * Reported bugs and suggestions for other teams in the class (examples:
   [1](https://github.com/AY2021S1-CS2103-T14-2/tp/issues/97),
