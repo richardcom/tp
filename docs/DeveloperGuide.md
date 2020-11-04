@@ -523,32 +523,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
     
       Use case ends.
-      
-**Use case: UC04 - Check the location**
-
-**MSS**
-
-1.  User request to check the location of a book using a command.
-
-2.  IntelliBrary shows the relevant information of the book, including the storage location.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. IntelliBrary shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The location of the book is not recorded or the list is empty.
-
-    * 1b1. IntelliBrary shows an error message that the location of the book is not recorded.
-
-      Use case ends.
-      
-**Use case: UC05 - view the stockings of different books**
+            
+**Use case: UC04 - view the stockings of different books**
 
 **MSS**
 
@@ -572,7 +548,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - search for the review of a book**
+**Use case: UC05 - search for the review of a book**
 
 **MSS**
 
@@ -596,7 +572,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC07 - add the review for a book**
+**Use case: UC06 - add the review for a book**
 
 **MSS**
 
@@ -620,7 +596,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - delete the review for a book**
+**Use case: UC07 - delete the review for a book**
 
 **MSS**
 
@@ -644,7 +620,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC09 - edit the review for a book**
+**Use case: UC08 - edit the review for a book**
 
 **MSS**
 
@@ -680,7 +656,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC010 - View Sample Data**
+**Use case UC009 - View Sample Data**
 
 **MSS**
 
@@ -695,7 +671,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC11 - Delete a book**
+**Use case UC10 - Delete a book**
 
 **MSS**
 
@@ -718,7 +694,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC12 - Edit a book**
+**Use case: UC11 - Edit a book**
 
 **MSS**
   1. User requests to edit a book and inputs new information.
@@ -733,7 +709,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
-**Use case: UC13 - Check the borrowing status of a book**
+**Use case: UC12 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -747,7 +723,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC14 - Get usage times of a book**
+**Use case: UC13 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -773,7 +749,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC15 - Get number of books borrowed**
+**Use case: UC14 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -781,7 +757,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC16 - Report problem**
+**Use case: UC15 - Report problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -803,7 +779,7 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC17 - View problems**
+**Use case: UC16 - View problems**
 
 **MSS**
   1. User requests to view problems.
