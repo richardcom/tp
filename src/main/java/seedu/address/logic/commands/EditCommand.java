@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMES;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
 
 import java.util.Collections;
@@ -40,8 +42,8 @@ import seedu.address.ui.Mode;
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
-    public static final String SUGGESTION = "edit <INDEX> <n/NAME> <i/ISBN> <e/EMAIL> <ad/ADDRESS> <c/CATEGORY>… "
-            + "<a/AUTHOR> <p/PUBLISHER> <t/TIMES>";
+    public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<address> t/<times>"
+            + "/<category>… s/<stocking> a/<author> p/<publisher> t/<times>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
             + "by the index number used in the displayed book list. "
@@ -51,9 +53,11 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ISBN + "ISBN] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_TIMES + "TIMES] "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
-            + "[" + PREFIX_AUTHOR + "AUTHOR]"
-            + "[" + PREFIX_PUBLISHER + "PUBLISHER]"
+            + "[" + PREFIX_STOCKING + "STOCKING] "
+            + "[" + PREFIX_AUTHOR + "AUTHOR] "
+            + "[" + PREFIX_PUBLISHER + "PUBLISHER] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_ISBN + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -110,11 +114,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
         Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
         List<Review> bookReviews = bookToEdit.getReviews();
-        Times updatedTimes = editBookDescriptor.getTimes().orElse(bookToEdit.getTimes());
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
         Publisher updatedPublisher = editBookDescriptor.getPublisher().orElse(bookToEdit.getPublisher());
         Stocking updatedStocking = editBookDescriptor.getStocking().orElse(bookToEdit.getStocking());
+        Times updatedTimes = editBookDescriptor.getTimes().orElse(bookToEdit.getTimes());
 
         return new Book(updatedName, updatedIsbn, updatedEmail,
                 updatedAddress, updatedTimes, updatedCategories, updatedStocking, bookReviews,
