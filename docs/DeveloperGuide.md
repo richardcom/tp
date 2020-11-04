@@ -454,7 +454,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
 | `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
 | `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
+| `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
+| `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
 *{More to be added}*
 
 ### Use cases
