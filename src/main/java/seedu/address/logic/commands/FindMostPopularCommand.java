@@ -16,7 +16,7 @@ import seedu.address.ui.Mode;
 
 
 /**
- * Finds and lists all books in address book whose name contains any of the argument keywords.
+ * Finds and lists all books with the maximum number of times that was borrowed.
  * Keyword matching is case insensitive.
  */
 public class FindMostPopularCommand extends Command {
