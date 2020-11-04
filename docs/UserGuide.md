@@ -245,7 +245,7 @@ It is reasonable to assume that most review and feedback is collected anonymousl
 
 Additionally, the purpose of recording the review is to estimate the popularity of a certain book among the readers and decide whether the library should keep more copies of the book accordingly, and it is less concerned about what the opinion of a specific reader is.
 
-Therefore, will be no personal information recorded in the review.
+Therefore, there will be no personal information recorded in the review.
 
 #### Search for review of book: `searchReview`
 
