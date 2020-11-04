@@ -64,12 +64,11 @@ public class FindMostPopularCommand extends Command {
      */
     public int findMaxTimes(Model model) {
         List<Book> lastShownList = model.getFilteredBookList();
-        Comparator<Integer> comparator = (o1, o2) -> o2 - o1;
         int maxTime = -1;
-        for (Book i : lastShownList) {
-            if (i.getCategories().contains(new Category(category))) {
-                if (Integer.parseInt(i.getTimes().value) > maxTime) {
-                    maxTime = Integer.parseInt(i.getTimes().value);
+        for (Book b : lastShownList) {
+            if (b.getCategories().contains(new Category(category))) {
+                if (Integer.parseInt(b.getTimes().value) > maxTime) {
+                    maxTime = Integer.parseInt(b.getTimes().value);
                 }
             }
         }
