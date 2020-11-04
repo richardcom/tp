@@ -46,7 +46,6 @@ public class Book {
         this.address = address;
         this.times = times;
         this.categories.addAll(categories);
-        // add
         this.author = author;
         this.publisher = publisher;
         this.stocking = stocking;
