@@ -2,7 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -91,6 +94,8 @@ public class AddReviewCommand extends Command {
      * @return The book with the new review list.
      */
     private static Book createdChangedBook(Book book, Review review) {
+        assert book != null;
+        assert review != null;
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
@@ -113,9 +118,9 @@ public class AddReviewCommand extends Command {
         } else if (!(o instanceof AddReviewCommand)) {
             return false;
         } else {
-            AddReviewCommand that = (AddReviewCommand) o;
-            return Objects.equals(index, that.index)
-                   && Objects.equals(review, that.review);
+            AddReviewCommand other = (AddReviewCommand) o;
+            return index.equals(other.index)
+                   && review.equals(other.review);
         }
     }
 }

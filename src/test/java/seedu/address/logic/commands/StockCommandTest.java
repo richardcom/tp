@@ -3,7 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_BOOKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalBooks.*;
+import static seedu.address.testutil.TypicalBooks.ELLE;
+import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
