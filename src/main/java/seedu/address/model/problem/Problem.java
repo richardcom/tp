@@ -23,6 +23,7 @@ public class Problem {
             return true;
         }
 
+
         return otherProblem != null
                 && otherProblem.getDescription().equals(getDescription())
                 && (otherProblem.getSeverity().equals(getSeverity()));
