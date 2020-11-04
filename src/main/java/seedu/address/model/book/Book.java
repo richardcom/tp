@@ -150,9 +150,9 @@ public class Book {
                 .append(" Email: ")
                 .append(getEmail())
                 .append(" Address: ")
+                .append(getAddress())
                 .append(" Times: ")
                 .append(getTimes())
-                .append(getAddress())
                 .append(" Categories: ");
         getCategories().forEach(builder::append);
         builder.append(" Author: ").append(getAuthor());
