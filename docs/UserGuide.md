@@ -62,7 +62,9 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 ### Adding a book : `add`
 
-Add a book to the booklist.
+Add a book to the book list.
+
+Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
@@ -345,9 +347,12 @@ Report a problem found in library.
 
 Format: `report severity/SEVERITY problem/PROBLEM`
 
-Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case insensitive.
+Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case-insensitive.
 
 Problem description should only contain alphanumeric characters and spaces, and it should not be blank.
+
+Duplicate problems will be rejected. Note that two problems are considered to be the same if and only if 
+they have **both** the same severity and the same description.
 
 Examples:
 * `report severity/high problem/book is broken`
