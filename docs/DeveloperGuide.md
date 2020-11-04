@@ -450,9 +450,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | library administrator                      | record and view book rating and reviews collected from the readers                    |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
 | `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
 | `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
-| `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient                                                                                                 |
+| `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
+| `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
+| `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
 | `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
-| `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not             |
+| `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 *{More to be added}*
 
 ### Use cases
