@@ -15,14 +15,14 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intelLibrary.jar` from [here].
+2. Download the latest `intelLibrary.jar` from [here]().
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * **`list`** : Lists all books in the library.
@@ -35,7 +35,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of all the commands.
+6. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -59,6 +59,18 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 </div>
 
+### Viewing sample data
+
+Have a look at the sample data for the application when open app for the first time.
+*  The sample data will only show up if there is no local data file of IntelliBrary
+
+### Viewing help : `help`
+
+Shows a message explaning how to access the help page.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
 
 ### Adding a book : `add`
 
@@ -83,7 +95,6 @@ Format:
 Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
-
 
 ### Listing all books : `list`
 
@@ -339,19 +350,6 @@ Format: `history`
 
 Examples:
 * `history`
-
-### Viewing sample data
-
-Have a look at the sample data for the application when open app for the first time.
-*  The sample data will only show up if there is no local data file of IntelliBrary
-
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
 
 ### Purge sample data `[coming soon]`: `purge`
 
