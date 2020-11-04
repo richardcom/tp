@@ -435,8 +435,9 @@ _{Explain here how the data archiving feature will be implemented}_
 * is reasonably comfortable using CLI apps
 
 **Value proposition**:
-
-
+* help to put books along with its related information, such as author, description, publisher, and library specific information, such as stocking location, into appropriate categories. This not only makes the searching of the book itself easier but also provides convenience for managers to track the storage and borrow history.
+* help admin staff keep track of the popularity of different books, and help them predict the usage of different books to plan for book purchase
+* help admin staff to keep track of books from different libraries and locate books from different libraries easily
 
 ### User stories
 
@@ -444,16 +445,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
-| `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
+| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |efficiently increase the stockings of those very popular books to meet the demand of the readers   |
 | `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | record and view book rating and reviews collected from the readers                    |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
+| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    |estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
+| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    |keep the review record for future evaluation of the book quality and popularity among the readers|
 | `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
 | `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
 | `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
 | `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
-| `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
+| `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
@@ -523,32 +523,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
     
       Use case ends.
-      
-**Use case: UC04 - Check the location**
-
-**MSS**
-
-1.  User request to check the location of a book using a command.
-
-2.  IntelliBrary shows the relevant information of the book, including the storage location.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. IntelliBrary shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The location of the book is not recorded or the list is empty.
-
-    * 1b1. IntelliBrary shows an error message that the location of the book is not recorded.
-
-      Use case ends.
-      
-**Use case: UC05 - view the stockings of different books**
+            
+**Use case: UC04 - view the stockings of different books**
 
 **MSS**
 
@@ -572,7 +548,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - search for the review of a book**
+**Use case: UC05 - search for the review of a book**
 
 **MSS**
 
@@ -596,7 +572,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC07 - add the review for a book**
+**Use case: UC06 - add the review for a book**
 
 **MSS**
 
@@ -620,7 +596,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - delete the review for a book**
+**Use case: UC07 - delete the review for a book**
 
 **MSS**
 
@@ -644,7 +620,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC09 - edit the review for a book**
+**Use case: UC08 - edit the review for a book**
 
 **MSS**
 
@@ -680,7 +656,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC010 - View Sample Data**
+**Use case UC009 - View Sample Data**
 
 **MSS**
 
@@ -695,7 +671,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC11 - Delete a book**
+**Use case UC10 - Delete a book**
 
 **MSS**
 
@@ -718,7 +694,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC12 - Edit a book**
+**Use case: UC11 - Edit a book**
 
 **MSS**
   1. User requests to edit a book and inputs new information.
@@ -733,7 +709,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
-**Use case: UC13 - Check the borrowing status of a book**
+**Use case: UC12 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -747,7 +723,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC14 - Get usage times of a book**
+**Use case: UC13 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -773,7 +749,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC15 - Get number of books borrowed**
+**Use case: UC14 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -781,7 +757,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC16 - Report problem**
+**Use case: UC15 - Report problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -803,7 +779,7 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC17 - View problems**
+**Use case: UC16 - View problems**
 
 **MSS**
   1. User requests to view problems.

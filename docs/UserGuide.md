@@ -183,7 +183,7 @@ Examples:
 
 ### Check stocking of book in every location: `stock`
 
-Checks the list of locations of where a certain book is stored.
+Checks the list of stocking information in every location where a certain book is stored.
 Currently only the science library, central library, and HSSM library are available locations.
 This means only stocking information regarding the science library, central library, and HSSM library are available.
 
