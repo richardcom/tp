@@ -781,6 +781,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
+**Use case: UC16 - Report problem**
+
+**MSS**
+  1. User requests to report a problem.
+  2. IntelliBrary adds the problem and shows a successfull message to the user.
+
+  Use case ends. 
+**Extensions**
+
+* 1a. Some information about the problem is not entered in the command.
+
+    * 1b1. IntelliBrary shows an error message that the information about the problem is incomplete.
+
+      Use case ends.
+      
+* 1b. The data type of some of the problem information is incorrect.
+    
+    * 1c1. IntelliBrary shows an error message that data type of some of the problem information is incorrect.
+    
+      Use case ends.
+      
+**Use case: UC17 - View problems**
+
+**MSS**
+  1. User requests to view problems.
+  2. IntelliBrary shows the problem list and shows a successfull message to the user.
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
