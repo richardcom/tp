@@ -5,6 +5,8 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
@@ -28,7 +30,9 @@ public class FindMostPopularCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " Novels";
 
+    private static Logger logger = Logger.getLogger(FindMostPopularCommand.class.getName());
     private final String category;
+
 
     public FindMostPopularCommand(String category) {
         this.category = category;
@@ -39,8 +43,9 @@ public class FindMostPopularCommand extends Command {
         requireNonNull(model);
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
-
+        logger.log(Level.INFO, "going to start to find max times");
         int maxTimes = findMaxTimes(model);
+        logger.log(Level.INFO, "max time has been found");
         Predicate<Book> predicate = book -> book.getCategories().contains(new Category(category))
                         && (Integer.parseInt(book.getTimes().value) == maxTimes);
 

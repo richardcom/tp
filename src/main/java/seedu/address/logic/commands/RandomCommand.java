@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
@@ -30,7 +32,9 @@ public class RandomCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " Novels";
 
+    private static Logger logger = Logger.getLogger(RandomCommand.class.getName());
     private final String category;
+
 
     public RandomCommand(String category) {
         this.category = category;
@@ -43,6 +47,7 @@ public class RandomCommand extends Command {
         model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
         Optional<Book> randomBook = findRandomBook(model);
         Predicate<Book> predicate = (Book book) -> randomBook.map(book::equals).orElse(false);
+        logger.log(Level.INFO, "going to start to filter the book list to match the select book");
         model.updateFilteredBookList(predicate, Mode.NORMAL);
         return new CommandResult(
                 String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW, model.getFilteredBookList().size()));
