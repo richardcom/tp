@@ -72,6 +72,18 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
+### Clearing all entries : `clear`
+
+Clears all entries from the library.
+
+Format: `clear`
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
 ### Adding a book : `add`
 
 Add a book to the book list.
