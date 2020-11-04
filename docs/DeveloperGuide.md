@@ -523,31 +523,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
     
       Use case ends.
-      
-**Use case: UC04 - Check the location**
-
-**MSS**
-
-1.  User request to check the location of a book using a command.
-
-2.  IntelliBrary shows the relevant information of the book, including the storage location.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. IntelliBrary shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The location of the book is not recorded or the list is empty.
-
-    * 1b1. IntelliBrary shows an error message that the location of the book is not recorded.
-
-      Use case ends.
-      
+            
 **Use case: UC05 - view the stockings of different books**
 
 **MSS**
