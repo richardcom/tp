@@ -25,7 +25,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+   * **`list`** : Lists all books in the library.
 
    * **`add`**`n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
