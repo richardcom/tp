@@ -72,41 +72,11 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-### Clearing all entries : `clear`
-
-Clears all entries from the library.
-
-Format: `clear`
-
 ### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
-
-### Adding a book : `add`
-
-Add a book to the book list.
-
-Duplicate book will be rejected.
-
-Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
-
-Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
-
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
-
-### Deleting a book: `deleteBy`
-
-Delete a book from the booklist.
-
-Format:  
-`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
-
-Examples:
-* `deleteBy n/Linear Algebra`
-* `deleteBy i/123456 `
 
 ### Listing all books : `list`
 
@@ -114,24 +84,13 @@ Shows a list of all books in the library.
 
 Format: `list`
 
-### Editing a book : `edit`
+### Clearing all entries : `clear`
 
-Edits the information of an existing book in the library.
+Clears all entries from the library.
 
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`
+Format: `clear`
 
-* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
-* All fields are optional but at least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
-* You can remove all the book’s categories by typing `c/` without
-    specifying any categories after it.
-
-Examples:
-* 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
-* 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
-
-### Locating persons by name: `find`
+### Locating books by name: `find`
 
 Finds books whose names contain any of the given keywords.
 
@@ -148,7 +107,37 @@ Examples:
 * `find novel` returns `novel` and `Selected Novels`
 * `find linear algebra` returns `Basic Algebra`, `linear math`
 
-### Regarding stocking information in add and edit command
+### Adding a book : `add`
+
+Add a book to the book list.
+
+Duplicate book will be rejected.
+
+Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
+
+Examples:
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
+
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
+
+### Editing a book : `edit`
+
+Edits the information of an existing book in the library.
+
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
+
+* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
+* All fields are optional but at least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
+* You can remove all the book’s categories by typing `c/` without
+    specifying any categories after it.
+
+Examples:
+* 'edit 2 n/A Brief History of Time e/abhot@gmail.com' Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
+* 'edit 3 p/Scribner Publisher t/' Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
+
+#### _Additional information regarding stocking in add and edit command_
 
 The library location name is case sensitive.
 
@@ -162,42 +151,35 @@ If the stocking information of some of the libraries is not provided or if the n
 
 Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 0 and 99999.
 
-
-
 Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
 * `s/centralLb 10`
 * `s/`
 
-### Regarding categories and book cover
+### Deleting a book: `delete`
 
-The list of relevant categories are given below in ascending order with respect to the priority of the category.
+Deletes the specified book from the library.
 
-Note that categories that are not in the list is still a valid category, but they will not help to give a specific book cover to the book.
+Format: `delete INDEX`
 
-* `General`
-* `Novels`
-* `History`
-* `Science`
-* `AncientHistory`
-* `ModernHistory`
-* `AncientWar`
-* `ModernWar`
-* `Math`
-* `Chemistry`
-* `Physics`
+* Deletes the book at the specified `INDEX`.
+* The index refers to the index number shown in the displayed book list.
+* The index **must be a positive integer** 1, 2, 3, …
 
-The book cover of a book depends on the categories of the book.
+Examples:
+* `list` followed by `delete 2` deletes the 2nd book in the library.
+* `find novel` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-The category name is case insensitive, but there cannot be white space in between the category words.
+#### Deleting a book by other attributes: `deleteBy`
 
-If more than 1 category is given, the book cover will depend on the category with higher priority.
+Delete a book from the library.
 
-If no category is given or none of the categories given is in the list above, then the book will have a book cover corresponding to the general category.
+Format:  
+`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
-For example, the book with categories Physics and Science will have a book cover corresponding to Physics
-
-To make the book cover more diversified, 2 books with the same categories may have different book cover corresponding to the categories, but they may also have the same book cover.
+Examples:
+* `deleteBy n/Linear Algebra`
+* `deleteBy i/123456 `
 
 ### Check stocking of book in every location: `stock`
 
@@ -242,7 +224,7 @@ Examples:
 * `stock i/9780553175219`
 * `stock`
 
-### Additional notes about review
+### Additional information regarding review
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -254,7 +236,7 @@ Additionally, the purpose of recording the review is to estimate the popularity 
 
 Therefore, will be no personal information recorded in the review.
 
-### Search for review of book: `searchReview`
+#### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
 
@@ -293,7 +275,7 @@ If the index is not in the currently shown book list, then a corresponding excep
 Examples:
 * `addReview 1 ra/5 re/The book is interesing`
 
-### Delete review: `deleteReview`
+#### Delete review: `deleteReview`
 
 Delete a review of a certain book.
 
@@ -311,7 +293,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-### Edit review: `editReview`
+#### Edit review: `editReview`
 
 Edit a review of a certain book. 
 
@@ -362,15 +344,6 @@ Format: `history`
 
 Examples:
 * `history`
-
-### Purge sample data `[coming soon]`: `purge`
-
-Purge all sample data in one go.
-
-Format: `purge`
-
-Examples:
-* `purge`
 
 ### Report problems: `report`
 
@@ -423,10 +396,42 @@ Format: `deletepr INDEX`
 
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Additional information regarding categories and book cover
+
+The list of relevant categories are given below in ascending order with respect to the priority of the category.
+
+Note that categories that are not in the list is still a valid category, but they will not help to give a specific book cover to the book.
+
+* `General`
+* `Novels`
+* `History`
+* `Science`
+* `AncientHistory`
+* `ModernHistory`
+* `AncientWar`
+* `ModernWar`
+* `Math`
+* `Chemistry`
+* `Physics`
+
+The book cover of a book depends on the categories of the book.
+
+The category name is case insensitive, but there cannot be white space in between the category words.
+
+If more than 1 category is given, the book cover will depend on the category with higher priority.
+
+If no category is given or none of the categories given is in the list above, then the book will have a book cover corresponding to the general category.
+
+For example, the book with categories Physics and Science will have a book cover corresponding to Physics
+
+To make the book cover more diversified, 2 books with the same categories may have different book cover corresponding to the categories, but they may also have the same book cover.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -442,13 +447,13 @@ Action | Format, Examples
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/ATUHOR] [p/PUBLISHER] [ra/RATING] [re/REVIEW] [rn/REVIEWNUMBER]`<br> e.g.,`edit 3 p/Scribner Publisher t/`
+**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
-**Times**| `times [INDEX] t/[TIMES]` <br> e.g., `times 1 t/5`
+**Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Usage**| `usage [INDEX]` <br> e.g., `usage 1`
 **UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
-**Histroy**| `history`
+**History**| `history`
 **ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
 **ViewProblems** | `view`
 **Help** | `help`
