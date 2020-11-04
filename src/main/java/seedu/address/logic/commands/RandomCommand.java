@@ -55,6 +55,11 @@ public class RandomCommand extends Command {
                 && category.equals(((RandomCommand) other).category)); // state check
     }
 
+    /**
+     * Finds a random book within the specified category.
+     * @param model the model of the library.
+     * @return Optional of the random book, it will be an empty Optional if no books are listed.
+     */
     public Optional<Book> findRandomBook(Model model) {
         List<Book> lastShownList = model.getFilteredBookList();
         List<Book> matchingBooks = new ArrayList<>();
