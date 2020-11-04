@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
@@ -12,7 +14,6 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.NumberContainsKeywordPredicate;
-import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
 /**
@@ -30,9 +31,8 @@ public class SearchReviewCommand extends Command {
             + "[" + CliSyntax.PREFIX_ISBN + "ISBN]\n"
             + "Example: " + COMMAND_WORD + " " + CliSyntax.PREFIX_NAME + "a brief history of time";
 
+    private final Logger logger = LogsCenter.getLogger(getClass());
     private Predicate<Book> predicate;
-
-    private Review review;
 
     /**
      * Creates a StockCommand to search for the stocking information in each location.
@@ -63,6 +63,7 @@ public class SearchReviewCommand extends Command {
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(predicate, Mode.REVIEW);
+        logger.info("Show the stocking information in the review book card");
         return new CommandResult(String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW,
                 model.getFilteredBookList().size()));
     }
