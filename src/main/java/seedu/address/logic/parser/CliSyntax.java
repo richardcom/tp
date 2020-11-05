@@ -8,7 +8,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_NAME = new Prefix("n/");
     public static final Prefix PREFIX_ISBN = new Prefix("i/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
-    public static final Prefix PREFIX_ADDRESS = new Prefix("ad/");
+    public static final Prefix PREFIX_LANGUAGE = new Prefix("ad/");
     public static final Prefix PREFIX_TIMES = new Prefix("t/");
     public static final Prefix PREFIX_CATEGORY = new Prefix("c/");
     public static final Prefix PREFIX_STOCKING = new Prefix("s/");

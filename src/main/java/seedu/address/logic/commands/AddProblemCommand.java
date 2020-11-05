@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.problem.Problem;
 
 /**
- * Adds a book to the address book.
+ * Adds a book to the language book.
  */
 public class AddProblemCommand extends Command {
 

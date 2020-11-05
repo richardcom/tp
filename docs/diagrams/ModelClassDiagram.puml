@@ -5,11 +5,11 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyLanguageBook <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class LanguageBook
+Class ReadOnlyLanguageBook
 Class Model
 Class ModelManager
 Class UserPrefs
@@ -17,7 +17,7 @@ Class ReadOnlyUserPrefs
 
 Package Book {
 Class Book
-Class Address
+Class Language
 Class Email
 Class Name
 Class Isbn
@@ -32,25 +32,25 @@ Class Category
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+LanguageBook .up.|> ReadOnlyLanguageBook
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" LanguageBook
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniqueBookList
+LanguageBook *--> "1" UniqueBookList
 UniqueBookList o--> "*" Book
 Book *--> Name
 Book *--> Isbn
 Book *--> Email
-Book *--> Address
+Book *--> Language
 Book *--> "*" Category
 
 Name -[hidden]right-> Isbn
-Isbn -[hidden]right-> Address
-Address -[hidden]right-> Email
+Isbn -[hidden]right-> Language
+Language -[hidden]right-> Email
 
 ModelManager -->"1" Book : filtered list
 @enduml

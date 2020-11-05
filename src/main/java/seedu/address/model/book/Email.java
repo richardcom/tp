@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Book's email in the address book.
+ * Represents a Book's email in the language book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
 public class Email {

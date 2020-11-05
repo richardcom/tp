@@ -3,7 +3,7 @@
     "name" : "The Guns of August",
     "isbn" : "9780026203104",
     "email" : "book@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "language" : "123, Jurong West Ave 6, #08-111",
     "times" : "12",
     "stocking" : {
       "centralLibrary" : 14,
@@ -26,7 +26,7 @@
     "name" : "A Brief History of Time",
     "isbn" : "9780553175219",
     "email" : "book@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "language" : "311, Clementi Ave 2, #02-25",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 37,
@@ -49,7 +49,7 @@
     "name" : "Pride and Prejudice",
     "isbn" : "9780143058175",
     "email" : "book@example.com",
-    "address" : "wall street",
+    "language" : "wall street",
     "times" : "34",
     "stocking" : {
       "centralLibrary" : 12,
@@ -72,7 +72,7 @@
     "name" : "Daniel Meier",
     "isbn" : "87652533",
     "email" : "cornelia@example.com",
-    "address" : "10th street",
+    "language" : "10th street",
     "times" : "56",
     "stocking" : {
       "centralLibrary" : 19,
@@ -95,7 +95,7 @@
     "name" : "Elle Meyer",
     "isbn" : "9482224",
     "email" : "werner@example.com",
-    "address" : "michegan ave",
+    "language" : "michegan ave",
     "times" : "68",
     "stocking" : {
       "centralLibrary" : 10,
@@ -118,7 +118,7 @@
     "name" : "Fiona Kunz",
     "isbn" : "9482427",
     "email" : "lydia@example.com",
-    "address" : "little tokyo",
+    "language" : "little tokyo",
     "times" : "79",
     "stocking" : {
       "centralLibrary" : 10,
@@ -141,7 +141,7 @@
     "name" : "George Best",
     "isbn" : "9482442",
     "email" : "anna@example.com",
-    "address" : "4th street",
+    "language" : "4th street",
     "times" : "19",
     "stocking" : {
       "centralLibrary" : 10,

@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
@@ -32,7 +32,7 @@ class JsonAdaptedBook {
     private String name;
     private String isbn;
     private String email;
-    private String address;
+    private String language;
     private String times;
     private final List<JsonAdaptedCategory> categorised = new ArrayList<>();
     private String author;
@@ -46,7 +46,7 @@ class JsonAdaptedBook {
      */
     @JsonCreator
     public JsonAdaptedBook(@JsonProperty("name") String name, @JsonProperty("isbn") String isbn,
-                           @JsonProperty("email") String email, @JsonProperty("address") String address,
+                           @JsonProperty("email") String email, @JsonProperty("language") String language,
                            @JsonProperty("times") String times,
                            @JsonProperty("tagged") List<JsonAdaptedCategory> categorised,
                            @JsonProperty("stocking") JsonAdaptedStocking stocking,
@@ -56,7 +56,7 @@ class JsonAdaptedBook {
         this.name = name;
         this.isbn = isbn;
         this.email = email;
-        this.address = address;
+        this.language = language;
         this.times = times;
         if (categorised != null) {
             this.categorised.addAll(categorised);
@@ -76,7 +76,7 @@ class JsonAdaptedBook {
         name = source.getName().fullName;
         isbn = source.getIsbn().value;
         email = source.getEmail().value;
-        address = source.getAddress().value;
+        language = source.getLanguage().value;
         times = source.getTimes().value;
         categorised.addAll(source.getCategories().stream()
                 .map(JsonAdaptedCategory::new)
@@ -133,14 +133,14 @@ class JsonAdaptedBook {
             modelReviews.add(review.toModelType());
         }
 
-        if (address == null) {
+        if (language == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Address.class.getSimpleName()));
+                    Language.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Language.isValidLanguage(language)) {
+            throw new IllegalValueException(Language.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final Language modelLanguage = new Language(language);
         if (times == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Times.class.getSimpleName()));
@@ -173,7 +173,7 @@ class JsonAdaptedBook {
         }
         final Stocking modelStocking = stocking.toModelType();
 
-        return new Book(modelName, modelIsbn, modelEmail, modelAddress, modelTimes,
+        return new Book(modelName, modelIsbn, modelEmail, modelLanguage, modelTimes,
                 modelCategories, modelStocking, modelReviews, modelAuthor, modelPublisher);
     }
 }

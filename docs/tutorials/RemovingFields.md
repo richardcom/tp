@@ -7,56 +7,56 @@ title: "Tutorial: Removing Fields"
 >
 > —  Antoine de Saint-Exupery
 
-When working on AddressBook, you will most likely find that some features and fields that are no longer necessary. In scenarios like this, you can consider refactoring the existing `Book` model to suit your use case.
+When working on LanguageBook, you will most likely find that some features and fields that are no longer necessary. In scenarios like this, you can consider refactoring the existing `Book` model to suit your use case.
 
-In this tutorial, we’ll do exactly just that and remove the `address` field from `Book`.
+In this tutorial, we’ll do exactly just that and remove the `language` field from `Book`.
 
 * Table of Contents
 {:toc}
 
-## Safely deleting `Address`
+## Safely deleting `Language`
 
 Fortunately, IntelliJ IDEA provides a robust refactoring tool that can identify *most* usages. Let’s try to use it as much as we can.
 
 ### Assisted refactoring
 
-The `address` field in `Book` is actually an instance of the `seedu.address.model.book.Address` class. Since removing the `Address` class will break the application, we start by identifying `Address`'s usages. This allows us to see code that depends on `Address` to function properly and edit them on a case-by-case basis. Right-click the `Address` class and select `Refactor` \> `Safe Delete` through the menu.
+The `language` field in `Book` is actually an instance of the `seedu.address.model.book.address` class. Since removing the `Language` class will break the application, we start by identifying `Language`'s usages. This allows us to see code that depends on `Language` to function properly and edit them on a case-by-case basis. Right-click the `Language` class and select `Refactor` \> `Safe Delete` through the menu.
 
 ![Usages detected](../images/remove/UnsafeDelete.png)
 
-Choose to `View Usages` and you should be presented with a list of `Safe Delete Conflicts`. These conflicts describe locations in which the `Address` class is used.
+Choose to `View Usages` and you should be presented with a list of `Safe Delete Conflicts`. These conflicts describe locations in which the `Language` class is used.
 
 ![List of conflicts](../images/remove/SafeDeleteConflicts.png)
 
-Remove usages of `Address` by performing `Safe Delete`s on each entry. You will need to exercise discretion when removing usages of `Address`. Functions like `ParserUtil#parseAddress()` can be safely removed but its usages must be removed as well. Other usages like in `EditBookDescriptor` may require more careful inspection.
+Remove usages of `Language` by performing `Safe Delete`s on each entry. You will need to exercise discretion when removing usages of `Language`. Functions like `ParserUtil#parseLanguage()` can be safely removed but its usages must be removed as well. Other usages like in `EditBookDescriptor` may require more careful inspection.
 
-Let’s try removing references to `Address` in `EditBookDescriptor`.
+Let’s try removing references to `Language` in `EditBookDescriptor`.
 
-1. Safe delete the field `address` in `EditBookDescriptor`.
+1. Safe delete the field `language` in `EditBookDescriptor`.
 
 1. Select `Yes` when prompted to remove getters and setters.
 
 1. Select `View Usages` again.<br>
    ![UnsafeDeleteOnField](../images/remove/UnsafeDeleteOnField.png)
 
-1. Remove the usages of `address` and select `Do refactor` when you are done.
+1. Remove the usages of `language` and select `Do refactor` when you are done.
 
    <div markdown="span" class="alert alert-primary">
 
-   :bulb: **Tip:** Removing usages may result in errors. Exercise discretion and fix them. For example, removing the `address` field from the `Book` class will require you to modify its constructor.
+   :bulb: **Tip:** Removing usages may result in errors. Exercise discretion and fix them. For example, removing the `language` field from the `Book` class will require you to modify its constructor.
    </div>
 
-1. Repeat the steps for the remaining usages of `Address`
+1. Repeat the steps for the remaining usages of `Language`
 
 After you are done, verify that the application still works by compiling and running it again.
 
 ### Manual refactoring
 
-Unfortunately, there are usages of `Address` that IntelliJ IDEA cannot identify. You can find them by searching for instances of the word `address` in your code (`Edit` \> `Find` \> `Find in path`).
+Unfortunately, there are usages of `Language` that IntelliJ IDEA cannot identify. You can find them by searching for instances of the word `language` in your code (`Edit` \> `Find` \> `Find in path`).
 
-Places of interest to look out for would be resources used by the application. `main/resources` contains images and `fxml` files used by the application and `test/resources` contains test data. For example, there is a `$address` in each `BookCard` that has not been removed nor identified.
+Places of interest to look out for would be resources used by the application. `main/resources` contains images and `fxml` files used by the application and `test/resources` contains test data. For example, there is a `$language` in each `BookCard` that has not been removed nor identified.
 
-![$address](../images/remove/$address.png)
+![$language](../images/remove/$address.png)
 
 A quick look at the `BookCard` class and its `fxml` file quickly reveals why it slipped past the automated refactoring.
 
@@ -65,7 +65,7 @@ A quick look at the `BookCard` class and its `fxml` file quickly reveals why it 
 ``` java
 ...
 @FXML
-private Label address;
+private Label language;
 ...
 ```
 
@@ -74,7 +74,7 @@ private Label address;
 ``` xml
 ...
 <Label fx:id="isbn" styleClass="cell_small_label" text="\$isbn" />
-<Label fx:id="address" styleClass="cell_small_label" text="\$address" />
+<Label fx:id="language" styleClass="cell_small_label" text="\$language" />
 <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
 ...
 ```
@@ -83,11 +83,11 @@ After removing the `Label`, we can proceed to formally test our code. If everyth
 
 ## Tidying up
 
-At this point, your application is working as intended and all your tests are passing. What’s left to do is to clean up references to `Address` in test data and documentation.
+At this point, your application is working as intended and all your tests are passing. What’s left to do is to clean up references to `Language` in test data and documentation.
 
-In `src/test/data/`, data meant for testing purposes are stored. While keeping the `address` field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.
+In `src/test/data/`, data meant for testing purposes are stored. While keeping the `language` field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.
 
-**`invalidBookAddressBook.json`:**
+**`invalidBookLanguageBook.json`:**
 
 ```json
 {
@@ -95,9 +95,9 @@ In `src/test/data/`, data meant for testing purposes are stored. While keeping t
     "name": "Book with invalid name field: Ha!ns Mu@ster",
     "isbn": "9482424",
     "email": "hans@example.com",
-    "address": "4th street"
+    "language": "4th street"
   } ]
 }
 ```
 
-You can go through each individual `json` file and manually remove the `address` field.
+You can go through each individual `json` file and manually remove the `language` field.

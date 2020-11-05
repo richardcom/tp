@@ -13,11 +13,11 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
@@ -126,7 +126,7 @@ public class EditReviewCommand extends Command {
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
-        Address address = book.getAddress();
+        Language language = book.getLanguage();
         List<Review> reviews = book.getReviews();
         reviews.set(reviewNumber - 1, newReview);
         Times times = book.getTimes();
@@ -135,7 +135,7 @@ public class EditReviewCommand extends Command {
         Publisher publisher = book.getPublisher();
         Stocking stocking = book.getStocking();
 
-        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+        return new Book(name, isbn, email, language, times, categories, stocking, reviews, author, publisher);
     }
 
     @Override
