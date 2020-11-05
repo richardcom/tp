@@ -38,14 +38,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setLibraryFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setLibraryFilePath(Paths.get("language/book/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setLibraryFilePath(Paths.get("new/address/book/file/path"));
+        userPrefs.setLibraryFilePath(Paths.get("new/language/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -68,7 +68,7 @@ public class ModelManagerTest {
 
     @Test
     public void setLibraryFilePath_validPath_setsLibraryFilePath() {
-        Path path = Paths.get("address/book/file/path");
+        Path path = Paths.get("language/book/file/path");
         modelManager.setLibraryFilePath(path);
         assertEquals(path, modelManager.getLibraryFilePath());
     }
@@ -96,13 +96,13 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Library addressBook = new LibraryBuilder().withBook(ALICE).withBook(BENSON).build();
-        Library differentAddressBook = new Library();
+        Library languageBook = new LibraryBuilder().withBook(ALICE).withBook(BENSON).build();
+        Library differentLanguageBook = new Library();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
+        modelManager = new ModelManager(languageBook, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(languageBook, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,13 +114,13 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
+        // different languageBook -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentLanguageBook, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredBookList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)), Mode.NORMAL);
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(languageBook, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
@@ -128,6 +128,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setLibraryFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(languageBook, differentUserPrefs)));
     }
 }

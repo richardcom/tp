@@ -15,7 +15,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.Address;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
@@ -106,26 +106,26 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseAddress_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
+    public void parseLanguage_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLanguage((String) null));
     }
 
     @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_LANGUAGE));
+    public void parseLanguage_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLanguage(INVALID_LANGUAGE));
     }
 
     @Test
-    public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        Address expectedAddress = new Address(VALID_LANGUAGE);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_LANGUAGE));
+    public void parseLanguage_validValueWithoutWhitespace_returnsLanguage() throws Exception {
+        Language expectedLanguage = new Language(VALID_LANGUAGE);
+        assertEquals(expectedLanguage, ParserUtil.parseLanguage(VALID_LANGUAGE));
     }
 
     @Test
-    public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_LANGUAGE + WHITESPACE;
-        Address expectedAddress = new Address(VALID_LANGUAGE);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
+    public void parseLanguage_validValueWithWhitespace_returnsTrimmedLanguage() throws Exception {
+        String languageWithWhitespace = WHITESPACE + VALID_LANGUAGE + WHITESPACE;
+        Language expectedLanguage = new Language(VALID_LANGUAGE);
+        assertEquals(expectedLanguage, ParserUtil.parseLanguage(languageWithWhitespace));
     }
 
     @Test

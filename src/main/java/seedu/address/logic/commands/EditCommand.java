@@ -23,7 +23,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.book.Address;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
@@ -37,12 +37,12 @@ import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
 /**
- * Edits the details of an existing book in the address book.
+ * Edits the details of an existing book in the language book.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
-    public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<address> t/<times>"
+    public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<language> t/<times>"
             + "/<category>… s/<stocking> a/<author> p/<publisher> t/<times>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
@@ -64,7 +64,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_BOOK_SUCCESS = "Edited Book: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the language book.";
 
     private final Index index;
     private final EditBookDescriptor editBookDescriptor;
@@ -112,7 +112,7 @@ public class EditCommand extends Command {
         Name updatedName = editBookDescriptor.getName().orElse(bookToEdit.getName());
         Isbn updatedIsbn = editBookDescriptor.getIsbn().orElse(bookToEdit.getIsbn());
         Email updatedEmail = editBookDescriptor.getEmail().orElse(bookToEdit.getEmail());
-        Address updatedAddress = editBookDescriptor.getAddress().orElse(bookToEdit.getAddress());
+        Language updatedLanguage = editBookDescriptor.getLanguage().orElse(bookToEdit.getLanguage());
         List<Review> bookReviews = bookToEdit.getReviews();
         Set<Category> updatedCategories = editBookDescriptor.getCategories().orElse(bookToEdit.getCategories());
         Author updatedAuthor = editBookDescriptor.getAuthor().orElse(bookToEdit.getAuthor());
@@ -121,7 +121,7 @@ public class EditCommand extends Command {
         Times updatedTimes = editBookDescriptor.getTimes().orElse(bookToEdit.getTimes());
 
         return new Book(updatedName, updatedIsbn, updatedEmail,
-                updatedAddress, updatedTimes, updatedCategories, updatedStocking, bookReviews,
+                updatedLanguage, updatedTimes, updatedCategories, updatedStocking, bookReviews,
                 updatedAuthor, updatedPublisher);
 
     }
@@ -152,7 +152,7 @@ public class EditCommand extends Command {
         private Name name;
         private Isbn isbn;
         private Email email;
-        private Address address;
+        private Language language;
         private Times times;
         private Set<Category> categories;
         private Author author;
@@ -169,7 +169,7 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setIsbn(toCopy.isbn);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
+            setLanguage(toCopy.language);
             setTimes(toCopy.times);
             setCategories(toCopy.categories);
             setAuthor(toCopy.author);
@@ -181,7 +181,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, isbn, email, address, times,
+            return CollectionUtil.isAnyNonNull(name, isbn, email, language, times,
                 categories, publisher, author, stocking);
         }
 
@@ -217,12 +217,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(times);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setLanguage(Language language) {
+            this.language = language;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Language> getLanguage() {
+            return Optional.ofNullable(language);
         }
 
         /**
@@ -284,7 +284,7 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getIsbn().equals(e.getIsbn())
                     && getEmail().equals(e.getEmail())
-                    && getAddress().equals(e.getAddress())
+                    && getLanguage().equals(e.getLanguage())
                     && getCategories().equals(e.getCategories())
                     && getStocking().equals(e.getStocking())
                     && getTimes().equals(e.getTimes())

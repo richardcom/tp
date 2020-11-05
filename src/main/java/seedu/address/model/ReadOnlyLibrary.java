@@ -5,7 +5,7 @@ import seedu.address.model.book.Book;
 import seedu.address.model.problem.Problem;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of an language book
  */
 public interface ReadOnlyLibrary {
 

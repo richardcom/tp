@@ -13,7 +13,7 @@ import seedu.address.model.category.Category;
 import seedu.address.model.review.Review;
 
 /**
- * Represents a Book in the address book.
+ * Represents a Book in the language book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Book {
@@ -26,7 +26,7 @@ public class Book {
     private final Publisher publisher;
 
     // Data fields
-    private final Address address;
+    private final Language language;
     private final Times times;
     private final Set<Category> categories = new HashSet<>();
 
@@ -36,14 +36,14 @@ public class Book {
     /**
      * Every field must be present and not null.
      */
-    public Book(Name name, Isbn isbn, Email email, Address address,
+    public Book(Name name, Isbn isbn, Email email, Language language,
                 Times times, Set<Category> categories, Stocking stocking, List<Review> reviews,
                 Author author, Publisher publisher) {
-        requireAllNonNull(name, isbn, email, address, times, categories, author);
+        requireAllNonNull(name, isbn, email, language, times, categories, author);
         this.name = name;
         this.isbn = isbn;
         this.email = email;
-        this.address = address;
+        this.language = language;
         this.times = times;
         this.categories.addAll(categories);
         this.author = author;
@@ -64,8 +64,8 @@ public class Book {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+    public Language getLanguage() {
+        return language;
     }
 
     public List<Review> getReviews() {
@@ -129,7 +129,7 @@ public class Book {
         return otherBook.getName().equals(getName())
                 && otherBook.getIsbn().equals(getIsbn())
                 && otherBook.getEmail().equals(getEmail())
-                && otherBook.getAddress().equals(getAddress())
+                && otherBook.getLanguage().equals(getLanguage())
                 && otherBook.getCategories().equals(getCategories())
                 && otherBook.getAuthor().equals(getAuthor())
                 && otherBook.getPublisher().equals(getPublisher());
@@ -138,7 +138,7 @@ public class Book {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, isbn, email, address, categories, author, publisher);
+        return Objects.hash(name, isbn, email, language, categories, author, publisher);
     }
 
     @Override
@@ -149,8 +149,8 @@ public class Book {
                 .append(getIsbn())
                 .append(" Email: ")
                 .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
+                .append(" Language: ")
+                .append(getLanguage())
                 .append(" Times: ")
                 .append(getTimes())
                 .append(" Categories: ");

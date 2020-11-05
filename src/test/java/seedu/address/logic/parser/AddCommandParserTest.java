@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
@@ -48,7 +48,7 @@ import static seedu.address.testutil.TypicalBooks.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.book.Address;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
@@ -91,7 +91,7 @@ public class AddCommandParserTest {
                 + PUBLISHER_DESC_BOB,
                 new AddCommand(expectedBook));
 
-        // multiple addresses - last address accepted
+        // multiple languagees - last language accepted
         assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_AMY
                 + LANGUAGE_DESC_BOB + CATEGORY_DESC_FRIEND + TIMES_DESC_BOB + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_AMY,
@@ -141,7 +141,7 @@ public class AddCommandParserTest {
                         + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB,
                 expectedMessage);
 
-        // missing address prefix
+        // missing language prefix
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + VALID_LANGUAGE_BOB
                         + TIMES_DESC_BOB + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB
                         + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB,
@@ -175,7 +175,7 @@ public class AddCommandParserTest {
                 + PUBLISHER_DESC_BOB,
                 Email.MESSAGE_CONSTRAINTS);
 
-        // invalid address
+        // invalid language
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_LANGUAGE_DESC
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_BOB,

@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
@@ -48,14 +48,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditBookDescriptor;
-import seedu.address.model.book.Address;
-import seedu.address.model.book.Author;
+import seedu.address.model.book.*;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Email;
-import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
-import seedu.address.model.book.Stocking;
-import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
 import seedu.address.testutil.EditBookDescriptorBuilder;
 
@@ -103,8 +100,8 @@ public class EditCommandParserTest {
         // invalid isbn
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS);
         // invalid email
-        assertParseFailure(parser, "1" + INVALID_LANGUAGE_DESC, Address.MESSAGE_CONSTRAINTS);
-        //invalid address
+        assertParseFailure(parser, "1" + INVALID_LANGUAGE_DESC, Language.MESSAGE_CONSTRAINTS);
+        //invalid language
         assertParseFailure(parser, "1" + INVALID_CATEGORY_DESC, Category.MESSAGE_CONSTRAINTS);
         //invalid category
         assertParseFailure(parser, "1" + INVALID_STOCKING_DESC, Stocking.MESSAGE_CONSTRAINTS);
@@ -146,7 +143,7 @@ public class EditCommandParserTest {
                 + EMAIL_DESC_AMY + LANGUAGE_DESC_AMY + NAME_DESC_AMY + CATEGORY_DESC_FRIEND;
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_LANGUAGE_AMY)
+                .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_AMY).withLanguage(VALID_LANGUAGE_AMY)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -186,9 +183,9 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // address
+        // language
         userInput = targetIndex.getOneBased() + LANGUAGE_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withAddress(VALID_LANGUAGE_AMY).build();
+        descriptor = new EditBookDescriptorBuilder().withLanguage(VALID_LANGUAGE_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -231,7 +228,7 @@ public class EditCommandParserTest {
                 + ISBN_DESC_BOB + LANGUAGE_DESC_BOB + EMAIL_DESC_BOB + CATEGORY_DESC_HUSBAND;
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOB)
-                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_LANGUAGE_BOB).withCategories(VALID_CATEGORY_FRIEND,
+                .withEmail(VALID_EMAIL_BOB).withLanguage(VALID_LANGUAGE_BOB).withCategories(VALID_CATEGORY_FRIEND,
                  VALID_CATEGORY_HUSBAND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -251,7 +248,7 @@ public class EditCommandParserTest {
         userInput = targetIndex.getOneBased() + EMAIL_DESC_BOB + INVALID_ISBN_DESC + LANGUAGE_DESC_BOB
                 + ISBN_DESC_BOB;
         descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_LANGUAGE_BOB).build();
+                .withLanguage(VALID_LANGUAGE_BOB).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

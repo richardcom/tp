@@ -6,7 +6,7 @@ import seedu.address.model.Library;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * Clears the language book.
  */
 public class ClearCommand extends Command {
 

@@ -21,7 +21,7 @@ public class BookCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/languagebook-level4/issues/336">The issue on LanguageBook level 4</a>
      */
 
     public final Book book;
@@ -35,7 +35,7 @@ public class BookCard extends UiPart<Region> {
     @FXML
     private Label isbn;
     @FXML
-    private Label address;
+    private Label language;
     @FXML
     private Label email;
     @FXML
@@ -56,7 +56,7 @@ public class BookCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(book.getName().fullName);
         isbn.setText(book.getIsbn().value);
-        address.setText(book.getAddress().value);
+        language.setText(book.getLanguage().value);
         email.setText(book.getEmail().value);
         times.setText(book.getTimes().value);
         book.getCategories().stream()

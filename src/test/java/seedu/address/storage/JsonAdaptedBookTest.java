@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.book.Address;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Name;
@@ -27,7 +27,7 @@ public class JsonAdaptedBookTest {
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_ISBN = BENSON.getIsbn().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_LANGUAGE = BENSON.getAddress().toString();
+    private static final String VALID_LANGUAGE = BENSON.getLanguage().toString();
     private static final String VALID_TIMES = BENSON.getTimes().toString();
     private static final List<JsonAdaptedCategory> VALID_CATEGORIES = BENSON.getCategories().stream()
             .map(JsonAdaptedCategory::new)
@@ -97,7 +97,7 @@ public class JsonAdaptedBookTest {
     }
 
     @Test
-    public void toModelType_invalidAddress_throwsIllegalValueException() {
+    public void toModelType_invalidLanguage_throwsIllegalValueException() {
         JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, INVALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
@@ -106,7 +106,7 @@ public class JsonAdaptedBookTest {
     }
 
     @Test
-    public void toModelType_nullAddress_throwsIllegalValueException() {
+    public void toModelType_nullLanguage_throwsIllegalValueException() {
         JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, null,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());

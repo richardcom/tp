@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.Address;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
@@ -53,14 +53,14 @@ public class AddCommandParser implements Parser<AddCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Isbn isbn = ParserUtil.parseIsbn(argMultimap.getValue(PREFIX_ISBN).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_LANGUAGE).get());
+        Language language = ParserUtil.parseLanguage(argMultimap.getValue(PREFIX_LANGUAGE).get());
         Times times = ParserUtil.parseTimes(argMultimap.getValue(PREFIX_TIMES).get());
         Set<Category> categoryList = ParserUtil.parseCategories(argMultimap.getAllValues(PREFIX_CATEGORY));
         Stocking stocking = ParserUtil.parseStocking(argMultimap.getValue(PREFIX_STOCKING).get());
         Author author = ParserUtil.parseAuthor(argMultimap.getValue(PREFIX_AUTHOR).get()); // to be implemented
         Publisher publisher = ParserUtil.parsePublisher(argMultimap.getValue(PREFIX_PUBLISHER).get());
 
-        Book book = new Book(name, isbn, email, address, times, categoryList, stocking, new ArrayList<Review>(),
+        Book book = new Book(name, isbn, email, language, times, categoryList, stocking, new ArrayList<Review>(),
                 author, publisher);
 
         return new AddCommand(book);

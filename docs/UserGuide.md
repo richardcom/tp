@@ -133,7 +133,7 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEG
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
 
 Examples:
-* `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email address of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
+* `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
 * `edit 3 p/Scribner Publisher t/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
 #### _Additional information regarding stocking in add and edit command_
@@ -403,7 +403,7 @@ Examples:
 
 #### Deleting a report : `deletepr`
 
-Deletes the specified person from the address book.
+Deletes the specified person from the language book.
 
 Format: `deletepr INDEX`
 

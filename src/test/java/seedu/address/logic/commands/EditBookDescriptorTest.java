@@ -50,8 +50,8 @@ public class EditBookDescriptorTest {
         editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different address -> returns false
-        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withAddress(VALID_LANGUAGE_BOB).build();
+        // different language -> returns false
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withLanguage(VALID_LANGUAGE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different categories -> returns false

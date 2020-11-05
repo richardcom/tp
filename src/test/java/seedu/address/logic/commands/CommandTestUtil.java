@@ -83,7 +83,7 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_ISBN_DESC = " " + PREFIX_ISBN + "911a"; // 'a' not allowed in isbns
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_LANGUAGE_DESC = " " + PREFIX_LANGUAGE; // empty string not allowed for addresses
+    public static final String INVALID_LANGUAGE_DESC = " " + PREFIX_LANGUAGE; // empty string not allowed for languagees
     public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "hubby*"; // '*' not allowed in
     // categories
     public static final String INVALID_STOCKING_DESC = " " + PREFIX_STOCKING + "central library: 20 science library:10";
@@ -99,11 +99,11 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
-                .withEmail(VALID_EMAIL_AMY).withAddress(VALID_LANGUAGE_AMY).withCategories(VALID_CATEGORY_FRIEND)
+                .withEmail(VALID_EMAIL_AMY).withLanguage(VALID_LANGUAGE_AMY).withCategories(VALID_CATEGORY_FRIEND)
                 .withTimes(VALID_TIMES_AMY).withStockings(VALID_STOCKING_AMY).withAuthor(VALID_AUTHOR_AMY)
                 .withPublisher(VALID_PUBLISHER_AMY).build();
         DESC_BOB = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
-                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_LANGUAGE_BOB).withStockings(VALID_STOCKING_BOB)
+                .withEmail(VALID_EMAIL_BOB).withLanguage(VALID_LANGUAGE_BOB).withStockings(VALID_STOCKING_BOB)
                 .withTimes(VALID_TIMES_BOB).withPublisher(VALID_PUBLISHER_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOB).build();
     }

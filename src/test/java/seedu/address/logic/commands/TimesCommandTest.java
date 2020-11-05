@@ -75,7 +75,7 @@ public class TimesCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of language book
      */
     @Test
     public void execute_invalidBookIndexFilteredList_failure() {

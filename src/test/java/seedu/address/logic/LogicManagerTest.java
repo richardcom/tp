@@ -3,7 +3,7 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
@@ -48,7 +48,7 @@ public class LogicManagerTest {
     @BeforeEach
     public void setUp() {
         JsonLibraryStorage libraryStorage =
-                new JsonLibraryStorage(temporaryFolder.resolve("addressBook.json"));
+                new JsonLibraryStorage(temporaryFolder.resolve("languageBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(libraryStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
@@ -75,11 +75,11 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonLibraryIoExceptionThrowingStub
-        JsonLibraryStorage addressBookStorage =
+        JsonLibraryStorage languageBookStorage =
                 new JsonLibraryIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionLibrary.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(languageBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command

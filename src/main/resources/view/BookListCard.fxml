@@ -29,7 +29,7 @@
       </HBox>
       <FlowPane fx:id="categories" />
       <Label fx:id="isbn" styleClass="cell_small_label" text="\$isbn" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
+      <Label fx:id="language" styleClass="cell_small_label" text="\$language" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <Label fx:id="author" styleClass="cell_small_label" text="\$author" />
       <Label fx:id="publisher" styleClass="cell_small_label" text="\$publisher" />

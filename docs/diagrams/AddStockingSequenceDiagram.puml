@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":LanguageBookParser" as LanguageBookParser LOGIC_COLOR
 participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
 participant "<<class>>\n:ParseUtil" as ParserUtil LOGIC_COLOR
 participant "a:AddCommand" as AddCommand LOGIC_COLOR
@@ -18,17 +18,17 @@ end box
 [-> LogicManager : execute("Add ...")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("Add ...")
-activate AddressBookParser
+LogicManager -> LanguageBookParser : parseCommand("Add ...")
+activate LanguageBookParser
 
 create AddCommandParser
-AddressBookParser -> AddCommandParser
+LanguageBookParser -> AddCommandParser
 activate AddCommandParser
 
-AddCommandParser --> AddressBookParser
+AddCommandParser --> LanguageBookParser
 deactivate AddCommandParser
 
-AddressBookParser -> AddCommandParser : parse("...")
+LanguageBookParser -> AddCommandParser : parse("...")
 activate AddCommandParser
 
 AddCommandParser -> ParserUtil : parseStocking("science library 10 central library 30")
@@ -51,14 +51,14 @@ activate AddCommand
 AddCommand --> AddCommandParser : a
 deactivate AddCommand
 
-AddCommandParser --> AddressBookParser : a
+AddCommandParser --> LanguageBookParser : a
 deactivate AddCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-AddCommandParser -[hidden]-> AddressBookParser
+AddCommandParser -[hidden]-> LanguageBookParser
 destroy AddCommandParser
 
-AddressBookParser --> LogicManager : a
-deactivate AddressBookParser
+LanguageBookParser --> LogicManager : a
+deactivate LanguageBookParser
 
 LogicManager -> AddCommand : execute()
 activate AddCommand

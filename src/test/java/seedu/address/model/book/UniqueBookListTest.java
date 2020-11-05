@@ -42,7 +42,7 @@ public class UniqueBookListTest {
     @Test
     public void contains_bookWithSameIdentityFieldsInList_returnsTrue() {
         uniqueBookList.add(ALICE);
-        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_LANGUAGE_BOB)
+        Book editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(uniqueBookList.contains(editedAlice));
     }
@@ -85,7 +85,7 @@ public class UniqueBookListTest {
     @Test
     public void setBook_editedBookHasSameIdentity_success() {
         uniqueBookList.add(ALICE);
-        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_LANGUAGE_BOB)
+        Book editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         uniqueBookList.setBook(ALICE, editedAlice);
         UniqueBookList expectedUniqueBookList = new UniqueBookList();

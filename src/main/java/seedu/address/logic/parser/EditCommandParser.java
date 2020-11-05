@@ -59,7 +59,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             editBookDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
         if (argMultimap.getValue(PREFIX_LANGUAGE).isPresent()) {
-            editBookDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_LANGUAGE).get()));
+            editBookDescriptor.setLanguage(ParserUtil.parseLanguage(argMultimap.getValue(PREFIX_LANGUAGE).get()));
         }
         parseCategoriesForEdit(argMultimap.getAllValues(PREFIX_CATEGORY))
                 .ifPresent(editBookDescriptor::setCategories);

@@ -6,7 +6,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 //import static seedu.address.testutil.TypicalBooks.ALICE;
 //import static seedu.address.testutil.TypicalBooks.HOON;
 //import static seedu.address.testutil.TypicalBooks.IDA;
-//import static seedu.address.testutil.TypicalBooks.getTypicalAddressBook;
+//import static seedu.address.testutil.TypicalBooks.getTypicalLanguageBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -61,28 +61,28 @@ public class JsonLibraryStorageTest {
     }
 
     /* @Test
-    public void readAndSaveAddressBook_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempAddressBook.json");
-        AddressBook original = getTypicalAddressBook();
-        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
+    public void readAndSaveLanguageBook_allInOrder_success() throws Exception {
+        Path filePath = testFolder.resolve("TempLanguageBook.json");
+        LanguageBook original = getTypicalLanguageBook();
+        JsonLanguageBookStorage jsonLanguageBookStorage = new JsonLanguageBookStorage(filePath);
 
         // Save in new file and read back
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        ReadOnlyAddressBook readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        jsonLanguageBookStorage.saveLanguageBook(original, filePath);
+        ReadOnlyLanguageBook readBack = jsonLanguageBookStorage.readLanguageBook(filePath).get();
+        assertEquals(original, new LanguageBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addBook(HOON);
         original.removeBook(ALICE);
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        jsonLanguageBookStorage.saveLanguageBook(original, filePath);
+        readBack = jsonLanguageBookStorage.readLanguageBook(filePath).get();
+        assertEquals(original, new LanguageBook(readBack));
 
         // Save and read without specifying file path
         original.addBook(IDA);
-        jsonAddressBookStorage.saveAddressBook(original); // file path not specified
-        readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
-        assertEquals(original, new AddressBook(readBack));
+        jsonLanguageBookStorage.saveLanguageBook(original); // file path not specified
+        readBack = jsonLanguageBookStorage.readLanguageBook().get(); // file path not specified
+        assertEquals(original, new LanguageBook(readBack));
 
     } // storage parser */
 

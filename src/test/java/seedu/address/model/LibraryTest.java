@@ -61,7 +61,7 @@ public class LibraryTest {
     @Test
     public void hasBook_bookWithSameIdentityFieldsInLibrary_returnsTrue() {
         library.addBook(ALICE);
-        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_LANGUAGE_BOB)
+        Book editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(library.hasBook(editedAlice));
     }

@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as StockressBookParser LOGIC_COLOR
+participant ":LanguageBookParser" as StockressBookParser LOGIC_COLOR
 participant ":StockCommandParser" as StockCommandParser LOGIC_COLOR
 participant "<<class>>\n:ParseUtil" as ParserUtil LOGIC_COLOR
 participant "a:StockCommand" as StockCommand LOGIC_COLOR

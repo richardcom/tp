@@ -16,14 +16,14 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Adds a book to the address book.
+ * Adds a book to the language book.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
     public static final String SUGGESTION = "";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the language book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_ISBN + "ISBN "
@@ -47,7 +47,7 @@ public class AddCommand extends Command {
             + PREFIX_PUBLISHER + "pku";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";
-    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the language book";
 
     private final Book toAdd;
 

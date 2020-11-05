@@ -6,31 +6,31 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class AddressTest {
+public class LanguageTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Address(null));
+        assertThrows(NullPointerException.class, () -> new Language(null));
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
-        String invalidAddress = "";
-        assertThrows(IllegalArgumentException.class, () -> new Address(invalidAddress));
+    public void constructor_invalidLanguage_throwsIllegalArgumentException() {
+        String invalidLanguage = "";
+        assertThrows(IllegalArgumentException.class, () -> new Language(invalidLanguage));
     }
 
     @Test
-    public void isValidAddress() {
-        // null address
-        assertThrows(NullPointerException.class, () -> Address.isValidAddress(null));
+    public void isValidLanguage() {
+        // null language
+        assertThrows(NullPointerException.class, () -> Address.isValidLanguage(null));
 
-        // invalid addresses
-        assertFalse(Address.isValidAddress("")); // empty string
-        assertFalse(Address.isValidAddress(" ")); // spaces only
+        // invalid languagees
+        assertFalse(Address.isValidLanguage("")); // empty string
+        assertFalse(Address.isValidLanguage(" ")); // spaces only
 
-        // valid addresses
-        assertTrue(Address.isValidAddress("Blk 456, Den Road, #01-355"));
-        assertTrue(Address.isValidAddress("-")); // one character
-        assertTrue(Address.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        // valid languagees
+        assertTrue(Address.isValidLanguage("Blk 456, Den Road, #01-355"));
+        assertTrue(Address.isValidLanguage("-")); // one character
+        assertTrue(Address.isValidLanguage("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long language
     }
 }
