@@ -53,7 +53,7 @@ public class CommandBox extends UiPart<Region> {
      * @param resultDisplay result display
      */
     //@@author Caiyi34777-reused
-    //Reused from https://github.com/AY2021S1-CS2103-F09-3/tp to implement auto-suggestion
+    //Reused from https://github.com/AY2021S1-CS2103-F10-3/tp to implement auto-suggestion
     public void setAutoCompleteListener(ResultDisplay resultDisplay) {
         // calls resultDisplay.showAutoCompleteResult() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, input) ->
