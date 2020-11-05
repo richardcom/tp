@@ -21,21 +21,21 @@ See the link [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard
 
         * I created the `Problem` series model, which is parallel to the existing `book`
 series model. I wrote 4 models, i.e. `Problem.java`, `Severity.java`, `Description.java`, and `ProblemList.java`,
-together they form the main structure of `Problem` model.
+together they form the main structure of `Problem` model. I also wrote corresponding test code for these models.
 
     * Add Feature: ReportProblem:
 
         * I wrote `AddProblemCommand.java`, `AddProblemCommandParser.java` and 
-made modification to other existing relevant files.
+made modification to other existing relevant files. I also wrote corresponding test code for this feature.
 
     * Add Feature: ViewProblem:
 
         * I wrote `ViewProblemCommand.java` and made modification to other
-existing relevant files.
+existing relevant files. I also wrote corresponding test code for this feature.
 
     * Add Attribute: Publisher:
 
-        * I wrote the model for `Publisher`, i.e. `Publisher.java`.
+        * I wrote the model for `Publisher`, i.e. `Publisher.java`. 
 
         * I made modifications to a dozen of other existing files.
 
