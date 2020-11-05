@@ -324,7 +324,7 @@ Examples:
 * `editReview 1 rn/7 ra/5`
 * `editReview 1 rn/7 re/The book is interesing`
 
-### Check usage
+### Check usage `usage` and `usageBy`
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
@@ -347,7 +347,7 @@ Examples:
 * `usageBy i/9780141439518`
 * `usageBy n/Pride and Prejudice`
 
-### Check history
+### Check history: `history`
 
 Checks borrowing times during the whole timeline.
 
