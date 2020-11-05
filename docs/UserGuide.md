@@ -113,7 +113,7 @@ Add a book to the book list.
 
 Duplicate book will be rejected.
 
-Format: `add n/NAME i/ISBN e/EMAIL ad/ADDRESS [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
+Format: `add n/NAME i/ISBN e/EMAIL ad/LANGUAGE [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
 Examples:
 * `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
@@ -124,7 +124,7 @@ Examples:
 
 Edits the information of an existing book in the library.
 
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
 
 * Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
 * All fields are optional but at least one of the optional fields must be provided.
@@ -452,22 +452,22 @@ To make the book cover more diversified, 2 books with the same categories may ha
 
 Action | Format, Examples
 --------|------------------
-**Help** | `help`
-**Exit** | `exit`
-**List** | `list`
-**Clear** | `clear`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/ADDRESS] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
-**Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
-**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/LANGUAGE [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
+**Clear** | `clear`
+**Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
+**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
+**Exit** | `exit`
+**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Help** | `help`
+**History**| `history`
+**List** | `list`
+**ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
+**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
+**Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
+**Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Usage**| `usage [INDEX]` <br> e.g., `usage 1`
 **UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
-**History**| `history`
-**ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
 **ViewProblems** | `view`
