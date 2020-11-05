@@ -116,7 +116,7 @@ Duplicate book will be rejected.
 Format: `add n/NAME i/ISBN e/EMAIL ad/LANGUAGE [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 0 scienceLb 0 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 
 * `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
@@ -251,7 +251,7 @@ Therefore, there will be no personal information recorded in the review.
 
 Check the list of reviews of certain book.
 
-Format: `searchReview [n/BOOK NAME] [i/ISBN]`
+Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
