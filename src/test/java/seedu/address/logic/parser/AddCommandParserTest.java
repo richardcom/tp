@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
@@ -179,7 +179,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + INVALID_LANGUAGE_DESC
                 + TIMES_DESC_BOB + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_BOB,
-                Address.MESSAGE_CONSTRAINTS);
+                Language.MESSAGE_CONSTRAINTS);
 
         // invalid category
         assertParseFailure(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_BOB

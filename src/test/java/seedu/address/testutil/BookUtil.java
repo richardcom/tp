@@ -57,7 +57,7 @@ public class BookUtil {
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getIsbn().ifPresent(isbn -> sb.append(PREFIX_ISBN).append(isbn.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getLanguage().ifPresent(language -> sb.append(PREFIX_LANGUAGE).append(address.value).append(" "));
+        descriptor.getLanguage().ifPresent(language -> sb.append(PREFIX_LANGUAGE).append(language.value).append(" "));
         // to implement new attributes as well.
         if (descriptor.getCategories().isPresent()) {
             Set<Category> categories = descriptor.getCategories().get();

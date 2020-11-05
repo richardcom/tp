@@ -97,7 +97,7 @@ public class BookBuilder {
      * Sets the {@code Language} of the {@code Book} that we are building.
      */
     public BookBuilder withLanguage(String language) {
-        this.address = new Language(language);
+        this.language = new Language(language);
         return this;
     }
 

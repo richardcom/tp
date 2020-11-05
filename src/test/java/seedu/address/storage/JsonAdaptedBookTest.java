@@ -101,7 +101,7 @@ public class JsonAdaptedBookTest {
         JsonAdaptedBook book =
                 new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, INVALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
-        String expectedMessage = Address.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Language.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
@@ -109,7 +109,7 @@ public class JsonAdaptedBookTest {
     public void toModelType_nullLanguage_throwsIllegalValueException() {
         JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, null,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Language.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
     }
 
