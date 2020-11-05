@@ -21,21 +21,21 @@ See the link [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard
 
         * I created the `Problem` series model, which is parallel to the existing `book`
 series model. I wrote 4 models, i.e. `Problem.java`, `Severity.java`, `Description.java`, and `ProblemList.java`,
-together they form the main structure of `Problem` model.
+together they form the main structure of `Problem` model. I also wrote corresponding test code for these models.
 
     * Add Feature: ReportProblem:
 
         * I wrote `AddProblemCommand.java`, `AddProblemCommandParser.java` and 
-made modification to other existing relevant files.
+made modification to other existing relevant files. I also wrote corresponding test code for this feature.
 
     * Add Feature: ViewProblem:
 
         * I wrote `ViewProblemCommand.java` and made modification to other
-existing relevant files.
+existing relevant files. I also wrote corresponding test code for this feature.
 
     * Add Attribute: Publisher:
 
-        * I wrote the model for `Publisher`, i.e. `Publisher.java`.
+        * I wrote the model for `Publisher`, i.e. `Publisher.java`. 
 
         * I made modifications to a dozen of other existing files.
 
@@ -63,11 +63,17 @@ existing relevant files.
     
 * **Review Contributions**:
     I have reviewed the following PRs: 
-    [PR1](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/33)
-    [PR2](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/31)
-    [PR3](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/30)
-    [PR4](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/28)
-    [PR5](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/27)
-    [PR6](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/26)
-    [PR7](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/25)
-
+    [PR25](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/25)
+    [PR26](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/26)
+    [PR27](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/27)
+    [PR28](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/28)
+    [PR30](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/30)
+    [PR31](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/31)
+    [PR33](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/33)
+    [PR126](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/126)
+    [PR223](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/223)
+    [PR244](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/244)
+    [PR265](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/265)
+    [PR267](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/267)
+    [PR273](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/273)
+    [PR280](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/280)
