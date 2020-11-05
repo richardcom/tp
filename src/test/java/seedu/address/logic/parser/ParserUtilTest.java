@@ -15,11 +15,10 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.Language;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
-//import seedu.address.model.book.Stocking;
 import seedu.address.model.category.Category;
 
 public class ParserUtilTest {

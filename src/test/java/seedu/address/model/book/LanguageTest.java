@@ -31,6 +31,7 @@ public class LanguageTest {
         // valid languagees
         assertTrue(Language.isValidLanguage("Blk 456, Den Road, #01-355"));
         assertTrue(Language.isValidLanguage("-")); // one character
-        assertTrue(Language.isValidLanguage("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long language
+        assertTrue(Language.isValidLanguage("Leng Inc; 1234 Market St; " +
+                "San Francisco CA 2349879; USA")); // long language
     }
 }
