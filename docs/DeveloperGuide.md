@@ -769,13 +769,13 @@ Use case ends.
 
 * 1a. Some information about the problem is not entered in the command.
 
-    * 1b1. IntelliBrary shows an error message that the information about the problem is incomplete.
+    * 1a1. IntelliBrary shows an error message that the information about the problem is incomplete.
 
       Use case ends.
       
 * 1b. The data type of some of the problem information is incorrect.
     
-    * 1c1. IntelliBrary shows an error message that data type of some of the problem information is incorrect.
+    * 1b1. IntelliBrary shows an error message that data type of some of the problem information is incorrect.
     
       Use case ends.
       
