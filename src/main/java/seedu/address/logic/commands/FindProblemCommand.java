@@ -8,10 +8,10 @@ import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
 
 
-public class FindProblemReportCommand extends Command {
+public class FindProblemCommand extends Command {
 
-    public static final String COMMAND_WORD = "findpr";
-    public static final String SUGGESTION = "";
+    public static final String COMMAND_WORD = "findProblemReport";
+    public static final String SUGGESTION = "findProblemReport <keywords>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all problem reports whose description contain "
             + "any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
@@ -20,7 +20,7 @@ public class FindProblemReportCommand extends Command {
 
     private final DescriptionContainsKeywordsPredicate predicate;
 
-    public FindProblemReportCommand(DescriptionContainsKeywordsPredicate predicate) {
+    public FindProblemCommand(DescriptionContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -35,7 +35,7 @@ public class FindProblemReportCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof FindProblemReportCommand // instanceof handles nulls
-                && predicate.equals(((FindProblemReportCommand) other).predicate)); // state check
+                || (other instanceof FindProblemCommand // instanceof handles nulls
+                && predicate.equals(((FindProblemCommand) other).predicate)); // state check
     }
 }
