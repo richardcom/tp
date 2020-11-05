@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.ALICE;
@@ -61,7 +61,7 @@ public class LibraryTest {
     @Test
     public void hasBook_bookWithSameIdentityFieldsInLibrary_returnsTrue() {
         library.addBook(ALICE);
-        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
+        Book editedAlice = new BookBuilder(ALICE).withAddress(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(library.hasBook(editedAlice));
     }

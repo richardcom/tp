@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
@@ -66,10 +66,10 @@ public class TypicalBooks {
 
     // Manually added - Book's details found in {@code CommandTestUtil}
     public static final Book AMY = new BookBuilder().withName(VALID_NAME_AMY).withIsbn(VALID_ISBN_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withCategories(VALID_CATEGORY_FRIEND)
+            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_LANGUAGE_AMY).withCategories(VALID_CATEGORY_FRIEND)
             .withTimes("12").withStocking(VALID_STOCKING_AMY).withAuthor("a").withPublisher("pub").build();
     public static final Book BOB = new BookBuilder().withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withAuthor("a").withPublisher("pub")
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_LANGUAGE_BOB).withAuthor("a").withPublisher("pub")
             .withTimes("12").withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND)
             .withStocking(VALID_STOCKING_BOB).build();
 

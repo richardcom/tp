@@ -28,7 +28,7 @@ public class BookBuilder {
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LANGUAGE = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "10";
     public static final String DEFAULT_AUTHOR = "a";
     public static final String DEFAULT_PUBLISHER = "pub";
@@ -52,7 +52,7 @@ public class BookBuilder {
         name = new Name(DEFAULT_NAME);
         isbn = new Isbn(DEFAULT_ISBN);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        address = new Address(DEFAULT_LANGUAGE);
         times = new Times(DEFAULT_TIMES);
         categories = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);

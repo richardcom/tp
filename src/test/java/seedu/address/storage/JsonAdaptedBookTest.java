@@ -20,14 +20,14 @@ import seedu.address.model.book.Name;
 public class JsonAdaptedBookTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_ISBN = "+651234";
-    private static final String INVALID_ADDRESS = " ";
+    private static final String INVALID_LANGUAGE = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_CATEGORY = "#friend";
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_ISBN = BENSON.getIsbn().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_ADDRESS = BENSON.getAddress().toString();
+    private static final String VALID_LANGUAGE = BENSON.getAddress().toString();
     private static final String VALID_TIMES = BENSON.getTimes().toString();
     private static final List<JsonAdaptedCategory> VALID_CATEGORIES = BENSON.getCategories().stream()
             .map(JsonAdaptedCategory::new)
@@ -48,7 +48,7 @@ public class JsonAdaptedBookTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedBook book =
-                new JsonAdaptedBook(INVALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
+                new JsonAdaptedBook(INVALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -56,7 +56,7 @@ public class JsonAdaptedBookTest {
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedBook book = new JsonAdaptedBook(null, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(null, VALID_ISBN, VALID_EMAIL, VALID_LANGUAGE,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -65,7 +65,7 @@ public class JsonAdaptedBookTest {
     @Test
     public void toModelType_invalidIsbn_throwsIllegalValueException() {
         JsonAdaptedBook book =
-                new JsonAdaptedBook(VALID_NAME, INVALID_ISBN, VALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
+                new JsonAdaptedBook(VALID_NAME, INVALID_ISBN, VALID_EMAIL, VALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Isbn.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -73,7 +73,7 @@ public class JsonAdaptedBookTest {
 
     @Test
     public void toModelType_nullIsbn_throwsIllegalValueException() {
-        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, null, VALID_EMAIL, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, null, VALID_EMAIL, VALID_LANGUAGE,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Isbn.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -82,7 +82,7 @@ public class JsonAdaptedBookTest {
     @Test
     public void toModelType_invalidEmail_throwsIllegalValueException() {
         JsonAdaptedBook book =
-                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, INVALID_EMAIL, VALID_ADDRESS, VALID_TIMES,
+                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, INVALID_EMAIL, VALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -90,7 +90,7 @@ public class JsonAdaptedBookTest {
 
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, null, VALID_ADDRESS,
+        JsonAdaptedBook book = new JsonAdaptedBook(VALID_NAME, VALID_ISBN, null, VALID_LANGUAGE,
                 VALID_TIMES, VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -99,7 +99,7 @@ public class JsonAdaptedBookTest {
     @Test
     public void toModelType_invalidAddress_throwsIllegalValueException() {
         JsonAdaptedBook book =
-                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, INVALID_ADDRESS, VALID_TIMES,
+                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, INVALID_LANGUAGE, VALID_TIMES,
                         VALID_CATEGORIES, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, book::toModelType);
@@ -118,7 +118,7 @@ public class JsonAdaptedBookTest {
         List<JsonAdaptedCategory> invalidCategories = new ArrayList<>(VALID_CATEGORIES);
         invalidCategories.add(new JsonAdaptedCategory(INVALID_CATEGORY));
         JsonAdaptedBook book =
-                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_ADDRESS,
+                new JsonAdaptedBook(VALID_NAME, VALID_ISBN, VALID_EMAIL, VALID_LANGUAGE,
                         VALID_TIMES, invalidCategories, VALID_STOCKING, VALID_REVIEWS, VALID_AUTHOR, VALID_PUBLISHER);
         assertThrows(IllegalValueException.class, book::toModelType);
     }

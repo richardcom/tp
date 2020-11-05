@@ -3,7 +3,7 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
@@ -84,7 +84,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + STOCKING_DESC_AMY + TIMES_DESC_AMY + AUTHOR_DESC_AMY + PUBLISHER_DESC_AMY;
+                + LANGUAGE_DESC_AMY + STOCKING_DESC_AMY + TIMES_DESC_AMY + AUTHOR_DESC_AMY + PUBLISHER_DESC_AMY;
         Book expectedBook = new BookBuilder(AMY).withCategories().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addBook(expectedBook);

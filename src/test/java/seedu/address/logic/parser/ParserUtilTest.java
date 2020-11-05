@@ -25,13 +25,13 @@ import seedu.address.model.category.Category;
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_ISBN = "+651234";
-    private static final String INVALID_ADDRESS = " ";
+    private static final String INVALID_LANGUAGE = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_CATEGORY = "#friend";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_ISBN = "123456";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_LANGUAGE = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_CATEGORY_1 = "friend";
     private static final String VALID_CATEGORY_2 = "neighbour";
@@ -112,19 +112,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
+        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_LANGUAGE));
     }
 
     @Test
     public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_ADDRESS));
+        Address expectedAddress = new Address(VALID_LANGUAGE);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_LANGUAGE));
     }
 
     @Test
     public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        Address expectedAddress = new Address(VALID_ADDRESS);
+        String addressWithWhitespace = WHITESPACE + VALID_LANGUAGE + WHITESPACE;
+        Address expectedAddress = new Address(VALID_LANGUAGE);
         assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
     }
 
