@@ -1,9 +1,10 @@
 package seedu.address.ui;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import seedu.address.model.problem.Problem;
 
 public class ProblemReportListCard extends UiPart<Region> {
@@ -37,8 +38,8 @@ public class ProblemReportListCard extends UiPart<Region> {
         super(FXML);
         this.problem = problem;
         id.setText(displayedIndex + ". ");
-        severity.setText(problem.getSeverity().severity);
-        description.setText(problem.getDescription().description);
+        severity.setText("SEVERITY: " + problem.getSeverity().severity);
+        description.setText("DESCRIPTION: " + problem.getDescription().description);
     }
 
     @Override

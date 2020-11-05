@@ -101,7 +101,7 @@ public class LogicManager implements Logic {
         keywords.add(EditReviewCommand.SUGGESTION);
         keywords.add(ExitCommand.COMMAND_WORD);
         keywords.add(FindCommand.SUGGESTION);
-        keywords.add(FindProblemReportCommand.SUGGESTION);
+        keywords.add(FindProblemCommand.SUGGESTION);
         keywords.add(HelpCommand.COMMAND_WORD);
         keywords.add(HistoryCommand.COMMAND_WORD);
         keywords.add(ListCommand.COMMAND_WORD);
