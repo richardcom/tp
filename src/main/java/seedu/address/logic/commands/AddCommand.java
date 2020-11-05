@@ -42,7 +42,7 @@ public class AddCommand extends Command {
             + PREFIX_CATEGORY + "Science "
             + PREFIX_CATEGORY + "Math "
             + PREFIX_TIMES + "20 "
-            + PREFIX_STOCKING + "central library 0 science library 0 "
+            + PREFIX_STOCKING + "centralLb 30 scienceLb 15 "
             + PREFIX_AUTHOR + "Victor "
             + PREFIX_PUBLISHER + "pku";
 
