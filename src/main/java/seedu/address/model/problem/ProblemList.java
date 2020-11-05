@@ -92,6 +92,11 @@ public class ProblemList implements Iterable<Problem> {
     }
 
     @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
+
+    @Override
     public String toString() {
         int i = 0; // i is to count the number of problems
         String noProblem = "There is currently no problem.";

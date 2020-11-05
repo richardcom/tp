@@ -35,6 +35,11 @@ public class Severity {
     }
 
     @Override
+    public int hashCode() {
+        return severity.hashCode();
+    }
+
+    @Override
     public String toString() {
         return severity;
     }

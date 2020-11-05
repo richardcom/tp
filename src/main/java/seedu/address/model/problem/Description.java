@@ -37,6 +37,11 @@ public class Description {
     }
 
     @Override
+    public int hashCode() {
+        return description.hashCode();
+    }
+
+    @Override
     public String toString() {
         return description;
     }
