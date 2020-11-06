@@ -115,15 +115,23 @@ Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
+* ```n/``` is followed by the book name
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```lang/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
+Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
+* ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
+* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
+ And the prefix tag ```s/``` is compulsory when adding a book.
+* ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
+* ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
-* For stockings, stockings at 0 to 3 places can be added(please refer to the stocking part for more details). And the prefix tag ```s/``` is compulsory when adding a book.
-* 
 
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
 ### Editing a book : `edit`
 
@@ -139,7 +147,7 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEG
 
 Examples:
 * `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
-* `edit 3 p/Scribner Publisher t/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
+* `edit 3 p/Scribner Publisher c/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
 #### _Additional information regarding stocking in add and edit command_
 
@@ -162,7 +170,9 @@ Examples:
 
 ### Deleting a book: `delete`
 
-Deletes the specified book from the library.
+Deletes the specified book(s) from the library.
+
+#### Deletes a book by its index in the current list
 
 Format: `delete INDEX`
 
@@ -180,6 +190,11 @@ Delete a book from the library.
 
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
+
+* one of the three prefixes must be selected to delete a list of books that match the command.
+* The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
+for all the books which has times of been borrowed less or equal to the user input will be deleted.
+* Notice: if the user enters multiple prefixes at a time, only the last prefix input will be considered.
 
 Examples:
 * `deleteBy n/Linear Algebra`
@@ -363,7 +378,40 @@ Format: `history`
 Examples:
 * `history`
 
-### Features related to reprting problems
+### Random Selection of books
+
+Randomly select a book of a specific category from the library.
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
+
+
+Format: `random CATEGORY`
+
+Examples:
+* `random Classics`
+* `random Science`
+
+
+### Find the most popular book of a specific category
+
+Find and select the most popular book of a specific category from the library.
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
+
+
+Format: `findMostPopular CATEGORY`
+
+Examples:
+* `findMostPopular Classics`
+* `findMostPopular Science`
+
+### Features related to reporting problems
 
 #### Report problems: `report`
 
@@ -391,35 +439,35 @@ Examples:
 * `view`
 
 
-#### Locating reports by keyword: `findpr`
+#### Locating reports by keyword: `findProblemReport`
 
 Finds reports whose descriptions contain any of the given keywords.
 
-Format: `findpr KEYWORD [MORE_KEYWORDS]`
+Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `chair` will match `Chair`
 * The order of the keywords does not matter. e.g. `table chair` will match `chair table`
-* Only the description is searched.
+* Only the description of a problem report is searched.
 * Only full words will be matched e.g. `chair` will not match `chairs`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `table chair` will return `chair light`, `light table`
 
 Examples:
-* `findpr chair` returns report containing `chair` and `fix chair`
-* `findpr table chair` returns `table`, `chair`
+* `findProblemReport chair` returns report containing `chair` and `fix chair`
+* `findProblemReport table chair` returns `table`, `chair`
 
-#### Deleting a report : `deletepr`
+#### Deleting a report : `deleteProblemReport`
 
 Deletes the specified person from the language book.
 
-Format: `deletepr INDEX`
+Format: `deleteProblemReport INDEX`
 
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
-* `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+* `findProblemReport chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findProblemReport` command.`
 
 --------------------------------------------------------------------------------------------------------------------
 
