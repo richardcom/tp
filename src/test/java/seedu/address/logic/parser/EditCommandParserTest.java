@@ -132,7 +132,8 @@ public class EditCommandParserTest {
                 Category.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_LANGUAGE_BOOK1 + VALID_ISBN_BOOK1,
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_LANGUAGE_BOOK1
+                        + VALID_ISBN_BOOK1,
                 Name.MESSAGE_CONSTRAINTS);
     }
 
