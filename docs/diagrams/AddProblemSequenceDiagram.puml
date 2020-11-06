@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("report severity/high problem/book is broken")
+[-> LogicManager : execute("report s/high d/book is broken")
 activate LogicManager
 
-LogicManager -> LibraryParser : parseCommand("report severity/high problem/book is broken")
+LogicManager -> LibraryParser : parseCommand("report s/high d/book is broken")
 activate LibraryParser
 
 create AddProblemCommandParser
@@ -26,7 +26,7 @@ activate AddProblemCommandParser
 AddProblemCommandParser --> LibraryParser
 deactivate AddProblemCommandParser
 
-LibraryParser -> AddProblemCommandParser : parse("severity/high problem/book is broken")
+LibraryParser -> AddProblemCommandParser : parse("s/high d/book is broken")
 activate AddProblemCommandParser
 
 create AddProblemCommand
