@@ -67,7 +67,6 @@ public class JsonAdaptedReview {
         ReviewContent bookReviewContent = new ReviewContent(this.reviewContent);
         LocalDateTime createdTime = LocalDateTime.parse(this.createdTime, Review.DATE_TIME_FORMATTER);
         Review review = new Review(bookRating, bookReviewContent);
-        System.out.println("In adapted review, set the created time as " + createdTime);
         review.setCreatedTime(createdTime);
         if (!editedTime.equals("")) {
             LocalDateTime editedTime = LocalDateTime.parse(this.editedTime, Review.DATE_TIME_FORMATTER);

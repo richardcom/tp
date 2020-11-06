@@ -78,19 +78,85 @@ Exits the program.
 
 Format: `exit`
 
-### Listing all books : `list`
-
-Shows a list of all books in the library.
-
-Format: `list`
-
 ### Clearing all entries : `clear`
 
 Clears all entries from the library, including books and reports.
 
 Format: `clear`
 
-### Locating books by name: `find`
+### Commands relating to library book management
+
+
+#### Listing all books : `list`
+
+Shows a list of all books in the library.
+
+Format: `list`
+
+#### Adding a book : `add`
+
+Add a book to the book list.
+
+Duplicate book will be rejected.
+
+Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
+
+* ```n/``` is followed by the book name
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```lang/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
+Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
+* ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
+* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
+ And the prefix tag ```s/``` is compulsory when adding a book.
+* ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
+* ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
+* Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
+
+
+Examples:
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
+
+### Editing a book : `edit`
+
+Edits the information of an existing book in the library.
+
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
+
+* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
+* All fields are optional but at least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
+* You can remove all the book’s categories by typing `c/` without specifying any categories after it.
+
+Examples:
+* `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
+* `edit 3 p/Scribner Publisher c/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
+
+#### _Additional information regarding stocking in add and edit command_
+
+* The library location name is case sensitive, and the location name needs to match exactly.
+
+* Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
+
+* Given that there are only 3 locations available, the number of location argument can be at most 3.
+
+* If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
+
+* If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
+
+* Additionally, to avoid exceeding the library capacity, the stocking of a book in a location should be an integer between 0 and 99999.
+
+* Note that edit the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
+
+Examples:
+* `s/centralLb 30 scienceLb 20 HSSMLb 10`
+* `s/scienceLb 20 HSSMLb 10`
+* `s/centralLb 10`
+
+#### Locating books by name: `find`
 
 Finds books whose names contain any of the given keywords.
 
@@ -107,62 +173,11 @@ Examples:
 * `find science` returns `Introduction to Science` and `Computer Science`
 * `find linear algebra` returns `Basic Algebra`, `linear math`
 
-### Adding a book : `add`
+#### Deleting books(s) from the library `delete` and `deleteby`
 
-Add a book to the book list.
+Deletes the specified book(s) from the library.
 
-Duplicate book will be rejected.
-
-Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
-
-* Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
-* For stockings, stockings at 0 to 3 places can be added(please refer to the stocking part for more details). And the prefix tag ```s/``` is compulsory when adding a book.
-* 
-
-
-Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
-
-### Editing a book : `edit`
-
-Edits the information of an existing book in the library.
-
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
-
-* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
-* All fields are optional but at least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
-* You can remove all the book’s categories by typing `c/` without specifying any categories after it.
-
-Examples:
-* `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
-* `edit 3 p/Scribner Publisher t/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
-
-#### _Additional information regarding stocking in add and edit command_
-
-The library location name is case sensitive.
-
-Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
-
-Given that there are only 3 locations available, the number of location argument can be at most 3.
-
-If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
-
-If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
-
-Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 0 and 99999.
-
-Examples:
-* `s/centralLb 30 scienceLb 20 HSSMLb 10`
-* `s/centralLb 10`
-* `s/`
-
-### Deleting a book: `delete`
-
-Deletes the specified book from the library.
+##### Deletes a book by its index in the current list `delete`
 
 Format: `delete INDEX`
 
@@ -174,18 +189,23 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
 * `find novel` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-#### Deleting a book by other attributes: `deleteBy`
+##### Deleting a book by other attributes: `deleteBy`
 
 Delete a book from the library.
 
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
+* one of the three prefixes must be selected to delete a list of books that match the command.
+* The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
+for all the books which has times of been borrowed less or equal to the user input will be deleted.
+* Notice: if the user enters multiple prefixes at a time, only the last prefix input will be considered.
+
 Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
-### Modify the times
+#### Modify the number of times that a book is borrowed `times`
 
 Changes the number of times that a book has been borrowed to the latest record.
 
@@ -195,7 +215,7 @@ Format:
 Examples:
 * `times 1 t/25` Modifies the number of times the 1st book in the library being borrowed to 25.
 
-### Check stocking of book in every location: `stock`
+#### Check stocking of book in every location: `stock`
 
 Checks the list of stocking information in every location where a certain book is stored.
 Currently only the science library, central library, and HSSM library are available locations.
@@ -238,9 +258,9 @@ Examples:
 * `stock i/9780553175219`
 * `stock`
 
-### Features related to Review
+#### Features related to Review
 
-#### _Introduction_
+##### _Introduction_
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -252,9 +272,9 @@ Additionally, the purpose of recording the review is to estimate the popularity 
 
 Therefore, there will be no personal information recorded in the review.
 
-The created time and edit time in a review refers to the time when the review is recorded and edited respectively.
+The created time and last edited time in a review refers to the time when the review is recorded and last edited respectively.
 
-#### Search for review of book: `searchReview`
+##### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
 
@@ -271,7 +291,7 @@ Examples:
 * `searchReview i/9780553175219`
 * `searchReview`
 
-#### Add review: `addReview`
+##### Add review: `addReview`
 
 Add a review to a certain book. 
 
@@ -293,7 +313,7 @@ If the index is not in the currently shown book list, then a corresponding excep
 Examples:
 * `addReview 1 ra/5 re/The book is interesing`
 
-#### Delete review: `deleteReview`
+##### Delete review: `deleteReview`
 
 Delete a review of a certain book.
 
@@ -311,7 +331,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-#### Edit review: `editReview`
+##### Edit review: `editReview`
 
 Edit a review of a certain book. 
 
@@ -331,21 +351,21 @@ Examples:
 * `editReview 1 rn/7 ra/5`
 * `editReview 1 rn/7 re/The book is interesing`
 
-### Check usage `usage` and `usageBy`
+#### Check usage `usage` and `usageBy`
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
 * book isbn
 * book name
 
-#### by Index
+##### by Index
 Format:
 * `usage [INDEX]`
 
 Examples:
 * `usage 2`
 
-#### by Book Name or ISBN
+##### by Book Name or ISBN
 Format: 
 * `usageBy i/[ISBN]`
 * `usageBy n/[BOOK_NAME]`
@@ -354,7 +374,7 @@ Examples:
 * `usageBy i/9780141439518`
 * `usageBy n/Pride and Prejudice`
 
-### Check history: `history`
+#### Check history: `history`
 
 Checks borrowing times during the whole timeline.
 
@@ -363,7 +383,39 @@ Format: `history`
 Examples:
 * `history`
 
-### Features related to reprting problems
+#### Random Selection of books `random`
+
+Randomly select a book of a specific category from the library.
+
+Format: `random CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
+
+
+Examples:
+* `random Classics`
+* `random Science`
+
+
+#### Find the most popular book of a specific category `findMostPopular`
+
+Find and select the most popular book of a specific category from the library.
+
+Format: `findMostPopular CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
+
+Examples:
+* `findMostPopular Classics`
+* `findMostPopular Science`
+
+### Features related to reporting problems
 
 #### Report problems: `report`
 
@@ -391,35 +443,51 @@ Examples:
 * `view`
 
 
-#### Locating reports by keyword: `findpr`
+#### Locating reports by keyword: `findProblemReport`
 
 Finds reports whose descriptions contain any of the given keywords.
 
-Format: `findpr KEYWORD [MORE_KEYWORDS]`
+Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `chair` will match `Chair`
 * The order of the keywords does not matter. e.g. `table chair` will match `chair table`
-* Only the description is searched.
+* Only the description of a problem report is searched.
 * Only full words will be matched e.g. `chair` will not match `chairs`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `table chair` will return `chair light`, `light table`
 
 Examples:
-* `findpr chair` returns report containing `chair` and `fix chair`
-* `findpr table chair` returns `table`, `chair`
+* `findProblemReport chair` returns report containing `chair` and `fix chair`
+* `findProblemReport table chair` returns `table`, `chair`
 
-#### Deleting a report : `deletepr`
 
-Deletes the specified person from the language book.
+#### Deleting a report : `deleteProblemReport`
 
-Format: `deletepr INDEX`
+Deletes the specified problem report from library management system.
+
+Format: `deleteProblemReport INDEX`
 
 * Deletes the report at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
-* `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+* `findProblemReport chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findProblemReport` command.`
+* `findProblemReport table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findProblemReport` command.`
+
+#### Editing a problem report : `editProblemReport`
+
+Edits the information of an existing problem report in the library.
+
+Format: `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]`
+
+* Edits the report at the specified `INDEX`. The index refers to the index number shown in the displayed report list. The index **must be a positive integer** 1, 2, 3...
+* All fields are optional but at least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+* `editProblemReport 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
+* `editProblemReport 3 s/low` Edits the severity of the 3rd report in the current report list.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -468,18 +536,24 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/LANGUAGE [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
+**DeleteProblemReport** | `deleteProblemReport INDEX` <br> e.g., `deleteProblemReport 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
+**EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**FindMostPopular** | `findMostPopular CATEGORY` <br> e.g., `findMostPopular Science`
+**FindProblemReport** | `findProblemReport KEYWORD [MORE_KEYWORDS]` <br> e.g., `findProblemReport chair`
 **Help** | `help`
 **History**| `history`
 **List** | `list`
+**Random** | `random CATEGORY` <br> e.g., `random Classics`
 **ReportProblem** | `report s/SEVERITY d/DESCRIPTION` <br> e.g., `report s/medium d/book is broken`
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
