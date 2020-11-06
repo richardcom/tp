@@ -67,8 +67,8 @@ public class LibraryBookDetailReviewCard extends UiPart<Region> {
 
         for (int i = 0; i < reviewList.size(); i = i + 1) {
             BookReviewCard bookReviewCard = new BookReviewCard(reviewList.get(i), i + 1);
-            reviewListHeight = reviewListHeight + 78
-                    + 13.2 * ((double) (reviewList.get(i).getContent().content.length() / 45));
+            reviewListHeight = reviewListHeight + 89
+                    + 14 * ((double) (reviewList.get(i).getContent().content.length() / 45));
             Separator separator = new Separator(Orientation.HORIZONTAL);
             separator.setMaxWidth(400);
             reviews.getChildren().add(separator);
