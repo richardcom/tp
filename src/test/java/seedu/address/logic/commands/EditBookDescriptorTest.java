@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK1;
 
 import org.junit.jupiter.api.Test;
 
@@ -59,15 +59,15 @@ public class EditBookDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different times -> returns false
-        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_TIMES_AMY).build();
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_TIMES_BOOK1).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different authors -> returns false
-        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_AUTHOR_AMY).build();
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_AUTHOR_BOOK1).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different publishers -> returns false
-        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_PUBLISHER_AMY).build();
+        editedAmy = new EditBookDescriptorBuilder(DESC_AMY).withCategories(VALID_PUBLISHER_BOOK1).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 }

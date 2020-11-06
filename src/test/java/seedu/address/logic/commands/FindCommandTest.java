@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_BOOKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalBooks.CARL;
-import static seedu.address.testutil.TypicalBooks.ELLE;
-import static seedu.address.testutil.TypicalBooks.FIONA;
+import static seedu.address.testutil.TypicalBooks.BOOK3;
+import static seedu.address.testutil.TypicalBooks.BOOK5;
+import static seedu.address.testutil.TypicalBooks.BOOK6;
 import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Arrays;
@@ -68,11 +68,11 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleBooksFound() {
         String expectedMessage = String.format(MESSAGE_BOOKS_LISTED_OVERVIEW, 3);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        NameContainsKeywordsPredicate predicate = preparePredicate("Carl Elle Fiona");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredBookList(predicate, Mode.NORMAL);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredBookList());
+        assertEquals(Arrays.asList(BOOK3, BOOK5, BOOK6), model.getFilteredBookList());
     }
 
     /**

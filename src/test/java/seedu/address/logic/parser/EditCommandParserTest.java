@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
@@ -15,27 +15,27 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PUBLISHER_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK1;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -68,7 +68,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_NAME_BOOK1, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -80,10 +80,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + NAME_DESC_BOOK1, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + NAME_DESC_BOOK1, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -116,7 +116,7 @@ public class EditCommandParserTest {
         //All Failed
 
         // invalid isbn followed by valid email
-        assertParseFailure(parser, "1" + INVALID_ISBN_DESC + EMAIL_DESC_AMY, Isbn.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_ISBN_DESC + EMAIL_DESC_BOOK1, Isbn.MESSAGE_CONSTRAINTS);
 
         // valid isbn followed by invalid isbn. The test case for invalid isbn followed by valid isbn
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
@@ -132,7 +132,7 @@ public class EditCommandParserTest {
                 Category.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_LANGUAGE_AMY + VALID_ISBN_AMY,
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_LANGUAGE_BOOK1 + VALID_ISBN_BOOK1,
                 Name.MESSAGE_CONSTRAINTS);
     }
 
@@ -140,10 +140,10 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_BOOK;
         String userInput = targetIndex.getOneBased() + ISBN_DESC_BOB + CATEGORY_DESC_HUSBAND
-                + EMAIL_DESC_AMY + LANGUAGE_DESC_AMY + NAME_DESC_AMY + CATEGORY_DESC_FRIEND;
+                + EMAIL_DESC_BOOK1 + LANGUAGE_DESC_BOOK1 + NAME_DESC_BOOK1 + CATEGORY_DESC_FRIEND;
 
-        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_AMY).withLanguage(VALID_LANGUAGE_AMY)
+        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK1)
+                .withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOOK1).withLanguage(VALID_LANGUAGE_BOOK1)
                 .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -153,10 +153,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST_BOOK;
-        String userInput = targetIndex.getOneBased() + ISBN_DESC_BOB + EMAIL_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + ISBN_DESC_BOB + EMAIL_DESC_BOOK1;
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOB)
-                .withEmail(VALID_EMAIL_AMY).build();
+                .withEmail(VALID_EMAIL_BOOK1).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -166,26 +166,26 @@ public class EditCommandParserTest {
     public void parse_oneFieldSpecified_success() {
         // name
         Index targetIndex = INDEX_THIRD_BOOK;
-        String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        String userInput = targetIndex.getOneBased() + NAME_DESC_BOOK1;
+        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK1).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // isbn
-        userInput = targetIndex.getOneBased() + ISBN_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_AMY).build();
+        userInput = targetIndex.getOneBased() + ISBN_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // email
-        userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
+        userInput = targetIndex.getOneBased() + EMAIL_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withEmail(VALID_EMAIL_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // language
-        userInput = targetIndex.getOneBased() + LANGUAGE_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withLanguage(VALID_LANGUAGE_AMY).build();
+        userInput = targetIndex.getOneBased() + LANGUAGE_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withLanguage(VALID_LANGUAGE_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -196,26 +196,26 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // stocking
-        userInput = targetIndex.getOneBased() + STOCKING_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withStockings(VALID_STOCKING_AMY).build();
+        userInput = targetIndex.getOneBased() + STOCKING_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withStockings(VALID_STOCKING_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // times
-        userInput = targetIndex.getOneBased() + TIMES_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withTimes(VALID_TIMES_AMY).build();
+        userInput = targetIndex.getOneBased() + TIMES_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withTimes(VALID_TIMES_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // author
-        userInput = targetIndex.getOneBased() + AUTHOR_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withAuthor(VALID_AUTHOR_AMY).build();
+        userInput = targetIndex.getOneBased() + AUTHOR_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withAuthor(VALID_AUTHOR_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // publisher
-        userInput = targetIndex.getOneBased() + PUBLISHER_DESC_AMY;
-        descriptor = new EditBookDescriptorBuilder().withPublisher(VALID_PUBLISHER_AMY).build();
+        userInput = targetIndex.getOneBased() + PUBLISHER_DESC_BOOK1;
+        descriptor = new EditBookDescriptorBuilder().withPublisher(VALID_PUBLISHER_BOOK1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -223,8 +223,8 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_BOOK;
-        String userInput = targetIndex.getOneBased() + ISBN_DESC_AMY + LANGUAGE_DESC_AMY + EMAIL_DESC_AMY
-                + CATEGORY_DESC_FRIEND + ISBN_DESC_AMY + LANGUAGE_DESC_AMY + EMAIL_DESC_AMY + CATEGORY_DESC_FRIEND
+        String userInput = targetIndex.getOneBased() + ISBN_DESC_BOOK1 + LANGUAGE_DESC_BOOK1 + EMAIL_DESC_BOOK1
+                + CATEGORY_DESC_FRIEND + ISBN_DESC_BOOK1 + LANGUAGE_DESC_BOOK1 + EMAIL_DESC_BOOK1 + CATEGORY_DESC_FRIEND
                 + ISBN_DESC_BOB + LANGUAGE_DESC_BOB + EMAIL_DESC_BOB + CATEGORY_DESC_HUSBAND;
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOB)

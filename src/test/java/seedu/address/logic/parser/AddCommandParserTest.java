@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_AUTHOR_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CATEGORY_DESC;
@@ -16,19 +16,19 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PUBLISHER_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_STOCKING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMES_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.LANGUAGE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
@@ -74,27 +74,27 @@ public class AddCommandParserTest {
                 new AddCommand(expectedBook));
 
         // multiple names - last name accepted
-        assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOOK1 + NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB
                 + LANGUAGE_DESC_BOB + CATEGORY_DESC_FRIEND + TIMES_DESC_BOB + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_BOB,
                 new AddCommand(expectedBook));
 
         // multiple isbns - last isbn accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_AMY + ISBN_DESC_BOB + EMAIL_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOOK1 + ISBN_DESC_BOB + EMAIL_DESC_BOB
                 + LANGUAGE_DESC_BOB + CATEGORY_DESC_FRIEND + TIMES_DESC_BOB + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_BOB,
                 new AddCommand(expectedBook));
 
         // multiple emails - last email accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_AMY + EMAIL_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOOK1 + EMAIL_DESC_BOB
                 + LANGUAGE_DESC_BOB + CATEGORY_DESC_FRIEND + TIMES_DESC_BOB + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
                 + PUBLISHER_DESC_BOB,
                 new AddCommand(expectedBook));
 
         // multiple languagees - last language accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_AMY
+        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_BOOK1
                 + LANGUAGE_DESC_BOB + CATEGORY_DESC_FRIEND + TIMES_DESC_BOB + STOCKING_DESC_BOB + AUTHOR_DESC_BOB
-                + PUBLISHER_DESC_AMY,
+                + PUBLISHER_DESC_BOOK1,
                 new AddCommand(expectedBook));
 
         // multiple categories - all accepted
@@ -105,8 +105,8 @@ public class AddCommandParserTest {
                         + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, new AddCommand(expectedBookMultipleCategories));
 
         //multiple stocking - last stocking accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_AMY
-                        + LANGUAGE_DESC_BOB + TIMES_DESC_BOB + CATEGORY_DESC_FRIEND + STOCKING_DESC_AMY
+        assertParseSuccess(parser, NAME_DESC_BOB + ISBN_DESC_BOB + EMAIL_DESC_BOB + LANGUAGE_DESC_BOOK1
+                        + LANGUAGE_DESC_BOB + TIMES_DESC_BOB + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK1
                         + STOCKING_DESC_BOB + AUTHOR_DESC_BOB + PUBLISHER_DESC_BOB, new AddCommand(expectedBook));
     }
 
@@ -114,8 +114,8 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero categories
         Book expectedBook = new BookBuilder(AMY).withCategories().build();
-        assertParseSuccess(parser, NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
-                + LANGUAGE_DESC_AMY + TIMES_DESC_AMY + STOCKING_DESC_AMY + AUTHOR_DESC_AMY + PUBLISHER_DESC_AMY,
+        assertParseSuccess(parser, NAME_DESC_BOOK1 + ISBN_DESC_BOOK1 + EMAIL_DESC_BOOK1
+                + LANGUAGE_DESC_BOOK1 + TIMES_DESC_BOOK1 + STOCKING_DESC_BOOK1 + AUTHOR_DESC_BOOK1 + PUBLISHER_DESC_BOOK1,
                 new AddCommand(expectedBook));
     }
 
