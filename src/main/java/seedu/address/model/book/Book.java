@@ -147,16 +147,17 @@ public class Book {
         builder.append(getName())
                 .append(" Isbn: ")
                 .append(getIsbn())
-                .append(" Email: ")
-                .append(getEmail())
                 .append(" Language: ")
                 .append(getLanguage())
-                .append(" Times: ")
+                .append("\n Times: ")
                 .append(getTimes())
-                .append(" Categories: ");
+                .append("\n Categories: ");
         getCategories().forEach(builder::append);
-        builder.append(" Author: ").append(getAuthor());
-        builder.append(" Publisher: ").append(getPublisher());
+        builder.append("\n Author: ")
+                .append(getAuthor())
+                .append(" Publisher: ").append(getPublisher())
+                .append(" Email: ")
+                .append(getEmail() + "\n");
         return builder.toString();
     }
 
