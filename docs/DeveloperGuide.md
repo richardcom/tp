@@ -265,11 +265,11 @@ The current implementation of the ReportProblem command is supported by `AddProb
 
 Given below is an example usage scenario and how the ReportProblem mechanism behaves at each step.
 
-Step 1. User input an input: `report severity/high problem/book is broken`
+Step 1. User input an input: `report s/high d/book is broken`
 
-Step 2. Logic Manager would parse the input `report severity/high problem/book is broken`, and determines that it is a ReportProblem command.
+Step 2. Logic Manager would parse the input `report s/high d/book is broken`, and determines that it is a ReportProblem command.
 
-Step 3. AddProblemCommandParser would then parse the problem reported (both severity and problem) and call the ReportProblem Command.
+Step 3. AddProblemCommandParser would then parse the problem reported (both severity and description) and call the ReportProblem Command.
 
 Step 4. Execution of AddProblemCommand would take place and the result will be updated in the filtered list in Model.
 
