@@ -45,7 +45,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.testutil.TypicalBooks.BOOK8;
 import static seedu.address.testutil.TypicalBooks.BOOK9;
 
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
@@ -70,20 +69,20 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
-                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2 + TIMES_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2 + TIMES_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 new AddCommand(expectedBook));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_BOOK1 + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
-                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 new AddCommand(expectedBook));
 
         // multiple isbns - last isbn accepted
         assertParseSuccess(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK1 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
-                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 new AddCommand(expectedBook));
 
         // multiple emails - last email accepted
@@ -167,26 +166,26 @@ public class AddCommandParserTest {
 
         // invalid isbn
         assertParseFailure(parser, NAME_DESC_BOOK2 + INVALID_ISBN_DESC + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK2
-                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 Isbn.MESSAGE_CONSTRAINTS);
 
         // invalid email
         assertParseFailure(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + INVALID_EMAIL_DESC + LANGUAGE_DESC_BOOK2
-                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 Email.MESSAGE_CONSTRAINTS);
 
         // invalid language
         assertParseFailure(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + INVALID_LANGUAGE_DESC
-                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 Language.MESSAGE_CONSTRAINTS);
 
         // invalid category
         assertParseFailure(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK2
-                + TIMES_DESC_BOOK2 + INVALID_CATEGORY_DESC + VALID_CATEGORY_FRIEND + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                + PUBLISHER_DESC_BOOK2,
+                + TIMES_DESC_BOOK2 + INVALID_CATEGORY_DESC + VALID_CATEGORY_FRIEND + STOCKING_DESC_BOOK2
+                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 Category.MESSAGE_CONSTRAINTS);
 
         // invalid stocking
@@ -211,13 +210,15 @@ public class AddCommandParserTest {
                 + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2, Times.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + INVALID_LANGUAGE_DESC
-                + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
+                        + INVALID_LANGUAGE_DESC + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
+                        + PUBLISHER_DESC_BOOK2,
+                Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
-                + LANGUAGE_DESC_BOOK2 + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
-                        + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
+                + LANGUAGE_DESC_BOOK2 + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND
+                        + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
