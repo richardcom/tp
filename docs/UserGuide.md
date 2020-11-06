@@ -367,7 +367,7 @@ Examples:
 
 Report a problem found in library.
 
-Format: `report severity/SEVERITY problem/PROBLEM`
+Format: `report s/SEVERITY d/DESCRIPTION`
 
 Note that `SEVERITY` is limited to `high`, `medium`, and `low`, case-insensitive.
 
@@ -377,7 +377,7 @@ Duplicate problems will be rejected. Note that two problems are considered to be
 they have **both** the same severity and the same description.
 
 Examples:
-* `report severity/high problem/book is broken`
+* `report s/high d/book is broken`
 
 #### View problems: `view`
 
@@ -455,6 +455,8 @@ To make the book cover more diversified, 2 books with the same categories may ha
 
 ## Command summary
 
+Commands are listed in alphabetical order.
+
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/LANGUAGE [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
@@ -469,7 +471,7 @@ Action | Format, Examples
 **Help** | `help`
 **History**| `history`
 **List** | `list`
-**ReportProblem** | `report severity/SEVERITY problem/DESCRIPTION` <br> e.g., `report severity/medium problem/book is broken`
+**ReportProblem** | `report s/SEVERITY d/DESCRIPTION` <br> e.g., `report s/medium d/book is broken`
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
