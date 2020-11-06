@@ -184,7 +184,7 @@ edited with EditBookDescriptor.
 
 The relationship between the updated book (including the newly added classes) and other components is shown as below.
 
-![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
+![The relationship between the book and other components](images/ModelClassBookDiagram.png)
 
 Given below is an example usage scenario of how the edit command will be executed, 
 
@@ -217,7 +217,7 @@ The relevant methods are
 * `JsonAdaptedStocking#JsonAdaptedStocking(Stocking)` — Transforms the stocking model into the json adapted model.
 * `JsonAdaptedStocking#toModelType(Stocking)` — Transforms the json adapted model into the stocking model.
 
-The relationship between the book and stocking and other components is shown as below.
+The relationship 
 
 ![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
 

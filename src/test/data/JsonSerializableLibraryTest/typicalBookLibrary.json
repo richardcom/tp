@@ -11,59 +11,25 @@
       "hssmLibrary" : 10
     },
     "reviews" : [ {
-      "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
-    }, {
-      "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
-    }, {
-      "ratingNumber" : 4,
-      "reviewContent" : "The book is interesing"
+      "ratingNumber" : 5,
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2020/11/06 13:13"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "6 The book is quite a bit interesting"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2018/10/24 17:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "The book is interesti"
+      "reviewContent" : "The content is interesting",
+      "createdTime" : "2020/11/06 11:52",
+      "editedTime" : ""
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is interesing"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "longReviewwwwwwwwwwwwwwwwwwwwwwwwwwwww"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is interestin"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is interest"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is interes"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The reivew is longggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is really interesting"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "6 The book is really interesting"
-    }, {
-      "ratingNumber" : 4,
-      "reviewContent" : "The book is here"
-    }, {
-      "ratingNumber" : 4,
-      "reviewContent" : "The book is here"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is here"
-    }, {
-      "ratingNumber" : 5,
-      "reviewContent" : "The book is here"
+      "reviewContent" : "The content is interesting",
+      "createdTime" : "2020/11/06 11:52",
+      "editedTime" : ""
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -81,13 +47,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : ""
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/10/24 17:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "The book is really interesting"
+      "reviewContent" : "The book is really interesting",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : ""
     } ],
     "author" : "b",
     "publisher" : "pub",
@@ -105,13 +77,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/10/24 17:30"
     }, {
       "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 18:30",
+      "editedTime" : ""
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:42",
+      "editedTime" : ""
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -129,13 +107,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2018/10/24 17:30"
     }, {
       "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 15:30",
+      "editedTime" : "2018/10/24 15:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : ""
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -153,13 +137,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : ""
     }, {
       "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2018/10/24 17:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2018/10/24 17:30"
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -177,13 +167,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/11/24 17:30"
     }, {
       "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/10/24 17:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2020/10/24 17:30"
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -201,13 +197,19 @@
     },
     "reviews" : [ {
       "ratingNumber" : 3,
-      "reviewContent" : "Some detail may not be shown in certain part of the book"
+      "reviewContent" : "Some detail may not be shown in certain part of the book",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/11/24 17:30"
     }, {
       "ratingNumber" : 4,
-      "reviewContent" : "Exciting to see how the plot will develop"
+      "reviewContent" : "Exciting to see how the plot will develop",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/12/24 17:30"
     }, {
       "ratingNumber" : 5,
-      "reviewContent" : "Interesting book with insight into the history"
+      "reviewContent" : "Interesting book with insight into the history",
+      "createdTime" : "2018/10/24 17:30",
+      "editedTime" : "2019/10/24 17:30"
     } ],
     "author" : "a",
     "publisher" : "pub",
@@ -356,7 +358,7 @@
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 0,
-      "hssmLibrary" : -1
+      "hssmLibrary" : 0
     },
     "reviews" : [ ],
     "author" : "Victor",

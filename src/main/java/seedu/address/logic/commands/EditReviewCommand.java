@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,8 +89,8 @@ public class EditReviewCommand extends Command {
             Book reviewedBook = createdChangedBook(bookToReview, reviewNumber, rating, reviewContent);
             model.setBook(bookToReview, reviewedBook);
             List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
-            NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-            model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
+            NameMatchesKeywordPredicate nameMatchedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
+            model.updateFilteredBookList(nameMatchedKeywordsPredicate, Mode.REVIEW);
 
             return new CommandResult(String.format(MESSAGE_EDIT_REVIEW_SUCCESS, reviewedBook));
         } catch (CommandException commandException) {
@@ -120,6 +121,8 @@ public class EditReviewCommand extends Command {
         Rating newRating = rating.orElse(originalReview.getRating());
         ReviewContent newReviewContent = reviewContent.orElse(originalReview.getContent());
         Review newReview = new Review(newRating, newReviewContent);
+        newReview.setCreatedTime(originalReview.getCreatedTime());
+        newReview.setEditedTime(LocalDateTime.now());
         if (newReview.equals(originalReview)) {
             throw new CommandException(Messages.MESSAGE_REVIEW_NOT_EDITED);
         }
