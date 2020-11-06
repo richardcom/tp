@@ -2,13 +2,20 @@ package seedu.address.model.review;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+
 /**
  * Represents a Book's review in the application.
  */
 public class Review {
 
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
     private final Rating rating;
     private final ReviewContent reviewContent;
+    private LocalDateTime createdTime;
+    private LocalDateTime editedTime;
 
     /**
      * Constructs an {@code Review}.
@@ -30,6 +37,30 @@ public class Review {
 
     public ReviewContent getContent() {
         return reviewContent;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public void setEditedTime(LocalDateTime editedTime) {
+        this.editedTime = editedTime;
+    }
+
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public String getCreatedTimeRepresentation() {
+        return createdTime.format(DATE_TIME_FORMATTER);
+    }
+
+    public Optional<String> getEditedTimeRepresentation() {
+        if (editedTime == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(editedTime.format(DATE_TIME_FORMATTER));
+        }
     }
 
     @Override

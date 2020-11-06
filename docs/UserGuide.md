@@ -267,6 +267,8 @@ Additionally, the purpose of recording the review is to estimate the popularity 
 
 Therefore, there will be no personal information recorded in the review.
 
+The created time and edit time in a review refers to the time when the review is recorded and edited respectively.
+
 #### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
@@ -476,7 +478,7 @@ The list of relevant categories are given below in ascending order with respect 
 Note that categories that are not in the list is still a valid category, but they will not help to give a specific book cover to the book.
 
 * `General`
-* `Novels`
+* `Novel`
 * `History`
 * `Science`
 * `AncientHistory`
@@ -489,7 +491,14 @@ Note that categories that are not in the list is still a valid category, but the
 
 The book cover of a book depends on the categories of the book.
 
-The category name is case insensitive, but there cannot be white space in between the category words.
+The category name is case insensitive, but the category name needs to match **exactly**, and there cannot be white space in between the category words.
+
+The following are **invalid** examples of category which will not reflect the intention of the user of adding `MordernWar`.
+
+* `Modern war`
+* `Modern war in Asia`
+* `ModernWar in Asia`
+* `ModernWars`
 
 If more than 1 category is given, the book cover will depend on the category with higher priority.
 
