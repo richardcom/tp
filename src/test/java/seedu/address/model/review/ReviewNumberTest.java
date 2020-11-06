@@ -9,5 +9,6 @@ class ReviewNumberTest {
     void isValidReviewNumber() {
         Assertions.assertTrue(ReviewNumber.isValidReviewNumber("6"));
         Assertions.assertFalse(ReviewNumber.isValidReviewNumber("a"));
+        Assertions.assertFalse(ReviewNumber.isValidReviewNumber(""));
     }
 }

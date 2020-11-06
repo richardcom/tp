@@ -25,5 +25,4 @@ class RatingTest {
         Assertions.assertFalse(Rating.isValidRating("\n"));
         Assertions.assertFalse(Rating.isValidRating("1.0"));
     }
-
 }

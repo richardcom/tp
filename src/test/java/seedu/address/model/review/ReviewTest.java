@@ -2,8 +2,17 @@ package seedu.address.model.review;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import seedu.address.model.book.Name;
+
+import static seedu.address.testutil.Assert.assertThrows;
 
 class ReviewTest {
+
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Review(null, new ReviewContent("review")));
+        assertThrows(NullPointerException.class, () -> new Review(new Rating(5), null));
+    }
 
     @Test
     void equals() {
