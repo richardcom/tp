@@ -14,8 +14,8 @@ public class Stocking {
             + "Given that there are only 3 locations available, the number of location argument can be at most 3.\n"
             + "Additionally, to avoid exceeding the library capacity, the stocking of a "
             + "book in a location should be an integer between 0 and 9999999.\n"
-            + "If the stocking of a location has a value of 0 or if it is not provided, then the stocking information shown for "
-            + "the book in that location will be: Not available.\n";
+            + "If the stocking of a location has a value of 0 or if it is not provided, then the stocking "
+            + "information shown for the book in that location will be: Not available.\n";
 
     public static final String NUMBER_CONSTRAINTS = "The stocking of a "
             + "book in a location should be an integer between 0 and 9999999.\n"
