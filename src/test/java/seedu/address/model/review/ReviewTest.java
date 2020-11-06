@@ -1,10 +1,9 @@
 package seedu.address.model.review;
 
+import static seedu.address.testutil.Assert.assertThrows;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import seedu.address.model.book.Name;
-
-import static seedu.address.testutil.Assert.assertThrows;
 
 class ReviewTest {
 
