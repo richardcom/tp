@@ -19,6 +19,9 @@ import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Problem;
+import seedu.address.model.problem.Severity;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
 import seedu.address.model.review.ReviewContent;
@@ -27,6 +30,14 @@ import seedu.address.model.review.ReviewContent;
  * Contains utility methods for populating {@code Library} with sample data.
  */
 public class SampleDataUtil {
+    public static Problem[] getSampleProblems() {
+        return new Problem[] {
+            new Problem(new Severity("high"), new Description("Harry Potter is lost")),
+            new Problem(new Severity("medium"), new Description("Linear Algebra book cover is damaged")),
+            new Problem(new Severity("low"), new Description("level 1 floor is dirty"))
+        };
+    }
+
     public static Book[] getSampleBooks() {
         HashMap<String, Integer> storage = new HashMap<>();
         storage.put("centralLibrary", 10);
@@ -65,6 +76,9 @@ public class SampleDataUtil {
         Library sampleLib = new Library();
         for (Book sampleBook : getSampleBooks()) {
             sampleLib.addBook(sampleBook);
+        }
+        for (Problem sampleProblem : getSampleProblems()) {
+            sampleLib.addProblem(sampleProblem);
         }
         return sampleLib;
     }

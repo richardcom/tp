@@ -49,8 +49,8 @@
           </padding>
         </StackPane>
 
-        <HBox styleClass="pane-with-border" HBox.hgrow="ALWAYS">
-          <VBox alignment="TOP_CENTER">
+        <HBox styleClass="pane-with-border" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" maxWidth="Infinity">
+          <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
           <Label>
             <font>
               <Font name="System Bold" size="14.0" />
@@ -58,7 +58,7 @@
             Books
           </Label>
 
-            <VBox fx:id="bookList" styleClass="pane-with-border" minWidth="600" prefWidth="500" VBox.vgrow="ALWAYS">
+            <VBox fx:id="bookList" styleClass="pane-with-border" minWidth="600" prefWidth="500" VBox.vgrow="ALWAYS" >
               <padding>
                 <Insets top="5" right="10" bottom="5" left="10" />
               </padding>
@@ -67,7 +67,7 @@
           </VBox>
 
           <!-- problem report list -->
-          <VBox alignment="TOP_CENTER">
+          <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
           <Label>
             <font>
               <Font name="System Bold" size="14.0" />
