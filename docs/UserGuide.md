@@ -122,7 +122,7 @@ Examples:
 
 * `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
-### Editing a book : `edit`
+#### Editing a book : `edit`
 
 Edits the information of an existing book in the library.
 
