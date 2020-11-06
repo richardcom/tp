@@ -2,10 +2,10 @@ package seedu.address.model.book;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.ALICE;
@@ -40,17 +40,17 @@ public class BookTest {
         assertFalse(ALICE.isSameBook(editedAlice));
 
         // same name, same isbn, different attributes -> returns true
-        editedAlice = new BookBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedAlice = new BookBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(ALICE.isSameBook(editedAlice));
 
         // same name, same email, different attributes -> returns true
-        editedAlice = new BookBuilder(ALICE).withIsbn(VALID_ISBN_BOB).withAddress(VALID_ADDRESS_BOB)
+        editedAlice = new BookBuilder(ALICE).withIsbn(VALID_ISBN_BOB).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(ALICE.isSameBook(editedAlice));
 
         // same name, same isbn, same email, different attributes -> returns true
-        editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
+        editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(ALICE.isSameBook(editedAlice));
     }
@@ -85,8 +85,8 @@ public class BookTest {
         editedAlice = new BookBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different address -> returns false
-        editedAlice = new BookBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
+        // different language -> returns false
+        editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different categories -> returns false

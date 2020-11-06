@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LANGUAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
@@ -37,7 +37,7 @@ public class BookUtil {
         sb.append(PREFIX_NAME + book.getName().fullName + " ");
         sb.append(PREFIX_ISBN + book.getIsbn().value + " ");
         sb.append(PREFIX_EMAIL + book.getEmail().value + " ");
-        sb.append(PREFIX_ADDRESS + book.getAddress().value + " ");
+        sb.append(PREFIX_LANGUAGE + book.getLanguage().value + " ");
         book.getCategories().stream().forEach(
             s -> sb.append(PREFIX_CATEGORY + s.categoryName + " ")
         );
@@ -57,7 +57,7 @@ public class BookUtil {
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getIsbn().ifPresent(isbn -> sb.append(PREFIX_ISBN).append(isbn.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
+        descriptor.getLanguage().ifPresent(language -> sb.append(PREFIX_LANGUAGE).append(language.value).append(" "));
         // to implement new attributes as well.
         if (descriptor.getCategories().isPresent()) {
             Set<Category> categories = descriptor.getCategories().get();

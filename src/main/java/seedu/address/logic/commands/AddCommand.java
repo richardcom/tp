@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LANGUAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
@@ -16,19 +16,19 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Adds a book to the address book.
+ * Adds a book to the language book.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
     public static final String SUGGESTION = "";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the language book. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_ISBN + "ISBN "
             + PREFIX_EMAIL + "EMAIL "
-            + PREFIX_ADDRESS + "ADDRESS "
+            + PREFIX_LANGUAGE + "LANGUAGE "
             + "[" + PREFIX_CATEGORY + "CATEGORY]..."
             + PREFIX_TIMES + "TIMES "
             + PREFIX_STOCKING + "STOCKINGS "
@@ -38,16 +38,16 @@ public class AddCommand extends Command {
             + PREFIX_NAME + "Linear Algebra "
             + PREFIX_ISBN + "98765432 "
             + PREFIX_EMAIL + "xxxxxx@example.com "
-            + PREFIX_ADDRESS + "xxxxx "
+            + PREFIX_LANGUAGE + "xxxxx "
             + PREFIX_CATEGORY + "Science "
             + PREFIX_CATEGORY + "Math "
             + PREFIX_TIMES + "20 "
-            + PREFIX_STOCKING + "central library 0 science library 0 "
+            + PREFIX_STOCKING + "centralLb 30 scienceLb 15 "
             + PREFIX_AUTHOR + "Victor "
             + PREFIX_PUBLISHER + "pku";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";
-    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the language book";
 
     private final Book toAdd;
 

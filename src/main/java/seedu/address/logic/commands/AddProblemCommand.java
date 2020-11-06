@@ -11,12 +11,12 @@ import seedu.address.model.Model;
 import seedu.address.model.problem.Problem;
 
 /**
- * Adds a book to the address book.
+ * Adds a book to the language book.
  */
 public class AddProblemCommand extends Command {
 
     public static final String COMMAND_WORD = "report";
-    public static final String SUGGESTION = "report severity/SEVERITY problem/DESCRIPTION";
+    public static final String SUGGESTION = "report s/SEVERITY d/DESCRIPTION";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reports a problem. " + "Parameters: " + PREFIX_SEVERITY
             + "severity " + PREFIX_DESCRIPTION + "description ";

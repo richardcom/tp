@@ -9,16 +9,19 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.Library;
 import seedu.address.model.ReadOnlyLibrary;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
 import seedu.address.model.category.Category;
+import seedu.address.model.problem.Description;
+import seedu.address.model.problem.Problem;
+import seedu.address.model.problem.Severity;
 import seedu.address.model.review.Rating;
 import seedu.address.model.review.Review;
 import seedu.address.model.review.ReviewContent;
@@ -27,6 +30,14 @@ import seedu.address.model.review.ReviewContent;
  * Contains utility methods for populating {@code Library} with sample data.
  */
 public class SampleDataUtil {
+    public static Problem[] getSampleProblems() {
+        return new Problem[] {
+            new Problem(new Severity("high"), new Description("Harry Potter is lost")),
+            new Problem(new Severity("medium"), new Description("Linear Algebra book cover is damaged")),
+            new Problem(new Severity("low"), new Description("level 1 floor is dirty"))
+        };
+    }
+
     public static Book[] getSampleBooks() {
         HashMap<String, Integer> storage = new HashMap<>();
         storage.put("centralLibrary", 10);
@@ -43,18 +54,18 @@ public class SampleDataUtil {
 
         return new Book[] {
             new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"),
-                    new Email("pride&prejudice@example.com"), new Address("English"), new Times("195"),
+                    new Email("pride&prejudice@example.com"), new Language("English"), new Times("195"),
                     getCategorySet("Novels"), stocking, reviews, new Author("Jane Austen"),
                     new Publisher("Penguin Publishing Group")),
             new Book(new Name("A Brief History Of Time From Big Bang To Black Holes"), new Isbn("9780553175219"),
-                    new Email("abriefhistoryoftime@example.com"), new Address("English"), new Times("20278"),
+                    new Email("abriefhistoryoftime@example.com"), new Language("English"), new Times("20278"),
                 getCategorySet("Science"), stocking, reviews,
                     new Author("Stephen Hawking"), new Publisher("Bantam")),
             new Book(new Name("The Great Gatsby"), new Isbn("9780743273565"), new Email("thegreatgatsby@example.com"),
-                new Address("English"), new Times("6529"), getCategorySet("Classics"), stocking, reviews,
+                new Language("English"), new Times("6529"), getCategorySet("Classics"), stocking, reviews,
                     new Author("Scott Fitzgerald"), new Publisher("Scribner")),
             new Book(new Name("Introduction to Linear Algebra"), new Isbn("9780980232776"),
-                    new Email("introtolinearalgebra@example.com"), new Address("English"), new Times("243"),
+                    new Email("introtolinearalgebra@example.com"), new Language("English"), new Times("243"),
                 getCategorySet("Textbook"), stocking, reviews,
                     new Author("Gilbert Strang"), new Publisher("Wellesley Cambridge Press"))
 
@@ -65,6 +76,9 @@ public class SampleDataUtil {
         Library sampleLib = new Library();
         for (Book sampleBook : getSampleBooks()) {
             sampleLib.addBook(sampleBook);
+        }
+        for (Problem sampleProblem : getSampleProblems()) {
+            sampleLib.addProblem(sampleProblem);
         }
         return sampleLib;
     }

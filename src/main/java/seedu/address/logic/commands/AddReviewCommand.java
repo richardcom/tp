@@ -2,18 +2,21 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
@@ -91,10 +94,12 @@ public class AddReviewCommand extends Command {
      * @return The book with the new review list.
      */
     private static Book createdChangedBook(Book book, Review review) {
+        assert book != null;
+        assert review != null;
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
-        Address address = book.getAddress();
+        Language language = book.getLanguage();
         List<Review> reviews = book.getReviews();
         reviews.add(review);
         Times times = book.getTimes();
@@ -103,7 +108,7 @@ public class AddReviewCommand extends Command {
         Publisher publisher = book.getPublisher();
         Stocking stocking = book.getStocking();
 
-        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+        return new Book(name, isbn, email, language, times, categories, stocking, reviews, author, publisher);
     }
 
     @Override
@@ -113,9 +118,9 @@ public class AddReviewCommand extends Command {
         } else if (!(o instanceof AddReviewCommand)) {
             return false;
         } else {
-            AddReviewCommand that = (AddReviewCommand) o;
-            return Objects.equals(index, that.index)
-                   && Objects.equals(review, that.review);
+            AddReviewCommand other = (AddReviewCommand) o;
+            return index.equals(other.index)
+                   && review.equals(other.review);
         }
     }
 }

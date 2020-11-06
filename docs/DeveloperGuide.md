@@ -23,11 +23,11 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/languagebook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/Main.java) and [`MainApp`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -62,11 +62,11 @@ The sections below give more details of each component.
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+[`Ui.java`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `BookListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -78,7 +78,7 @@ The `UI` component,
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+[`Logic.java`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/logic/Logic.java)
 
 1. `Logic` uses the `LibraryParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
@@ -97,12 +97,12 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/model/Model.java)
 
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
+* stores the language book data.
 * exposes an unmodifiable `ObservableList<Book>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
@@ -117,11 +117,11 @@ The `Model`,
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/se-edu/languagebook-level3/tree/master/src/main/java/seedu/language/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
+* can save the language book data in json format and read it back.
 
 ### Common classes
 
@@ -225,17 +225,17 @@ These operations are incoperated into the storage read and write process in the 
 
 #####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the address book parser, which calls the add command parser.
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the language book parser, which calls the add command parser.
 
 Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
 
 ![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
 
-Step 3. The add command parser uses the stocking and returns an add command, and this is returned by address book parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The add command parser uses the stocking and returns an add command, and this is returned by language book parser, and the logic manager executes the command and make some changes to the model.
 
 #####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the address book parser, which calls the stock command parser.
+Step 1. The user types `Stock n/gun`, and the logic manager calls the language book parser, which calls the stock command parser.
 
 Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
 
@@ -327,37 +327,37 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The proposed undo/redo mechanism is facilitated by `VersionedLanguageBook`. It extends `LanguageBook` with an undo/redo history, stored internally as an `languageBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+* `VersionedLanguageBook#commit()` — Saves the current language book state in its history.
+* `VersionedLanguageBook#undo()` — Restores the previous language book state from its history.
+* `VersionedLanguageBook#redo()` — Restores a previously undone language book state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitLanguageBook()`, `Model#undoLanguageBook()` and `Model#redoLanguageBook()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Step 1. The user launches the application for the first time. The `VersionedLanguageBook` will be initialized with the initial language book state, and the `currentStatePointer` pointing to that single language book state.
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th book in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th book in the language book. The `delete` command calls `Model#commitLanguageBook()`, causing the modified state of the language book after the `delete 5` command executes to be saved in the `languageBookStateList`, and the `currentStatePointer` is shifted to the newly inserted language book state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitLanguageBook()`, causing another modified language book state to be saved into the `languageBookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitLanguageBook()`, so the language book state will not be saved into the `languageBookStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoLanguageBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous language book state, and restores the language book to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial LanguageBook state, then there are no previous LanguageBook states to restore. The `undo` command uses `Model#canUndoLanguageBook()` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
 
 </div>
@@ -370,17 +370,17 @@ The following sequence diagram shows how the undo operation works:
 
 </div>
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
+The `redo` command does the opposite — it calls `Model#redoLanguageBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the language book to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `languageBookStateList.size() - 1`, pointing to the latest language book state, then there are no undone LanguageBook states to restore. The `redo` command uses `Model#canRedoLanguageBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the language book, such as `list`, will usually not call `Model#commitLanguageBook()`, `Model#undoLanguageBook()` or `Model#redoLanguageBook()`. Thus, the `languageBookStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitLanguageBook()`. Since the `currentStatePointer` is not pointing at the end of the `languageBookStateList`, all language book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
@@ -392,7 +392,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ##### Aspect: How undo & redo executes
 
-* **Alternative 1 (current choice):** Saves the entire address book.
+* **Alternative 1 (current choice):** Saves the entire language book.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
@@ -435,8 +435,9 @@ _{Explain here how the data archiving feature will be implemented}_
 * is reasonably comfortable using CLI apps
 
 **Value proposition**:
-
-
+* help to put books along with its related information, such as author, description, publisher, and library specific information, such as stocking location, into appropriate categories. This not only makes the searching of the book itself easier but also provides convenience for managers to track the storage and borrow history.
+* help admin staff keep track of the popularity of different books, and help them predict the usage of different books to plan for book purchase
+* help admin staff to keep track of books from different libraries and locate books from different libraries easily
 
 ### User stories
 
@@ -444,16 +445,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |provide accurate information to borrowers                                                                                 |
-| `* * *`  | library administrator                      | view the stockings of different books                                                 |efficiently increase the stockings of those very popular books to meet the demand of the readers                          |
+| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |efficiently increase the stockings of those very popular books to meet the demand of the readers   |
 | `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | record and view book rating and reviews collected from the readers                    |choose the interesting books based on reader feedback and reorder them so that they can be easily reached by other readers|
+| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    |estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
+| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    |keep the review record for future evaluation of the book quality and popularity among the readers|
 | `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* *`    | library administrator                      | add book reviews provided by readers                                                  |share my reading experience with other readers and help them during book selection                                        |
 | `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
 | `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
 | `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
-| `* * *`  | first time user                            | view the list of smaple data   | get a rough idea of how the project will look like                     |
+| `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
@@ -523,32 +523,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
     
       Use case ends.
-      
-**Use case: UC04 - Check the location**
-
-**MSS**
-
-1.  User request to check the location of a book using a command.
-
-2.  IntelliBrary shows the relevant information of the book, including the storage location.
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record.
-    
-    * 1a1. IntelliBrary shows an error message that the book is not found.
-    
-      Use case ends.
-
-* 1b. The location of the book is not recorded or the list is empty.
-
-    * 1b1. IntelliBrary shows an error message that the location of the book is not recorded.
-
-      Use case ends.
-      
-**Use case: UC05 - view the stockings of different books**
+            
+**Use case: UC04 - view the stockings of different books**
 
 **MSS**
 
@@ -572,7 +548,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - search for the review of a book**
+**Use case: UC05 - search for the review of a book**
 
 **MSS**
 
@@ -596,7 +572,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC07 - add the review for a book**
+**Use case: UC06 - add the review for a book**
 
 **MSS**
 
@@ -620,7 +596,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - delete the review for a book**
+**Use case: UC07 - delete the review for a book**
 
 **MSS**
 
@@ -644,7 +620,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC09 - edit the review for a book**
+**Use case: UC08 - edit the review for a book**
 
 **MSS**
 
@@ -680,7 +656,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC010 - View Sample Data**
+**Use case UC009 - View Sample Data**
 
 **MSS**
 
@@ -695,7 +671,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC11 - Delete a book**
+**Use case UC10 - Delete a book**
 
 **MSS**
 
@@ -718,7 +694,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC12 - Edit a book**
+**Use case: UC11 - Edit a book**
 
 **MSS**
   1. User requests to edit a book and inputs new information.
@@ -733,7 +709,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
       
-**Use case: UC13 - Check the borrowing status of a book**
+**Use case: UC12 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -747,7 +723,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC14 - Get usage times of a book**
+**Use case: UC13 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -773,7 +749,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC15 - Get number of books borrowed**
+**Use case: UC14 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -781,7 +757,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC16 - Report problem**
+**Use case: UC15 - Report problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -793,17 +769,17 @@ Use case ends.
 
 * 1a. Some information about the problem is not entered in the command.
 
-    * 1b1. IntelliBrary shows an error message that the information about the problem is incomplete.
+    * 1a1. IntelliBrary shows an error message that the information about the problem is incomplete.
 
       Use case ends.
       
 * 1b. The data type of some of the problem information is incorrect.
     
-    * 1c1. IntelliBrary shows an error message that data type of some of the problem information is incorrect.
+    * 1b1. IntelliBrary shows an error message that data type of some of the problem information is incorrect.
     
       Use case ends.
       
-**Use case: UC17 - View problems**
+**Use case: UC16 - View problems**
 
 **MSS**
   1. User requests to view problems.

@@ -18,7 +18,7 @@ import seedu.address.model.problem.ProblemList;
 public class Library implements ReadOnlyLibrary {
 
     private final UniqueBookList books;
-    private ProblemList problems;
+    private final ProblemList problems;
 
     /*
      * The 'unusual' code block below is a non-static initialization block,
@@ -74,7 +74,7 @@ public class Library implements ReadOnlyLibrary {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code LanguageBook} with {@code newData}.
      */
     public void resetData(ReadOnlyLibrary newData) {
         requireNonNull(newData);
@@ -121,7 +121,7 @@ public class Library implements ReadOnlyLibrary {
 
     /**
      * Removes {@code key} from this {@code Library}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the language book.
      */
     public void removeBook(Book key) {
         books.remove(key);
@@ -139,7 +139,7 @@ public class Library implements ReadOnlyLibrary {
 
     /**
      * Removes {@code key} from this {@code Library}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the language book.
      */
     public void removeProblem(Problem key) {
         problems.delete(key);

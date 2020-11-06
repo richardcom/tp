@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import seedu.address.logic.parser.ParserUtil;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
@@ -28,7 +28,7 @@ public class BookBuilder {
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LANGUAGE = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TIMES = "10";
     public static final String DEFAULT_AUTHOR = "a";
     public static final String DEFAULT_PUBLISHER = "pub";
@@ -37,7 +37,7 @@ public class BookBuilder {
     private Name name;
     private Isbn isbn;
     private Email email;
-    private Address address;
+    private Language language;
     private Times times;
     private Set<Category> categories;
     private Author author;
@@ -52,7 +52,7 @@ public class BookBuilder {
         name = new Name(DEFAULT_NAME);
         isbn = new Isbn(DEFAULT_ISBN);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        language = new Language(DEFAULT_LANGUAGE);
         times = new Times(DEFAULT_TIMES);
         categories = new HashSet<>();
         author = new Author(DEFAULT_AUTHOR);
@@ -68,7 +68,7 @@ public class BookBuilder {
         name = bookToCopy.getName();
         isbn = bookToCopy.getIsbn();
         email = bookToCopy.getEmail();
-        address = bookToCopy.getAddress();
+        language = bookToCopy.getLanguage();
         times = bookToCopy.getTimes();
         categories = new HashSet<>(bookToCopy.getCategories());
         author = bookToCopy.getAuthor();
@@ -94,10 +94,10 @@ public class BookBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Book} that we are building.
+     * Sets the {@code Language} of the {@code Book} that we are building.
      */
-    public BookBuilder withAddress(String address) {
-        this.address = new Address(address);
+    public BookBuilder withLanguage(String language) {
+        this.language = new Language(language);
         return this;
     }
 
@@ -163,6 +163,6 @@ public class BookBuilder {
     }
 
     public Book build() {
-        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+        return new Book(name, isbn, email, language, times, categories, stocking, reviews, author, publisher);
     }
 }

@@ -3,7 +3,7 @@
     "name" : "The Guns of August",
     "isbn" : "94351253",
     "email" : "alice@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "language" : "123, Jurong West Ave 6, #08-111",
     "times" : "50",
     "stocking" : {
       "centralLibrary" : 10,
@@ -72,7 +72,7 @@
     "name" : "A Brief History of Time",
     "isbn" : "98765432",
     "email" : "johnd@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "language" : "311, Clementi Ave 2, #02-25",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 10,
@@ -96,7 +96,7 @@
     "name" : "Carl Kurz",
     "isbn" : "95352563",
     "email" : "heinz@example.com",
-    "address" : "wall street",
+    "language" : "wall street",
     "times" : "45",
     "stocking" : {
       "centralLibrary" : 15,
@@ -120,7 +120,7 @@
     "name" : "Daniel Meier",
     "isbn" : "87652533",
     "email" : "cornelia@example.com",
-    "address" : "10th street",
+    "language" : "10th street",
     "times" : "35",
     "stocking" : {
       "centralLibrary" : 10,
@@ -144,7 +144,7 @@
     "name" : "Elle Meyer",
     "isbn" : "9482224",
     "email" : "werner@example.com",
-    "address" : "michegan ave",
+    "language" : "michegan ave",
     "times" : "60",
     "stocking" : {
       "centralLibrary" : 10,
@@ -168,7 +168,7 @@
     "name" : "Fiona Kunz",
     "isbn" : "9482427",
     "email" : "lydia@example.com",
-    "address" : "little tokyo",
+    "language" : "little tokyo",
     "times" : "30",
     "stocking" : {
       "centralLibrary" : 10,
@@ -192,7 +192,7 @@
     "name" : "George Best",
     "isbn" : "9482442",
     "email" : "anna@example.com",
-    "address" : "4th street",
+    "language" : "4th street",
     "times" : "15",
     "stocking" : {
       "centralLibrary" : 10,
@@ -216,7 +216,7 @@
     "name" : "Linear Algebra",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 10,
@@ -231,7 +231,7 @@
     "name" : "Linear Algebra 1",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 30,
@@ -246,7 +246,7 @@
     "name" : "Linear Algebra 2",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 45,
@@ -261,7 +261,7 @@
     "name" : "Linear Algebra 3",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 45,
@@ -276,7 +276,7 @@
     "name" : "Artificial Intelligence",
     "isbn" : "9780134610993",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 30,
@@ -291,7 +291,7 @@
     "name" : "Artificial Intelligence 2",
     "isbn" : "9780134610993",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 2,
@@ -306,7 +306,7 @@
     "name" : "Artificial Intelligence 3",
     "isbn" : "9780134610993",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 20,
@@ -321,7 +321,7 @@
     "name" : "Linear Algebra 6",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 0,
@@ -336,7 +336,7 @@
     "name" : "Linear Algebra 7",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 10,
@@ -351,7 +351,7 @@
     "name" : "Linear Algebra 8",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 10,
@@ -366,7 +366,7 @@
     "name" : "Linear Algebra 9",
     "isbn" : "98765432",
     "email" : "xxxxxx@example.com",
-    "address" : "xxxxx",
+    "language" : "xxxxx",
     "times" : "20",
     "stocking" : {
       "centralLibrary" : 30,

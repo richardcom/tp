@@ -31,11 +31,11 @@ significant contributions are recorded here.)
   * Highlights: This enhancement requires a lot of efforts in terms of incorporating the new design with the product
   and attention to details. There are many GUI bugs need to be fixed throughout the implementation process as well.
 
-* **Enhancements**: Morph the product from AddressBook to IntelliBrary
+* **Enhancements**: Morph the product from LanguageBook to IntelliBrary
   * Relevant pull request: [\#112](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/112)
-  * What it does: Morph everything related to AddressBook into IntelliBrary, including methods, classes, tests,
+  * What it does: Morph everything related to LanguageBook into IntelliBrary, including methods, classes, tests,
   documentations and other files.
-  * Justification: This enhancement is the most fundamental and necessary change needed to morph AddressBook to
+  * Justification: This enhancement is the most fundamental and necessary change needed to morph LanguageBook to
   IntelliBrary.
   * Highlights: This enhancement requires a comprehensive understanding of the original product (e.g. architectural
   design). In the meantime, it involves the addition and/or deletion of many attributes as well.
@@ -59,7 +59,7 @@ significant contributions are recorded here.)
   [\#242](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/242),
   [\#215](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/215),
   [\#109](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/109), 
-  \#116](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/116))
+  [\#116](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/116))
   * Contributed to forum discussions ([example](https://github.com/nus-cs2103-AY2021S1/forum/issues/90))
   * Reported bugs and suggestions for other teams in the class (examples:
   [1](https://github.com/AY2021S1-CS2103-T14-2/tp/issues/97),

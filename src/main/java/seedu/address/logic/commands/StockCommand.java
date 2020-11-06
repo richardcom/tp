@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
@@ -29,6 +31,7 @@ public class StockCommand extends Command {
             + "[" + CliSyntax.PREFIX_ISBN + "ISBN]\n"
             + "Example: " + COMMAND_WORD + " " + CliSyntax.PREFIX_NAME + "a brief history of time";
 
+    private final Logger logger = LogsCenter.getLogger(getClass());
     private Predicate<Book> predicate;
 
     /**
@@ -60,6 +63,7 @@ public class StockCommand extends Command {
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(predicate, Mode.DETAIL);
+        logger.info("Show the stocking information in stocking book card");
         return new CommandResult(String.format(Messages.MESSAGE_BOOKS_LISTED_OVERVIEW,
                 model.getFilteredBookList().size()));
     }

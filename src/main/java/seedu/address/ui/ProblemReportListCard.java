@@ -15,7 +15,7 @@ public class ProblemReportListCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/languagebook-level4/issues/336">The issue on LanguageBook level 4</a>
      */
 
     public final Problem problem;
@@ -37,8 +37,8 @@ public class ProblemReportListCard extends UiPart<Region> {
         super(FXML);
         this.problem = problem;
         id.setText(displayedIndex + ". ");
-        severity.setText(problem.getSeverity().severity);
-        description.setText(problem.getDescription().description);
+        severity.setText("SEVERITY: " + problem.getSeverity().severity);
+        description.setText("DESCRIPTION: " + problem.getDescription().description);
     }
 
     @Override

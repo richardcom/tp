@@ -1,14 +1,12 @@
 package seedu.address.logic.parser;
 
-
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AUTHOR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISBN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LANGUAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PUBLISHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STOCKING;
@@ -37,7 +35,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_EMAIL, PREFIX_ADDRESS,
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_EMAIL, PREFIX_LANGUAGE,
                         PREFIX_CATEGORY, PREFIX_STOCKING, PREFIX_TIMES, PREFIX_AUTHOR, PREFIX_PUBLISHER);
 
         Index index;
@@ -58,8 +56,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             editBookDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editBookDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+        if (argMultimap.getValue(PREFIX_LANGUAGE).isPresent()) {
+            editBookDescriptor.setLanguage(ParserUtil.parseLanguage(argMultimap.getValue(PREFIX_LANGUAGE).get()));
         }
         parseCategoriesForEdit(argMultimap.getAllValues(PREFIX_CATEGORY))
                 .ifPresent(editBookDescriptor::setCategories);

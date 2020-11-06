@@ -20,7 +20,7 @@ import seedu.address.ui.Mode;
  */
 public class TimesCommand extends Command {
     public static final String COMMAND_WORD = "times";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "times <index> t/<times>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the times of the book identified "
             + "by the index number used in the last book listing. "
@@ -55,7 +55,7 @@ public class TimesCommand extends Command {
 
         Book bookToEdit = lastShownList.get(index.getZeroBased());
         Book editedBook = new Book(bookToEdit.getName(), bookToEdit.getIsbn(), bookToEdit.getEmail(),
-                bookToEdit.getAddress(), times, bookToEdit.getCategories(), bookToEdit.getStocking(),
+                bookToEdit.getLanguage(), times, bookToEdit.getCategories(), bookToEdit.getStocking(),
                 bookToEdit.getReviews(), bookToEdit.getAuthor(), bookToEdit.getPublisher());
 
         model.setBook(bookToEdit, editedBook);

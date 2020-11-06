@@ -19,14 +19,14 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditReviewCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindProblemReportCommand;
+import seedu.address.logic.commands.FindMostPopularCommand;
+import seedu.address.logic.commands.FindProblemCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.HitCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RandomCommand;
 import seedu.address.logic.commands.SearchReviewCommand;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.TimesCommand;
 import seedu.address.logic.commands.UsageByCommand;
@@ -85,8 +85,8 @@ public class LibraryParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case FindProblemReportCommand.COMMAND_WORD:
-            return new FindProblemReportCommandParser().parse(arguments);
+        case FindProblemCommand.COMMAND_WORD:
+            return new FindProblemCommandParser().parse(arguments);
 
         case HistoryCommand.COMMAND_WORD:
             return new HistoryCommand();
@@ -127,8 +127,8 @@ public class LibraryParser {
         case UsageByCommand.COMMAND_WORD:
             return new UsageByCommandParser().parse(arguments);
 
-        case SortCommand.COMMAND_WORD:
-            return new SortCommandParser().parse(arguments);
+        case FindMostPopularCommand.COMMAND_WORD:
+            return new FindMostPopularCommandParser().parse(arguments);
 
         case AddProblemCommand.COMMAND_WORD:
             return new AddProblemCommandParser().parse(arguments);

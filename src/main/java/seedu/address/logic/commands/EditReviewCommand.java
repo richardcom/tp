@@ -13,11 +13,11 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
@@ -112,6 +112,7 @@ public class EditReviewCommand extends Command {
     private static Book createdChangedBook(Book book, int reviewNumber,
                                            Optional<Rating> rating,
                                            Optional<ReviewContent> reviewContent) throws CommandException {
+        assert book != null;
         if (!rating.isPresent() && !reviewContent.isPresent()) {
             throw new CommandException(Messages.MESSAGE_INVALID_EDIT_REVIEW);
         }
@@ -125,7 +126,7 @@ public class EditReviewCommand extends Command {
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
-        Address address = book.getAddress();
+        Language language = book.getLanguage();
         List<Review> reviews = book.getReviews();
         reviews.set(reviewNumber - 1, newReview);
         Times times = book.getTimes();
@@ -134,6 +135,21 @@ public class EditReviewCommand extends Command {
         Publisher publisher = book.getPublisher();
         Stocking stocking = book.getStocking();
 
-        return new Book(name, isbn, email, address, times, categories, stocking, reviews, author, publisher);
+        return new Book(name, isbn, email, language, times, categories, stocking, reviews, author, publisher);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof EditReviewCommand)) {
+            return false;
+        }
+        EditReviewCommand other = (EditReviewCommand) o;
+        return reviewNumber == other.reviewNumber
+                && index.equals(other.index)
+                && rating.equals(other.rating)
+                && reviewContent.equals(other.reviewContent);
     }
 }

@@ -2,18 +2,21 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Book;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
@@ -60,6 +63,8 @@ public class DeleteReviewCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        assert bookIndex != null;
+        assert reviewIndex >= 1;
         try {
             requireNonNull(model);
             List<Book> lastShownList = model.getFilteredBookList();
@@ -99,10 +104,12 @@ public class DeleteReviewCommand extends Command {
      * @return The book with the new review list.
      */
     private static Book createdChangedBook(Book book, int reviewIndex) {
+        assert book != null;
+        assert reviewIndex >= 1;
         Name name = book.getName();
         Isbn isbn = book.getIsbn();
         Email email = book.getEmail();
-        Address address = book.getAddress();
+        Language language = book.getLanguage();
         List<Review> reviewList = book.getReviews();
         reviewList.remove(reviewIndex - 1);
 
@@ -112,7 +119,7 @@ public class DeleteReviewCommand extends Command {
         Publisher publisher = book.getPublisher();
         Stocking stocking = book.getStocking();
 
-        return new Book(name, isbn, email, address, times, categories, stocking, reviewList, author, publisher);
+        return new Book(name, isbn, email, language, times, categories, stocking, reviewList, author, publisher);
     }
 
     @Override
@@ -122,9 +129,9 @@ public class DeleteReviewCommand extends Command {
         } else if (!(o instanceof DeleteReviewCommand)) {
             return false;
         } else {
-            DeleteReviewCommand that = (DeleteReviewCommand) o;
-            return reviewIndex == that.reviewIndex
-                    && Objects.equals(bookIndex, that.bookIndex);
+            DeleteReviewCommand other = (DeleteReviewCommand) o;
+            return reviewIndex == other.reviewIndex
+                    && bookIndex.equals(((DeleteReviewCommand) o).bookIndex);
         }
     }
 }

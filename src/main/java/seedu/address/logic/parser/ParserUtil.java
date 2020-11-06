@@ -14,10 +14,10 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.book.Address;
 import seedu.address.model.book.Author;
 import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
@@ -82,25 +82,25 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String language} into an {@code Language}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code language} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+    public static Language parseLanguage(String language) throws ParseException {
+        requireNonNull(language);
+        String trimmedLanguage = language.trim();
+        if (!Language.isValidLanguage(trimmedLanguage)) {
+            throw new ParseException(Language.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return new Language(trimmedLanguage);
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String language} into an {@code Language}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code language} is invalid.
      */
     public static Times parseTimes(String times) throws ParseException {
         requireNonNull(times);
