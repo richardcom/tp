@@ -78,36 +78,22 @@ Exits the program.
 
 Format: `exit`
 
-### Listing all books : `list`
-
-Shows a list of all books in the library.
-
-Format: `list`
-
 ### Clearing all entries : `clear`
 
 Clears all entries from the library, including books and reports.
 
 Format: `clear`
 
-### Locating books by name: `find`
+### Commands relating to library book management
 
-Finds books whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+#### Listing all books : `list`
 
-* The search is case-insensitive. e.g `novel` can match `Novel`
-* The order of the keywords does not matter. e.g. `Linear Algebra` will match `Algebra Linear`
-* Only the names are searched.
-* Only full words will be matched e.g. `Novel` will not match `Novels`
-* Books matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Linear Algebra` will return `Basic Algebra`, `Linear Mathematics`
+Shows a list of all books in the library.
 
-Examples:
-* `find science` returns `Introduction to Science` and `Computer Science`
-* `find linear algebra` returns `Basic Algebra`, `linear math`
+Format: `list`
 
-### Adding a book : `add`
+#### Adding a book : `add`
 
 Add a book to the book list.
 
@@ -168,11 +154,28 @@ Examples:
 * `s/centralLb 10`
 * `s/`
 
-### Deleting a book: `delete`
+#### Locating books by name: `find`
+
+Finds books whose names contain any of the given keywords.
+
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `novel` can match `Novel`
+* The order of the keywords does not matter. e.g. `Linear Algebra` will match `Algebra Linear`
+* Only the names are searched.
+* Only full words will be matched e.g. `Novel` will not match `Novels`
+* Books matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Linear Algebra` will return `Basic Algebra`, `Linear Mathematics`
+
+Examples:
+* `find science` returns `Introduction to Science` and `Computer Science`
+* `find linear algebra` returns `Basic Algebra`, `linear math`
+
+#### Deleting books(s) from the library `delete` and `deleteby`
 
 Deletes the specified book(s) from the library.
 
-#### Deletes a book by its index in the current list
+##### Deletes a book by its index in the current list `delete`
 
 Format: `delete INDEX`
 
@@ -184,7 +187,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
 * `find novel` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-#### Deleting a book by other attributes: `deleteBy`
+##### Deleting a book by other attributes: `deleteBy`
 
 Delete a book from the library.
 
@@ -200,7 +203,7 @@ Examples:
 * `deleteBy n/Linear Algebra`
 * `deleteBy i/123456 `
 
-### Modify the times
+#### Modify the number of times that a book is borrowed `times`
 
 Changes the number of times that a book has been borrowed to the latest record.
 
@@ -210,7 +213,7 @@ Format:
 Examples:
 * `times 1 t/25` Modifies the number of times the 1st book in the library being borrowed to 25.
 
-### Check stocking of book in every location: `stock`
+#### Check stocking of book in every location: `stock`
 
 Checks the list of stocking information in every location where a certain book is stored.
 Currently only the science library, central library, and HSSM library are available locations.
@@ -253,9 +256,9 @@ Examples:
 * `stock i/9780553175219`
 * `stock`
 
-### Features related to Review
+#### Features related to Review
 
-#### _Introduction_
+##### _Introduction_
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -269,7 +272,7 @@ Therefore, there will be no personal information recorded in the review.
 
 The created time and edit time in a review refers to the time when the review is recorded and edited respectively.
 
-#### Search for review of book: `searchReview`
+##### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
 
@@ -286,7 +289,7 @@ Examples:
 * `searchReview i/9780553175219`
 * `searchReview`
 
-#### Add review: `addReview`
+##### Add review: `addReview`
 
 Add a review to a certain book. 
 
@@ -308,7 +311,7 @@ If the index is not in the currently shown book list, then a corresponding excep
 Examples:
 * `addReview 1 ra/5 re/The book is interesing`
 
-#### Delete review: `deleteReview`
+##### Delete review: `deleteReview`
 
 Delete a review of a certain book.
 
@@ -326,7 +329,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-#### Edit review: `editReview`
+##### Edit review: `editReview`
 
 Edit a review of a certain book. 
 
@@ -346,21 +349,21 @@ Examples:
 * `editReview 1 rn/7 ra/5`
 * `editReview 1 rn/7 re/The book is interesing`
 
-### Check usage `usage` and `usageBy`
+#### Check usage `usage` and `usageBy`
 
 Checks usage times of a certain book specified by user. Book is specified by any of the followings:
 * one base index in storage.
 * book isbn
 * book name
 
-#### by Index
+##### by Index
 Format:
 * `usage [INDEX]`
 
 Examples:
 * `usage 2`
 
-#### by Book Name or ISBN
+##### by Book Name or ISBN
 Format: 
 * `usageBy i/[ISBN]`
 * `usageBy n/[BOOK_NAME]`
@@ -369,7 +372,7 @@ Examples:
 * `usageBy i/9780141439518`
 * `usageBy n/Pride and Prejudice`
 
-### Check history: `history`
+#### Check history: `history`
 
 Checks borrowing times during the whole timeline.
 
@@ -378,34 +381,33 @@ Format: `history`
 Examples:
 * `history`
 
-### Random Selection of books
+#### Random Selection of books `random`
 
 Randomly select a book of a specific category from the library.
+
+Format: `random CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no books matching the user input, `0 books listed!` will pop up.
 * If multiple categories are entered and separated by a space, only the last category will be processed by the command.
 
-
-Format: `random CATEGORY`
 
 Examples:
 * `random Classics`
 * `random Science`
 
 
-### Find the most popular book of a specific category
+#### Find the most popular book of a specific category `findMostPopular`
 
 Find and select the most popular book of a specific category from the library.
+
+Format: `findMostPopular CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no books matching the user input, `0 books listed!` will pop up.
 * If multiple categories are entered and separated by a space, only the last category will be processed by the command.
-
-
-Format: `findMostPopular CATEGORY`
 
 Examples:
 * `findMostPopular Classics`
@@ -456,18 +458,34 @@ Examples:
 * `findProblemReport chair` returns report containing `chair` and `fix chair`
 * `findProblemReport table chair` returns `table`, `chair`
 
+
 #### Deleting a report : `deleteProblemReport`
 
-Deletes the specified person from the language book.
+Deletes the specified problem report from library management system.
 
 Format: `deleteProblemReport INDEX`
 
 * Deletes the report at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
 * `findProblemReport chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findProblemReport` command.`
+* `findProblemReport table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findProblemReport` command.`
+
+#### Editing a problem report : `editProblemReport`
+
+Edits the information of an existing problem report in the library.
+
+Format: `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]`
+
+* Edits the report at the specified `INDEX`. The index refers to the index number shown in the displayed report list. The index **must be a positive integer** 1, 2, 3...
+* All fields are optional but at least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+* `editProblemReport 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
+* `editProblemReport 3 s/low` Edits the severity of the 3rd report in the current report list.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -516,18 +534,24 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/LANGUAGE [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
+**DeleteProblemReport** | `deleteProblemReport INDEX` <br> e.g., `deleteProblemReport 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
+**EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**FindMostPopular** | `findMostPopular CATEGORY` <br> e.g., `findMostPopular Science`
+**FindProblemReport** | `findProblemReport KEYWORD [MORE_KEYWORDS]` <br> e.g., `findProblemReport chair`
 **Help** | `help`
 **History**| `history`
 **List** | `list`
+**Random** | `random CATEGORY` <br> e.g., `random Classics`
 **ReportProblem** | `report s/SEVERITY d/DESCRIPTION` <br> e.g., `report s/medium d/book is broken`
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
