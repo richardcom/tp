@@ -1,5 +1,6 @@
 package seedu.address.model.util;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class SampleDataUtil {
         HashMap<String, Integer> storage = new HashMap<>();
         storage.put("centralLb", 10);
         storage.put("scienceLb", 8);
+        storage.put("HSSMLb", 16);
         Stocking stocking = new Stocking(storage);
 
         List<Review> reviews = new ArrayList<>();
@@ -38,8 +40,13 @@ public class SampleDataUtil {
         ReviewContent reviewContent = new ReviewContent("The book is interesting");
         Rating newRating = new Rating(4);
         ReviewContent newReviewContent = new ReviewContent("The book is inspiring");
-        reviews.add(new Review(rating, reviewContent));
-        reviews.add(new Review(newRating, newReviewContent));
+        Review review = new Review(rating, reviewContent);
+        Review newReview = new Review(newRating, newReviewContent);
+        review.setCreatedTime(LocalDateTime.parse("2018/10/24 17:30", Review.DATE_TIME_FORMATTER));
+        newReview.setCreatedTime(LocalDateTime.parse("2019/11/29 18:30", Review.DATE_TIME_FORMATTER));
+        newReview.setEditedTime(LocalDateTime.parse("2019/12/15 17:45", Review.DATE_TIME_FORMATTER));
+        reviews.add(review);
+        reviews.add(newReview);
 
         return new Book[] {
             new Book(new Name("Pride and Prejudice"), new Isbn("9780141439518"),
@@ -57,7 +64,6 @@ public class SampleDataUtil {
                     new Email("introtolinearalgebra@example.com"), new Language("English"), new Times("243"),
                 getCategorySet("Math"), stocking, reviews,
                     new Author("Gilbert Strang"), new Publisher("Wellesley Cambridge Press"))
-
         };
     }
 
