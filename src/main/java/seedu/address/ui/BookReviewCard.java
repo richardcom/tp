@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import seedu.address.model.review.Review;
 
@@ -17,6 +18,8 @@ public class BookReviewCard extends UiPart<Region> {
     private Label rating;
     @FXML
     private Label content;
+    @FXML
+    private FlowPane time;
 
     /**
      * Creates a {@code BookReviewCard} with the given {@code Review} and index to display.
@@ -30,6 +33,11 @@ public class BookReviewCard extends UiPart<Region> {
         }
         rating.setText(ratingStar);
         content.setText(review.getContent().content);
+        time.getChildren().add(new Label("created: " + review.getCreatedTimeRepresentation()));
+        if (review.getEditedTimeRepresentation().isPresent()) {
+            time.getChildren().add(new Label("last edited: "
+                    + review.getEditedTimeRepresentation().get()));
+        }
     }
 
     @Override

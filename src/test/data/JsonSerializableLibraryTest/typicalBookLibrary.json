@@ -163,7 +163,7 @@
     } ],
     "author" : "a",
     "publisher" : "pub",
-    "categorised" : [ "Novels" ]
+    "categorised" : [ "Novel" ]
   }, {
     "name" : "Fiona Kunz",
     "isbn" : "9482427",
@@ -356,7 +356,7 @@
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 0,
-      "hssmLibrary" : -1
+      "hssmLibrary" : 0
     },
     "reviews" : [ ],
     "author" : "Victor",

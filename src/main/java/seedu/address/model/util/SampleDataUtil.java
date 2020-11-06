@@ -29,8 +29,8 @@ import seedu.address.model.review.ReviewContent;
 public class SampleDataUtil {
     public static Book[] getSampleBooks() {
         HashMap<String, Integer> storage = new HashMap<>();
-        storage.put("centralLibrary", 10);
-        storage.put("scienceLibrary", 8);
+        storage.put("centralLb", 10);
+        storage.put("scienceLb", 8);
         Stocking stocking = new Stocking(storage);
 
         List<Review> reviews = new ArrayList<>();
@@ -51,11 +51,11 @@ public class SampleDataUtil {
                 getCategorySet("Science"), stocking, reviews,
                     new Author("Stephen Hawking"), new Publisher("Bantam")),
             new Book(new Name("The Great Gatsby"), new Isbn("9780743273565"), new Email("thegreatgatsby@example.com"),
-                new Language("English"), new Times("6529"), getCategorySet("Classics"), stocking, reviews,
+                new Language("English"), new Times("6529"), getCategorySet("Novels"), stocking, reviews,
                     new Author("Scott Fitzgerald"), new Publisher("Scribner")),
             new Book(new Name("Introduction to Linear Algebra"), new Isbn("9780980232776"),
                     new Email("introtolinearalgebra@example.com"), new Language("English"), new Times("243"),
-                getCategorySet("Textbook"), stocking, reviews,
+                getCategorySet("Math"), stocking, reviews,
                     new Author("Gilbert Strang"), new Publisher("Wellesley Cambridge Press"))
 
         };
