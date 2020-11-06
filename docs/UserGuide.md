@@ -113,6 +113,9 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
 
+Visual View:
+
+![Add View](images/add_command.png)
 
 Examples:
 * `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
@@ -398,6 +401,23 @@ Examples:
 
 Randomly select a book of a specific category from the library.
 
+Introduction: the `random` command is implemented for two situations:
+1. Random sampling. 
+
+One of the librarians' job is to conduct statistical analysis of the books
+in the library. For example, a librarian need to gather data of a certain category of books
+(average rating, times borrowed, etc). However, as libraries normally contains tens thousands or millions 
+of books, random sampling technique is widely adopted. Thus, the `random` command allows
+librarians to randomly select a book from a certain category with ease. This greatly boosts the efficiency and
+randomness of random sampling.
+
+2. random recommendation: 
+
+For a certain category of books, some books may remain in the library without gathering much
+attention, which causes waste for the library. Thus, the `random` command allows the librarian to pick a random book of a specific 
+category and gives every book the same probability to be promoted to public.
+
+
 Format: `random CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
@@ -466,6 +486,10 @@ Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `chair` will not match `chairs`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `table chair` will return `chair light`, `light table`
+
+Visual View:
+
+![Find Report View](images/findReport.png)
 
 Examples:
 * `findProblemReport chair` returns report containing `chair` and `fix chair`
