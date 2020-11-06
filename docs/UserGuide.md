@@ -15,7 +15,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intelLibrary.jar` from [here]().
+2. Download the latest `intelLibrary.jar` from [here](https://github.com/AY2021S1-CS2103-F09-3/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
@@ -27,7 +27,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all books in the library.
 
-   * **`add`**`n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/central library 0 science library 0 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com lang/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
@@ -86,7 +86,7 @@ Format: `list`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the library.
+Clears all entries from the library, including books and reports.
 
 Format: `clear`
 
@@ -96,7 +96,7 @@ Finds books whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `novel` will match `Novel`
+* The search is case-insensitive. e.g `novel` can match `Novel`
 * The order of the keywords does not matter. e.g. `Linear Algebra` will match `Algebra Linear`
 * Only the names are searched.
 * Only full words will be matched e.g. `Novel` will not match `Novels`
@@ -104,7 +104,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
   e.g. `Linear Algebra` will return `Basic Algebra`, `Linear Mathematics`
 
 Examples:
-* `find novel` returns `novel` and `Selected Novels`
+* `find science` returns `Introduction to Science` and `Computer Science`
 * `find linear algebra` returns `Basic Algebra`, `linear math`
 
 ### Adding a book : `add`
@@ -113,7 +113,12 @@ Add a book to the book list.
 
 Duplicate book will be rejected.
 
-Format: `add n/NAME i/ISBN e/EMAIL ad/LANGUAGE [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
+Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
+
+* Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
+* For stockings, stockings at 0 to 3 places can be added(please refer to the stocking part for more details). And the prefix tag ```s/``` is compulsory when adding a book.
+* 
+
 
 Examples:
 * `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
