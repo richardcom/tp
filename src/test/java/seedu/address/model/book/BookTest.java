@@ -3,10 +3,10 @@ package seedu.address.model.book;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.BOOK1;
 import static seedu.address.testutil.TypicalBooks.BOB;
@@ -32,25 +32,25 @@ public class BookTest {
         assertFalse(BOOK1.isSameBook(null));
 
         // different isbn and email -> returns false
-        Book editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOB).withEmail(VALID_EMAIL_BOB).build();
+        Book editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOOK2).withEmail(VALID_EMAIL_BOOK2).build();
         assertFalse(BOOK1.isSameBook(editedAlice));
 
         // different name -> returns false
-        editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOB).build();
+        editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOOK2).build();
         assertFalse(BOOK1.isSameBook(editedAlice));
 
         // same name, same isbn, different attributes -> returns true
-        editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOB).withLanguage(VALID_LANGUAGE_BOB)
+        editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
 
         // same name, same email, different attributes -> returns true
-        editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOB).withLanguage(VALID_LANGUAGE_BOB)
+        editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
 
         // same name, same isbn, same email, different attributes -> returns true
-        editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOB)
+        editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
     }
@@ -74,19 +74,19 @@ public class BookTest {
         assertFalse(BOOK1.equals(BOB));
 
         // different name -> returns false
-        Book editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOB).build();
+        Book editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOOK2).build();
         assertFalse(BOOK1.equals(editedAlice));
 
         // different isbn -> returns false
-        editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOB).build();
+        editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOOK2).build();
         assertFalse(BOOK1.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOB).build();
+        editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOOK2).build();
         assertFalse(BOOK1.equals(editedAlice));
 
         // different language -> returns false
-        editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOB).build();
+        editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2).build();
         assertFalse(BOOK1.equals(editedAlice));
 
         // different categories -> returns false
