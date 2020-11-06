@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -60,6 +61,7 @@ public class AddReviewCommand extends Command {
 
         this.index = index;
         this.review = review;
+        this.review.setCreatedTime(LocalDateTime.now());
     }
 
     @Override
