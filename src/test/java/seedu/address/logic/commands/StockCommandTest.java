@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_BOOKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalBooks.ELLE;
+import static seedu.address.testutil.TypicalBooks.BOOK5;
 import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Arrays;
@@ -41,7 +41,7 @@ class StockCommandTest {
 
         StockCommand stockCommand = new StockCommand(Arrays.asList("Elle"), Arrays.asList("9482224"));
         assertCommandSuccess(stockCommand, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(ELLE), model.getFilteredBookList());
+        assertEquals(Arrays.asList(BOOK5), model.getFilteredBookList());
     }
 
     @Test
@@ -69,14 +69,14 @@ class StockCommandTest {
         expectedModel.updateFilteredBookList(nameMatchesKeywordsPredicate, Mode.NORMAL);
         StockCommand stockCommand = new StockCommand(Arrays.asList("Elle"), null);
         assertCommandSuccess(stockCommand, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(ELLE), model.getFilteredBookList());
+        assertEquals(Arrays.asList(BOOK5), model.getFilteredBookList());
 
         NumberContainsKeywordPredicate numberContainsKeywordsPredicate =
                 new NumberContainsKeywordPredicate(Arrays.asList("9482224"));
         expectedModel.updateFilteredBookList(numberContainsKeywordsPredicate, Mode.NORMAL);
         stockCommand = new StockCommand(null, Arrays.asList("9482224"));
         assertCommandSuccess(stockCommand, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(ELLE), model.getFilteredBookList());
+        assertEquals(Arrays.asList(BOOK5), model.getFilteredBookList());
     }
 
     @Test

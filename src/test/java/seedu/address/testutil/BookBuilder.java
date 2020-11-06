@@ -25,10 +25,10 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class BookBuilder {
 
-    public static final String DEFAULT_NAME = "Alice Pauline";
+    public static final String DEFAULT_NAME = "Alice";
     public static final String DEFAULT_ISBN = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_LANGUAGE = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LANGUAGE = "English";
     public static final String DEFAULT_TIMES = "10";
     public static final String DEFAULT_AUTHOR = "a";
     public static final String DEFAULT_PUBLISHER = "pub";
