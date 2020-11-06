@@ -137,22 +137,24 @@ Examples:
 
 #### _Additional information regarding stocking in add and edit command_
 
-The library location name is case sensitive.
+* The library location name is case sensitive, and the location name needs to match exactly.
 
-Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
+* Note that only central library, science library, and HSSM library are available and no stocking information of other library can be added currently.
 
-Given that there are only 3 locations available, the number of location argument can be at most 3.
+* Given that there are only 3 locations available, the number of location argument can be at most 3.
 
-If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
+* If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
 
-If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
+* If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
 
-Additionally, to make the recorded stocking more reasonable, the stocking of a book in a location should be an integer between 0 and 99999.
+* Additionally, to avoid exceeding the library capacity, the stocking of a book in a location should be an integer between 0 and 99999.
+
+* Note that edit the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
 
 Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
+* `s/scienceLb 20 HSSMLb 10`
 * `s/centralLb 10`
-* `s/`
 
 #### Locating books by name: `find`
 
@@ -270,7 +272,7 @@ Additionally, the purpose of recording the review is to estimate the popularity 
 
 Therefore, there will be no personal information recorded in the review.
 
-The created time and edit time in a review refers to the time when the review is recorded and edited respectively.
+The created time and last edited time in a review refers to the time when the review is recorded and last edited respectively.
 
 ##### Search for review of book: `searchReview`
 
