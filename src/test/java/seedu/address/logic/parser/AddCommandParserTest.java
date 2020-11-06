@@ -42,8 +42,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK2;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalBooks.AMY;
-import static seedu.address.testutil.TypicalBooks.BOB;
+import static seedu.address.testutil.TypicalBooks.BOOK9;
+import static seedu.address.testutil.TypicalBooks.BOOK8;
 
 import org.junit.jupiter.api.Test;
 
@@ -65,7 +65,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Book expectedBook = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND).build();
+        Book expectedBook = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_FRIEND).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
@@ -98,7 +98,7 @@ public class AddCommandParserTest {
                 new AddCommand(expectedBook));
 
         // multiple categories - all accepted
-        Book expectedBookMultipleCategories = new BookBuilder(BOB).withCategories(VALID_CATEGORY_FRIEND,
+        Book expectedBookMultipleCategories = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_FRIEND,
                 VALID_CATEGORY_HUSBAND).build();
         assertParseSuccess(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK2
                         + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
@@ -113,7 +113,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero categories
-        Book expectedBook = new BookBuilder(AMY).withCategories().build();
+        Book expectedBook = new BookBuilder(BOOK8).withCategories().build();
         assertParseSuccess(parser, NAME_DESC_BOOK1 + ISBN_DESC_BOOK1 + EMAIL_DESC_BOOK1
                 + LANGUAGE_DESC_BOOK1 + TIMES_DESC_BOOK1 + STOCKING_DESC_BOOK1 + AUTHOR_DESC_BOOK1 + PUBLISHER_DESC_BOOK1,
                 new AddCommand(expectedBook));

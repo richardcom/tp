@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAN
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.BOOK1;
-import static seedu.address.testutil.TypicalBooks.BOB;
+import static seedu.address.testutil.TypicalBooks.BOOK9;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -96,17 +96,17 @@ public class UniqueBookListTest {
     @Test
     public void setBook_editedBookHasDifferentIdentity_success() {
         uniqueBookList.add(BOOK1);
-        uniqueBookList.setBook(BOOK1, BOB);
+        uniqueBookList.setBook(BOOK1, BOOK9);
         UniqueBookList expectedUniqueBookList = new UniqueBookList();
-        expectedUniqueBookList.add(BOB);
+        expectedUniqueBookList.add(BOOK9);
         assertEquals(expectedUniqueBookList, uniqueBookList);
     }
 
     @Test
     public void setBook_editedBookHasNonUniqueIdentity_throwsDuplicateBookException() {
         uniqueBookList.add(BOOK1);
-        uniqueBookList.add(BOB);
-        assertThrows(DuplicateBookException.class, () -> uniqueBookList.setBook(BOOK1, BOB));
+        uniqueBookList.add(BOOK9);
+        assertThrows(DuplicateBookException.class, () -> uniqueBookList.setBook(BOOK1, BOOK9));
     }
 
     @Test
@@ -136,7 +136,7 @@ public class UniqueBookListTest {
     public void setBooks_uniqueBookList_replacesOwnListWithProvidedUniqueBookList() {
         uniqueBookList.add(BOOK1);
         UniqueBookList expectedUniqueBookList = new UniqueBookList();
-        expectedUniqueBookList.add(BOB);
+        expectedUniqueBookList.add(BOOK9);
         uniqueBookList.setBooks(expectedUniqueBookList);
         assertEquals(expectedUniqueBookList, uniqueBookList);
     }
@@ -149,10 +149,10 @@ public class UniqueBookListTest {
     @Test
     public void setBooks_list_replacesOwnListWithProvidedList() {
         uniqueBookList.add(BOOK1);
-        List<Book> bookList = Collections.singletonList(BOB);
+        List<Book> bookList = Collections.singletonList(BOOK9);
         uniqueBookList.setBooks(bookList);
         UniqueBookList expectedUniqueBookList = new UniqueBookList();
-        expectedUniqueBookList.add(BOB);
+        expectedUniqueBookList.add(BOOK9);
         assertEquals(expectedUniqueBookList, uniqueBookList);
     }
 

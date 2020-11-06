@@ -47,19 +47,6 @@ public class StorageManagerTest {
         assertEquals(original, retrieved);
     }
 
-    // @Test
-    // public void languageBookReadSave() throws Exception {
-    /*
-     * Note: This is an integration test that verifies the StorageManager is properly wired to the
-     * {@link JsonLanguageBookStorage} class.
-     * More extensive testing of UserPref saving/reading is done in {@link JsonLanguageBookStorageTest} class.
-     */
-    /* LanguageBook original = getTypicalLanguageBook();
-        storageManager.saveLanguageBook(original);
-        ReadOnlyLanguageBook retrieved = storageManager.readLanguageBook().get();
-        assertEquals(original, new LanguageBook(retrieved));
-    } // storage parser */
-
     @Test
     public void getLibraryFilePath() {
         assertNotNull(storageManager.getLibraryFilePath());

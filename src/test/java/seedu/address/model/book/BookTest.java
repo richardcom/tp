@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.BOOK1;
-import static seedu.address.testutil.TypicalBooks.BOB;
+import static seedu.address.testutil.TypicalBooks.BOOK9;
 
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +71,7 @@ public class BookTest {
         assertFalse(BOOK1.equals(5));
 
         // different book -> returns false
-        assertFalse(BOOK1.equals(BOB));
+        assertFalse(BOOK1.equals(BOOK9));
 
         // different name -> returns false
         Book editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOOK2).build();

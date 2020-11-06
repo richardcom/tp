@@ -56,10 +56,10 @@ public class TypicalBooks {
             .withPublisher("publisher 7").withStocking("centralLb 10 scienceLb 10").build();
 
     // Manually added - Book's details found in {@code CommandTestUtil}
-    public static final Book AMY = new BookBuilder().withName(VALID_NAME_BOOK1).withIsbn(VALID_ISBN_BOOK1)
+    public static final Book BOOK8 = new BookBuilder().withName(VALID_NAME_BOOK1).withIsbn(VALID_ISBN_BOOK1)
             .withEmail(VALID_EMAIL_BOOK1).withLanguage(VALID_LANGUAGE_BOOK1).withCategories(VALID_CATEGORY_FRIEND)
             .withTimes("12").withStocking(VALID_STOCKING_BOOK1).withAuthor("a").withPublisher("pub").build();
-    public static final Book BOB = new BookBuilder().withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
+    public static final Book BOOK9 = new BookBuilder().withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
             .withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2).withAuthor("a").withPublisher("pub")
             .withTimes("12").withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND)
             .withStocking(VALID_STOCKING_BOOK2).build();
