@@ -12,17 +12,16 @@ public class Stocking {
             + "Note that only central library, science library, and HSSM library are available "
             + "and no stocking information of other library can be added currently.\n"
             + "Given that there are only 3 locations available, the number of location argument can be at most 3.\n"
-            + "If there are duplicate location argument, such as centralLb 10 centralLb 20, then "
-            + "the later one will cover the previous one.\n"
-            + "Additionally, to make the recorded stocking more reasonable, the stocking of a "
-            + "book in a location should be an integer between 0 and 99999.\n"
-            + "If the stocking of a location has a value of 0, then the stocking information shown for "
-            + "the book in that location will be: Not available.\n"
-            + "Note that if the stocking information of some of the libraries is not provided, then the stocking "
-            + "information shown for the book in that location will be: Not available";
+            + "Additionally, to avoid exceeding the library capacity, the stocking of a "
+            + "book in a location should be an integer between 0 and 9999999.\n"
+            + "If the stocking of a location has a value of 0 or if it is not provided, then the stocking information shown for "
+            + "the book in that location will be: Not available.\n";
 
-    public static final String NUMBER_CONSTRAINTS = "to make the recorded stocking more reasonable, the stocking of a "
-            + "book in a location should be an integer between 1 and 99999.\n";
+    public static final String NUMBER_CONSTRAINTS = "The stocking of a "
+            + "book in a location should be an integer between 0 and 9999999.\n"
+            + "Note that negative value is not allowed.\n"
+            + "Additionally, value larger than 9999999 is not allowed "
+            + "because it will exceed the library capacity.";
 
     public static final String[] LOCATION = new String[]{"centralLb", "scienceLb", "HSSMLb"};
     /*
@@ -30,8 +29,8 @@ public class Stocking {
      * the number of book in the location.
      */
     public static final String VALIDATION_REGEX =
-            "^\\s*(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,5})?\\s*(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,5})?\\s*"
-            + "(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,5})?\\s*$";
+            "^\\s*(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,7})?\\s*(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,7})?\\s*"
+            + "(centralLb|scienceLb|HSSMLb)?\\s*(\\d{1,7})?\\s*$";
 
     public final HashMap<String, Integer> storage = new HashMap<>();
 
