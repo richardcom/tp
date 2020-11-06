@@ -99,11 +99,11 @@ Add a book to the book list.
 
 Duplicate book will be rejected.
 
-Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
+Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
 * ```n/``` is followed by the book name
 * ```i/``` is followed by the ISBN of the book, which is restricted to digits
-* ```lang/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
+* ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
 Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
@@ -123,13 +123,24 @@ Examples:
 
 Edits the information of an existing book in the library.
 
-Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
+Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
 
 * Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
 * All fields are optional but at least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
+
+Restrictions:
+* ```n/``` is followed by the book name
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
+Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
+* ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
+* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added (please refer to the stocking part for more details).
+* ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
+* ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 
 Examples:
 * `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
@@ -536,14 +547,14 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
 **DeleteProblemReport** | `deleteProblemReport INDEX` <br> e.g., `deleteProblemReport 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
-**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
+**Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
 **EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
 **Exit** | `exit`
