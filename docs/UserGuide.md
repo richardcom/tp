@@ -115,15 +115,23 @@ Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL lang/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
+* ```n/``` is followed by the book name
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```lang/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
+Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
+* ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
+* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
+ And the prefix tag ```s/``` is compulsory when adding a book.
+* ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
+* ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
-* For stockings, stockings at 0 to 3 places can be added(please refer to the stocking part for more details). And the prefix tag ```s/``` is compulsory when adding a book.
-* 
 
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com ad/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com ad/xxxxx c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
 
 ### Editing a book : `edit`
 
