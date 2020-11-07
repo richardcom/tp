@@ -101,8 +101,9 @@ Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
-* ```n/``` is followed by the book name
-* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```n/``` is followed by the book name.
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits.
+* ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
 * ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
 Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
@@ -113,14 +114,14 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
 
-Visual View:
+Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/seller@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
+* `add n/Artificial Intelligence i/9780134610993 e/Pearson@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
 
 #### Editing a book : `edit`
 
@@ -135,8 +136,9 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGO
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
 
 Restrictions:
-* ```n/``` is followed by the book name
-* ```i/``` is followed by the ISBN of the book, which is restricted to digits
+* ```n/``` is followed by the book name.
+* ```i/``` is followed by the ISBN of the book, which is restricted to digits.
+* ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
 * ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
 Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
@@ -207,7 +209,7 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
-* `find novel` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `find novel` followed by `delete 1` deletes the 1st book in the results of the `find` command.
 
 ##### Deleting a book by other attributes: `deleteBy`
 
@@ -419,20 +421,21 @@ Examples:
 
 Randomly select a book of a specific category from the library.
 
-Introduction: the `random` command is implemented for two situations:
+Introduction: the `random` command is implemented for librarians for two situations:
 1. Random sampling. 
 
-One of the librarians' job is to conduct statistical analysis of the books
-in the library. For example, a librarian need to gather data of a certain category of books
-(average rating, times borrowed, etc). However, as libraries normally contains tens thousands or millions 
+One of the librarians' job is to conduct statistical analysis of the books' data
+in the library. For example, a librarian needs to gather data of a certain category of books
+(average rating, times borrowed, etc). However, as libraries normally contain tens thousands or millions 
 of books, random sampling technique is widely adopted. Thus, the `random` command allows
-librarians to randomly select a book from a certain category with ease. This greatly boosts the efficiency and
+librarians to randomly select a book from a certain category. This greatly boosts the efficiency and ensures
 randomness of random sampling.
 
-2. random recommendation: 
+2. Random recommendation: 
 
 For a certain category of books, some books may remain in the library without gathering much
-attention, which causes waste for the library. Thus, the `random` command allows the librarian to pick a random book of a specific 
+attention, which causes waste for the library. Thus, the `random` command allows the 
+librarian to pick a random book of a specific 
 category and gives every book the same probability to be promoted to public.
 
 
@@ -502,10 +505,10 @@ Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
 * The order of the keywords does not matter. e.g. `table chair` will match `chair table`
 * Only the description of a problem report is searched.
 * Only full words will be matched e.g. `chair` will not match `chairs`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Report descriptions matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `table chair` will return `chair light`, `light table`
 
-Visual View:
+Visual View of finding report reports that is related to `level 1`:
 
 ![Find Report View](images/findReport.png)
 
