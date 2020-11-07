@@ -50,6 +50,7 @@ public class StockCommandParser implements Parser<StockCommand> {
             }
             numbers.add(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().strip());
         }
+
         return new StockCommand(names, numbers);
     }
 

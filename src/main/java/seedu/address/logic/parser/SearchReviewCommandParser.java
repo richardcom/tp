@@ -46,6 +46,7 @@ public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
             }
             numbers.add(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().strip());
         }
+
         return new SearchReviewCommand(names, numbers);
     }
 }
