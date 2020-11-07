@@ -160,5 +160,4 @@ public class Book {
                 .append(getEmail() + "\n");
         return builder.toString();
     }
-
 }
