@@ -115,9 +115,9 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 a/Stuart Russell p/PEARSON`
+* `add n/Artificial Intelligence i/9780134610993 e/xxxxxx@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
 
 ### Editing a book : `edit`
 
@@ -150,6 +150,12 @@ Examples:
 * Additionally, to avoid exceeding the library capacity, the stocking of a book in a location should be an integer between 0 and 99999.
 
 * Note that edit the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
+
+* If multiple `s/` is present, only the information in the last `s/` will be recorded. 
+
+* There are 2 reasons why stocking does not use syntax similar to categories, such as `s/centralLb 40 s/scienceLb 20 s/HSSMLb 30`
+    * A book has exactly 1 stocking, which stores all the stocking information of the book in every location. This is both appropriate and necessary because the list of library locations in stocking are specific to libraries in NUS and it is static, which is contrary to categories, where user can add new categories dynamically.
+    * `s/centralLb 30 scienceLb 20 HSSMLb 10` brings more convenience to the user since there is less typing.
 
 Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
@@ -258,6 +264,10 @@ Examples:
 * `stock i/9780553175219`
 * `stock`
 
+Visual Example:
+
+![](./images/stockCommandUserInterface.png)
+
 #### Features related to Review
 
 ##### _Introduction_
@@ -274,6 +284,8 @@ Therefore, there will be no personal information recorded in the review.
 
 The created time and last edited time in a review refers to the time when the review is recorded and last edited respectively.
 
+The execution of every review command will display the list of review of the books that are involved in the command.
+
 ##### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
@@ -283,6 +295,8 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
 The usage is similar to the stock command.
+
+The review list of the book with no review will be empty.
 </div>
 
 Examples:
@@ -290,6 +304,10 @@ Examples:
 * `searchReview n/A brief history of time`
 * `searchReview i/9780553175219`
 * `searchReview`
+
+Visual Example:
+
+![](./images/searchReviewCommandUserInterface.png)
 
 ##### Add review: `addReview`
 
@@ -347,9 +365,9 @@ If the edited review is the same as the original review, then a corresponding ex
 </div>
 
 Examples:
-* `editReview 1 rn/7 ra/5 re/The book is interesing`
+* `editReview 1 rn/7 ra/5 re/The book is interesting`
 * `editReview 1 rn/7 ra/5`
-* `editReview 1 rn/7 re/The book is interesing`
+* `editReview 1 rn/7 re/The book is interesting`
 
 #### Check usage `usage` and `usageBy`
 
@@ -513,7 +531,7 @@ The book cover of a book depends on the categories of the book.
 
 The category name is case insensitive, but the category name needs to match **exactly**, and there cannot be white space in between the category words.
 
-The following are **invalid** examples of category which will not reflect the intention of the user of adding `MordernWar`.
+The following are **invalid** examples of category which will not reflect the intention of the user of adding `ModernWar`.
 
 * `Modern war`
 * `Modern war in Asia`
@@ -545,7 +563,7 @@ Action | Format, Examples
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [ad/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
 **EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
-**EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesing`
+**EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesting`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **FindMostPopular** | `findMostPopular CATEGORY` <br> e.g., `findMostPopular Science`
