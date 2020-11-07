@@ -35,19 +35,12 @@ public class BookTest {
         Book editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOOK2).withEmail(VALID_EMAIL_BOOK2).build();
         assertFalse(BOOK1.isSameBook(editedAlice));
 
-        // different name -> returns false
-        editedAlice = new BookBuilder(BOOK1).withName(VALID_NAME_BOOK2).build();
-        assertFalse(BOOK1.isSameBook(editedAlice));
 
         // same name, same isbn, different attributes -> returns true
         editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
 
-        // same name, same email, different attributes -> returns true
-        editedAlice = new BookBuilder(BOOK1).withIsbn(VALID_ISBN_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
-        assertTrue(BOOK1.isSameBook(editedAlice));
 
         // same name, same isbn, same email, different attributes -> returns true
         editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
