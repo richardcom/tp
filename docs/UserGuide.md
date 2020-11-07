@@ -101,7 +101,7 @@ Duplicate book will be rejected.
 
 Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
-* ```n/``` is followed by the book name.
+* ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to digits.
 * ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
 * ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
@@ -112,7 +112,8 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
  And the prefix tag ```s/``` is compulsory when adding a book.
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
-* Duplicate book is judged by the same book name or ISBN, and book name is case sensitive.
+* Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
+Thus, we treat books with different ISBN but the same name differently. 
 
 Visual View after entering the first example command:
 
