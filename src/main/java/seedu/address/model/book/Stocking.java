@@ -18,7 +18,7 @@ public class Stocking {
             + "information shown for the book in that location will be: Not available.";
 
     public static final String NUMBER_CONSTRAINTS = "The stocking of a "
-            + "book in a location should be an integer between 1 and 9999999.\n"
+            + "book in a location should be an integer between 0 and 9999999.\n"
             + "Note that negative value is not allowed.\n"
             + "Additionally, value larger than 9999999 is not allowed "
             + "because it will exceed the library capacity.";
