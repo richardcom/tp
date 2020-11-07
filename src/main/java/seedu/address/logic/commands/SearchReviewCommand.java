@@ -47,7 +47,7 @@ public class SearchReviewCommand extends Command {
             nameMatchesKeywordsPredicate = new NameMatchesKeywordPredicate(names);
             numberContainsKeywordPredicate = new NumberContainsKeywordPredicate(numbers);
             predicate = (book -> nameMatchesKeywordsPredicate.test(book)
-                    || numberContainsKeywordPredicate.test(book));
+                    && numberContainsKeywordPredicate.test(book));
         } else if (names != null && !names.get(0).equals("")) {
             predicate = new NameMatchesKeywordPredicate(names);
         } else if (numbers != null) {
