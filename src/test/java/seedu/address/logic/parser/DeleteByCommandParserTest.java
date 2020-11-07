@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOOK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
@@ -15,6 +15,6 @@ class DeleteByCommandParserTest {
 
     @Test
     void parse_validArgs_returnsStockCommand() {
-        assertParseSuccess(parser, NAME_DESC_BOB, new DeleteByCommand(VALID_NAME_BOB, 0));
+        assertParseSuccess(parser, NAME_DESC_BOOK2, new DeleteByCommand(VALID_NAME_BOOK2, 0));
     }
 }

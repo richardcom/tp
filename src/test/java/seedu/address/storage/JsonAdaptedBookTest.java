@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static seedu.address.storage.JsonAdaptedBook.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalBooks.BENSON;
+import static seedu.address.testutil.TypicalBooks.BOOK2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +24,18 @@ public class JsonAdaptedBookTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_CATEGORY = "#friend";
 
-    private static final String VALID_NAME = BENSON.getName().toString();
-    private static final String VALID_ISBN = BENSON.getIsbn().toString();
-    private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_LANGUAGE = BENSON.getLanguage().toString();
-    private static final String VALID_TIMES = BENSON.getTimes().toString();
-    private static final List<JsonAdaptedCategory> VALID_CATEGORIES = BENSON.getCategories().stream()
+    private static final String VALID_NAME = BOOK2.getName().toString();
+    private static final String VALID_ISBN = BOOK2.getIsbn().toString();
+    private static final String VALID_EMAIL = BOOK2.getEmail().toString();
+    private static final String VALID_LANGUAGE = BOOK2.getLanguage().toString();
+    private static final String VALID_TIMES = BOOK2.getTimes().toString();
+    private static final List<JsonAdaptedCategory> VALID_CATEGORIES = BOOK2.getCategories().stream()
             .map(JsonAdaptedCategory::new)
             .collect(Collectors.toList());
-    private static final String VALID_AUTHOR = BENSON.getAuthor().toString();
-    private static final String VALID_PUBLISHER = BENSON.getPublisher().toString();
-    private static final JsonAdaptedStocking VALID_STOCKING = new JsonAdaptedStocking(BENSON.getStocking());
-    private static final List<JsonAdaptedReview> VALID_REVIEWS = BENSON.getReviews().stream()
+    private static final String VALID_AUTHOR = BOOK2.getAuthor().toString();
+    private static final String VALID_PUBLISHER = BOOK2.getPublisher().toString();
+    private static final JsonAdaptedStocking VALID_STOCKING = new JsonAdaptedStocking(BOOK2.getStocking());
+    private static final List<JsonAdaptedReview> VALID_REVIEWS = BOOK2.getReviews().stream()
             .map(JsonAdaptedReview::new)
             .collect(Collectors.toList());
 
