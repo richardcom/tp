@@ -84,11 +84,10 @@ public class SampleDataUtil {
                     getCategorySet("Physics", "Science"), stocking, reviews,
                     new Author("Hugh D Young"), new Publisher("Addison Wesley Publishing Company")),
             new Book(new Name("The Rape of Nanking The Forgotten Holocaust of World War II"),
-                    new Isbn("9780805387681"), new Email("nanjing@example.com"), new Language("English"),
+                    new Isbn("9780805387682"), new Email("nanjing@example.com"), new Language("English"),
                     new Times("236"), getCategorySet("ModernWar", "ModernHistory", "History"), stocking,
                     reviews, new Author("Iris Chang"), new Publisher("Basic Books")),
-            new Book(new Name("Ancient China A Captivating Guide to the Ancient History of China and the Chinese"
-                    + "Civilization Starting from the Shang Dynasty to the Fall of the Han Dynasty"),
+            new Book(new Name("Ancient China A Captivating Guide to the Ancient History of the Chinese Civilization"),
                     new Isbn("9780805383745"), new Email("chinahistory@example.com"),
                     new Language("English"), new Times("666"), getCategorySet("AncientHistory", "History"),
                     stocking, reviews, new Author("Captivating History"),
