@@ -113,7 +113,7 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we treat books with different ISBN but the same name differently. 
+Thus, we store books with different ISBN but the same book name differently. 
 
 Visual View after entering the first example command:
 
