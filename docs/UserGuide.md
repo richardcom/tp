@@ -163,7 +163,7 @@ Examples:
 
 * Additionally, to avoid exceeding the library capacity, the stocking of a book in a location should be an integer between 0 and 99999.
 
-* Note that edit the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
+* Note that editing the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
 
 * If multiple `s/` is present, only the information in the last `s/` will be recorded. 
 
@@ -247,23 +247,27 @@ Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 Both the name and the ISBN of the book are optional argument in the command.
 
+If more than one `n/`, only the last `n/` will be taken. This is similar for `i/`.
+
 * The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords in order to be included in the result list.
 
-    * In this case, the word contain means the keyword needs to match exactly some of the words in the book name.
+    * In this case, the word 'contain' means the keyword needs to match exactly a word in the book name. The only difference allowed is that the keyword is case insensitive.
     
      * For example, `The Guns of August` contains `Guns`, but it does not contain `Gun`.
+     
+     * Executing `stock n/The Guns of August` will return the books whose name contains all of `The`, `Guns`, `of`, and `August`.
     
      * The keyword of book name is case insensitive.
 
-* The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book ISBN will need to contain some of the keywords in order to be included in the result list.
+* The ISBN searching follows the partial match pattern, where a ISBN keyword will match all the books whose ISBN contains this keyword.
 
-    * In this case, the word contain means the keyword needs to match the ISBN of the book partially.
+    * In this case, the word 'contain' means the keyword needs to be a substring of the ISBN of the book.
 
-    * For example, `9780553175219` contains `9780553175219` and `97805`.
+    * For example, `9780553175219` contains `9780553175219` and `7805`.
 
-The reason for the difference of behavior of the book name and ISBN is that book name can be used to check the stocking information of more specific books, while ISBN can be used to check the stocking information of a wide range of books.
+The reason for the design used is that the searching can be more consistent. The more and the longer the search key is, the more specific the search result will be. This is reasonable since it is often the case that the librarian has already known what the book is before trying to find out the stock information of that particular book. 
 
-If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy either of the conditions.
+If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy **both** of the conditions.
 
 If neither of them are present, then the command will return the stocking information of all the books.
 

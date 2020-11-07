@@ -1,11 +1,14 @@
 package seedu.address.logic.parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.SearchReviewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.book.Isbn;
+import seedu.address.model.book.Name;
 
 public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
     /**
@@ -31,10 +34,17 @@ public class SearchReviewCommandParser implements Parser<SearchReviewCommand> {
         List<String> numbers = null;
 
         if (argumentMultimap.getValue(CliSyntax.PREFIX_NAME).isPresent()) {
+            if (!Name.isValidName(argumentMultimap.getValue(CliSyntax.PREFIX_NAME).get().strip())) {
+                throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            }
             names = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_NAME).get().split("\\s+"));
         }
         if (argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).isPresent()) {
-            numbers = Arrays.asList(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().split("\\s+"));
+            numbers = new ArrayList<>();
+            if (!Isbn.isValidIsbn(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().strip())) {
+                throw new ParseException(Isbn.MESSAGE_CONSTRAINTS);
+            }
+            numbers.add(argumentMultimap.getValue(CliSyntax.PREFIX_ISBN).get().strip());
         }
 
         return new SearchReviewCommand(names, numbers);
