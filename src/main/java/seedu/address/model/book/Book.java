@@ -39,7 +39,7 @@ public class Book {
     public Book(Name name, Isbn isbn, Email email, Language language,
                 Times times, Set<Category> categories, Stocking stocking, List<Review> reviews,
                 Author author, Publisher publisher) {
-        requireAllNonNull(name, isbn, email, language, times, categories, author);
+        requireAllNonNull(name, isbn, email, language, times, categories, stocking, reviews, author, publisher);
         this.name = name;
         this.isbn = isbn;
         this.email = email;
@@ -107,8 +107,7 @@ public class Book {
         }
 
         return otherBook != null
-                && otherBook.getName().equals(getName())
-                && (otherBook.getIsbn().equals(getIsbn()) || otherBook.getEmail().equals(getEmail()));
+                && otherBook.getIsbn().equals(getIsbn());
     }
 
     /**
