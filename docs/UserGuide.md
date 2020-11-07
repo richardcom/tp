@@ -247,7 +247,7 @@ Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 Both the name and the ISBN of the book are optional argument in the command.
 
-If more than one `n/`, only the last `n/` will be taken. This is similar for `i/`.
+If more than one `n/` is present, only the last `n/` will be taken. This is similar for `i/`.
 
 * The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords in order to be included in the result list.
 
