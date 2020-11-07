@@ -119,9 +119,9 @@ Visual View after entering the first example command:
 ![Add View](images/add_command.png)
 
 Examples:
-* `add n/Linear Algebra i/98765432 e/seller@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+* `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
 
-* `add n/Artificial Intelligence i/9780134610993 e/Pearson@example.com lang/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
+* `add n/Artificial Intelligence i/9780134610993 e/Pearson@example.com l/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
 
 #### Editing a book : `edit`
 
