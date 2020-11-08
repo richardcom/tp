@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Book's name in the language book.
+ * Represents a Book's name in the intellibrary.
  * Guarantees: immutable; is valid as declared in {@link #isValidAuthor(String)}
  */
 public class Author {

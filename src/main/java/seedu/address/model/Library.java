@@ -121,7 +121,7 @@ public class Library implements ReadOnlyLibrary {
 
     /**
      * Removes {@code key} from this {@code Library}.
-     * {@code key} must exist in the language book.
+     * {@code key} must exist in the intellibrary.
      */
     public void removeBook(Book key) {
         books.remove(key);
@@ -139,7 +139,7 @@ public class Library implements ReadOnlyLibrary {
 
     /**
      * Removes {@code key} from this {@code Library}.
-     * {@code key} must exist in the language book.
+     * {@code key} must exist in the intellibrary.
      */
     public void removeProblem(Problem key) {
         problems.delete(key);

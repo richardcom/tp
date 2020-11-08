@@ -5,7 +5,7 @@ title: "Tutorial: Adding a command"
 
 Let's walk you through the implementation of a new command — `remark`.
 
-This command allows users of the Addressbook application to add optional remarks to people in their language book and edit it if required. The command should have the following format:
+This command allows users of the Addressbook application to add optional remarks to people in their intellibrary and edit it if required. The command should have the following format:
 
 `remark INDEX r/REMARK` (e.g., `remark 2 r/Likes baseball`)
 
@@ -28,7 +28,7 @@ package seedu.address.logic.commands;
 import seedu.address.model.Model;
 
 /**
- * Changes the remark of an existing book in the language book.
+ * Changes the remark of an existing book in the intellibrary.
  */
 public class RemarkCommand extends Command {
 
@@ -292,7 +292,7 @@ While the changes to code may be minimal, the test data will have to be updated 
 
 <div markdown="span" class="alert alert-warning">
 
-:exclamation: You must delete Addressbook’s storage file located at `/data/addressbook.json` before running it! Not doing so will cause Addressbook to default to an empty language book!
+:exclamation: You must delete Addressbook’s storage file located at `/data/addressbook.json` before running it! Not doing so will cause Addressbook to default to an empty intellibrary!
 
 </div>
 

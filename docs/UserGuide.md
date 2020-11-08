@@ -403,7 +403,7 @@ Examples:
 
 #### Deleting a report : `deletepr`
 
-Deletes the specified person from the language book.
+Deletes the specified person from the intellibrary.
 
 Format: `deletepr INDEX`
 

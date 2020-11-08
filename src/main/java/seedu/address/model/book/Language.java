@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 
 /**
- * Represents a Book's language in the language book.
+ * Represents a Book's language in the intellibrary.
  * Guarantees: immutable; is valid as declared in {@link #isValidLanguage(String)}
  */
 public class Language {

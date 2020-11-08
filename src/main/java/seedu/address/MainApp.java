@@ -71,7 +71,7 @@ public class MainApp extends Application {
 
     /**
      * Returns a {@code ModelManager} with the data from {@code storage}'s library and {@code userPrefs}. <br>
-     * The data from the sample library will be used instead if {@code storage}'s language book is not found,
+     * The data from the sample library will be used instead if {@code storage}'s intellibrary is not found,
      * or an empty library will be used instead if errors occur when reading {@code storage}'s library.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {

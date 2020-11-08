@@ -102,7 +102,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the language book data.
+* stores the intellibrary data.
 * exposes an unmodifiable `ObservableList<Book>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
@@ -121,7 +121,7 @@ The `Model`,
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the language book data in json format and read it back.
+* can save the intellibrary data in json format and read it back.
 
 ### Common classes
 
@@ -225,17 +225,17 @@ These operations are incoperated into the storage read and write process in the 
 
 #####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the language book parser, which calls the add command parser.
+Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the intellibrary parser, which calls the add command parser.
 
 Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
 
 ![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
 
-Step 3. The add command parser uses the stocking and returns an add command, and this is returned by language book parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The add command parser uses the stocking and returns an add command, and this is returned by intellibrary parser, and the logic manager executes the command and make some changes to the model.
 
 #####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the language book parser, which calls the stock command parser.
+Step 1. The user types `Stock n/gun`, and the logic manager calls the intellibrary parser, which calls the stock command parser.
 
 Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
 
@@ -329,31 +329,31 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressbook`. It extends `Addressbook` with an undo/redo history, stored internally as an `addressbookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressbook#commit()` — Saves the current language book state in its history.
-* `VersionedAddressbook#undo()` — Restores the previous language book state from its history.
-* `VersionedAddressbook#redo()` — Restores a previously undone language book state from its history.
+* `VersionedAddressbook#commit()` — Saves the current intellibrary state in its history.
+* `VersionedAddressbook#undo()` — Restores the previous intellibrary state from its history.
+* `VersionedAddressbook#redo()` — Restores a previously undone intellibrary state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressbook()`, `Model#undoAddressbook()` and `Model#redoAddressbook()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressbook` will be initialized with the initial language book state, and the `currentStatePointer` pointing to that single language book state.
+Step 1. The user launches the application for the first time. The `VersionedAddressbook` will be initialized with the initial intellibrary state, and the `currentStatePointer` pointing to that single intellibrary state.
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th book in the language book. The `delete` command calls `Model#commitAddressbook()`, causing the modified state of the language book after the `delete 5` command executes to be saved in the `addressbookStateList`, and the `currentStatePointer` is shifted to the newly inserted language book state.
+Step 2. The user executes `delete 5` command to delete the 5th book in the intellibrary. The `delete` command calls `Model#commitAddressbook()`, causing the modified state of the intellibrary after the `delete 5` command executes to be saved in the `addressbookStateList`, and the `currentStatePointer` is shifted to the newly inserted intellibrary state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressbook()`, causing another modified language book state to be saved into the `addressbookStateList`.
+Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressbook()`, causing another modified intellibrary state to be saved into the `addressbookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressbook()`, so the language book state will not be saved into the `addressbookStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressbook()`, so the intellibrary state will not be saved into the `addressbookStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressbook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous language book state, and restores the language book to that state.
+Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressbook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intellibrary state, and restores the intellibrary to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
@@ -370,17 +370,17 @@ The following sequence diagram shows how the undo operation works:
 
 </div>
 
-The `redo` command does the opposite — it calls `Model#redoAddressbook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the language book to that state.
+The `redo` command does the opposite — it calls `Model#redoAddressbook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intellibrary to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressbookStateList.size() - 1`, pointing to the latest language book state, then there are no undone Addressbook states to restore. The `redo` command uses `Model#canRedoAddressbook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressbookStateList.size() - 1`, pointing to the latest intellibrary state, then there are no undone Addressbook states to restore. The `redo` command uses `Model#canRedoAddressbook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the language book, such as `list`, will usually not call `Model#commitAddressbook()`, `Model#undoAddressbook()` or `Model#redoAddressbook()`. Thus, the `addressbookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the intellibrary, such as `list`, will usually not call `Model#commitAddressbook()`, `Model#undoAddressbook()` or `Model#redoAddressbook()`. Thus, the `addressbookStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressbook()`. Since the `currentStatePointer` is not pointing at the end of the `addressbookStateList`, all language book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitAddressbook()`. Since the `currentStatePointer` is not pointing at the end of the `addressbookStateList`, all intellibrary states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
@@ -392,7 +392,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ##### Aspect: How undo & redo executes
 
-* **Alternative 1 (current choice):** Saves the entire language book.
+* **Alternative 1 (current choice):** Saves the entire intellibrary.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 

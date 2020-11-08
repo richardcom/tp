@@ -7,7 +7,7 @@ import seedu.address.model.Model;
 import seedu.address.ui.Mode;
 
 /**
- * Lists all books in the language book to the user.
+ * Lists all books in the intellibrary to the user.
  */
 public class ListCommand extends Command {
 
