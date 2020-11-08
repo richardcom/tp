@@ -5,7 +5,7 @@ title: Liu Yangming's Project Portfolio Page
 
 ## Project: IntelliBrary
 
-IntelliBrary is a desktop library management application used for library administrators to manage books. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+IntelliBrary is a desktop library management application used for library administrators to manage books. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and uses JavaFX for the GUI.
 
 Listed below are my contributions to this project.
 
@@ -27,7 +27,6 @@ Listed below are my contributions to this project.
   * Enhanced the original `add`. Created new Person attributes with teammates and allow `add` to add a Person Model. Set new constraints for person model.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
   * Created new user interface MainWindow and Problem card to accommodate book and report management. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
     * Implemented UI component `ProblemReportListCard` and `ProblemReportListPanel`
-  * Wrote additional tests for existing features (pull requests [#255](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/255))
 
  **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
