@@ -12,7 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Check usage of a book identified using its displayed index from the list.
+ * Checks usage of a book identified using its displayed index from the list.
  */
 public class UsageCommand extends Command {
     public static final String COMMAND_WORD = "usage";

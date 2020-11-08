@@ -13,7 +13,7 @@ import seedu.address.model.category.Category;
 import seedu.address.model.review.Review;
 
 /**
- * Represents a Book in the language book.
+ * Represents a Book in the intellibrary.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Book {

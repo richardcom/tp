@@ -16,14 +16,15 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Adds a book to the language book.
+ * Adds a book to the intellibrary.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "add n/<name> i/<isbn> e/<email> l/<language> "
+            + "t/<times> a/<author> p/<publisher>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the language book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the intellibrary. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_ISBN + "ISBN "
@@ -36,9 +37,9 @@ public class AddCommand extends Command {
             + PREFIX_PUBLISHER + "PUBLISHER\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Linear Algebra "
-            + PREFIX_ISBN + "98765432 "
-            + PREFIX_EMAIL + "xxxxxx@example.com "
-            + PREFIX_LANGUAGE + "xxxxx "
+            + PREFIX_ISBN + "13098765432 "
+            + PREFIX_EMAIL + "thisbook@publisher.com "
+            + PREFIX_LANGUAGE + "English "
             + PREFIX_CATEGORY + "Science "
             + PREFIX_CATEGORY + "Math "
             + PREFIX_TIMES + "20 "
@@ -47,7 +48,7 @@ public class AddCommand extends Command {
             + PREFIX_PUBLISHER + "pku";
 
     public static final String MESSAGE_SUCCESS = "New book added: %1$s";
-    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the language book";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the intellibrary";
 
     private final Book toAdd;
 
@@ -59,6 +60,13 @@ public class AddCommand extends Command {
         toAdd = book;
     }
 
+    /**
+     * Executes add command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if duplicate book
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":LanguageBookParser" as StockressBookParser LOGIC_COLOR
+participant ":AddressbookParser" as StockressBookParser LOGIC_COLOR
 participant ":StockCommandParser" as StockCommandParser LOGIC_COLOR
 participant "<<class>>\n:ParseUtil" as ParserUtil LOGIC_COLOR
 participant "a:StockCommand" as StockCommand LOGIC_COLOR
@@ -31,7 +31,7 @@ deactivate StockCommandParser
 StockressBookParser -> StockCommandParser : parse("...")
 activate StockCommandParser
 
-StockCommandParser -> ParserUtil : parseStocking("science library 10 central library 30")
+StockCommandParser -> ParserUtil : parseStocking("scienceLb 10 centralLb 30 HSSMLb 30")
 activate ParserUtil
 
 create Stocking

@@ -61,6 +61,13 @@ public class DeleteReviewCommand extends Command {
         this.reviewIndex = reviewIndex.reviewNumber;
     }
 
+    /**
+     * Executes delete review command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if illegal size
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         assert bookIndex != null;

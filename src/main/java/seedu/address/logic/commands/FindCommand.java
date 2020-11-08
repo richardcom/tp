@@ -8,7 +8,7 @@ import seedu.address.model.book.NameContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
 
 /**
- * Finds and lists all books in language book whose name contains any of the argument keywords.
+ * Finds and lists all books in intellibrary whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
@@ -27,6 +27,12 @@ public class FindCommand extends Command {
         this.predicate = predicate;
     }
 
+    /**
+     * Executes find command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

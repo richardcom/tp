@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
@@ -22,8 +21,7 @@ import seedu.address.ui.Mode;
 public class SearchReviewCommand extends Command {
 
     public static final String COMMAND_WORD = "searchReview";
-    public static final String SUGGESTION = "searchReview n/<book name>\n" + "searchReview i/<isbn>\n"
-            + "searchReview n/<book name> i/<isbn>";
+    public static final String SUGGESTION = "searchReview n/<book name>\n" + "searchReview i/<isbn>\n";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
             + "the corresponding keyword and shows them as a list.\n"
@@ -47,7 +45,7 @@ public class SearchReviewCommand extends Command {
             nameMatchesKeywordsPredicate = new NameMatchesKeywordPredicate(names);
             numberContainsKeywordPredicate = new NumberContainsKeywordPredicate(numbers);
             predicate = (book -> nameMatchesKeywordsPredicate.test(book)
-                    || numberContainsKeywordPredicate.test(book));
+                    && numberContainsKeywordPredicate.test(book));
         } else if (names != null && !names.get(0).equals("")) {
             predicate = new NameMatchesKeywordPredicate(names);
         } else if (numbers != null) {
@@ -57,8 +55,14 @@ public class SearchReviewCommand extends Command {
         }
     };
 
+    /**
+     * Execute search review command on model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     */
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);

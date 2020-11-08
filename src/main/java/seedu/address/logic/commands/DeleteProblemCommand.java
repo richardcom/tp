@@ -10,13 +10,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.problem.Problem;
 
-
-
-
 public class DeleteProblemCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteProblemReport";
-    public static final String SUGGESTION = "deleteProblemReport <keyword>";
+    public static final String SUGGESTION = "deleteProblemReport <index>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the problems identified by the index number used in the displayed problem list.\n"
@@ -31,6 +28,13 @@ public class DeleteProblemCommand extends Command {
         this.targetIndex = targetIndex;
     }
 
+    /**
+     * Executes delete problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if illegal size
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

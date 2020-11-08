@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-//import static seedu.address.testutil.TypicalBooks.getTypicalLanguageBook;
+//import static seedu.address.testutil.TypicalBooks.getTypicalAddressbook;
 
 import java.nio.file.Path;
 
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 //import seedu.address.model.addressBook;
-//import seedu.address.model.ReadOnlyLanguageBook;
+//import seedu.address.model.ReadOnlyAddressbook;
 import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -24,9 +24,9 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonLibraryStorage languageBookStorage = new JsonLibraryStorage(getTempFilePath("ab"));
+        JsonLibraryStorage addressbookStorage = new JsonLibraryStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(languageBookStorage, userPrefsStorage);
+        storageManager = new StorageManager(addressbookStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {

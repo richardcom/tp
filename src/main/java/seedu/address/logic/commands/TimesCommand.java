@@ -44,6 +44,14 @@ public class TimesCommand extends Command {
         this.index = index;
         this.times = times;
     }
+
+    /**
+     * Executes times command on model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     * @throws CommandException if size is not legal
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

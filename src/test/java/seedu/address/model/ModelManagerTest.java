@@ -96,13 +96,13 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Library languageBook = new LibraryBuilder().withBook(BOOK1).withBook(BOOK2).build();
-        Library differentLanguageBook = new Library();
+        Library intellibrary = new LibraryBuilder().withBook(BOOK1).withBook(BOOK2).build();
+        Library differentIntellibrary = new Library();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(languageBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(languageBook, userPrefs);
+        modelManager = new ModelManager(intellibrary, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(intellibrary, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,13 +114,13 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different languageBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentLanguageBook, userPrefs)));
+        // different addressbook -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentIntellibrary, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = BOOK1.getName().fullName.split("\\s+");
         modelManager.updateFilteredBookList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)), Mode.NORMAL);
-        assertFalse(modelManager.equals(new ModelManager(languageBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(intellibrary, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
@@ -128,6 +128,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setLibraryFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(languageBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(intellibrary, differentUserPrefs)));
     }
 }

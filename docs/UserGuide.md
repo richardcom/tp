@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-IntelliBrary is an **app for managing storage, purchase, borrowing, and reader review of books in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+IntelliBrary is an **app for managing storage, purchase, borrowing, reader reviews of books, and logistics in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 Targeted at users who can type fast, IntelliBrary can get your library management tasks done faster than traditional GUI apps.
 
 * Table of Contents
@@ -27,15 +27,22 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all books in the library.
 
-   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
    * **`clear`** : Deletes all books.
 
    * **`exit`** : Exits the app.
+   
+6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
+   Note that for *exit* related commands, you can choose to edit as many attributes as you wish at a time.
+   For other commands in smart suggestions, only compulsory fields of a command are shown. 
+   For readability in app launch, in smart suggestion,
+   example formats of usage are provided in lower cases of alphabet. To see full usage details of commands, go to step 7.
 
-6. Refer to the [Features](#features) below for details of all the commands.
+7. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -166,7 +173,7 @@ Examples:
 
 * Additionally, to avoid exceeding the library capacity, the stocking of a book in a location should be an integer between 0 and 99999.
 
-* Note that edit the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
+* Note that editing the stocking of a book will rewrite the stocking for every location. This means the library location not included in the edit command will be marked as `Not available`
 
 * If multiple `s/` is present, only the information in the last `s/` will be recorded. 
 
@@ -250,33 +257,32 @@ Format: `stock [n/BOOK NAME] [i/ISBN]`
 
 Both the name and the ISBN of the book are optional argument in the command.
 
+If more than one `n/` is present, only the last `n/` will be taken. This is similar for `i/`.
+
 * The book name searching follows the all match pattern, where the search name string will be split into keywords according to the white space in between, and the book name will need to contain all of the keywords in order to be included in the result list.
 
-    * In this case, the word contain means the keyword needs to match exactly some of the words in the book name.
+    * In this case, the word 'contain' means the keyword needs to match exactly a word in the book name. The only difference allowed is that the keyword is case insensitive.
     
      * For example, `The Guns of August` contains `Guns`, but it does not contain `Gun`.
+     
+     * Executing `stock n/The Guns of August` will return the books whose name contains all of `The`, `Guns`, `of`, and `August`.
     
      * The keyword of book name is case insensitive.
 
-* The ISBN name searching follows the some match pattern, where the search number string will be split into keywords according to the white space in between, and the book ISBN will need to contain some of the keywords in order to be included in the result list.
+* The ISBN searching follows the partial match pattern, where a ISBN keyword will match all the books whose ISBN contains this keyword.
 
-    * In this case, the word contain means the keyword needs to match the ISBN of the book partially.
+    * In this case, the word 'contain' means the keyword needs to be a substring of the ISBN of the book.
 
-    * For example, `9780553175219` contains `9780553175219` and `97805`.
+    * For example, `9780553175219` contains `9780553175219` and `7805`.
 
-The reason for the difference of behavior of the book name and ISBN is that book name can be used to check the stocking information of more specific books, while ISBN can be used to check the stocking information of a wide range of books.
+The reason for the design used is that the searching can be more consistent. The more and the longer the search key is, the more specific the search result will be. This is reasonable since it is often the case that the librarian has already known what the book is before trying to find out the stock information of that particular book. 
 
-If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy either of the conditions.
+If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy **both** of the conditions.
 
 If neither of them are present, then the command will return the stocking information of all the books.
-
-If the value after the prefix is empty, then the command will return the stocking information of all the books.
-
-For example, the command stock n/ and the command stock i/ will return the stocking information of all the books.
 </div>
 
 Examples:
-* `stock n/A brief history of time i/9780553175219`
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
 * `stock`
@@ -311,13 +317,12 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
-The usage is similar to the stock command.
+This command usage is similar to the stock command.
 
 The review list of the book with no review will be empty.
 </div>
 
 Examples:
-* `searchReview n/A brief history of time i/9780553175219`
 * `searchReview n/A brief history of time`
 * `searchReview i/9780553175219`
 * `searchReview`
@@ -338,7 +343,9 @@ The book review will be added according to the index of the book in the current 
 
 The rating needs to be a string representing an integer from 0 to 5.
 
-The review content should not be empty and it should not contain more than 300 characters.
+The review content should not be empty and it should not contain more than 300 characters, excluding the leading and trailing white space.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 
 If other command is executed before the add review command, then only the index corresponding to the book shown in the current book list will be valid.
 
@@ -378,7 +385,9 @@ The explanation about index is similar to add review and delete review command.
 
 If neither rating or review content is present, then an exception message will be shown.
 
-If the edited review is the same as the original review, then a corresponding exception message will be shown. 
+If the edited review is the same as the original review, then a corresponding exception message will be shown.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 </div>
 
 Examples:
@@ -395,15 +404,15 @@ Checks usage times of a certain book specified by user. Book is specified by any
 
 ##### by Index
 Format:
-* `usage [INDEX]`
+* `usage INDEX`
 
 Examples:
 * `usage 2`
 
 ##### by Book Name or ISBN
 Format: 
-* `usageBy i/[ISBN]`
-* `usageBy n/[BOOK_NAME]`
+* `usageBy i/ISBN`
+* `usageBy n/BOOK_NAME`
 
 Examples:
 * `usageBy i/9780141439518`
@@ -518,6 +527,7 @@ Examples:
 * `findProblemReport table chair` returns `table`, `chair`
 
 
+
 #### Deleting a report : `deleteProblemReport`
 
 Deletes the specified problem report from library management system.
@@ -615,6 +625,6 @@ Action | Format, Examples
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
-**Usage**| `usage [INDEX]` <br> e.g., `usage 1`
-**UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
+**Usage**| `usage INDEX` <br> e.g., `usage 1`
+**UsageBy**| `usageBy i/ISBN` `usageBy n/BOOK_NAME` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
 **ViewProblems** | `view`

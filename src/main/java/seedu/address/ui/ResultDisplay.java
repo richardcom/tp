@@ -23,8 +23,8 @@ public class ResultDisplay extends UiPart<Region> {
         super(FXML);
     }
 
-    public void setSuggestionList(List<String> messageUsage) {
-        this.suggestions = messageUsage;
+    public void setSuggestionList(List<String> suggestions) {
+        this.suggestions = suggestions;
     }
 
     public void setFeedbackToUser(String feedbackToUser) {
@@ -50,7 +50,7 @@ public class ResultDisplay extends UiPart<Region> {
 
         if (inputArr.length == 1) {
             for (String suggestion : commandSuggestionList) {
-                if (suggestion.startsWith(prefix.toLowerCase())) {
+                if (suggestion.startsWith(prefix)) {
                     feedback += suggestion + "\n";
                 }
             }
@@ -59,7 +59,7 @@ public class ResultDisplay extends UiPart<Region> {
                     .filter(suggestion -> prefix.equals(suggestion.split(" ")[0])).findFirst().orElse("");
         }
 
-        return feedback.trim();
+        return feedback;
     }
     //@@author
 

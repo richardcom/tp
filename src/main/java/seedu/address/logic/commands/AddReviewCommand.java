@@ -64,6 +64,13 @@ public class AddReviewCommand extends Command {
         this.review.setCreatedTime(LocalDateTime.now());
     }
 
+    /**
+     * Executes add review command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if invalid book
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {
