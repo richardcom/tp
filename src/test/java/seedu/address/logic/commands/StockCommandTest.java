@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.commons.core.Messages.MESSAGE_BOOKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalBooks.BOOK5;
@@ -85,5 +85,32 @@ class StockCommandTest {
 
         StockCommand stockCommand = new StockCommand(null, null);
         assertCommandSuccess(stockCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    void equals() {
+        StockCommand originalCommand = new StockCommand(Arrays.asList("Elle"), Arrays.asList("9482224"));
+
+        StockCommand newCommand = new StockCommand(Arrays.asList("Elle"), Arrays.asList("9482224"));
+
+        // same object -> returns true
+        assertTrue(originalCommand.equals(originalCommand));
+
+        // same value -> returns true
+        assertTrue(originalCommand.equals(newCommand));
+
+        // null -> returns false
+        assertFalse(originalCommand.equals(null));
+
+        // different types -> returns false
+        assertFalse(originalCommand.equals(new ClearCommand()));
+
+        // different name keyword -> returns false
+        assertFalse(originalCommand.equals(new StockCommand(Arrays.asList("Elle", "Smith"),
+                Arrays.asList("9482224"))));
+
+        // different ISBN number -> returns false
+        assertFalse(originalCommand.equals(new StockCommand(Arrays.asList("Elle"),
+                Arrays.asList("9482227"))));
     }
 }
