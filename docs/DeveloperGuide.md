@@ -1091,7 +1091,52 @@ Use case ends.
     * 1a1. IntelLiBrary shows a message that no matching reports are found.
 
       Use case ends.
+      
+      
+**Use case: UC19 - Find Most popular book of a category**
+
+**MSS**
+  1. User requests to find the most popular book of a category.
+  2. IntelliBrary finds the most popular book of a category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
     
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+    
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.
+    
+**Use case: UC20 - randomized selection of a book of a category**
+
+**MSS**
+  1. User requests to randomly select a book of a specified category.
+  2. IntelliBrary randomly select a book of a specified category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
+    
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+      
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.      
+
 *{More to be added}*
 
 ### Non-Functional Requirements
