@@ -31,7 +31,7 @@ deactivate StockCommandParser
 StockressBookParser -> StockCommandParser : parse("...")
 activate StockCommandParser
 
-StockCommandParser -> ParserUtil : parseStocking("science library 10 central library 30")
+StockCommandParser -> ParserUtil : parseStocking("scienceLb 10 centralLb 30 HSSMLb 30")
 activate ParserUtil
 
 create Stocking

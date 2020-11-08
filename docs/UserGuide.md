@@ -283,7 +283,6 @@ Examples:
 * `stock n/A brief history of time i/9780553175219`
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
-* `stock`
 
 Visual Example:
 

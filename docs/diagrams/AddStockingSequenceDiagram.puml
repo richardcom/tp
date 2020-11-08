@@ -31,7 +31,7 @@ deactivate AddCommandParser
 LanguageBookParser -> AddCommandParser : parse("...")
 activate AddCommandParser
 
-AddCommandParser -> ParserUtil : parseStocking("science library 10 central library 30")
+AddCommandParser -> ParserUtil : parseStocking("scienceLb 10 centralLb 30 HSSMLb 20")
 activate ParserUtil
 
 create Stocking

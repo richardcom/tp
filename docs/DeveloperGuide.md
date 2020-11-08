@@ -225,19 +225,19 @@ These operations are incoperated into the storage read and write process in the 
 
 #####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the language book parser, which calls the add command parser.
+Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
-Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
+Step 2. The edit command parser calls the ParseUtil, which parses the string and returns a stocking
 
-![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
+![The creation of the stocking](images/EditStockingParserSequenceDiagram.png)
 
-Step 3. The add command parser uses the stocking and returns an add command, and this is returned by language book parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The edit command parser uses the stocking and returns an edit command, and this is returned by library parser, and the logic manager executes the command and make some changes to the model.
 
 #####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the language book parser, which calls the stock command parser.
+Step 1. The user types `Stock n/Guns`, and the logic manager calls the language book parser, which calls the stock command parser.
 
-Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
+Step 2. The stock command parser parses the string into a list of name keywords and a list of ISBN number and calls the constructor of the stock command to get a stock command. In the diagram, the constructor of the stock command will take in 2 lists. The first list, corresponding to the name keywords, contains a single element `Guns`, and the second list, corresponding to the ISBN number, is an empty list.
 
 ![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
 
