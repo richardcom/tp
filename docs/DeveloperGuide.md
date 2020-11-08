@@ -1174,39 +1174,39 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First book is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First book is deleted from the list. Details of the deleted book shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No book is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No book is deleted. Error details shown in the status message.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
 1. Deleting a book using `deleteBy`
 
-    1. Prerequisites:
+    1. Prerequisites: Multiple books in the library.
 
-    1. Test case:
-       Expected:
-       
-    1. Test case:
-       Expected:
+    1. Test case: `deleteBy n/Pride and Prejudice`
+       Expected: `Pride and Prejudice` is deleted from the list. Details of the deleted book shown in the status message.
+
+    1. Test case: `deleteBy i/9780743273565`
+       Expected: `The Great Gatsby` is deleted from the list. Details of the deleted book shown in the status message.
            
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `deleteBy`, `deleteBy t/-1` ... etc.
 
 ### Adding a book
 
 1. Adding a book
 
-    1. Prerequisites:
+    1. Prerequisites: No duplicates books with the same ISBN exists.
     
-    1. Test case:
-           Expected:
+    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+           Expected: Book successfully added, detailed information shown in the status bar.
            
-    1. Test case:
-           Expected:
+    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+                  Expected: Book successfully added, detailed information shown in the status bar.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
     
 ### Editing a book
 
@@ -1399,15 +1399,15 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a problem report using `findProblemReport`
 
-    1. Prerequisites:
+    1. Prerequisites: The reports in the library is not empty.
 
-    1. Test case:
-       Expected:
+    1. Test case: `findProblemReport lost`
+       Expected: The report which has the description matching the keyword is shown.
       
-    1. Test case:
-       Expected:
+    1. Test case: `findProblemReport not-exist`
+       Expected: If there is no report containing `not-exist`, then 0 reports listed is shown
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
     
 ### Reporting a problem
 
@@ -1427,29 +1427,29 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Deleting a problem report using `deleteProblemReport`
 
-    1. Prerequisites:
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case:
-       Expected:
+    1. Test case: `deleteProblemReport 1`
+       Expected: The details of the deleted report is shown in the status bar.
       
-    1. Test case:
-       Expected:
+    1. Test case: `deleteProblemReport 0`
+       Expected: Invalid command format.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.
     
 ### Editing a problem report
 
 1. Editing a problem report using `editProblemReport`
 
-    1. Prerequisites:
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case:
-       Expected:
+    1. Test case: `editProblemReport 1 s/low`
+       Expected: Details of the edited report is shown in the status bar.
       
-    1. Test case:
-       Expected:
+    1. Test case: `editProblemReport 0 s/high`
+       Expected: Invalid command format.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
     
 ### Saving data
 
