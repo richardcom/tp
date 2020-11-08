@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-IntelliBrary is an **app for managing storage, purchase, borrowing, and reader review of books in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+IntelliBrary is an **app for managing storage, purchase, borrowing, reader reviews of books, and logistics in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 Targeted at users who can type fast, IntelliBrary can get your library management tasks done faster than traditional GUI apps.
 
 * Table of Contents
@@ -318,7 +318,7 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
-The usage is similar to the stock command.
+This command usage is similar to the stock command.
 
 The review list of the book with no review will be empty.
 </div>
@@ -402,15 +402,15 @@ Checks usage times of a certain book specified by user. Book is specified by any
 
 ##### by Index
 Format:
-* `usage [INDEX]`
+* `usage INDEX`
 
 Examples:
 * `usage 2`
 
 ##### by Book Name or ISBN
 Format: 
-* `usageBy i/[ISBN]`
-* `usageBy n/[BOOK_NAME]`
+* `usageBy i/ISBN`
+* `usageBy n/BOOK_NAME`
 
 Examples:
 * `usageBy i/9780141439518`
@@ -626,6 +626,6 @@ Action | Format, Examples
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
-**Usage**| `usage [INDEX]` <br> e.g., `usage 1`
-**UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
+**Usage**| `usage INDEX` <br> e.g., `usage 1`
+**UsageBy**| `usageBy i/ISBN` `usageBy n/BOOK_NAME` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
 **ViewProblems** | `view`
