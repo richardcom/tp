@@ -736,7 +736,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `ItelliBrary` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC01 - Add Books**
+**Use case: UC01 - Add a book**
 
 **MSS**
   1. User request to add a new book into the library.
@@ -764,31 +764,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. IntelliBrary shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
-
-**Use case: UC02 - Delete a Book**
-
-**MSS**
-  1. User request to delete books from the library.
-
-  2. IntelliBrary deletes the book from the library and shows a successfull message to the user.
-  
-     Use case ends.
-  
-**Extensions**
-
-* 1a. The book name or ISBN given by the user is not found in the record, or there are no books which has been borrowed fewer times than the number of times specified.
-    
-    * 1a1. IntelliBrary shows an error message that the book is not found and 0 book is listed.
-    
-      Use case ends.
-
-* 1b. The book to be deleted is not recorded.
-
-    * 1b1. IntelliBrary shows that the stocking information of the book in some locations is not available.
-
-      Use case ends.
             
-**Use case: UC03 - view the stockings of different books**
+**Use case: UC02 - View the stockings of different books**
 
 **MSS**
 
@@ -812,7 +789,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC04 - search for the review of a book**
+**Use case: UC03 - Search for the review of a book**
 
 **MSS**
 
@@ -836,7 +813,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC05 - add the review for a book**
+**Use case: UC04 - Add the review for a book**
 
 **MSS**
 
@@ -860,7 +837,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC06 - delete the review for a book**
+**Use case: UC05 - Delete a review for a book**
 
 **MSS**
 
@@ -884,7 +861,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC07 - edit the review for a book**
+**Use case: UC06 - Edit the review for a book**
 
 **MSS**
 
@@ -920,7 +897,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC08 - View Sample Data**
+**Use case UC07 - View Sample Data**
 
 **MSS**
 
