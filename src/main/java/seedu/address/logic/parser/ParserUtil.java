@@ -194,34 +194,35 @@ public class ParserUtil {
 
         int count = matcher.groupCount();
         HashMap<String, Integer> stockingInLocation = new HashMap<>();
-
-        try {
-            if (matcher.find() && Stocking.isValidStocking(stocking)) {
-                List<String> locations = Arrays.asList(Stocking.LOCATION);
-                locations.forEach((location) -> {
-                    stockingInLocation.put(location, 0);
-                });
-                for (int i = 1; i <= count; i = i + 2) {
-                    if (matcher.group(i) != null && matcher.group(i + 1) != null) {
-                        String currentLocation = matcher.group(i).strip();
-                        int currentCount = Integer.parseInt(matcher.group(i + 1).strip());
-
-                        if (currentCount < 0 || currentCount > 99999) {
-                            throw new ParseException(Stocking.NUMBER_CONSTRAINTS);
-                        }
-
-                        locations.forEach((location) -> {
-                            if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
-                                stockingInLocation.put(location, currentCount);
-                            }
-                        });
-                    }
+        if (matcher.find() && Stocking.isValidStocking(stocking)) {
+            List<String> locations = Arrays.asList(Stocking.LOCATION);
+            locations.forEach((location) -> {
+                stockingInLocation.put(location, 0);
+            });
+            for (int i = 1; i <= count; i = i + 2) {
+                if ((matcher.group(i) == null && matcher.group(i + 1) != null)
+                        || (matcher.group(i) != null && matcher.group(i + 1) == null)) {
+                    throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
                 }
-            } else {
-                throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+                if (matcher.group(i) != null && matcher.group(i + 1) != null) {
+                    String currentLocation = matcher.group(i).strip();
+                    int currentCount;
+                    try {
+                        currentCount = Integer.parseInt(matcher.group(i + 1).strip());
+                    } catch (Exception exception) {
+                        throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
+                    }
+                    if (currentCount < 0 || currentCount > 9999999) {
+                        throw new ParseException(Stocking.NUMBER_CONSTRAINTS);
+                    }
+                    locations.forEach((location) -> {
+                        if (location.toUpperCase().equals(currentLocation.toUpperCase())) {
+                            stockingInLocation.put(location, currentCount);
+                        }
+                    });
+                }
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } else {
             throw new ParseException(Stocking.MESSAGE_CONSTRAINTS);
         }
         return new Stocking(stockingInLocation);

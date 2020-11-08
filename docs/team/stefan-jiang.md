@@ -48,11 +48,11 @@ significant contributions are recorded here.)
 
 * **Documentation**:
   * User Guide:
-    * Added the documentation for the `edit` feature. ([\#131](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/131))
-    * In charge of the non-feature parts of User Guide.
+    * Added the documentation for the `edit` feature.
+    * Largely contribute to the finalization of User Guide (non-feature parts of the documentation, e.g.
+    reorder/reformat of content)
   * Developer Guide:
-    * Added implementation details of the `edit` feature. ([#33](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/33),
-    [#115](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/115))
+    * Added implementation details of the `edit` feature.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments) (examples:
@@ -80,6 +80,6 @@ significant contributions are recorded here.)
   * Contribute a reasonable amount of test methods and classes
     
 * **Justification on Equal Share of Efforts**:
-  * Although it may appear that I have not written as many codes as my teammates, I have contributed more towards other
-  aspects of the project, mainly in documentations and administrative tasks as mentioned above. After internal
-  discussions, we have come to the agreement that we have generally all contributed fairly towards the team project.
+Although it may appear that I have not written as many codes as my teammates, I have contributed more towards other
+aspects of the project, mainly in documentations and administrative tasks as mentioned above. After internal
+discussions, we have come to the agreement that we have generally all contributed fairly towards the team project.

@@ -2,11 +2,11 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showBookAtIndex;
@@ -59,11 +59,11 @@ public class EditCommandTest {
         Book lastBook = model.getFilteredBookList().get(indexLastBook.getZeroBased());
 
         BookBuilder bookInList = new BookBuilder(lastBook);
-        Book editedBook = bookInList.withName(VALID_NAME_BOB).withIsbn(VALID_ISBN_BOB)
+        Book editedBook = bookInList.withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
 
-        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withIsbn(VALID_ISBN_BOB).withCategories(VALID_CATEGORY_HUSBAND).build();
+        EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2)
+                .withIsbn(VALID_ISBN_BOOK2).withCategories(VALID_CATEGORY_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastBook, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
@@ -91,9 +91,9 @@ public class EditCommandTest {
         showBookAtIndex(model, INDEX_FIRST_BOOK);
 
         Book bookInFilteredList = model.getFilteredBookList().get(INDEX_FIRST_BOOK.getZeroBased());
-        Book editedBook = new BookBuilder(bookInFilteredList).withName(VALID_NAME_BOB).build();
+        Book editedBook = new BookBuilder(bookInFilteredList).withName(VALID_NAME_BOOK2).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_BOOK,
-                new EditBookDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
 
@@ -127,7 +127,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidBookIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookList().size() + 1);
-        EditCommand.EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditCommand.EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
@@ -145,17 +145,17 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getLibrary().getBookList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditBookDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_BOOK, DESC_AMY);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_BOOK, DESC_BOOK1);
 
         // same values -> returns true
-        EditCommand.EditBookDescriptor copyDescriptor = new EditCommand.EditBookDescriptor(DESC_AMY);
+        EditCommand.EditBookDescriptor copyDescriptor = new EditCommand.EditBookDescriptor(DESC_BOOK1);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_BOOK, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -169,10 +169,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_BOOK, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_BOOK, DESC_BOOK1)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_BOOK, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_BOOK, DESC_BOOK2)));
     }
 
 }

@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showBookAtIndex;
@@ -68,7 +68,7 @@ public class TimesCommandTest {
     @Test
     public void execute_invalidBookIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookList().size() + 1);
-        TimesCommand remarkCommand = new TimesCommand(outOfBoundIndex, new Times(VALID_TIMES_BOB));
+        TimesCommand remarkCommand = new TimesCommand(outOfBoundIndex, new Times(VALID_TIMES_BOOK2));
 
         assertCommandFailure(remarkCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
     }
@@ -84,17 +84,17 @@ public class TimesCommandTest {
         // ensures that outOfBoundIndex is still in bounds of library list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getLibrary().getBookList().size());
 
-        TimesCommand remarkCommand = new TimesCommand(outOfBoundIndex, new Times(VALID_TIMES_BOB));
+        TimesCommand remarkCommand = new TimesCommand(outOfBoundIndex, new Times(VALID_TIMES_BOOK2));
 
         assertCommandFailure(remarkCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        final TimesCommand standardCommand = new TimesCommand(INDEX_FIRST_BOOK, new Times(VALID_TIMES_AMY));
+        final TimesCommand standardCommand = new TimesCommand(INDEX_FIRST_BOOK, new Times(VALID_TIMES_BOOK1));
 
         // same values -> returns true
-        TimesCommand commandWithSameValues = new TimesCommand(INDEX_FIRST_BOOK, new Times (VALID_TIMES_AMY));
+        TimesCommand commandWithSameValues = new TimesCommand(INDEX_FIRST_BOOK, new Times (VALID_TIMES_BOOK1));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -107,9 +107,9 @@ public class TimesCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new TimesCommand(INDEX_SECOND_BOOK, new Times(VALID_TIMES_AMY))));
+        assertFalse(standardCommand.equals(new TimesCommand(INDEX_SECOND_BOOK, new Times(VALID_TIMES_BOOK1))));
 
         // different times -> returns false
-        assertFalse(standardCommand.equals(new TimesCommand(INDEX_FIRST_BOOK, new Times(VALID_TIMES_BOB))));
+        assertFalse(standardCommand.equals(new TimesCommand(INDEX_FIRST_BOOK, new Times(VALID_TIMES_BOOK2))));
     }
 }

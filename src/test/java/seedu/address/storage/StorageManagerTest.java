@@ -47,6 +47,7 @@ public class StorageManagerTest {
         assertEquals(original, retrieved);
     }
 
+<<<<<<< HEAD
     // @Test
     // public void addressbookReadSave() throws Exception {
     /*
@@ -60,6 +61,8 @@ public class StorageManagerTest {
         assertEquals(original, new Addressbook(retrieved));
     } // storage parser */
 
+=======
+>>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
     @Test
     public void getLibraryFilePath() {
         assertNotNull(storageManager.getLibraryFilePath());

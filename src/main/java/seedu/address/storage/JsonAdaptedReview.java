@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,15 +13,21 @@ import seedu.address.model.review.ReviewContent;
 public class JsonAdaptedReview {
     private final int ratingNumber;
     private final String reviewContent;
+    private final String createdTime;
+    private final String editedTime;
 
     /**
      * Constructs a {@code JsonAdaptedReview} with the given review information.
      */
     @JsonCreator
     public JsonAdaptedReview(@JsonProperty("ratingNumber") int ratingNumber,
-                               @JsonProperty("reviewContent") String reviewContent) {
+                               @JsonProperty("reviewContent") String reviewContent,
+                             @JsonProperty("createdTime") String createdTime,
+                             @JsonProperty("editedTime") String editedTime) {
         this.ratingNumber = ratingNumber;
         this.reviewContent = reviewContent;
+        this.createdTime = createdTime;
+        this.editedTime = editedTime;
     }
 
     /**
@@ -29,9 +37,17 @@ public class JsonAdaptedReview {
         if (review == null) {
             this.ratingNumber = 0;
             this.reviewContent = "empty review content";
+            this.createdTime = "";
+            this.editedTime = "";
         } else {
             this.ratingNumber = review.getRating().ratingNumber;
             this.reviewContent = review.getContent().content;
+            this.createdTime = review.getCreatedTimeRepresentation();
+            if (review.getEditedTimeRepresentation().isPresent()) {
+                this.editedTime = review.getEditedTimeRepresentation().get();
+            } else {
+                this.editedTime = "";
+            }
         }
     }
 
@@ -49,7 +65,13 @@ public class JsonAdaptedReview {
 
         Rating bookRating = new Rating(this.ratingNumber);
         ReviewContent bookReviewContent = new ReviewContent(this.reviewContent);
-
-        return new Review(bookRating, bookReviewContent);
+        LocalDateTime createdTime = LocalDateTime.parse(this.createdTime, Review.DATE_TIME_FORMATTER);
+        Review review = new Review(bookRating, bookReviewContent);
+        review.setCreatedTime(createdTime);
+        if (!editedTime.equals("")) {
+            LocalDateTime editedTime = LocalDateTime.parse(this.editedTime, Review.DATE_TIME_FORMATTER);
+            review.setEditedTime(editedTime);
+        }
+        return review;
     }
 }

@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalBooks.ALICE;
+import static seedu.address.testutil.TypicalBooks.BOOK1;
 import static seedu.address.testutil.TypicalBooks.getTypicalLibrary;
 
 import java.util.Collection;
@@ -49,19 +49,19 @@ public class LibraryTest {
 
     @Test
     public void hasBook_bookNotInLibrary_returnsFalse() {
-        assertFalse(library.hasBook(ALICE));
+        assertFalse(library.hasBook(BOOK1));
     }
 
     @Test
     public void hasBook_bookInLibrary_returnsTrue() {
-        library.addBook(ALICE);
-        assertTrue(library.hasBook(ALICE));
+        library.addBook(BOOK1);
+        assertTrue(library.hasBook(BOOK1));
     }
 
     @Test
     public void hasBook_bookWithSameIdentityFieldsInLibrary_returnsTrue() {
-        library.addBook(ALICE);
-        Book editedAlice = new BookBuilder(ALICE).withLanguage(VALID_LANGUAGE_BOB)
+        library.addBook(BOOK1);
+        Book editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
                 .withCategories(VALID_CATEGORY_HUSBAND).build();
         assertTrue(library.hasBook(editedAlice));
     }
