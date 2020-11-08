@@ -1,9 +1,9 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK1;
-import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ISBN_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK1;
+import static seedu.address.logic.commands.CommandTestUtil.ISBN_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK1;
