@@ -165,12 +165,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 * **Alternative 1:** Individual separated commands of Add author, Add publisher, Add categories, etc.
   * Pros: Easier to implement without the need to modify the original Add command.
-<<<<<<< HEAD
-  * Cons: Multiple commands are needed during input and inconvenient for users.
-=======
   * Cons: Multiple commands are needed during input and it is inconvenient for users.
-
->>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ### \[New\] DeleteBy feature
 
@@ -400,12 +395,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Pros: Easier to implement.
   * Cons: Does not follow the abstraction layers of UI.
 
-<<<<<<< HEAD
-### \[New\] Randomly select a book of a specific category
-=======
-
 ### \[New\] Randomized selection of book feature
->>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ####  Implementation
 
@@ -583,15 +573,7 @@ Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determi
 
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
-<<<<<<< HEAD
-Step 4. Execution of delete report would take place and the result will be updated in the filtered list in Model.
-
-The following sequence diagram summarizes what happens when a user executes a new command:
-=======
 Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
-
-
->>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ### \[Proposed\] Undo/redo feature
 
@@ -723,14 +705,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | expert user                                | delete multiple books by condition within one command      | it is more time efficient            |
 | `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
-<<<<<<< HEAD
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
-=======
-| `* * *`  | library administrator                      | check the borrowing status of a certain book       | tell students whether they can borrow this book or not            |
-| `*`  | library administrator                      | clear all data within one command       | efficiently reset the app            |
 *{More to be added}*
->>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
+
 
 ### Use cases
 
@@ -1170,7 +1148,7 @@ Use case ends.
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Command that exists in the original AddressBook application such as `list`, `help`, and `clear `
 
 </div>
 
@@ -1191,7 +1169,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting a book
 
-1. Deleting a book while all books are being shown
+1. Deleting a book while all books are being shown using `delete`
 
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
@@ -1203,6 +1181,34 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+
+1. Deleting a book while all books are being shown using `deleteBy`
+
+    1. Test case:
+       Expected:
+       
+    1. Test case:
+       Expected:
+           
+    1. Other incorrect commands to try:
+
+### Adding a book
+
+1. Adding a book
+    
+    1.
+    
+    
+    1.
+    
+    1.
+    
+### Editing a book
+
+1. Deleting a book while all books are being shown
+
+    
+
 
 
 ### Saving data
