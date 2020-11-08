@@ -133,11 +133,53 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+
+### \[Enhanced\] Add Book feature
+
+### The relevant methods:
+
+####  Implementation
+
+The current implementation of the AddCommand is supported by `AddCommand.java`, `AddCommandParser.java`.
+
+The relevant methods are:
+
+*`AddCommandParser#parse()` --- Parses the books detailed information.
+*`AddCommand#execute()` --- Checks for duplication and adds the book to the library.
+
+Given below is an example usage scenario and how the AddCommand mechanism behaves at each step.
+
+Step 1. User input an input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+
+Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is a Add command.
+
+Step 3. AddCommandParser would then parse the book attributes and call the Add Command.
+
+Step 4. Execution of Add would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![AddCommandSequenceDiagram](images/AddCommandSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How Add executes
+
+* **Alternative 1 :** Adopts the add Person function of the original project
+  * Pros: Easy to implement.
+  * Cons: Attributes are not suitable for books.
+
+* **Alternative 2:** Individual command of Add author, Add publisher, Add categories.
+  * Pros: Easier to implement without the need to modify the original Add command.
+  * Cons: Multiple commands are needed during input and inconvenient for users.
+
+
+
 ### \[New\] DeleteBy feature
 
 ####  Implementation
 
-The current implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+The implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
 
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
@@ -145,7 +187,7 @@ Step 1. User input an input: `deleteBy n/Linear Algebra`
 
 Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command.
 
-Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+Step 3. DeleteByCommandParser would then parse the book name and call the deleteBy Command.
 
 Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
 
@@ -155,17 +197,16 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How undo & redo executes
+##### Aspect: How delete By executes
 
 * **Alternative 1 :** Adopts the delete function of the original project
   * Pros: Easy to implement.
-  * Cons: Not convenient for expert users and fast input.
+  * Cons: Not convenient for expert users and fast input, does not allow deleting multiple books at a time.
 
 * **Alternative 2:** Individual command of DeleteByName, DeleteByISBN, DeleteByTimes
   itself.
   * Pros: Easier to implement without the need to parse different input types.
   * Cons: A large portion of duplicated code for multiple commands.
-
 
 
 
@@ -257,6 +298,73 @@ The current implementation of the stocking is consistent with other components o
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
 
+
+### \[New\] Find the most popular book feature
+
+####  Implementation
+
+The implementation of the FindMostPopular command is supported by `FindMostPopularCommand.java` and `FindMostPopularCommandParser.java` 
+
+Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
+
+Step 1. User input an input: `findMostPopular science`
+
+Step 2. Logic Manager would parse the input `findMostPopular science`, and determines that it is a findMostPopular command.
+
+Step 3. FindMostPopularCommandParser would then parse the category type and call the findMostPopular Command.
+
+Step 4. Execution of findMostPopular would take place. The most popular book(borrowed the most number of times) will be found
+ and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![findMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How find Most Popular executes
+
+* **Alternative 1 :** Stores the most popular book as an attribute of each category
+  * Pros: Easy to retrieve the most popular book.
+  * Cons: Needs auto-refresh when the borrowed times of different books change.
+
+* **Alternative 2:** Return the most popular book found directly to the UI
+  * Pros: Easier to implement.
+  * Cons: Does not follow the abstraction layers of UI.
+
+
+### \[New\] Randomly select a book of a specific category
+
+####  Implementation
+
+The implementation of the Random command is supported by `RandomCommand.java` and `RandomCommandParser.java` 
+
+Given below is an example usage scenario and how the Random mechanism behaves at each step.
+
+Step 1. User input an input: `random Classics`
+
+Step 2. Logic Manager would parse the input `random Classics`, and determines that it is a Random command.
+
+Step 3. RandomCommandParser would then parse string input and call the Random Command.
+
+Step 4. Execution of Random would take place. A randomly selected book of the specified category will be found
+ and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![randomCommandSequenceDiagram](images/randomCommandSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How randomly select a book executes
+
+* **Alternative 1 :** Randomly select a book from the current filtered list.
+  * Pros: Easy to implement with the current filteredBookList.
+  * Cons: Tedious and inconvenient when users want to randomly select a book of a certain category.
+
+
+
+
 ### \[New\] ReportProblem feature
 
 ####  Implementation
@@ -320,6 +428,71 @@ Step 3. Execution of ViewProblemCommand would take place.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
+
+
+### \[New\] Edit Problem Report feature
+
+####  Implementation
+
+The implementation of the Edit Problem Report command is supported by `EditProblemCommand.java` and `EditProblemCommandParser.java` 
+
+Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
+
+Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
+
+Step 2. Logic Manager would parse the input `editProblemReport 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
+
+Step 3. EditProblemCommandParser would then parse string input and call the EditProblemCommand.
+
+Step 4. Execution of EditProblemCommand would take place. The report at the specified index will be edited
+and updated according to user input.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![EditProblemReportSequenceDiagram](images/EditProblemReportSequenceDiagram.png)
+
+
+
+### \[New\] Find Problem Report feature
+
+####  Implementation
+
+The implementation of the Find Problem Report command is supported by `FindProblemCommand.java` and `FindProblemCommandParser.java` 
+
+Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
+
+Step 1. User input an input: `findProblemReport chair`
+
+Step 2. Logic Manager would parse the input `findProblemReport chair`, and determines that it is a FindProblemCommand command.
+
+Step 3. FindProblemCommandParser would then parse string input and call the FindProblemCommand.
+
+Step 4. Execution of FindProblemCommand would take place. The problems reports which has the description containing the keywords
+will be displayed.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![EditProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
+
+
+### \[New\] Delete Problem Report feature
+
+####  Implementation
+
+The implementation of the DeleteBy command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+
+Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
+
+Step 1. User input an input: `deleteProblemReport 2`
+
+Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determines that it is a delete problem command.
+
+Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
+
+Step 4. Execution of delete report would take place and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
 
 
 

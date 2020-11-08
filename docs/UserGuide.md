@@ -27,7 +27,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all books in the library.
 
-   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com lang/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 

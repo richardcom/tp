@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.AUTHOR_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.CATEGORY_DESC_HUSBAND;
@@ -28,7 +27,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK2;
-import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
@@ -42,7 +40,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_STOCKING_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMES_BOOK2;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalBooks.BOOK8;
 import static seedu.address.testutil.TypicalBooks.BOOK9;
 
 import org.junit.jupiter.api.Test;
@@ -108,16 +105,6 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK1
                         + LANGUAGE_DESC_BOOK2 + TIMES_DESC_BOOK2 + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK1
                         + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2, new AddCommand(expectedBook));
-    }
-
-    @Test
-    public void parse_optionalFieldsMissing_success() {
-        // zero categories
-        Book expectedBook = new BookBuilder(BOOK8).withCategories().build();
-        assertParseSuccess(parser, NAME_DESC_BOOK1 + ISBN_DESC_BOOK1 + EMAIL_DESC_BOOK1
-                + LANGUAGE_DESC_BOOK1 + TIMES_DESC_BOOK1 + STOCKING_DESC_BOOK1 + AUTHOR_DESC_BOOK1
-                        + PUBLISHER_DESC_BOOK1,
-                new AddCommand(expectedBook));
     }
 
     @Test
@@ -209,11 +196,6 @@ public class AddCommandParserTest {
                 + INVALID_TIMES_DESC + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
                 + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2, Times.MESSAGE_CONSTRAINTS);
 
-        // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_NAME_DESC + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
-                        + INVALID_LANGUAGE_DESC + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2 + AUTHOR_DESC_BOOK2
-                        + PUBLISHER_DESC_BOOK2,
-                Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
