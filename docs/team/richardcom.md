@@ -68,4 +68,5 @@ Listed below are my contributions to this project.
 * **Community contributions**
 
 Helping classmates on forum: [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue107](https://github.com/nus-cs2103-AY2021S1/forum/issues/107), [issue15](https://github.com/nus-cs2103-AY2021S1/forum/issues/15)
+
 Helped classmates from other teams identify 15 possible flaws or improvements: [issue195](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/195), [issue194](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/194), [issue191](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/191), , [issue192](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/192), etc.
