@@ -136,48 +136,52 @@ This section describes some noteworthy details on how certain features are imple
 
 ### \[Enhanced\] Add Book feature
 
-### The relevant methods:
-
 ####  Implementation
 
 The current implementation of the AddCommand is supported by `AddCommand.java`, `AddCommandParser.java`.
 
 The relevant methods are:
 
-*`AddCommandParser#parse()` --- Parses the books detailed information.
-*`AddCommand#execute()` --- Checks for duplication and adds the book to the library.
+*`AddCommandParser#parse(String args)` --- Parses the book's detailed information.
+*`AddCommand#execute(Model model)` --- Checks for duplication and adds the book to the library.
 
 Given below is an example usage scenario and how the AddCommand mechanism behaves at each step.
 
-Step 1. User input an input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+Step 1. User input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
 
-Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is a Add command.
+Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is an Add command.
 
 Step 3. AddCommandParser would then parse the book attributes and call the Add Command.
 
-Step 4. Execution of Add would take place and the result will be updated in the filtered list in Model.
+Step 4. Execution of Add would take place and the result will be updated in the filtered book list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![AddCommandSequenceDiagram](images/AddCommandSequenceDiagram.png)
+![AddCommandSequenceDiagram](images/AddCommandSimplifiedSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How Add executes
+##### Aspect: How add book command executes
 
-* **Alternative 1 :** Adopts the add Person function of the original project
-  * Pros: Easy to implement.
-  * Cons: Attributes are not suitable for books.
-
-* **Alternative 2:** Individual command of Add author, Add publisher, Add categories.
+* **Alternative 1:** Individual separated commands of Add author, Add publisher, Add categories, etc.
   * Pros: Easier to implement without the need to modify the original Add command.
+<<<<<<< HEAD
   * Cons: Multiple commands are needed during input and inconvenient for users.
+=======
+  * Cons: Multiple commands are needed during input and it is inconvenient for users.
+
+>>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ### \[New\] DeleteBy feature
 
 ####  Implementation
 
 The implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteByCommandParser#parse(String args)` --- Parses the user input: book name, ISBN, or number of borrowed times.
+*`DeleteByCommand#execute(Model model)` --- Deletes the book from the library.
 
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
@@ -195,7 +199,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How delete By executes
+##### Aspect: How deleteBy executes
 
 * **Alternative 1 :** Adopts the delete function of the original project
   * Pros: Easy to implement.
@@ -363,6 +367,12 @@ The current implementation of the reviewing is consistent with other components 
 
 The implementation of the FindMostPopular command is supported by `FindMostPopularCommand.java` and `FindMostPopularCommandParser.java` 
 
+The relevant methods are:
+
+*`FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
+*`FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
+
+
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findMostPopular science`
@@ -390,11 +400,22 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Pros: Easier to implement.
   * Cons: Does not follow the abstraction layers of UI.
 
+<<<<<<< HEAD
 ### \[New\] Randomly select a book of a specific category
+=======
+
+### \[New\] Randomized selection of book feature
+>>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ####  Implementation
 
 The implementation of the Random command is supported by `RandomCommand.java` and `RandomCommandParser.java` 
+
+The relevant methods are:
+
+*`RandomCommandParser#parse(String args)` --- Parses the input into book category.
+*`RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
+
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -490,6 +511,16 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 The implementation of the Edit Problem Report command is supported by `EditProblemCommand.java` and `EditProblemCommandParser.java` 
 
+The relevant methods are:
+
+*`EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
+
+Below is the diagram illustrating the Problem Report Model. The EditProblemCommand allows for edit of either one attribute
+or both attributes at the same time.
+
+![ModelClassReportDiagram](images/ModelClassReportDiagram.png)
+
 Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
 
 Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
@@ -511,6 +542,12 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 The implementation of the Find Problem Report command is supported by `FindProblemCommand.java` and `FindProblemCommandParser.java` 
 
+The relevant methods are:
+
+*`FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
+
+
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findProblemReport chair`
@@ -531,7 +568,12 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 ####  Implementation
 
-The implementation of the DeleteBy command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+The implementation of the DeleteProblem command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteProblemCommandParser#parse(String args)` --- Parses the user input index.
+*`DeleteProblemCommand#execute(Model model)` --- Deletes the report of the input index from the library.
 
 Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
 
@@ -541,9 +583,15 @@ Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determi
 
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
+<<<<<<< HEAD
 Step 4. Execution of delete report would take place and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
+=======
+Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
+
+
+>>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ### \[Proposed\] Undo/redo feature
 
@@ -660,18 +708,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |efficiently increase the stockings of those very popular books to meet the demand of the readers   |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    |estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
-| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    |keep the review record for future evaluation of the book quality and popularity among the readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
-| `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
-| `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
+| `* * *`  | library administrator                      | Add new books, delete original books in the library   | keep in the information in IntelLibrary application up to date  |
+| `* * *`  | library administrator                      | Delete all unpopular books at a time   | efficiently keep the record up to date and cleans unpopular books from the system efficiently  |
+| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   | efficiently increase the stockings of those very popular books to meet the demand of the readers   |
+| `* *`    | library administrator                      | get the most popular book in each categories                                     | know what books to purchase in the future        |
+| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    | estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
+| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    | keep the review record for future evaluation of the book quality and popularity among the readers|
+| `* *`    | library administrator                      | edit the information of a book                                                        | keep the book information in the database up to date                                                                      |
+| `* * `   | library administrator                      | get a randomly selected book from specified category at a time   | easier to implement random sampling for library book data analysis  |
+| `* * *`  | library administrator                      | report, delete problems found in libraries along with their severities                   |keep track of and update the problems and prioritize them by their severity levels                          |
+| `* * *`  | library administrator                      | view all the reported problems                                                 | know what problems need to be solved  |
+| `* * *`  | library administrator                      | edit the information of reported problems                                                 | keep the report information in record up to date  |
+| `* * *`  | library administrator                      | get the report which description contains keywords                        | fast access and find relevant problems at a time |
+| `* *`    | expert user                                | delete multiple books by condition within one command      | it is more time efficient            |
 | `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
+<<<<<<< HEAD
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
+=======
+| `* * *`  | library administrator                      | check the borrowing status of a certain book       | tell students whether they can borrow this book or not            |
+| `*`  | library administrator                      | clear all data within one command       | efficiently reset the app            |
+*{More to be added}*
+>>>>>>> 92a353140db820499ee346fbb5db3e89f0546322
 
 ### Use cases
 
@@ -705,8 +764,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. IntelliBrary shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
+
+**Use case: UC02 - Delete a Book**
+
+**MSS**
+  1. User request to delete books from the library.
+
+  2. IntelliBrary deletes the book from the library and shows a successfull message to the user.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The book name or ISBN given by the user is not found in the record, or there are no books which has been borrowed fewer times than the number of times specified.
+    
+    * 1a1. IntelliBrary shows an error message that the book is not found and 0 book is listed.
+    
+      Use case ends.
+
+* 1b. The book to be deleted is not recorded.
+
+    * 1b1. IntelliBrary shows that the stocking information of the book in some locations is not available.
+
+      Use case ends.
             
-**Use case: UC02 - view the stockings of different books**
+**Use case: UC03 - view the stockings of different books**
 
 **MSS**
 
@@ -730,7 +812,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC03 - search for the review of a book**
+**Use case: UC04 - search for the review of a book**
 
 **MSS**
 
@@ -754,7 +836,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC04 - add the review for a book**
+**Use case: UC05 - add the review for a book**
 
 **MSS**
 
@@ -778,7 +860,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC05 - delete the review for a book**
+**Use case: UC06 - delete the review for a book**
 
 **MSS**
 
@@ -802,7 +884,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC06 - edit the review for a book**
+**Use case: UC07 - edit the review for a book**
 
 **MSS**
 
@@ -838,7 +920,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC07 - View Sample Data**
+**Use case UC08 - View Sample Data**
 
 **MSS**
 
@@ -976,6 +1058,84 @@ Use case ends.
   2. IntelliBrary shows the problem list and shows a successfull message to the user.
 
   Use case ends.
+  
+**Use case: UC15 - Delete a problem report**
+
+**MSS**
+  1. User requests to delete a problem report by index.
+  2. IntelliBrary deletes the problem report and shows a successfull message to the user.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. The index given by the user is invalid.
+
+    * 1a1. IntelliBrary shows an error message that index given by the user is invalid.
+
+      Use case ends.
+    
+    
+**Use case: UC16 - Find a problem report by description**
+
+**MSS**
+  1. User requests to find reports that the descriptions matches certain keywords.
+  2. IntelliBrary finds reports which descriptions matches the keywords.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. No problem reports that the description matches the keyword is found.
+
+    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+
+      Use case ends.
+      
+      
+**Use case: UC17 - Find Most popular book of a category**
+
+**MSS**
+  1. User requests to find the most popular book of a category.
+  2. IntelliBrary finds the most popular book of a category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
+    
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+    
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.
+    
+**Use case: UC18 - randomized selection of a book of a category**
+
+**MSS**
+  1. User requests to randomly select a book of a specified category.
+  2. IntelliBrary randomly select a book of a specified category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
+    
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+      
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.      
 
 ### Non-Functional Requirements
 
