@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SEVERITY;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditProblemCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -40,6 +41,9 @@ public class EditProblemCommandParser implements Parser<EditProblemCommand> {
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
             editProblemDescriptor
                     .setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
+        }
+        if (!editProblemDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
         return new EditProblemCommand(index, editProblemDescriptor);
