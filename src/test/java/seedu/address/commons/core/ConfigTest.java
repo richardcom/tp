@@ -11,7 +11,7 @@ public class ConfigTest {
     @Test
     public void toString_defaultObject_stringReturned() {
         String defaultConfigAsString = "Current log level : INFO\n"
-                + "Preference file Location : config\\footer\\preferences.json";
+                + "Preference file Location : config/footer/preferences.json";
 
         assertEquals(defaultConfigAsString, new Config().toString());
     }
@@ -22,6 +22,4 @@ public class ConfigTest {
         assertNotNull(defaultConfig);
         assertTrue(defaultConfig.equals(defaultConfig));
     }
-
-
 }
