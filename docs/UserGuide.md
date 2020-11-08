@@ -15,7 +15,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intelLibrary.jar` from [here](https://github.com/AY2021S1-CS2103-F09-3/tp/releases).
+2. Download the latest `IntelliBrary.jar` from [here](https://github.com/AY2021S1-CS2103-F09-3/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
