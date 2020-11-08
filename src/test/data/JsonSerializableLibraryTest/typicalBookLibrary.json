@@ -356,7 +356,7 @@
     "stocking" : {
       "centralLibrary" : 10,
       "scienceLibrary" : 0,
-      "hssmLibrary" : -1
+      "hssmLibrary" : 1
     },
     "reviews" : [ ],
     "author" : "Victor",

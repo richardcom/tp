@@ -50,7 +50,7 @@ public class ResultDisplay extends UiPart<Region> {
 
         if (inputArr.length == 1) {
             for (String suggestion : commandSuggestionList) {
-                if (suggestion.startsWith(prefix.toLowerCase())) {
+                if (suggestion.startsWith(prefix.toLowerCase()) || suggestion.startsWith(prefix.toUpperCase())) {
                     feedback += suggestion + "\n";
                 }
             }
