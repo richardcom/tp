@@ -1148,7 +1148,7 @@ Use case ends.
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing. Command that exists in the original AddressBook application such as `list`, `help`, and `clear `
+testers are expected to do more *exploratory* testing. Command that exists in the original AddressBook application such as `list`, `help`, and `clear` are not included and their usage is similar to the original usage.
 
 </div>
 
@@ -1169,12 +1169,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 ### Deleting a book
 
-1. Deleting a book while all books are being shown using `delete`
+1. Deleting a book using `delete`
 
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First book is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
       Expected: No book is deleted. Error details shown in the status message. Status bar remains the same.
@@ -1182,7 +1182,9 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. Deleting a book while all books are being shown using `deleteBy`
+1. Deleting a book using `deleteBy`
+
+    1. Prerequisites:
 
     1. Test case:
        Expected:
@@ -1195,22 +1197,260 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 ### Adding a book
 
 1. Adding a book
+
+    1. Prerequisites:
     
-    1.
-    
-    
-    1.
-    
-    1.
+    1. Test case:
+           Expected:
+           
+    1. Test case:
+           Expected:
+               
+    1. Other incorrect commands to try:
     
 ### Editing a book
 
-1. Deleting a book while all books are being shown
+1. Editing a book
 
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+           
+    1. Test case:
+       Expected:
+               
+    1. Other incorrect commands to try:
     
+### Finding a certain book
 
+1. Finding a book using `find`
 
+    1. Prerequisites:
 
+    1. Test case:
+       Expected: 
+           
+    1. Test case:
+       Expected:
+               
+    1. Other incorrect commands to try:
+
+2. Finding the most popular book using `findMostPopular`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected: 
+               
+    1. Test case:
+       Expected:
+              
+    1. Other incorrect commands to try:
+
+3. Finding a random book of a given category using `random`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected: 
+               
+    1. Test case:
+       Expected:
+              
+    1. Other incorrect commands to try:
+
+### Getting the total number of times of borrowing of all the books
+
+1. Getting the total number of times of borrowing of all the books using `history`
+    
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+                  
+    1. Other incorrect commands to try:
+
+### Updating the borrowed times of a book
+
+1. Updating the borrowed times of a book given a shown book list using `times`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+   
+#### Finding the stocking of a book
+
+1. Finding the stocking of a book using `stock`
+
+    1. Prerequisites:
+
+    1. Test case: `stock n/Time`<br>
+       Expected: 
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+   
+### Finding the usage of a book
+
+1. Finding the usage of a book according to its displayed index using `usage`
+
+    1. Prerequisites:    
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+   
+2. Finding the usage of a book according to its name or ISBN using `usageBy`
+
+    1. Prerequisites:
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+   
+### Finding aLL the reviews of a book
+
+1. Finding aLL the reviews using `searchReivew`
+
+    1. Prerequisites:
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+
+### Adding a review to a book
+
+1. Adding a review to a book using `addReivew`
+
+    1. Prerequisites:
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+
+### Deleting a review from the review list of a book
+
+1. Deleting a review from the review list of a book using `deleteReivew`
+
+    1. Prerequisites:
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
+### Editing a review of a book
+
+1. Editing a review of a book using `editReivew`
+
+    1. Prerequisites:
+    
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+   
+### Viewing the recorded problem reports
+
+1. Viewing the recorded problem reports using `view`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
+### Finding a problem report
+
+1. Finding a problem report using `findProblemReport`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
+### Reporting a problem
+
+1. Reporting a problem using `report`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
+### Deleting a problem report
+
+1. Deleting a problem report using `deleteProblemReport`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
+### Editing a problem report
+
+1. Editing a problem report using `editProblemReport`
+
+    1. Prerequisites:
+
+    1. Test case:
+       Expected:
+      
+    1. Test case:
+       Expected:
+                     
+    1. Other incorrect commands to try:
+    
 ### Saving data
 
 1. Dealing with missing/corrupted data files
