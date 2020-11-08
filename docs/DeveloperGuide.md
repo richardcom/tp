@@ -275,7 +275,7 @@ Step 1. The user launches the application and types command `addReview 1 ra/5 re
 
 Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
 
-![The creation of the review](images/AddReviewParserSequenceDiagram.png)
+![The creation of the add review command](images/AddReviewParserSequenceDiagram.png)
 
 Step 3. The add review command parser returns an add review command, and this is returned by library parser.
 
