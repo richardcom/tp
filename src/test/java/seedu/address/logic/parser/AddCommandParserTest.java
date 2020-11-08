@@ -29,8 +29,8 @@ import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_SCIENCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
@@ -62,7 +62,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Book expectedBook = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_FRIEND).build();
+        Book expectedBook = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_SCIENCE).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2
@@ -95,8 +95,8 @@ public class AddCommandParserTest {
                 new AddCommand(expectedBook));
 
         // multiple categories - all accepted
-        Book expectedBookMultipleCategories = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_FRIEND,
-                VALID_CATEGORY_HUSBAND).build();
+        Book expectedBookMultipleCategories = new BookBuilder(BOOK9).withCategories(VALID_CATEGORY_SCIENCE,
+                VALID_CATEGORY_MATH).build();
         assertParseSuccess(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK2
                         + TIMES_DESC_BOOK2 + CATEGORY_DESC_HUSBAND + CATEGORY_DESC_FRIEND + STOCKING_DESC_BOOK2
                         + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2, new AddCommand(expectedBookMultipleCategories));
@@ -171,7 +171,7 @@ public class AddCommandParserTest {
 
         // invalid category
         assertParseFailure(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK2
-                + TIMES_DESC_BOOK2 + INVALID_CATEGORY_DESC + VALID_CATEGORY_FRIEND + STOCKING_DESC_BOOK2
+                + TIMES_DESC_BOOK2 + INVALID_CATEGORY_DESC + VALID_CATEGORY_SCIENCE + STOCKING_DESC_BOOK2
                         + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 Category.MESSAGE_CONSTRAINTS);
 

@@ -2,7 +2,7 @@ package seedu.address.model.book;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
@@ -38,13 +38,13 @@ public class BookTest {
 
         // same name, same isbn, different attributes -> returns true
         editedAlice = new BookBuilder(BOOK1).withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
 
 
         // same name, same isbn, same email, different attributes -> returns true
         editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
         assertTrue(BOOK1.isSameBook(editedAlice));
     }
 
@@ -83,7 +83,7 @@ public class BookTest {
         assertFalse(BOOK1.equals(editedAlice));
 
         // different categories -> returns false
-        editedAlice = new BookBuilder(BOOK1).withCategories(VALID_CATEGORY_HUSBAND).build();
+        editedAlice = new BookBuilder(BOOK1).withCategories(VALID_CATEGORY_MATH).build();
         assertFalse(BOOK1.equals(editedAlice));
     }
 }
