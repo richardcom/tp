@@ -27,7 +27,11 @@ public class BookReviewCard extends UiPart<Region> {
     public BookReviewCard(Review review, int displayedIndex) {
         super(FXML);
         id.setText("(" + displayedIndex + ")");
-        String ratingStar = review.getRating().ratingNumber + " star ";
+        String ratingStar = review.getRating().ratingNumber + " star";
+        if (review.getRating().ratingNumber > 1) {
+            ratingStar = ratingStar + "s";
+        }
+        ratingStar = ratingStar + " ";
         for (int i = 0; i < review.getRating().ratingNumber; i = i + 1) {
             ratingStar = ratingStar + "*";
         }

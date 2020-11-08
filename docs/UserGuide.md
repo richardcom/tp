@@ -280,14 +280,9 @@ The reason for the design used is that the searching can be more consistent. The
 If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy **both** of the conditions.
 
 If neither of them are present, then the command will return the stocking information of all the books.
-
-If the value after the prefix is empty, then the command will return the stocking information of all the books.
-
-For example, the command stock n/ and the command stock i/ will return the stocking information of all the books.
 </div>
 
 Examples:
-* `stock n/A brief history of time i/9780553175219`
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
 * `stock`
@@ -328,7 +323,6 @@ The review list of the book with no review will be empty.
 </div>
 
 Examples:
-* `searchReview n/A brief history of time i/9780553175219`
 * `searchReview n/A brief history of time`
 * `searchReview i/9780553175219`
 * `searchReview`
@@ -349,7 +343,9 @@ The book review will be added according to the index of the book in the current 
 
 The rating needs to be a string representing an integer from 0 to 5.
 
-The review content should not be empty and it should not contain more than 300 characters.
+The review content should not be empty and it should not contain more than 300 characters, excluding the leading and trailing white space.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 
 If other command is executed before the add review command, then only the index corresponding to the book shown in the current book list will be valid.
 
@@ -389,7 +385,9 @@ The explanation about index is similar to add review and delete review command.
 
 If neither rating or review content is present, then an exception message will be shown.
 
-If the edited review is the same as the original review, then a corresponding exception message will be shown. 
+If the edited review is the same as the original review, then a corresponding exception message will be shown.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 </div>
 
 Examples:
