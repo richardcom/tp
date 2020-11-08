@@ -47,7 +47,7 @@ This is a team project done to fulfill the requirement of Module CS2103.
 [[portfolio](team/stefan-jiang.md)]
 
 * Role: Developer
-* Responsibilities: Code Quality. In charge of UI.
+* Responsibilities: Documentation & Code Quality. In charge of UI.
 
 
 ### Song Qifeng
