@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -41,10 +41,10 @@ public class EditCommandTest {
 
         BookBuilder bookInList = new BookBuilder(lastBook);
         Book editedBook = bookInList.withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2)
-                .withIsbn(VALID_ISBN_BOOK2).withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withIsbn(VALID_ISBN_BOOK2).withCategories(VALID_CATEGORY_MATH).build();
         EditCommand editCommand = new EditCommand(indexLastBook, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
