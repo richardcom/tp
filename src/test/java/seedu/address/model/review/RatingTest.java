@@ -3,7 +3,14 @@ package seedu.address.model.review;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static seedu.address.testutil.Assert.assertThrows;
+
 class RatingTest {
+
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Rating(null));
+    }
 
     @Test
     void isValidRating_inRange_success() {

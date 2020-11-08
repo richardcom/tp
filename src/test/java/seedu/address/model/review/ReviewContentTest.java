@@ -3,7 +3,15 @@ package seedu.address.model.review;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static seedu.address.testutil.Assert.assertThrows;
+
 class ReviewContentTest {
+
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new ReviewContent(null));
+    }
+
 
     @Test
     void isValidContent() {
