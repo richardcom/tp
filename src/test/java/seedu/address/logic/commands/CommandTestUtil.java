@@ -45,8 +45,8 @@ public class CommandTestUtil {
     public static final String VALID_LANGUAGE_BOOK2 = "Chinese";
     public static final String VALID_TIMES_BOOK1 = "23";
     public static final String VALID_TIMES_BOOK2 = "2";
-    public static final String VALID_CATEGORY_HUSBAND = "husband";
-    public static final String VALID_CATEGORY_FRIEND = "friend";
+    public static final String VALID_CATEGORY_MATH = "Math";
+    public static final String VALID_CATEGORY_SCIENCE = "Science";
     public static final String VALID_STOCKING_BOOK1 = "centralLb 10 scienceLb 10";
     public static final String VALID_STOCKING_BOOK2 = "centralLb 30 scienceLb 15";
     public static final String VALID_AUTHOR_BOOK1 = "a";
@@ -68,8 +68,8 @@ public class CommandTestUtil {
     public static final String LANGUAGE_DESC_BOOK2 = " " + PREFIX_LANGUAGE + VALID_LANGUAGE_BOOK2;
     public static final String TIMES_DESC_BOOK1 = " " + PREFIX_TIMES + VALID_TIMES_BOOK1;
     public static final String TIMES_DESC_BOOK2 = " " + PREFIX_TIMES + VALID_TIMES_BOOK2;
-    public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_FRIEND;
-    public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_HUSBAND;
+    public static final String CATEGORY_DESC_FRIEND = " " + PREFIX_CATEGORY + VALID_CATEGORY_SCIENCE;
+    public static final String CATEGORY_DESC_HUSBAND = " " + PREFIX_CATEGORY + VALID_CATEGORY_MATH;
     public static final String STOCKING_DESC_BOOK1 = " " + PREFIX_STOCKING + VALID_STOCKING_BOOK1;
     public static final String STOCKING_DESC_BOOK2 = " " + PREFIX_STOCKING + VALID_STOCKING_BOOK2;
     public static final String AUTHOR_DESC_BOOK1 = " " + PREFIX_AUTHOR + VALID_AUTHOR_BOOK1;
@@ -103,13 +103,13 @@ public class CommandTestUtil {
 
     static {
         DESC_BOOK1 = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK1).withIsbn(VALID_ISBN_BOOK1)
-                .withEmail(VALID_EMAIL_BOOK1).withLanguage(VALID_LANGUAGE_BOOK1).withCategories(VALID_CATEGORY_FRIEND)
+                .withEmail(VALID_EMAIL_BOOK1).withLanguage(VALID_LANGUAGE_BOOK1).withCategories(VALID_CATEGORY_SCIENCE)
                 .withTimes(VALID_TIMES_BOOK1).withStockings(VALID_STOCKING_BOOK1).withAuthor(VALID_AUTHOR_BOOK1)
                 .withPublisher(VALID_PUBLISHER_BOOK1).build();
         DESC_BOOK2 = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
                 .withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2).withStockings(VALID_STOCKING_BOOK2)
                 .withTimes(VALID_TIMES_BOOK2).withPublisher(VALID_PUBLISHER_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).withAuthor(VALID_AUTHOR_BOOK2).build();
+                .withCategories(VALID_CATEGORY_MATH, VALID_CATEGORY_SCIENCE).withAuthor(VALID_AUTHOR_BOOK2).build();
         DESC_REPORT1 = new EditProblemDescriptorBuilder().withSeverity(VALID_SEVERITY_P1)
                 .withDescription(VALID_DESCRIPTION_P1).build();
         DESC_REPORT2 = new EditProblemDescriptorBuilder().withSeverity(VALID_SEVERITY_P2)
