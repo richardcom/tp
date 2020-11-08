@@ -208,7 +208,7 @@ The current enhancement is in alignment with other components of the book, which
 
 #### Existing implementation
 
-The existing implementation of the storing and retriving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
+The existing implementation of the storing and retrieving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
 
 The relevant methods are
 
@@ -217,13 +217,13 @@ The relevant methods are
 * `JsonAdaptedStocking#JsonAdaptedStocking(Stocking)` — Transforms the stocking model into the json adapted model.
 * `JsonAdaptedStocking#toModelType(Stocking)` — Transforms the json adapted model into the stocking model.
 
-The relationship 
+The relationship between the book and the stocking and other components
 
 ![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
 
-These operations are incoperated into the storage read and write process in the execution.
+These operations are incorporated into the storage read and write process in the execution.
 
-#####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+#####Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
 Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
@@ -231,7 +231,9 @@ Step 2. The edit command parser calls the ParseUtil, which parses the string and
 
 ![The creation of the stocking](images/EditStockingParserSequenceDiagram.png)
 
-Step 3. The edit command parser uses the stocking and returns an edit command, and this is returned by library parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The edit command parser uses the stocking and returns an edit command, and this is returned by library parser. 
+
+Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
 #####Given below is an example usage scenario of how the stocking command will be executed, 
 
@@ -256,6 +258,64 @@ The current implementation of the stocking is consistent with other components o
 * **Alternative 2:** Enables the user to use abbreviation of the library location.
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
+  
+### Reviewing of a book
+
+#### Existing implementation
+
+The existing implementation of the review uses `Review`, `JsonAdaptedReview` and other related objects.
+
+The class diagram for `Review`
+
+![The class diagram for review](images/ModelClassBookReviewDiagram.png)
+
+#####Given below is an example usage scenario of adding a review to a book.
+
+Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
+
+Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
+
+![The creation of the review](images/AddReviewParserSequenceDiagram.png)
+
+Step 3. The add review command parser returns an add review command, and this is returned by library parser.
+
+Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
+
+#####Given below is an example usage scenario of editing a review of a book.
+
+Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
+
+Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `Review`.
+
+Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
+
+Step 4. The edit review command is executed and updates the review at postion `4` in the review list of the book with index `1` in the currently shown book list.
+
+#####Given below is description of deleting review of a book.
+
+The process is similar to edit review command.
+
+The difference is that in Step 2, the delete review command parser will only parses the index of the book and the review number of the review to delete, which will be used to create a delete command.
+
+In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
+
+#####Given below is description of searching review of a book.
+
+Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
+
+#### Design consideration:
+
+The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
+
+##### Aspect: What is the length of the review content
+
+* **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
+  * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
+  * Cons: May bring inconvenience for recording the thoughts of some readers in detail.
+
+* **Alternative 2:** Remove the length restriction
+  * Pros: Allows the thoughts to be recorded in detail.
+  * Cons: May cause inconvenience for recording and summarizing the review.
 
 ### \[New\] ReportProblem feature
 

@@ -5,7 +5,7 @@ box Logic LOGIC_COLOR_T1
 
 participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
 participant "<<class>>\n:ParseUtil" as ParserUtil LOGIC_COLOR
-participant "a:EditCommand" as EditCommand LOGIC_COLOR
+participant "e:EditCommand" as EditCommand LOGIC_COLOR
 participant "s:Stocking" as Stocking LOGIC_COLOR
 end box
 
@@ -22,7 +22,7 @@ activate Stocking
 Stocking --> ParserUtil : s
 deactivate Stocking
 
-ParserUtil -> EditCommandParser : s
+ParserUtil --> EditCommandParser : s
 deactivate ParserUtil
 
 create EditCommand
