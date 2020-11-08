@@ -4,6 +4,17 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
+<<<<<<< HEAD
+Addressbook *-right-> "1" UniqueBookList
+Addressbook *-right-> "1" UniqueCategoryList
+UniqueCategoryList -[hidden]down- UniqueBookList
+UniqueCategoryList -[hidden]down- UniqueBookList
+
+UniqueCategoryList *-right-> "*" Category
+UniqueBookList o-right-> Book
+
+=======
+>>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
 Book -up-> "*" Category
 
 Book *--> Name

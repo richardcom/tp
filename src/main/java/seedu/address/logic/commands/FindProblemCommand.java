@@ -7,7 +7,6 @@ import seedu.address.model.Model;
 import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 import seedu.address.ui.Mode;
 
-
 public class FindProblemCommand extends Command {
 
     public static final String COMMAND_WORD = "findProblemReport";
@@ -24,6 +23,12 @@ public class FindProblemCommand extends Command {
         this.predicate = predicate;
     }
 
+    /**
+     * Executes find problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

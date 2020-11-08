@@ -10,7 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Check usage of a book identified using name, isbn, or times.
+ * Checks usage of a book identified using name, isbn, or times.
  */
 public class UsageByCommand extends Command {
 
@@ -29,6 +29,13 @@ public class UsageByCommand extends Command {
         this.target = target;
     }
 
+    /**
+     * Execute usageBy command on model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     * @throws CommandException if invalid book name
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

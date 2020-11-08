@@ -107,7 +107,7 @@ class AddProblemCommandTest {
         }
 
         @Override
-        public void setLibraryFilePath(Path languageBookFilePath) {
+        public void setLibraryFilePath(Path addressbookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 

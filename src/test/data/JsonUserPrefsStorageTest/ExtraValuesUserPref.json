@@ -9,5 +9,5 @@
       "z" : 99
     }
   },
-  "languageBookFilePath" : "languagebook.json"
+  "addressbookFilePath" : "addressbook.json"
 }

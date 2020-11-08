@@ -4,19 +4,17 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SEVERITY;
 
-import java.io.IOException;
-
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.problem.Problem;
 
 /**
- * Adds a book to the language book.
+ * Adds a book to the intellibrary.
  */
 public class AddProblemCommand extends Command {
 
     public static final String COMMAND_WORD = "report";
-    public static final String SUGGESTION = "report s/SEVERITY d/DESCRIPTION";
+    public static final String SUGGESTION = "report s/<severity> d/<description>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Reports a problem. " + "Parameters: " + PREFIX_SEVERITY
             + "severity " + PREFIX_DESCRIPTION + "description ";
@@ -33,8 +31,15 @@ public class AddProblemCommand extends Command {
         toAdd = problem;
     }
 
+    /**
+     * Executes add problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if duplicate problem
+     */
     @Override
-    public CommandResult execute(Model model) throws CommandException, IOException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasProblem(toAdd)) {

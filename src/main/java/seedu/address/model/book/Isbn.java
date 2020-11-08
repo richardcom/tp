@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Book's isbn number in the language book.
+ * Represents a Book's isbn number in the intellibrary.
  * Guarantees: immutable; is valid as declared in {@link #isValidIsbn(String)}
  */
 public class Isbn {

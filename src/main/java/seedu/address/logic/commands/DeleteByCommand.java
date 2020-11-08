@@ -21,7 +21,8 @@ import seedu.address.ui.Mode;
 public class DeleteByCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteBy";
-    public static final String SUGGESTION = "deleteBy [n/NAME] [i/ISBN] [t/TIMES]";
+    public static final String SUGGESTION = "deleteBy n/<name>\n"
+            + "deleteBy i/<isbn>\n" + "deleteBy t/<times>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the book identified by the name, isbn or times borrowed.\n"
@@ -45,6 +46,13 @@ public class DeleteByCommand extends Command {
         this.attribute = attribute;
     }
 
+    /**
+     * Executes deleteBy problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if book cannot be found or book found invalid
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

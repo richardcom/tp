@@ -93,26 +93,26 @@ public class LogicManager implements Logic {
         keywords.add(AddProblemCommand.SUGGESTION);
         keywords.add(AddReviewCommand.SUGGESTION);
         keywords.add(ClearCommand.COMMAND_WORD);
-        keywords.add(DeleteCommand.SUGGESTION);
         keywords.add(DeleteByCommand.SUGGESTION);
+        keywords.add(DeleteCommand.SUGGESTION);
         keywords.add(DeleteProblemCommand.SUGGESTION);
         keywords.add(DeleteReviewCommand.SUGGESTION);
         keywords.add(EditCommand.SUGGESTION);
         keywords.add(EditReviewCommand.SUGGESTION);
         keywords.add(ExitCommand.COMMAND_WORD);
         keywords.add(FindCommand.SUGGESTION);
+        keywords.add(FindMostPopularCommand.SUGGESTION);
         keywords.add(FindProblemCommand.SUGGESTION);
         keywords.add(HelpCommand.COMMAND_WORD);
         keywords.add(HistoryCommand.COMMAND_WORD);
         keywords.add(ListCommand.COMMAND_WORD);
         keywords.add(RandomCommand.SUGGESTION);
         keywords.add(SearchReviewCommand.SUGGESTION);
-        keywords.add(FindMostPopularCommand.SUGGESTION);
         keywords.add(StockCommand.SUGGESTION);
         keywords.add(TimesCommand.SUGGESTION);
-        keywords.add(UsageCommand.SUGGESTION);
         keywords.add(UsageByCommand.SUGGESTION);
-        keywords.add(ViewProblemCommand.SUGGESTION);
+        keywords.add(UsageCommand.SUGGESTION);
+        keywords.add(ViewProblemCommand.COMMAND_WORD);
         return keywords;
     }
 }

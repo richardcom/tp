@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-IntelliBrary is an **app for managing storage, purchase, borrowing, and reader review of books in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+IntelliBrary is an **app for managing storage, purchase, borrowing, reader reviews of books, and logistics in NUS library via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 Targeted at users who can type fast, IntelliBrary can get your library management tasks done faster than traditional GUI apps.
 
 * Table of Contents
@@ -27,15 +27,18 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all books in the library.
 
-   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com lang/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
    * **`clear`** : Deletes all books.
 
    * **`exit`** : Exits the app.
+   
+6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
+   Note that in smart suggestions, only compulsory fields of a command is shown. To see full usage of commands, go to step 7.
 
-6. Refer to the [Features](#features) below for details of all the commands.
+7. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -315,7 +318,7 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
-The usage is similar to the stock command.
+This command usage is similar to the stock command.
 
 The review list of the book with no review will be empty.
 </div>
@@ -399,15 +402,15 @@ Checks usage times of a certain book specified by user. Book is specified by any
 
 ##### by Index
 Format:
-* `usage [INDEX]`
+* `usage INDEX`
 
 Examples:
 * `usage 2`
 
 ##### by Book Name or ISBN
 Format: 
-* `usageBy i/[ISBN]`
-* `usageBy n/[BOOK_NAME]`
+* `usageBy i/ISBN`
+* `usageBy n/BOOK_NAME`
 
 Examples:
 * `usageBy i/9780141439518`
@@ -522,7 +525,11 @@ Examples:
 * `findProblemReport table chair` returns `table`, `chair`
 
 
+<<<<<<< HEAD
+Deletes the specified person from the intellibrary.
+=======
 #### Deleting a report : `deleteProblemReport`
+>>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
 
 Deletes the specified problem report from library management system.
 
@@ -619,6 +626,6 @@ Action | Format, Examples
 **SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
-**Usage**| `usage [INDEX]` <br> e.g., `usage 1`
-**UsageBy**| `usageBy i/[ISBN]` `usageBy n/[BOOK_NAME]` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
+**Usage**| `usage INDEX` <br> e.g., `usage 1`
+**UsageBy**| `usageBy i/ISBN` `usageBy n/BOOK_NAME` <br> e.g., `usageBy i/9780141439518` `usageBy n/Pride and Prejudice`
 **ViewProblems** | `view`

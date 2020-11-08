@@ -7,5 +7,5 @@
       "y" : 100
     }
   },
-  "languageBookFilePath" : "languagebook.json"
+  "addressBookFilePath" : "addressbook.json"
 }

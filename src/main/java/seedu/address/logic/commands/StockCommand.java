@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
@@ -22,8 +21,7 @@ import seedu.address.ui.Mode;
 public class StockCommand extends Command {
 
     public static final String COMMAND_WORD = "stock";
-    public static final String SUGGESTION = "stock n/<book name>\n" + "stock i/<isbn>\n"
-            + "stock n/<book name> stock i/<isbn>";
+    public static final String SUGGESTION = "stock n/<book name>\n" + "stock i/<isbn>\n";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
             + "the corresponding keyword and shows them as a list.\n"
@@ -57,8 +55,14 @@ public class StockCommand extends Command {
         }
     }
 
+    /**
+     * Executes stock command on model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     */
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);

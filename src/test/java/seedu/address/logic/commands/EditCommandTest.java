@@ -46,7 +46,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
 
-        Model expectedModel = new ModelManager(new LanguageBook(model.getLanguageBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new Addressbook(model.getAddressbook()), new UserPrefs());
         expectedModel.setBook(model.getFilteredBookList().get(0), editedBook);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);

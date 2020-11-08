@@ -5,10 +5,10 @@ start
 'Since the beta syntax does not support placing the condition outside the
 'diamond we place it as the true branch instead.
 
-if () then ([command commits LanguageBook])
+if () then ([command commits Addressbook])
     :Purge redunant states;
-    :Save LanguageBook to
-    languageBookStateList;
+    :Save Addressbook to
+    addressbookStateList;
 else ([else])
 endif
 stop
