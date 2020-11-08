@@ -29,6 +29,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
+
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
    * **`clear`** : Deletes all books.
@@ -528,11 +529,8 @@ Examples:
 * `findProblemReport table chair` returns `table`, `chair`
 
 
-<<<<<<< HEAD
-Deletes the specified person from the intellibrary.
-=======
+
 #### Deleting a report : `deleteProblemReport`
->>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
 
 Deletes the specified problem report from library management system.
 
