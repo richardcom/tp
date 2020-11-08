@@ -27,6 +27,7 @@ significant contributions are recorded here.)
 * **Enhancements**: Update the GUI color scheme
   * Sample relevant pull request: [#143](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/143)
   * What it does: Changes the colour theme and other design details for the GUI.
+  <div style="page-break-after: always;"></div>
   * Justification: The upgrade of GUI significantly improves the appearance and the first impression of the product.
   * Highlights: This enhancement requires a lot of efforts in terms of incorporating the new design with the product
   and attention to details. There are many GUI bugs need to be fixed throughout the implementation process as well.
