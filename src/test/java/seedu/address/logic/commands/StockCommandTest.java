@@ -45,15 +45,15 @@ class StockCommandTest {
     }
 
     @Test
-    void execute_twoKeywords_twoBookFound() {
-        String expectedMessage = String.format(MESSAGE_BOOKS_LISTED_OVERVIEW, 2);
+    void execute_twoKeywords_noBookFound() {
+        String expectedMessage = String.format(MESSAGE_BOOKS_LISTED_OVERVIEW, 0);
         NameMatchesKeywordPredicate nameMatchesKeywordsPredicate =
                 new NameMatchesKeywordPredicate(Arrays.asList("Elle"));
         NumberContainsKeywordPredicate numberContainsKeywordsPredicate =
                 new NumberContainsKeywordPredicate(Arrays.asList("94351253"));
 
         Predicate<Book> predicate = (book -> nameMatchesKeywordsPredicate.test(book)
-                || numberContainsKeywordsPredicate.test(book));
+                && numberContainsKeywordsPredicate.test(book));
 
         expectedModel.updateFilteredBookList(predicate, Mode.NORMAL);
 

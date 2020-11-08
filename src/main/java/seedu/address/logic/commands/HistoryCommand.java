@@ -6,13 +6,24 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_BOOKS;
 
 import java.util.List;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 import seedu.address.ui.Mode;
 
+/**
+ * Gets all borrowed times summed up.
+ */
 public class HistoryCommand extends Command {
     public static final String COMMAND_WORD = "history";
 
+    /**
+     * Executes history command.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     * @throws CommandException if size is not legal
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
