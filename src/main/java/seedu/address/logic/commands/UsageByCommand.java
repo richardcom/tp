@@ -10,7 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Check usage of a book identified using name, isbn, or times.
+ * Checks usage of a book identified using name, isbn, or times.
  */
 public class UsageByCommand extends Command {
 

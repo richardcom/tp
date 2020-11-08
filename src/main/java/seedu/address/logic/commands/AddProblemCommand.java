@@ -33,8 +33,15 @@ public class AddProblemCommand extends Command {
         toAdd = problem;
     }
 
+    /**
+     * Execute usage command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if duplicate problem
+     */
     @Override
-    public CommandResult execute(Model model) throws CommandException, IOException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasProblem(toAdd)) {

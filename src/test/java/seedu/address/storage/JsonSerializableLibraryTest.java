@@ -13,11 +13,11 @@ public class JsonSerializableLibraryTest {
 
     /* @Test
     public void toModelType_typicalBooksFile_success() throws Exception {
-        JsonSerializableLanguageBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_BOOKS_FILE,
-                JsonSerializableLanguageBook.class).get();
-        LanguageBook languageBookFromFile = dataFromFile.toModelType();
-        LanguageBook typicalBooksLanguageBook = TypicalBooks.getTypicalLanguageBook();
-        assertEquals(languageBookFromFile, typicalBooksLanguageBook);
+        JsonSerializableAddressbook dataFromFile = JsonUtil.readJsonFile(TYPICAL_BOOKS_FILE,
+                JsonSerializableAddressbook.class).get();
+        Addressbook addressbookFromFile = dataFromFile.toModelType();
+        Addressbook typicalBooksAddressbook = TypicalBooks.getTypicalAddressbook();
+        assertEquals(addressbookFromFile, typicalBooksAddressbook);
     } // storage parser */
 
     /* @Test
@@ -29,9 +29,9 @@ public class JsonSerializableLibraryTest {
 
     /* @Test
     public void toModelType_duplicateBooks_throwsIllegalValueException() throws Exception {
-        JsonSerializableLanguageBook dataFromFile = JsonUtil.readJsonFile(DUPLICATE_BOOK_FILE,
-                JsonSerializableLanguageBook.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializableLanguageBook.MESSAGE_DUPLICATE_BOOK,
+        JsonSerializableAddressbook dataFromFile = JsonUtil.readJsonFile(DUPLICATE_BOOK_FILE,
+                JsonSerializableAddressbook.class).get();
+        assertThrows(IllegalValueException.class, JsonSerializableAddressbook.MESSAGE_DUPLICATE_BOOK,
                 dataFromFile::toModelType);
     } // storage parser */
 

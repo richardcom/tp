@@ -74,7 +74,7 @@ public class Library implements ReadOnlyLibrary {
     }
 
     /**
-     * Resets the existing data of this {@code LanguageBook} with {@code newData}.
+     * Resets the existing data of this {@code Addressbook} with {@code newData}.
      */
     public void resetData(ReadOnlyLibrary newData) {
         requireNonNull(newData);

@@ -7,7 +7,7 @@ title: "Tutorial: Removing Fields"
 >
 > —  Antoine de Saint-Exupery
 
-When working on LanguageBook, you will most likely find that some features and fields that are no longer necessary. In scenarios like this, you can consider refactoring the existing `Book` model to suit your use case.
+When working on Addressbook, you will most likely find that some features and fields that are no longer necessary. In scenarios like this, you can consider refactoring the existing `Book` model to suit your use case.
 
 In this tutorial, we’ll do exactly just that and remove the `language` field from `Book`.
 
@@ -87,7 +87,7 @@ At this point, your application is working as intended and all your tests are pa
 
 In `src/test/data/`, data meant for testing purposes are stored. While keeping the `language` field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.
 
-**`invalidBookLanguageBook.json`:**
+**`invalidBookAddressbook.json`:**
 
 ```json
 {

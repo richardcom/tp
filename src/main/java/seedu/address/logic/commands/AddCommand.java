@@ -16,7 +16,7 @@ import seedu.address.model.Model;
 import seedu.address.model.book.Book;
 
 /**
- * Adds a book to the language book.
+ * Adds a book to the intellibrary.
  */
 public class AddCommand extends Command {
 
@@ -59,6 +59,13 @@ public class AddCommand extends Command {
         toAdd = book;
     }
 
+    /**
+     * Execute usage command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if duplicate book
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

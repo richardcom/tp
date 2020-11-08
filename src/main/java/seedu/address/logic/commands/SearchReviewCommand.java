@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
 import seedu.address.model.book.Book;
@@ -57,8 +56,14 @@ public class SearchReviewCommand extends Command {
         }
     };
 
+    /**
+     * Execute usage command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     */
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
 
         model.updateFilteredBookList((book -> false), Mode.NORMAL);

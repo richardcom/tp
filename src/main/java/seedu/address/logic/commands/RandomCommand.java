@@ -40,6 +40,12 @@ public class RandomCommand extends Command {
         this.category = category;
     }
 
+    /**
+     * Execute usage command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
