@@ -1,15 +1,5 @@
 package seedu.address.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.book.Book;
-import seedu.address.model.problem.Problem;
-import seedu.address.ui.Mode;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.*;
@@ -17,16 +7,26 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalIndexes.*;
 import static seedu.address.testutil.TypicalProblems.getTypicalReportLibrary;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.problem.Problem;
+import seedu.address.ui.Mode;
+
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code DeleteCommand}.
+ * {@code DeleteProblemCommand}.
  */
 public class DeleteProblemCommandTest {
 
     private Model model = new ModelManager(getTypicalReportLibrary(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void execute_validIndexUnfilteredReportList_success() {
         Problem problemToDelete = model.getFilteredProblemList().get(INDEX_FIRST_REPORT.getZeroBased());
         DeleteProblemCommand deleteProblemCommand = new DeleteProblemCommand(INDEX_FIRST_REPORT);
 
@@ -38,52 +38,51 @@ public class DeleteProblemCommandTest {
     }
 
     @Test
-    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredBookList().size() + 1);
-        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
-
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+    public void execute_invalidIndexUnfilteredReportList_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredProblemList().size() + 1);
+        DeleteProblemCommand deleteProblemCommand = new DeleteProblemCommand(outOfBoundIndex);
+        assertCommandFailure(deleteProblemCommand, model, Messages.MESSAGE_INVALID_PROBLEM_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        showBookAtIndex(model, INDEX_FIRST_BOOK);
+        showReportAtIndex(model, INDEX_FIRST_REPORT);
 
-        Book bookToDelete = model.getFilteredBookList().get(INDEX_FIRST_BOOK.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_BOOK);
+        Problem problemToDelete = model.getFilteredProblemList().get(INDEX_FIRST_REPORT.getZeroBased());
+        DeleteProblemCommand deleteProblemCommand = new DeleteProblemCommand(INDEX_FIRST_BOOK);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_BOOK_SUCCESS, bookToDelete);
+        String expectedMessage = String.format(DeleteProblemCommand.MESSAGE_DELETE_PROBLEM_SUCCESS, problemToDelete);
 
         Model expectedModel = new ModelManager(model.getLibrary(), new UserPrefs());
-        expectedModel.deleteBook(bookToDelete);
-        showNoBook(expectedModel);
+        expectedModel.deleteProblem(problemToDelete);
+        showNoReport(expectedModel);
 
-        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteProblemCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showBookAtIndex(model, INDEX_FIRST_BOOK);
+        showReportAtIndex(model, INDEX_FIRST_REPORT);
 
-        Index outOfBoundIndex = INDEX_SECOND_BOOK;
+        Index outOfBoundIndex = INDEX_SECOND_REPORT;
         // ensures that outOfBoundIndex is still in bounds of library list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getLibrary().getBookList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getLibrary().getProblemList().size());
 
-        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
+        DeleteProblemCommand deleteProblemCommand = new DeleteProblemCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+        assertCommandFailure(deleteProblemCommand, model, Messages.MESSAGE_INVALID_PROBLEM_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_BOOK);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_BOOK);
+        DeleteProblemCommand deleteFirstCommand = new DeleteProblemCommand(INDEX_FIRST_REPORT);
+        DeleteProblemCommand deleteSecondCommand = new DeleteProblemCommand(INDEX_SECOND_REPORT);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_BOOK);
+        DeleteProblemCommand deleteFirstCommandCopy = new DeleteProblemCommand(INDEX_FIRST_REPORT);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
@@ -99,9 +98,9 @@ public class DeleteProblemCommandTest {
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
-    private void showNoBook(Model model) {
-        model.updateFilteredBookList(p -> false, Mode.NORMAL);
+    private void showNoReport(Model model) {
+        model.updateFilteredProblemList(p -> false, Mode.NORMAL);
 
-        assertTrue(model.getFilteredBookList().isEmpty());
+        assertTrue(model.getFilteredProblemList().isEmpty());
     }
 }
