@@ -706,14 +706,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
+| `* * *`  | library administrator                      | Add new books, delete original books in the library   | keep in the information in IntelLibrary application up to date  |
+| `* * *`  | library administrator                      | Delete all unpopular books at a time   | efficiently keep the record up to date and cleans unpopular books from the system efficiently  |
 | `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   | efficiently increase the stockings of those very popular books to meet the demand of the readers   |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     | know what books to purchase in the future                                                                                 |
+| `* *`    | library administrator                      | get the most popular book in each categories                                     | know what books to purchase in the future        |
 | `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    | estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
 | `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    | keep the review record for future evaluation of the book quality and popularity among the readers|
 | `* *`    | library administrator                      | edit the information of a book                                                        | keep the book information in the database up to date                                                                      |
-| `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
+| `* * `   | library administrator                      | get a randomly selected book from specified category at a time   | easier to implement random sampling for library book data analysis  |
+| `* * *`  | library administrator                      | report, delete problems found in libraries along with their severities                   |keep track of and update the problems and prioritize them by their severity levels                          |
 | `* * *`  | library administrator                      | view all the reported problems                                                 | know what problems need to be solved  |
-| `* *`    | expert user                                | delete multiple books by condition within one command                           | it is more time efficient            |
+| `* * *`  | library administrator                      | edit the information of reported problems                                                 | keep the report information in record up to date  |
+| `* * *`  | library administrator                      | get the report which description contains keywords                        | fast access and find relevant problems at a time |
+| `* *`    | expert user                                | delete multiple books by condition within one command      | it is more time efficient            |
 | `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       | tell students whether they can borrow this book or not            |
@@ -771,7 +776,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case: UC03 - Delete Books**
 
 **MSS**
-  1. User request to delete a book from the library.
+  1. User request to delete books from the library.
 
   2. IntelliBrary deletes the book from the library and shows a successfull message to the user.
   
@@ -779,10 +784,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   
 **Extensions**
 
-* 1a. The book to be deleted cannot be found in the library.
+* 1a. The book name or ISBN given by the user is not found in the record, or there are no books which has been borrowed fewer times than the number of times specified.
     
-    * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
+    * 1a1. IntelliBrary shows an error message that the book is not found and 0 book is listed.
     
+      Use case ends.
+
+* 1b. The book to be deleted is not recorded.
+
+    * 1b1. IntelliBrary shows that the stocking information of the book in some locations is not available.
+
       Use case ends.
             
 **Use case: UC04 - view the stockings of different books**
@@ -1048,6 +1059,39 @@ Use case ends.
 
   Use case ends.
 
+**Use case: UC17 - Delete a problem report**
+
+**MSS**
+  1. User requests to delete a problem report by index.
+  2. IntelliBrary deletes the problem report and shows a successfull message to the user.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. The index given by the user is invalid.
+
+    * 1a1. IntelliBrary shows an error message that index given by the user is invalid.
+
+      Use case ends.
+    
+    
+**Use case: UC18 - Find a problem report by description**
+
+**MSS**
+  1. User requests to find reports that the descriptions matches certain keywords.
+  2. IntelliBrary finds reports which descriptions matches the keywords.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. No problem reports that the description matches the keyword is found.
+
+    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+
+      Use case ends.
+    
 *{More to be added}*
 
 ### Non-Functional Requirements
