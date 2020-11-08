@@ -31,11 +31,11 @@ significant contributions are recorded here.)
   * Highlights: This enhancement requires a lot of efforts in terms of incorporating the new design with the product
   and attention to details. There are many GUI bugs need to be fixed throughout the implementation process as well.
 
-* **Enhancements**: Morph the product from LanguageBook to IntelliBrary
+* **Enhancements**: Morph the product from Addressbook to IntelliBrary
   * Relevant pull request: [\#112](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/112)
-  * What it does: Morph everything related to LanguageBook into IntelliBrary, including methods, classes, tests,
+  * What it does: Morph everything related to Addressbook into IntelliBrary, including methods, classes, tests,
   documentations and other files.
-  * Justification: This enhancement is the most fundamental and necessary change needed to morph LanguageBook to
+  * Justification: This enhancement is the most fundamental and necessary change needed to morph Addressbook to
   IntelliBrary.
   * Highlights: This enhancement requires a comprehensive understanding of the original product (e.g. architectural
   design). In the meantime, it involves the addition and/or deletion of many attributes as well.

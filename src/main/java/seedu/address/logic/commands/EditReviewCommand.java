@@ -73,6 +73,13 @@ public class EditReviewCommand extends Command {
         this.reviewNumber = reviewNumber.reviewNumber;
     }
 
+    /**
+     * Executes edit review command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if invalid index or invalid book
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         try {

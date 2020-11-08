@@ -55,6 +55,13 @@ public class EditProblemCommand extends Command {
         this.editProblemDescriptor = new EditProblemDescriptor(editProblemDescriptor);
     }
 
+    /**
+     * Executes edit problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if invalid problem
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

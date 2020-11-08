@@ -37,13 +37,13 @@ import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
 
 /**
- * Edits the details of an existing book in the language book.
+ * Edits the details of an existing book in the intellibrary.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
     public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<language> t/<times>"
-            + "/<category>… s/<stocking> a/<author> p/<publisher> t/<times>";
+            + "c/<category>… s/<stocking> a/<author> p/<publisher>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
             + "by the index number used in the displayed book list. "
@@ -59,12 +59,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_AUTHOR + "AUTHOR] "
             + "[" + PREFIX_PUBLISHER + "PUBLISHER] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_ISBN + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_ISBN + "13091234567 "
+            + PREFIX_EMAIL + "thisbook@publisher.com";
 
     public static final String MESSAGE_EDIT_BOOK_SUCCESS = "Edited Book: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the language book.";
+    public static final String MESSAGE_DUPLICATE_BOOK = "This book already exists in the intellibrary.";
 
     private final Index index;
     private final EditBookDescriptor editBookDescriptor;
@@ -81,6 +81,13 @@ public class EditCommand extends Command {
         this.editBookDescriptor = new EditBookDescriptor(editBookDescriptor);
     }
 
+    /**
+     * Executes edit command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if invalid index
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

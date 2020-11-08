@@ -6,14 +6,19 @@ import seedu.address.model.Library;
 import seedu.address.model.Model;
 
 /**
- * Clears the language book.
+ * Clears the intellibrary.
  */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
     public static final String MESSAGE_SUCCESS = "Library has been cleared!";
 
-
+    /**
+     * Executes clear command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

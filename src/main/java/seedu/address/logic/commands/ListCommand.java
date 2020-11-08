@@ -7,7 +7,7 @@ import seedu.address.model.Model;
 import seedu.address.ui.Mode;
 
 /**
- * Lists all books in the language book to the user.
+ * Lists all books in the intellibrary to the user.
  */
 public class ListCommand extends Command {
 
@@ -15,6 +15,12 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Listed all books";
 
+    /**
+     * Executes list command on model.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

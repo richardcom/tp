@@ -4,10 +4,9 @@ title: About Us
 ---
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
-
+This is a team project done to fulfill the requirement of Module CS2103.
 
 ## Project team
-
 
 ### Xu Caiyi
 
@@ -17,8 +16,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/caiyi34777.md)]
 
 * Role: Developer
-* Responsibilities: Documentation. In charge of Model.
-
+* Responsibilities: Documentation. In charge of Model and Logic.
 
 ### Huang Chengyu
 
