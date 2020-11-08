@@ -98,6 +98,7 @@ public class LogicManager implements Logic {
         keywords.add(DeleteProblemCommand.SUGGESTION);
         keywords.add(DeleteReviewCommand.SUGGESTION);
         keywords.add(EditCommand.SUGGESTION);
+        keywords.add(EditProblemCommand.SUGGESTION);
         keywords.add(EditReviewCommand.SUGGESTION);
         keywords.add(ExitCommand.COMMAND_WORD);
         keywords.add(FindCommand.SUGGESTION);

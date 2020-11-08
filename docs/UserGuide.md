@@ -36,7 +36,10 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
    * **`exit`** : Exits the app.
    
 6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
-   Note that in smart suggestions, only compulsory fields of a command is shown. To see full usage of commands, go to step 7.
+   Note that for *exit* related commands, you can choose to edit as many attributes as you wish at a time.
+   For other commands in smart suggestions, only compulsory fields of a command are shown. 
+   For readability in app launch, in smart suggestion,
+   example formats of usage are provided in lower cases of alphabet. To see full usage details of commands, go to step 7.
 
 7. Refer to the [Features](#features) below for details of all the commands.
 
