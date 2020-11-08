@@ -1160,7 +1160,7 @@ Use case ends.
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Command that exists in the original AddressBook application such as `list`, `help`, and `clear `
 
 </div>
 
@@ -1183,7 +1183,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting a book
 
-1. Deleting a book while all books are being shown
+1. Deleting a book while all books are being shown using `delete`
 
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
@@ -1196,7 +1196,33 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. Deleting a book while all books are being shown using `deleteBy`
+
+    1. Test case:
+       Expected:
+       
+    1. Test case:
+       Expected:
+           
+    1. Other incorrect commands to try:
+
+### Adding a book
+
+1. Adding a book
+    
+    1.
+    
+    
+    1.
+    
+    1.
+    
+### Editing a book
+
+1. Deleting a book while all books are being shown
+
+    
+
 
 ### Saving data
 
