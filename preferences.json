@@ -1,11 +1,11 @@
 {
   "guiSettings" : {
-    "windowWidth" : 1400.0,
-    "windowHeight" : 800.0,
+    "windowWidth" : 1140.0,
+    "windowHeight" : 804.0,
     "windowCoordinates" : {
-      "x" : 56,
-      "y" : 20
+      "x" : 57,
+      "y" : 23
     }
   },
-  "libraryFilePath" : "data\\addressbook.json"
+  "libraryFilePath" : "data/IntelliBrary.json"
 }
