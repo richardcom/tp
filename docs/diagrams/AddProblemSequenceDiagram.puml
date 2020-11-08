@@ -5,7 +5,10 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":LibraryParser" as LibraryParser LOGIC_COLOR
 participant ":AddProblemCommandParser" as AddProblemCommandParser LOGIC_COLOR
-participant "d:AddProblemCommand" as AddProblemCommand LOGIC_COLOR
+participant "severity:Severity" as Severity LOGIC_COLOR
+participant "description:description" as Description LOGIC_COLOR
+participant "problem:Problem" as Problem LOGIC_COLOR
+participant "command:AddProblemCommand" as AddProblemCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -20,7 +23,7 @@ LogicManager -> LibraryParser : parseCommand("report s/high d/book is broken")
 activate LibraryParser
 
 create AddProblemCommandParser
-LibraryParser -> AddProblemCommandParser
+LibraryParser -> AddProblemCommandParser : AddProblemCommandParser()
 activate AddProblemCommandParser
 
 AddProblemCommandParser --> LibraryParser
@@ -29,20 +32,41 @@ deactivate AddProblemCommandParser
 LibraryParser -> AddProblemCommandParser : parse("s/high d/book is broken")
 activate AddProblemCommandParser
 
+create Severity
+AddProblemCommandParser -> Severity : Severity("high")
+activate Severity
+
+Severity --> AddProblemCommandParser : severity
+deactivate Severity
+
+create Description
+AddProblemCommandParser -> Description : Description("book is broken")
+activate Description
+
+Description --> AddProblemCommandParser : description
+deactivate Description
+
+create Problem
+AddProblemCommandParser -> Problem : Problem(severity, description)
+activate Problem
+
+Problem --> AddProblemCommandParser : problem
+deactivate Problem
+
 create AddProblemCommand
-AddProblemCommandParser -> AddProblemCommand
+AddProblemCommandParser -> AddProblemCommand : AddProblemCommand(problem)
 activate AddProblemCommand
 
-AddProblemCommand --> AddProblemCommandParser : d
+AddProblemCommand --> AddProblemCommandParser : command
 deactivate AddProblemCommand
 
-AddProblemCommandParser --> LibraryParser : d
+AddProblemCommandParser --> LibraryParser : command
 deactivate AddProblemCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 AddProblemCommandParser -[hidden]-> LibraryParser
 destroy AddProblemCommandParser
 
-LibraryParser --> LogicManager : d
+LibraryParser --> LogicManager : command
 deactivate LibraryParser
 
 LogicManager -> AddProblemCommand : execute()
