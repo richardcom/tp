@@ -1124,11 +1124,28 @@ Use case ends.
   
      Use case ends.
      
-**Use case: UC21 - Check history**
+**Use case: UC21 - Find a book**
 
 **MSS**
-  1. User requests to check the history of borrowing.
-  2. IntelliBrary provides the information of borrowing history.
+  1. User requests to find a book according to the search of keywords.
+  2. IntelliBrary provides a list of books whose names contain one of the keywords.
+  3. User finds the book in the list.
+  
+     Use case ends.
+     
+**Extensions**
+
+* 1a. No book whose description matches the keyword is found.
+
+    * 1a1. IntelLiBrary shows a message that no matching boos are found.
+
+      Use case ends.
+      
+**Use case: UC22 - Exit the program**
+
+**MSS**
+  1. User requests to exit the program.
+  2. IntelliBrary closes itself.
   
      Use case ends.
 
