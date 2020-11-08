@@ -173,8 +173,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Pros: Easier to implement without the need to modify the original Add command.
   * Cons: Multiple commands are needed during input and inconvenient for users.
 
-
-
 ### \[New\] DeleteBy feature
 
 ####  Implementation
@@ -208,8 +206,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Pros: Easier to implement without the need to parse different input types.
   * Cons: A large portion of duplicated code for multiple commands.
 
-
-
 ### Enhanced Edit Command
 
 #### Existing implementation
@@ -231,11 +227,14 @@ Given below is an example usage scenario of how the edit command will be execute
 
 ![EditCommandSequenceDiagram](images/EditSequenceDiagram.png)
 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
 #### Design consideration:
 
 The current enhancement is in alignment with other components of the book, which is easy to integrate into the product.
 
-##### Aspect: How to enhance the edit command
+#### Aspect: How to enhance the edit command
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
@@ -358,7 +357,6 @@ The current implementation of the reviewing is consistent with other components 
   * Pros: Allows the thoughts to be recorded in detail.
   * Cons: May cause inconvenience for recording and summarizing the review.
 
-
 ### \[New\] Find the most popular book feature
 
 ####  Implementation
@@ -392,7 +390,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Pros: Easier to implement.
   * Cons: Does not follow the abstraction layers of UI.
 
-
 ### \[New\] Randomly select a book of a specific category
 
 ####  Implementation
@@ -421,9 +418,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
 * **Alternative 1 :** Randomly select a book from the current filtered list.
   * Pros: Easy to implement with the current filteredBookList.
   * Cons: Tedious and inconvenient when users want to randomly select a book of a certain category.
-
-
-
 
 ### \[New\] ReportProblem feature
 
@@ -511,8 +505,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 ![EditProblemReportSequenceDiagram](images/EditProblemReportSequenceDiagram.png)
 
-
-
 ### \[New\] Find Problem Report feature
 
 ####  Implementation
@@ -552,9 +544,6 @@ Step 3. DeleteProblemCommandParser would parse the index of the report to be del
 Step 4. Execution of delete report would take place and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
-
-
-
 
 ### \[Proposed\] Undo/redo feature
 
@@ -634,13 +623,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the book being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -690,28 +672,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
-*{More to be added}*
 
 ### Use cases
 
 (For all use cases below, the **System** is the `ItelliBrary` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC01 - Purge sample data**
-
-**MSS**
-  1. User requests to purge all sample data.
-  
-     Use case ends.
-  
-**Extensions**
-
-* 1a. Some or all sample data had already been deleted before the 'purge' request 
-    
-    * 1a1. IntelliBrary deletes all remaining sample data.
-    
-      Use case ends.
-
-**Use case: UC02 - Add Books**
+**Use case: UC01 - Add Books**
 
 **MSS**
   1. User request to add a new book into the library.
@@ -739,25 +705,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. IntelliBrary shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
-      
-**Use case: UC03 - Delete Books**
-
-**MSS**
-  1. User request to delete a book from the library.
-
-  2. IntelliBrary deletes the book from the library and shows a successfull message to the user.
-  
-     Use case ends.
-  
-**Extensions**
-
-* 1a. The book to be deleted cannot be found in the library.
-    
-    * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
-    
-      Use case ends.
             
-**Use case: UC04 - view the stockings of different books**
+**Use case: UC02 - view the stockings of different books**
 
 **MSS**
 
@@ -781,7 +730,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC05 - search for the review of a book**
+**Use case: UC03 - search for the review of a book**
 
 **MSS**
 
@@ -805,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - add the review for a book**
+**Use case: UC04 - add the review for a book**
 
 **MSS**
 
@@ -829,7 +778,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC07 - delete the review for a book**
+**Use case: UC05 - delete the review for a book**
 
 **MSS**
 
@@ -853,7 +802,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - edit the review for a book**
+**Use case: UC06 - edit the review for a book**
 
 **MSS**
 
@@ -889,7 +838,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC009 - View Sample Data**
+**Use case UC07 - View Sample Data**
 
 **MSS**
 
@@ -904,7 +853,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC10 - Delete a book**
+**Use case UC08 - Delete a book**
 
 **MSS**
 
@@ -927,22 +876,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC11 - Edit a book**
+**Use case: UC09 - Edit a book**
 
 **MSS**
-  1. User requests to edit a book and inputs new information.
-  2. IntelliBrary modifies the current information of that book.
-     Use case ends.
-  
+
+1.  User requests to list books
+2.  IntelliBrary shows a list of books
+3.  User requests to edit the information of a specific book in the list
+4.  IntelliBrary edits the book
+
+    Use case ends.
+
 **Extensions**
 
-* 1a. The book to be editted cannot be found.
-    
-    * 1a1. IntelliBrary shows an error message.
-    
-      Use case ends.
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given command format is invalid.
+
+    * 3a1. IntelliBrary reminds the user of incorrect command format.
+
+      Use case resumes at step 2.
       
-**Use case: UC12 - Check the borrowing status of a book**
+**Use case: UC10 - Check the borrowing status of a book**
 
 **MSS**
   1. User requests to check the borrowing status of a book.
@@ -956,7 +913,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.  
       
-**Use case: UC13 - Get usage times of a book**
+**Use case: UC11 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -982,7 +939,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC14 - Get number of books borrowed**
+**Use case: UC12 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -990,7 +947,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC15 - Report problem**
+**Use case: UC13 - Report problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -1012,15 +969,13 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC16 - View problems**
+**Use case: UC14 - View problems**
 
 **MSS**
   1. User requests to view problems.
   2. IntelliBrary shows the problem list and shows a successfull message to the user.
 
   Use case ends.
-
-*{More to be added}*
 
 ### Non-Functional Requirements
 
@@ -1062,8 +1017,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a book
 
 1. Deleting a book while all books are being shown
@@ -1079,12 +1032,9 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
