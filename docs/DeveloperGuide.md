@@ -958,21 +958,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
       
-**Use case: UC10 - Check the borrowing status of a book**
-
-**MSS**
-  1. User requests to check the borrowing status of a book.
-  2. IntelliBrary tells the user whether there are available stockings of this book.
-  
-**Extensions**
-
-* 1a. The book to be checked cannot be found.
-    
-    * 1a1. IntelliBrary shows an error message.
-    
-      Use case ends.  
-      
-**Use case: UC11 - Get usage times of a book**
+**Use case: UC10 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -998,7 +984,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC12 - Get number of books borrowed**
+**Use case: UC11 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -1006,7 +992,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC13 - Report problem**
+**Use case: UC12 - Report a problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -1028,7 +1014,7 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC14 - View problems**
+**Use case: UC13 - View a problem**
 
 **MSS**
   1. User requests to view problems.
@@ -1036,7 +1022,7 @@ Use case ends.
 
   Use case ends.
   
-**Use case: UC15 - Delete a problem report**
+**Use case: UC14 - Delete a problem report**
 
 **MSS**
   1. User requests to delete a problem report by index.
@@ -1053,7 +1039,7 @@ Use case ends.
       Use case ends.
     
     
-**Use case: UC16 - Find a problem report by description**
+**Use case: UC15 - Find a problem report by description**
 
 **MSS**
   1. User requests to find reports that the descriptions matches certain keywords.
@@ -1070,7 +1056,7 @@ Use case ends.
       Use case ends.
       
       
-**Use case: UC17 - Find Most popular book of a category**
+**Use case: UC16 - Find Most popular book of a category**
 
 **MSS**
   1. User requests to find the most popular book of a category.
@@ -1092,7 +1078,7 @@ Use case ends.
     
       Use case ends.
     
-**Use case: UC18 - randomized selection of a book of a category**
+**Use case: UC17 - Randomized selection of a book of a category**
 
 **MSS**
   1. User requests to randomly select a book of a specified category.
@@ -1113,6 +1099,38 @@ Use case ends.
     * 1b1. IntelliBrary shows a message saying that zero books are listed.
     
       Use case ends.      
+
+**Use case: UC18 - Seek help**
+
+**MSS**
+  1. User seeks help regarding how to use IntelliBrary.
+  2. IntelliBrary redirects the user to the reference documentation.
+  
+     Use case ends.
+     
+**Use case: UC19 - Clear all the books**
+
+**MSS**
+  1. User requests clear all the books in the library.
+  2. IntelliBrary deletes all the books avaliable.
+  
+     Use case ends.
+     
+**Use case: UC20 - Check history**
+
+**MSS**
+  1. User requests to check the history of borrowing.
+  2. IntelliBrary provides the information of borrowing history.
+  
+     Use case ends.
+     
+**Use case: UC21 - Check history**
+
+**MSS**
+  1. User requests to check the history of borrowing.
+  2. IntelliBrary provides the information of borrowing history.
+  
+     Use case ends.
 
 ### Non-Functional Requirements
 
