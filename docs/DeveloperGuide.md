@@ -136,43 +136,36 @@ This section describes some noteworthy details on how certain features are imple
 
 ### \[Enhanced\] Add Book feature
 
-### The relevant methods:
-
 ####  Implementation
 
 The current implementation of the AddCommand is supported by `AddCommand.java`, `AddCommandParser.java`.
 
 The relevant methods are:
 
-*`AddCommandParser#parse()` --- Parses the books detailed information.
-*`AddCommand#execute()` --- Checks for duplication and adds the book to the library.
+*`AddCommandParser#parse(String args)` --- Parses the book's detailed information.
+*`AddCommand#execute(Model model)` --- Checks for duplication and adds the book to the library.
 
 Given below is an example usage scenario and how the AddCommand mechanism behaves at each step.
 
-Step 1. User input an input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+Step 1. User input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
 
-Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is a Add command.
+Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is an Add command.
 
 Step 3. AddCommandParser would then parse the book attributes and call the Add Command.
 
-Step 4. Execution of Add would take place and the result will be updated in the filtered list in Model.
+Step 4. Execution of Add would take place and the result will be updated in the filtered book list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![AddCommandSequenceDiagram](images/AddCommandSequenceDiagram.png)
+![AddCommandSequenceDiagram](images/AddCommandSimplifiedSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How Add executes
+##### Aspect: How add book command executes
 
-* **Alternative 1 :** Adopts the add Person function of the original project
-  * Pros: Easy to implement.
-  * Cons: Attributes are not suitable for books.
-
-* **Alternative 2:** Individual command of Add author, Add publisher, Add categories.
+* **Alternative 1:** Individual separated commands of Add author, Add publisher, Add categories, etc.
   * Pros: Easier to implement without the need to modify the original Add command.
-  * Cons: Multiple commands are needed during input and inconvenient for users.
-
+  * Cons: Multiple commands are needed during input and it is inconvenient for users.
 
 
 ### \[New\] DeleteBy feature
@@ -180,6 +173,11 @@ The following sequence diagram summarizes what happens when a user executes a ne
 ####  Implementation
 
 The implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteByCommandParser#parse(String args)` --- Parses the user input: book name, ISBN, or number of borrowed times.
+*`DeleteByCommand#execute(Model model)` --- Deletes the book from the library.
 
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
@@ -197,7 +195,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How delete By executes
+##### Aspect: How deleteBy executes
 
 * **Alternative 1 :** Adopts the delete function of the original project
   * Pros: Easy to implement.
@@ -305,6 +303,12 @@ The current implementation of the stocking is consistent with other components o
 
 The implementation of the FindMostPopular command is supported by `FindMostPopularCommand.java` and `FindMostPopularCommandParser.java` 
 
+The relevant methods are:
+
+*`FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
+*`FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
+
+
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findMostPopular science`
@@ -333,11 +337,17 @@ The following sequence diagram summarizes what happens when a user executes a ne
   * Cons: Does not follow the abstraction layers of UI.
 
 
-### \[New\] Randomly select a book of a specific category
+### \[New\] Randomized selection of book feature
 
 ####  Implementation
 
 The implementation of the Random command is supported by `RandomCommand.java` and `RandomCommandParser.java` 
+
+The relevant methods are:
+
+*`RandomCommandParser#parse(String args)` --- Parses the input into book category.
+*`RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
+
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -436,6 +446,16 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 The implementation of the Edit Problem Report command is supported by `EditProblemCommand.java` and `EditProblemCommandParser.java` 
 
+The relevant methods are:
+
+*`EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
+
+Below is the diagram illustrating the Problem Report Model. The EditProblemCommand allows for edit of either one attribute
+or both attributes at the same time.
+
+![ModelClassReportDiagram](images/ModelClassReportDiagram.png)
+
 Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
 
 Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
@@ -459,6 +479,12 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 The implementation of the Find Problem Report command is supported by `FindProblemCommand.java` and `FindProblemCommandParser.java` 
 
+The relevant methods are:
+
+*`FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
+
+
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findProblemReport chair`
@@ -479,7 +505,12 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 ####  Implementation
 
-The implementation of the DeleteBy command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+The implementation of the DeleteProblem command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteProblemCommandParser#parse(String args)` --- Parses the user input index.
+*`DeleteProblemCommand#execute(Model model)` --- Deletes the report of the input index from the library.
 
 Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
 
@@ -489,10 +520,7 @@ Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determi
 
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
-Step 4. Execution of delete report would take place and the result will be updated in the filtered list in Model.
-
-The following sequence diagram summarizes what happens when a user executes a new command:
-
+Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
 
 
 
@@ -618,18 +646,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |efficiently increase the stockings of those very popular books to meet the demand of the readers   |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    |estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
-| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    |keep the review record for future evaluation of the book quality and popularity among the readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
+| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   | efficiently increase the stockings of those very popular books to meet the demand of the readers   |
+| `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     | know what books to purchase in the future                                                                                 |
+| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    | estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
+| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    | keep the review record for future evaluation of the book quality and popularity among the readers|
+| `* *`    | library administrator                      | edit the information of a book                                                        | keep the book information in the database up to date                                                                      |
 | `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
-| `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
-| `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
+| `* * *`  | library administrator                      | view all the reported problems                                                 | know what problems need to be solved  |
+| `* *`    | expert user                                | delete multiple books by condition within one command                           | it is more time efficient            |
 | `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
-| `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
-| `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
+| `* * *`  | library administrator                      | check the borrowing status of a certain book       | tell students whether they can borrow this book or not            |
+| `*`  | library administrator                      | clear all data within one command       | efficiently reset the app            |
 *{More to be added}*
 
 ### Use cases
