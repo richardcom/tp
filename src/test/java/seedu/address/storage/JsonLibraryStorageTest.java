@@ -60,35 +60,6 @@ public class JsonLibraryStorageTest {
         assertThrows(DataConversionException.class, () -> readLibrary("invalidAndValidBookLibrary.json"));
     }
 
-<<<<<<< HEAD
-    /* @Test
-    public void readAndSaveAddressbook_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempAddressbook.json");
-        Addressbook original = getTypicalAddressbook();
-        JsonAddressbookStorage jsonAddressbookStorage = new JsonAddressbookStorage(filePath);
-
-        // Save in new file and read back
-        jsonAddressbookStorage.saveAddressbook(original, filePath);
-        ReadOnlyAddressbook readBack = jsonAddressbookStorage.readAddressbook(filePath).get();
-        assertEquals(original, new Addressbook(readBack));
-
-        // Modify data, overwrite exiting file, and read back
-        original.addBook(HOON);
-        original.removeBook(ALICE);
-        jsonAddressbookStorage.saveAddressbook(original, filePath);
-        readBack = jsonAddressbookStorage.readAddressbook(filePath).get();
-        assertEquals(original, new Addressbook(readBack));
-
-        // Save and read without specifying file path
-        original.addBook(IDA);
-        jsonAddressbookStorage.saveAddressbook(original); // file path not specified
-        readBack = jsonAddressbookStorage.readAddressbook().get(); // file path not specified
-        assertEquals(original, new Addressbook(readBack));
-
-    } // storage parser */
-
-=======
->>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
     @Test
     public void saveLibrary_nullLibrary_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> saveLibrary(null, "SomeFile.json"));

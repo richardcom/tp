@@ -61,29 +61,6 @@ public class LogicManagerTest {
     }
 
     @Test
-<<<<<<< HEAD
-    public void execute_storageThrowsIoException_throwsCommandException() {
-        // Setup LogicManager with JsonLibraryIoExceptionThrowingStub
-        JsonLibraryStorage addressbookStorage =
-                new JsonLibraryIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionLibrary.json"));
-        JsonUserPrefsStorage userPrefsStorage =
-                new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressbookStorage, userPrefsStorage);
-        logic = new LogicManager(model, storage);
-
-        // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + ISBN_DESC_AMY + EMAIL_DESC_AMY
-                + LANGUAGE_DESC_AMY + STOCKING_DESC_AMY + TIMES_DESC_AMY + AUTHOR_DESC_AMY + PUBLISHER_DESC_AMY;
-        Book expectedBook = new BookBuilder(AMY).withCategories().build();
-        ModelManager expectedModel = new ModelManager();
-        expectedModel.addBook(expectedBook);
-        String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
-        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
-    }
-
-    @Test
-=======
->>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
     public void getFilteredBookList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredBookList().remove(0));
     }
