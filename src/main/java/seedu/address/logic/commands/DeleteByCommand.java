@@ -21,8 +21,8 @@ import seedu.address.ui.Mode;
 public class DeleteByCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteBy";
-    public static final String SUGGESTION = "deleteBy n/<name>"
-            + "deleteBy i/<isbn> " + "deleteBy t/<times>";
+    public static final String SUGGESTION = "deleteBy n/<name>\n"
+            + "deleteBy i/<isbn>\n" + "deleteBy t/<times>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the book identified by the name, isbn or times borrowed.\n"

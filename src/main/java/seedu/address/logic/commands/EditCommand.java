@@ -59,8 +59,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_AUTHOR + "AUTHOR] "
             + "[" + PREFIX_PUBLISHER + "PUBLISHER] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_ISBN + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_ISBN + "13091234567 "
+            + PREFIX_EMAIL + "thisbook@publisher.com";
 
     public static final String MESSAGE_EDIT_BOOK_SUCCESS = "Edited Book: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

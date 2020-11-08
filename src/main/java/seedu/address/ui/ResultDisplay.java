@@ -59,7 +59,7 @@ public class ResultDisplay extends UiPart<Region> {
                     .filter(suggestion -> prefix.equals(suggestion.split(" ")[0])).findFirst().orElse("");
         }
 
-        return feedback.trim();
+        return feedback;
     }
     //@@author
 
