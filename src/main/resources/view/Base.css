@@ -101,6 +101,11 @@
     -fx-border-width: 0;
 }
 
+#reviewCardPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
 .status-bar {
     -fx-background-color: -style-status-bar-color;
     -fx-effect: -style-pane-shadow;

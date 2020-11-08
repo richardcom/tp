@@ -32,12 +32,12 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
-   * **`clear`** : Deletes all books.
+   * **`clear`** : Deletes all books and problems.
 
    * **`exit`** : Exits the app.
    
 6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
-   Note that for *exit* related commands, you can choose to edit as many attributes as you wish at a time.
+   Note that for *edit* related commands, you can choose to edit as many attributes as you wish at a time.
    For other commands in smart suggestions, only compulsory fields of a command are shown. 
    For readability in app launch, in smart suggestion,
    example formats of usage are provided in lower cases of alphabet. To see full usage details of commands, go to step 7.
@@ -68,7 +68,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 ### Viewing sample data
 
-Have a look at the sample data for the application when open app for the first time.
+Have a look at the sample data for the application when opening the app for the first time.
 *  The sample data will only show up if there is no local data file of IntelliBrary
 
 ### Viewing help : `help`
@@ -87,7 +87,7 @@ Format: `exit`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the library, including books and reports.
+Clears all entries from the library, including books and problems.
 
 Format: `clear`
 
@@ -102,7 +102,7 @@ Format: `list`
 
 #### Adding a book : `add`
 
-Add a book to the book list.
+Adds a book to the book list.
 
 Duplicate book will be rejected.
 
@@ -111,8 +111,7 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 * ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to digits.
 * ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
-Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```l/``` is followed by the language of the book. We decide to accept any string input as language because there are hundreds of languages in the world, and it would be inefficient to store all of them.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
@@ -120,7 +119,7 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we store books with different ISBN but the same book name differently. 
+Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
 
 Visual View after entering the first example command:
 
