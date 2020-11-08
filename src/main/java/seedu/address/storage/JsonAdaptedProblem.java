@@ -15,8 +15,6 @@ public class JsonAdaptedProblem {
     private String severity;
     private String description;
 
-
-
     /**
      * Constructs a {@code JsonAdaptedBook} with the given book details.
      */
