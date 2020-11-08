@@ -41,10 +41,8 @@ public class ConfigUtilTest {
     public void read_fileInOrder_successfullyRead() throws DataConversionException {
 
         Config expected = getTypicalConfig();
-
-        Config actualMac = read("TypicalConfig.json").get();
-        Config actualWindows = read("TypicalConfig.json").get();
-        assertTrue(expected.equals(actualMac) || expected.equals(actualWindows));
+        Config actual = read("TypicalConfig.json").get();
+        assertTrue(expected.equals(actual));
     }
 
     @Test
@@ -56,15 +54,14 @@ public class ConfigUtilTest {
     @Test
     public void read_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
         Config expected = getTypicalConfig();
-        Config actualMac = read("ExtraValuesConfig.json").get();
-        Config actualWindows = read("ExtraValuesConfig.json").get();
-        assertTrue(expected.equals(actualMac) || expected.equals(actualWindows));
+        Config actual = read("ExtraValuesConfig.json").get();
+        assertTrue(expected.equals(actual));
     }
 
     private Config getTypicalConfig() {
         Config config = new Config();
         config.setLogLevel(Level.INFO);
-        config.setUserPrefsFilePath(Paths.get("config", "footer", "preferences.json"));
+        config.setUserPrefsFilePath(Paths.get("preferences.json"));
         return config;
     }
 

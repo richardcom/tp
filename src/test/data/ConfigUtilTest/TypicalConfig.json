@@ -1,5 +1,4 @@
 {
   "logLevel" : "INFO",
-  "userPrefsFilePath" : "config/footer/preferences.json",
-  "userPrefsFilePathWindows" : "config\\footer\\preferences.json"
+  "userPrefsFilePath" : "preferences.json"
 }
