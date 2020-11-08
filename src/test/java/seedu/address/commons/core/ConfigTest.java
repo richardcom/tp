@@ -14,7 +14,7 @@ public class ConfigTest {
         String defaultConfigAsStringWindows = "Current log level : INFO\n"
                 + "Preference file Location : config\\footer\\preferences.json";
         assertTrue(defaultConfigAsString.equals(new Config().toString())
-                || defaultConfigAsStringWindows.equals(new Config().toString()) );
+                || defaultConfigAsStringWindows.equals(new Config().toString()));
     }
 
     @Test
