@@ -22,126 +22,50 @@ Listed below are my contributions to this project.
     * What it does: allows the librarian directly delete a book by name or ISBN. Librarians can also delete all unpopular books which are rarely borrowed.
     * Justification: This feature improves the product significantly because it makes it easier for librarians to efficiently delete books without the need to find it first. Librarians
     can also efficiently batch manage and clean up unpopular books.
-
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
-
+    
 * **Enhancements to existing features**:
-  * Create new user interface book card to accommodate different command: `Review` (pull requests [#80](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/80) [#126](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/126))
-    * Added the user interface component `LibraryBookDetailStockingCard`
-    * Added the user interface component `LibraryBookDetailReviewCard` and `BookReviewCard` which show the review of a book.
-  * Add book cover (pull requests [#102](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/102))
-    * Added the `BookCoverManager` and the and selects the book cover for a book based on the category of the book.
-    * Added the user interface component `BookCardWithCover` which shows the information of a book with the book cover.
+  * Enhanced the original `add`. Created new Person attributes with teammates and allow `add` to add a Person Model. Set new constraints for person model.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
+  * Created new user interface MainWindow and Problem card to accommodate book and report management. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
+    * Implemented UI component `ProblemReportListCard` and `ProblemReportListPanel`
   * Wrote additional tests for existing features (pull requests [#255](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/255))
 
+ **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+
+*Other Contributions:
+ 
 * **Project management**:
-  * Managed the issue tracking and project task of Milestone mid v1.3 and opened Milestone v1.4
+  * Managed the issue tracking of and project task of Milestone v1.4
 
 * **Documentation**:
   * User Guide:
-    * Added explanation about the association between the `BookCover` and the category of the book.
-    * Added explanation about the format of `Stocking` in the `add` command.
-    * Added explanation about the purpose of the `Review` functionality and its usage for the user of the application.
-    * Added documentation about the usage of `stock` command
-    * Added documentation about the usage of `searchReview`, `addReview`, `deleteReview`, and `editReview` command
+    * Explained the constraints on `add` command and relating attributes.
+    * Explained `random`, and `findMostPopular` commands and the usage for target users.
+    * Explained `deleteBy` command and its behaviors in different situations.
+    * Explained `findProblemReport`, `deleteProblemReport`, `editProblemReport` commands.
+    * Formatted User Guide styling, improved command summary, added visual illustrations.
   * Developer Guide:
-    * Specified the target user profile regarding librarian (pull requests [#24](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/24))
-    * Added implementation details about stocking (pull requests [#111](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/111)).
-    * Added the Class Diagram to explain the association between `Book` and `Stocking`
-    * Added Sequence Diagram for parsing `Stocking` model in `add` command 
-    * Added Sequence diagram for parsing and execution of `stock` command
-    * Specified the use cases UC04, UC05, UC06, UC07, and UC08.
+    * Explained `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands.
+    * Created sequence diagrams for `add`, `deleteBy`, `findProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands, and class diagram for Problem class.
+    * Added six user stories and six use cases.
+    * Created Non-Functional Requirements.
 
 * **Contributions to the Team-Based Tasks**:
-    * Wrote the target user profile and value proposition in the Developer Guide
-    * Changed the icon of the application.
-    * Helped to wrote the command summary in User Guide
-    * Opened Milestone v1.4 and managed the team project task in Milestone mid v1.3
-    * Maintained the issue tracker and managed the team project task for Milestone mid v1.3
-    * Provided technical suggestion for calculating the total number of times when a certain group of books is borrowed in the History command using `getFilteredBookList`
-    * Helped to solve technical issues of RepoSense contribution detection in week 12, and provided suggestion to use `git reset` to set the state of upstream master branch.
-    
+    * Changed the original AB3 `Book` to the new `Person`.
+    * Managed branch protection.
+    * Worked with teammates to git reset our master branch to resolve Reposense detection errors.
+    * Worked with teammates to manage Milestone v1.4.
+
+   
 * **Review contributions**:
     pull requests with non-trivial review comments
-    [PR1](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/21) 
-    | [PR2](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/64) 
-    | [PR3](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/73)
-    | [PR4](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/78)
-    | [PR5](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/90)
-    | [PR6](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/91)
-    | [PR7](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/134)
-    | [PR8](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/268)
+    [PR301](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/301)  , [PR275](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/275) , [PR245](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/245)
+    , [PR244](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/244), [PR242](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/242), [PR241](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/241)
+    , [PR237](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/237),  [PR235](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/235) , [PR231](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/231)
+    , [PR226](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/226) , [PR221](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/221) , [PR226](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/226)
+    , [PR158](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/158), [PR154](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/154), [PR41](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/41)
+    , [PR38](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/38), [PR24](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/24).
 
 * **Community contributions**
 
-[Response of question in the forum](https://github.com/nus-cs2103-AY2021S1/forum/issues/370)
-
-Reported the documentation, functionality, and feature problems for the project from CS2103-F10-1
-
-[issue1](https://github.com/AY2021S1-CS2103-F10-1/tp/issues/180)
-| [issue2](https://github.com/AY2021S1-CS2103-F10-1/tp/issues/168)
-| [issue3](https://github.com/AY2021S1-CS2103-F10-1/tp/issues/170)
-
-* **Optional contributions to the User Guide**
-
-Each section below is an extract of the original section in the User Guide. Please see the User Guide for the full content in the corresponding section.
-
-##### Regarding categories and book cover
-The list of relevant categories are given below in ascending order with respect to the priority of the category. The book cover of a book depends on the categories of the book according to the category priority.
-
-`General` `Novels` `History` `Science` `AncientHistory` `ModernHistory` `AncientWar` `ModernWar` `Math` `Chemistry` `Physics`
-
-##### Check stocking of book in every location: `stock`
-
-Checks the list of locations of where a certain book is stored. Currently only the science library, central library, and HSSM library are available locations.
-
-Format: `stock [n/BOOK NAME] [i/ISBN]`
-
-##### Additional notes about review
-
-The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
-
-##### Search for review of book: `searchReview`
-
-Check the list of reviews of certain book.
-
-Format: `searchReview [n/BOOK NAME] [i/ISBN]`
-
-##### Add review: `addReview`
-
-Add a review to a certain book. 
-
-Format: `addReview INDEX ra/RATING re/REVIEW_CONTENT`
-
-##### Delete review: `deleteReview`
-
-Delete a review of a certain book.
-
-Format: `deleteReview INDEX rn/REVIEW_INDEX`
-
-##### Edit review: `editReview`
-
-If neither rating or review content is present, then an exception message will be shown. If the edited review is the same as the original review, then a corresponding exception message will be shown. 
-
-* **Optional contributions to the Developer Guide**
-
-The relationship between the book and the stocking and other components
-
-![The relationship between the book and the stocking and other components](../images/ModelClassBookStockingDiagram.png)
-
-The creation of the stocking
-
-![The creation of the stocking](../images/EditStockingParserSequenceDiagram.png)
-
-The creation of the stock command
-
-![The creation of the stock command](../images/StockCommandParserSequenceDiagram.png)
-
-The class diagram of the review
-
-![The class diagram for review](../images/ModelClassBookReviewDiagram.png)
-
-The creation of the add review command
-
-![The creation of the add review command](../images/AddReviewParserSequenceDiagram.png)
-
+Helping classmates on forum: [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue107](https://github.com/nus-cs2103-AY2021S1/forum/issues/107), [issue15](https://github.com/nus-cs2103-AY2021S1/forum/issues/15)
+Helped classmates from other teams identify 15 possible flaws or improvements: [issue195](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/195), [issue194](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/194), [issue191](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/191), , [issue192](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/192), etc.
