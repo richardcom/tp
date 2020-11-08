@@ -11,7 +11,8 @@
 
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.image.ImageView?>
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="reviewCardPane" fx:id="reviewCardPane" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" maxHeight="Infinity">
     <StackPane alignment="TOP_LEFT" minHeight="100" maxWidth="80" >
         <padding>
             <Insets top="5.0" bottom="5.0" left="35.0" right="5.0"/>
@@ -20,13 +21,9 @@
             <ImageView fx:id="cover" fitHeight="105.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
         </children>
     </StackPane>
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10" prefWidth="450" />
-        </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+        <VBox alignment="CENTER_LEFT" minHeight="105" maxHeight="Infinity">
             <padding>
-                <Insets top="5" right="5" bottom="5" left="30" />
+                <Insets top="5" right="5" bottom="15" left="30" />
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label fx:id="id" styleClass="cell_big_label">
@@ -41,8 +38,6 @@
             <Label fx:id="isbn" styleClass="cell_small_label" text="\$phone" />
             <Label fx:id="author" styleClass="cell_small_label" text="\$author" />
             <VBox prefHeight="45"/>
-
-            <FlowPane fx:id="reviews" orientation="VERTICAL" />
+            <VBox fx:id="reviews" />
         </VBox>
-    </GridPane>
 </HBox>

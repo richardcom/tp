@@ -15,7 +15,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `intelLibrary.jar` from [here](https://github.com/AY2021S1-CS2103-F09-3/tp/releases).
+2. Download the latest `IntelliBrary.jar` from [here](https://github.com/AY2021S1-CS2103-F09-3/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your IntelliBrary.
 
@@ -29,14 +29,15 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
+
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
-   * **`clear`** : Deletes all books.
+   * **`clear`** : Deletes all books and problems.
 
    * **`exit`** : Exits the app.
    
 6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
-   Note that for *exit* related commands, you can choose to edit as many attributes as you wish at a time.
+   Note that for *edit* related commands, you can choose to edit as many attributes as you wish at a time.
    For other commands in smart suggestions, only compulsory fields of a command are shown. 
    For readability in app launch, in smart suggestion,
    example formats of usage are provided in lower cases of alphabet. To see full usage details of commands, go to step 7.
@@ -67,7 +68,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 ### Viewing sample data
 
-Have a look at the sample data for the application when open app for the first time.
+Have a look at the sample data for the application when opening the app for the first time.
 *  The sample data will only show up if there is no local data file of IntelliBrary
 
 ### Viewing help : `help`
@@ -86,7 +87,7 @@ Format: `exit`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the library, including books and reports.
+Clears all entries from the library, including books and problems.
 
 Format: `clear`
 
@@ -101,7 +102,7 @@ Format: `list`
 
 #### Adding a book : `add`
 
-Add a book to the book list.
+Adds a book to the book list.
 
 Duplicate book will be rejected.
 
@@ -110,8 +111,7 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 * ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to digits.
 * ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
-Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```l/``` is followed by the language of the book. We decide to accept any string input as language because there are hundreds of languages in the world, and it would be inefficient to store all of them.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
@@ -119,7 +119,7 @@ Thus, we decide to restrict it as a string of characters and not to set any othe
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we store books with different ISBN but the same book name differently. 
+Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
 
 Visual View after entering the first example command:
 
@@ -279,14 +279,9 @@ The reason for the design used is that the searching can be more consistent. The
 If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy **both** of the conditions.
 
 If neither of them are present, then the command will return the stocking information of all the books.
-
-If the value after the prefix is empty, then the command will return the stocking information of all the books.
-
-For example, the command stock n/ and the command stock i/ will return the stocking information of all the books.
 </div>
 
 Examples:
-* `stock n/A brief history of time i/9780553175219`
 * `stock n/A brief history of time`
 * `stock i/9780553175219`
 * `stock`
@@ -327,7 +322,6 @@ The review list of the book with no review will be empty.
 </div>
 
 Examples:
-* `searchReview n/A brief history of time i/9780553175219`
 * `searchReview n/A brief history of time`
 * `searchReview i/9780553175219`
 * `searchReview`
@@ -348,7 +342,9 @@ The book review will be added according to the index of the book in the current 
 
 The rating needs to be a string representing an integer from 0 to 5.
 
-The review content should not be empty and it should not contain more than 300 characters.
+The review content should not be empty and it should not contain more than 300 characters, excluding the leading and trailing white space.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 
 If other command is executed before the add review command, then only the index corresponding to the book shown in the current book list will be valid.
 
@@ -388,7 +384,9 @@ The explanation about index is similar to add review and delete review command.
 
 If neither rating or review content is present, then an exception message will be shown.
 
-If the edited review is the same as the original review, then a corresponding exception message will be shown. 
+If the edited review is the same as the original review, then a corresponding exception message will be shown.
+
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
 </div>
 
 Examples:
@@ -528,11 +526,8 @@ Examples:
 * `findProblemReport table chair` returns `table`, `chair`
 
 
-<<<<<<< HEAD
-Deletes the specified person from the intellibrary.
-=======
+
 #### Deleting a report : `deleteProblemReport`
->>>>>>> b70a42ddd94ef87140a87e2bba36b9b6c59d7ac7
 
 Deletes the specified problem report from library management system.
 

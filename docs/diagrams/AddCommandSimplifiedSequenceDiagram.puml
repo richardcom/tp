@@ -3,45 +3,47 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressbookParser" as AddressbookParser LOGIC_COLOR
+participant ":LibraryParser" as LibraryParser LOGIC_COLOR
 participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
 participant "<<class>>\n:ParseUtil" as ParserUtil LOGIC_COLOR
 participant "a:AddCommand" as AddCommand LOGIC_COLOR
-participant "s:Stocking" as Stocking LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "n:Name" as Name LOGIC_COLOR
+
+participant "cr:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("Add ...")
+[-> LogicManager : execute("add n/Linear Algebra \n i/98765432 e/seller@example.com \n l/English c/Science t/20 \n s/centralLb 30 scienceLb 15 HSSMLb 10 \n a/Victor p/pku")
 activate LogicManager
 
-LogicManager -> AddressbookParser : parseCommand("Add ...")
-activate AddressbookParser
+LogicManager -> LibraryParser : parseCommand("add n/Linear Algebra \n i/98765432 e/seller@example.com \n l/English c/Science t/20 \n s/centralLb 30 scienceLb 15 HSSMLb 10 \n a/Victor p/pku")
+activate LibraryParser
 
 create AddCommandParser
-AddressbookParser -> AddCommandParser
+LibraryParser -> AddCommandParser
 activate AddCommandParser
 
-AddCommandParser --> AddressbookParser
+AddCommandParser --> LibraryParser
 deactivate AddCommandParser
 
-AddressbookParser -> AddCommandParser : parse("...")
+LibraryParser -> AddCommandParser : parse("n/Linear Algebra \n i/98765432 e/seller@example.com \n l/English c/Science t/20 \n s/centralLb 30 scienceLb 15 HSSMLb 10 \n a/Victor p/pku")
 activate AddCommandParser
 
-AddCommandParser -> ParserUtil : parseStocking("scienceLb 10 centralLb 30 HSSMLb 20")
+
+AddCommandParser -> ParserUtil : parseName("Linear Algebra")
 activate ParserUtil
 
-create Stocking
-ParserUtil -> Stocking
-activate Stocking
+create Name
+ParserUtil -> Name
+activate Name
 
-Stocking --> ParserUtil : s
-deactivate Stocking
+Name --> ParserUtil : n
+deactivate Name
 
-ParserUtil -> AddCommandParser : s
+ParserUtil -> AddCommandParser : n
 deactivate ParserUtil
 
 create AddCommand
@@ -51,14 +53,14 @@ activate AddCommand
 AddCommand --> AddCommandParser : a
 deactivate AddCommand
 
-AddCommandParser --> AddressbookParser : a
+AddCommandParser --> LibraryParser : a
 deactivate AddCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-AddCommandParser -[hidden]-> AddressbookParser
+AddCommandParser -[hidden]-> LibraryParser
 destroy AddCommandParser
 
-AddressbookParser --> LogicManager : a
-deactivate AddressbookParser
+LibraryParser --> LogicManager : a
+deactivate LibraryParser
 
 LogicManager -> AddCommand : execute()
 activate AddCommand

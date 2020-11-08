@@ -59,7 +59,7 @@ existing relevant files. I also wrote corresponding test code for this feature.
     * I wrapped up 2 milestones and released v1.3.
     * I contributed in documenting the target user profile and user stories.
     * I classified the problems reported from PE dry run into different types so that we could easily attribute each problem to a developer.
-    * I was responsive and constructive during team meetings and helped to boost the efficiency of weekly meetings.
+    * I made my effort to facilitate the team meetings and I was responsive and constructive during the team meetings.
     
 * **Review Contributions**:
     I have reviewed the following PRs: 

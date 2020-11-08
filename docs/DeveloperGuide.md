@@ -133,11 +133,50 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+
+### \[Enhanced\] Add Book feature
+
+####  Implementation
+
+The current implementation of the AddCommand is supported by `AddCommand.java`, `AddCommandParser.java`.
+
+The relevant methods are:
+
+*`AddCommandParser#parse(String args)` --- Parses the book's detailed information.
+*`AddCommand#execute(Model model)` --- Checks for duplication and adds the book to the library.
+
+Given below is an example usage scenario and how the AddCommand mechanism behaves at each step.
+
+Step 1. User input: `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`
+
+Step 2. Logic Manager would parse the input `add n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 10 a/Victor p/pku`, and determines that it is an Add command.
+
+Step 3. AddCommandParser would then parse the book attributes and call the Add Command.
+
+Step 4. Execution of Add would take place and the result will be updated in the filtered book list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![AddCommandSequenceDiagram](images/AddCommandSimplifiedSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How add book command executes
+
+* **Alternative 1:** Individual separated commands of Add author, Add publisher, Add categories, etc.
+  * Pros: Easier to implement without the need to modify the original Add command.
+  * Cons: Multiple commands are needed during input and it is inconvenient for users.
+
 ### \[New\] DeleteBy feature
 
 ####  Implementation
 
-The current implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+The implementation of the DeleteBy command is supported by `DeleteByCommand.java` and `DeleteByCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteByCommandParser#parse(String args)` --- Parses the user input: book name, ISBN, or number of borrowed times.
+*`DeleteByCommand#execute(Model model)` --- Deletes the book from the library.
 
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
@@ -145,7 +184,7 @@ Step 1. User input an input: `deleteBy n/Linear Algebra`
 
 Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and determines that it is a deleteBy command.
 
-Step 3. DeleteByParser would then parse the book name and call the deleteBy Command.
+Step 3. DeleteByCommandParser would then parse the book name and call the deleteBy Command.
 
 Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
 
@@ -155,19 +194,16 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How undo & redo executes
+##### Aspect: How deleteBy executes
 
 * **Alternative 1 :** Adopts the delete function of the original project
   * Pros: Easy to implement.
-  * Cons: Not convenient for expert users and fast input.
+  * Cons: Not convenient for expert users and fast input, does not allow deleting multiple books at a time.
 
 * **Alternative 2:** Individual command of DeleteByName, DeleteByISBN, DeleteByTimes
   itself.
   * Pros: Easier to implement without the need to parse different input types.
   * Cons: A large portion of duplicated code for multiple commands.
-
-
-
 
 ### Enhanced Edit Command
 
@@ -190,11 +226,14 @@ Given below is an example usage scenario of how the edit command will be execute
 
 ![EditCommandSequenceDiagram](images/EditSequenceDiagram.png)
 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
 #### Design consideration:
 
 The current enhancement is in alignment with other components of the book, which is easy to integrate into the product.
 
-##### Aspect: How to enhance the edit command
+#### Aspect: How to enhance the edit command
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
@@ -208,7 +247,7 @@ The current enhancement is in alignment with other components of the book, which
 
 #### Existing implementation
 
-The existing implementation of the storing and retriving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
+The existing implementation of the storing and retrieving of stocking information is facilitated by `Stocking`, `JsonAdaptedStocking`, `StockCommand`, and `StockCommandParser`.
 
 The relevant methods are
 
@@ -217,27 +256,29 @@ The relevant methods are
 * `JsonAdaptedStocking#JsonAdaptedStocking(Stocking)` — Transforms the stocking model into the json adapted model.
 * `JsonAdaptedStocking#toModelType(Stocking)` — Transforms the json adapted model into the stocking model.
 
-The relationship 
+The relationship between the book and the stocking and other components
 
 ![The relationship between the book and the stocking and other components](images/ModelClassBookStockingDiagram.png)
 
-These operations are incoperated into the storage read and write process in the execution.
+These operations are incorporated into the storage read and write process in the execution.
 
-#####Given below is an example usage scenario of how stocking information with be parsed when adding a book.
+#####Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
-Step 1. The user launches the application and types command add with `s/science library 10 central library 30`, and the logic manager calls the intellibrary parser, which calls the add command parser.
+Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
-Step 2. The add command parser calls the ParseUtil, which parses the string and returns a stocking
+Step 2. The edit command parser calls the ParseUtil, which parses the string and returns a stocking
 
-![The creation of the stocking](images/AddStockingParserSequenceDiagram.png)
+![The creation of the stocking](images/EditStockingParserSequenceDiagram.png)
 
-Step 3. The add command parser uses the stocking and returns an add command, and this is returned by intellibrary parser, and the logic manager executes the command and make some changes to the model.
+Step 3. The edit command parser uses the stocking and returns an edit command, and this is returned by library parser. 
+
+Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
 #####Given below is an example usage scenario of how the stocking command will be executed, 
 
-Step 1. The user types `Stock n/gun`, and the logic manager calls the intellibrary parser, which calls the stock command parser.
+Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
-Step 2. The stock command parser gets the list of book names and list of ISBN from the string and calls the constructor of the stock command to get a stock command
+Step 2. The stock command parser parses the string into a list of name keywords and a list of ISBN number and calls the constructor of the stock command to get a stock command. In the diagram, the constructor of the stock command will take in 2 lists. The first list, corresponding to the name keywords, contains a single element `Guns`, and the second list, corresponding to the ISBN number, is an empty list.
 
 ![The creation of the stock command](images/StockCommandParserSequenceDiagram.png)
 
@@ -256,6 +297,138 @@ The current implementation of the stocking is consistent with other components o
 * **Alternative 2:** Enables the user to use abbreviation of the library location.
   * Pros: Reduces the amount of typing and brings convenience to users.
   * Cons: May cause confusion to new user because of the abbreviation of the library location.
+  
+### Reviewing of a book
+
+#### Existing implementation
+
+The existing implementation of the review uses `Review`, `JsonAdaptedReview` and other related objects.
+
+The class diagram for `Review`
+
+![The class diagram for review](images/ModelClassBookReviewDiagram.png)
+
+#####Given below is an example usage scenario of adding a review to a book.
+
+Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
+
+Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
+
+![The creation of the add review command](images/AddReviewParserSequenceDiagram.png)
+
+Step 3. The add review command parser returns an add review command, and this is returned by library parser.
+
+Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
+
+#####Given below is an example usage scenario of editing a review of a book.
+
+Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
+
+Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `Review`.
+
+Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
+
+Step 4. The edit review command is executed and updates the review at postion `4` in the review list of the book with index `1` in the currently shown book list.
+
+#####Given below is description of deleting review of a book.
+
+The process is similar to edit review command.
+
+The difference is that in Step 2, the delete review command parser will only parses the index of the book and the review number of the review to delete, which will be used to create a delete command.
+
+In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
+
+#####Given below is description of searching review of a book.
+
+Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
+
+#### Design consideration:
+
+The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
+
+##### Aspect: What is the length of the review content
+
+* **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
+  * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
+  * Cons: May bring inconvenience for recording the thoughts of some readers in detail.
+
+* **Alternative 2:** Remove the length restriction
+  * Pros: Allows the thoughts to be recorded in detail.
+  * Cons: May cause inconvenience for recording and summarizing the review.
+
+### \[New\] Find the most popular book feature
+
+####  Implementation
+
+The implementation of the FindMostPopular command is supported by `FindMostPopularCommand.java` and `FindMostPopularCommandParser.java` 
+
+The relevant methods are:
+
+*`FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
+*`FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
+
+
+Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
+
+Step 1. User input an input: `findMostPopular science`
+
+Step 2. Logic Manager would parse the input `findMostPopular science`, and determines that it is a findMostPopular command.
+
+Step 3. FindMostPopularCommandParser would then parse the category type and call the findMostPopular Command.
+
+Step 4. Execution of findMostPopular would take place. The most popular book(borrowed the most number of times) will be found
+ and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![findMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How find Most Popular executes
+
+* **Alternative 1 :** Stores the most popular book as an attribute of each category
+  * Pros: Easy to retrieve the most popular book.
+  * Cons: Needs auto-refresh when the borrowed times of different books change.
+
+* **Alternative 2:** Return the most popular book found directly to the UI
+  * Pros: Easier to implement.
+  * Cons: Does not follow the abstraction layers of UI.
+
+### \[New\] Randomized selection of book feature
+
+####  Implementation
+
+The implementation of the Random command is supported by `RandomCommand.java` and `RandomCommandParser.java` 
+
+The relevant methods are:
+
+*`RandomCommandParser#parse(String args)` --- Parses the input into book category.
+*`RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
+
+
+Given below is an example usage scenario and how the Random mechanism behaves at each step.
+
+Step 1. User input an input: `random Classics`
+
+Step 2. Logic Manager would parse the input `random Classics`, and determines that it is a Random command.
+
+Step 3. RandomCommandParser would then parse string input and call the Random Command.
+
+Step 4. Execution of Random would take place. A randomly selected book of the specified category will be found
+ and the result will be updated in the filtered list in Model.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![randomCommandSequenceDiagram](images/randomCommandSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How randomly select a book executes
+
+* **Alternative 1 :** Randomly select a book from the current filtered list.
+  * Pros: Easy to implement with the current filteredBookList.
+  * Cons: Tedious and inconvenient when users want to randomly select a book of a certain category.
 
 ### \[New\] ReportProblem feature
 
@@ -322,6 +495,85 @@ The following sequence diagram summarizes what happens when a user executes a ne
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
 
 
+### \[New\] Edit Problem Report feature
+
+####  Implementation
+
+The implementation of the Edit Problem Report command is supported by `EditProblemCommand.java` and `EditProblemCommandParser.java` 
+
+The relevant methods are:
+
+*`EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
+
+Below is the diagram illustrating the Problem Report Model. The EditProblemCommand allows for edit of either one attribute
+or both attributes at the same time.
+
+![ModelClassReportDiagram](images/ModelClassReportDiagram.png)
+
+Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
+
+Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
+
+Step 2. Logic Manager would parse the input `editProblemReport 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
+
+Step 3. EditProblemCommandParser would then parse string input and call the EditProblemCommand.
+
+Step 4. Execution of EditProblemCommand would take place. The report at the specified index will be edited
+and updated according to user input.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![EditProblemReportSequenceDiagram](images/EditProblemReportSequenceDiagram.png)
+
+### \[New\] Find Problem Report feature
+
+####  Implementation
+
+The implementation of the Find Problem Report command is supported by `FindProblemCommand.java` and `FindProblemCommandParser.java` 
+
+The relevant methods are:
+
+*`FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+*`FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
+
+
+Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
+
+Step 1. User input an input: `findProblemReport chair`
+
+Step 2. Logic Manager would parse the input `findProblemReport chair`, and determines that it is a FindProblemCommand command.
+
+Step 3. FindProblemCommandParser would then parse string input and call the FindProblemCommand.
+
+Step 4. Execution of FindProblemCommand would take place. The problems reports which has the description containing the keywords
+will be displayed.
+
+The following sequence diagram summarizes what happens when a user executes a new command:
+
+![EditProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
+
+
+### \[New\] Delete Problem Report feature
+
+####  Implementation
+
+The implementation of the DeleteProblem command is supported by `DeleteProblemCommand.java` and `DeleteProblemCommandParser.java` 
+
+The relevant methods are:
+
+*`DeleteProblemCommandParser#parse(String args)` --- Parses the user input index.
+*`DeleteProblemCommand#execute(Model model)` --- Deletes the report of the input index from the library.
+
+Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
+
+Step 1. User input an input: `deleteProblemReport 2`
+
+Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determines that it is a delete problem command.
+
+Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
+
+Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -401,13 +653,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the book being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -445,40 +690,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   |efficiently increase the stockings of those very popular books to meet the demand of the readers   |
-| `* *`    | library administrator                      | get an auto-generated list of most popular books in each categories                                     |know what books to purchase in the future                                                                                 |
-| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    |estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
-| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    |keep the review record for future evaluation of the book quality and popularity among the readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        |keep the book information in the database up to date                                                                      |
-| `* * *`  | library administrator                      | report problems found in libraries along with their severities                                                |keep track of all the problems and prioritize them by their severity levels                          |
-| `* * *`  | library administrator                      | view all the reported problems                                                 |know what problems need to be solved  |
-| `* *`    | expert user                                | delete multiple books by condition within one command                           |it is more time efficient            |
+| `* * *`  | library administrator                      | Add new books, delete original books in the library   | keep in the information in IntelLibrary application up to date  |
+| `* * *`  | library administrator                      | Delete all unpopular books at a time   | efficiently keep the record up to date and cleans unpopular books from the system efficiently  |
+| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   | efficiently increase the stockings of those very popular books to meet the demand of the readers   |
+| `* *`    | library administrator                      | get the most popular book in each categories                                     | know what books to purchase in the future        |
+| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    | estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
+| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    | keep the review record for future evaluation of the book quality and popularity among the readers|
+| `* *`    | library administrator                      | edit the information of a book                                                        | keep the book information in the database up to date                                                                      |
+| `* * `   | library administrator                      | get a randomly selected book from specified category at a time   | easier to implement random sampling for library book data analysis  |
+| `* * *`  | library administrator                      | report, delete problems found in libraries along with their severities                   |keep track of and update the problems and prioritize them by their severity levels                          |
+| `* * *`  | library administrator                      | view all the reported problems                                                 | know what problems need to be solved  |
+| `* * *`  | library administrator                      | edit the information of reported problems                                                 | keep the report information in record up to date  |
+| `* * *`  | library administrator                      | get the report which description contains keywords                        | fast access and find relevant problems at a time |
+| `* *`    | expert user                                | delete multiple books by condition within one command      | it is more time efficient            |
 | `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
 | `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
 | `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
 | `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
 *{More to be added}*
 
+
 ### Use cases
 
 (For all use cases below, the **System** is the `ItelliBrary` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC01 - Purge sample data**
-
-**MSS**
-  1. User requests to purge all sample data.
-  
-     Use case ends.
-  
-**Extensions**
-
-* 1a. Some or all sample data had already been deleted before the 'purge' request 
-    
-    * 1a1. IntelliBrary deletes all remaining sample data.
-    
-      Use case ends.
-
-**Use case: UC02 - Add Books**
+**Use case: UC01 - Add a book**
 
 **MSS**
   1. User request to add a new book into the library.
@@ -506,25 +742,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1c1. IntelliBrary shows an error message that data type of some of the book information is incorrect.
     
       Use case ends.
-      
-**Use case: UC03 - Delete Books**
-
-**MSS**
-  1. User request to delete a book from the library.
-
-  2. IntelliBrary deletes the book from the library and shows a successfull message to the user.
-  
-     Use case ends.
-  
-**Extensions**
-
-* 1a. The book to be deleted cannot be found in the library.
-    
-    * 1a1. IntelliBrary shows an error message that the book to be deleted cannot be found in the library.
-    
-      Use case ends.
             
-**Use case: UC04 - view the stockings of different books**
+**Use case: UC02 - View the stockings of different books**
 
 **MSS**
 
@@ -548,7 +767,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC05 - search for the review of a book**
+**Use case: UC03 - Search for the review of a book**
 
 **MSS**
 
@@ -572,7 +791,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
       
-**Use case: UC06 - add the review for a book**
+**Use case: UC04 - Add the review for a book**
 
 **MSS**
 
@@ -596,7 +815,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC07 - delete the review for a book**
+**Use case: UC05 - Delete a review for a book**
 
 **MSS**
 
@@ -620,7 +839,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC08 - edit the review for a book**
+**Use case: UC06 - Edit the review for a book**
 
 **MSS**
 
@@ -656,7 +875,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC009 - View Sample Data**
+**Use case UC07 - View Sample Data**
 
 **MSS**
 
@@ -671,7 +890,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-**Use case UC10 - Delete a book**
+**Use case UC08 - Delete a book**
 
 **MSS**
 
@@ -694,36 +913,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC11 - Edit a book**
+**Use case: UC09 - Edit a book**
 
 **MSS**
-  1. User requests to edit a book and inputs new information.
-  2. IntelliBrary modifies the current information of that book.
-     Use case ends.
-  
+
+1.  User requests to list books
+2.  IntelliBrary shows a list of books
+3.  User requests to edit the information of a specific book in the list
+4.  IntelliBrary edits the book
+
+    Use case ends.
+
 **Extensions**
 
-* 1a. The book to be editted cannot be found.
-    
-    * 1a1. IntelliBrary shows an error message.
-    
-      Use case ends.
-      
-**Use case: UC12 - Check the borrowing status of a book**
+* 2a. The list is empty.
 
-**MSS**
-  1. User requests to check the borrowing status of a book.
-  2. IntelliBrary tells the user whether there are available stockings of this book.
-  
-**Extensions**
+  Use case ends.
 
-* 1a. The book to be checked cannot be found.
-    
-    * 1a1. IntelliBrary shows an error message.
-    
-      Use case ends.  
+* 3a. The given command format is invalid.
+
+    * 3a1. IntelliBrary reminds the user of incorrect command format.
+
+      Use case resumes at step 2.
       
-**Use case: UC13 - Get usage times of a book**
+**Use case: UC10 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -749,7 +962,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC14 - Get number of books borrowed**
+**Use case: UC11 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -757,7 +970,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC15 - Report problem**
+**Use case: UC12 - Report a problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -779,15 +992,140 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC16 - View problems**
+**Use case: UC13 - View a problem**
 
 **MSS**
   1. User requests to view problems.
   2. IntelliBrary shows the problem list and shows a successfull message to the user.
 
   Use case ends.
+  
+**Use case: UC14 - Delete a problem report**
 
-*{More to be added}*
+**MSS**
+  1. User requests to delete a problem report by index.
+  2. IntelliBrary deletes the problem report and shows a successfull message to the user.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. The index given by the user is invalid.
+
+    * 1a1. IntelliBrary shows an error message that index given by the user is invalid.
+
+      Use case ends.
+    
+    
+**Use case: UC15 - Find a problem report by description**
+
+**MSS**
+  1. User requests to find reports that the descriptions matches certain keywords.
+  2. IntelliBrary finds reports which descriptions matches the keywords.
+
+  Use case ends. 
+  
+**Extensions**
+
+* 1a. No problem reports that the description matches the keyword is found.
+
+    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+
+      Use case ends.
+      
+      
+**Use case: UC16 - Find Most popular book of a category**
+
+**MSS**
+  1. User requests to find the most popular book of a category.
+  2. IntelliBrary finds the most popular book of a category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
+    
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+    
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.
+    
+**Use case: UC17 - Randomized selection of a book of a category**
+
+**MSS**
+  1. User requests to randomly select a book of a specified category.
+  2. IntelliBrary randomly select a book of a specified category.
+  
+     Use case ends.
+  
+**Extensions**
+
+* 1a. The input category name is invalid
+    
+    * 1a1. IntelliBrary shows a message indicating the command is invalid.
+    
+      Use case ends.
+      
+* 1b. There are currently no books of the category.
+    
+    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    
+      Use case ends.      
+
+**Use case: UC18 - Seek help**
+
+**MSS**
+  1. User seeks help regarding how to use IntelliBrary.
+  2. IntelliBrary redirects the user to the reference documentation.
+  
+     Use case ends.
+     
+**Use case: UC19 - Clear all the books**
+
+**MSS**
+  1. User requests clear all the books in the library.
+  2. IntelliBrary deletes all the books avaliable.
+  
+     Use case ends.
+     
+**Use case: UC20 - Check history**
+
+**MSS**
+  1. User requests to check the history of borrowing.
+  2. IntelliBrary provides the information of borrowing history.
+  
+     Use case ends.
+     
+**Use case: UC21 - Find a book**
+
+**MSS**
+  1. User requests to find a book according to the search of keywords.
+  2. IntelliBrary provides a list of books whose names contain one of the keywords.
+  3. User finds the book in the list.
+  
+     Use case ends.
+     
+**Extensions**
+
+* 1a. No book whose description matches the keyword is found.
+
+    * 1a1. IntelLiBrary shows a message that no matching boos are found.
+
+      Use case ends.
+      
+**Use case: UC22 - Exit the program**
+
+**MSS**
+  1. User requests to exit the program.
+  2. IntelliBrary closes itself.
+  
+     Use case ends.
 
 ### Non-Functional Requirements
 
@@ -810,7 +1148,7 @@ Use case ends.
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Command that exists in the original AddressBook application such as `list`, `help`, and `clear `
 
 </div>
 
@@ -829,11 +1167,9 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a book
 
-1. Deleting a book while all books are being shown
+1. Deleting a book while all books are being shown using `delete`
 
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
@@ -846,12 +1182,37 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. Deleting a book while all books are being shown using `deleteBy`
+
+    1. Test case:
+       Expected:
+       
+    1. Test case:
+       Expected:
+           
+    1. Other incorrect commands to try:
+
+### Adding a book
+
+1. Adding a book
+    
+    1.
+    
+    
+    1.
+    
+    1.
+    
+### Editing a book
+
+1. Deleting a book while all books are being shown
+
+    
+
+
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_

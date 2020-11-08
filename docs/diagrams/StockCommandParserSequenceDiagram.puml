@@ -7,11 +7,11 @@ participant ":StockCommandParser" as StockCommandParser LOGIC_COLOR
 participant "s:StockCommand" as StockCommand LOGIC_COLOR
 end box
 
-[-> StockCommandParser : parse("n/gun")
+[-> StockCommandParser : parse("n/Guns")
 activate StockCommandParser
 
 create StockCommand
-StockCommandParser -> StockCommand : StockCommand(names, numbers)
+StockCommandParser -> StockCommand
 activate StockCommand
 
 StockCommand --> StockCommandParser : s
