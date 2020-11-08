@@ -112,7 +112,7 @@ public class LogicManager implements Logic {
         keywords.add(TimesCommand.SUGGESTION);
         keywords.add(UsageByCommand.SUGGESTION);
         keywords.add(UsageCommand.SUGGESTION);
-        keywords.add(ViewProblemCommand.SUGGESTION);
+        keywords.add(ViewProblemCommand.COMMAND_WORD);
         return keywords;
     }
 }

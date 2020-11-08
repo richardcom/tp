@@ -21,7 +21,8 @@ import seedu.address.model.book.Book;
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    public static final String SUGGESTION = "";
+    public static final String SUGGESTION = "add n/<name> i/<isbn> e/<email> l/<language> "
+            + "t/<times> a/<author> p/<publisher>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a book to the intellibrary. "
             + "Parameters: "

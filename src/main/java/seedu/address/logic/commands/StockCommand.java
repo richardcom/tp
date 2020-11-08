@@ -22,8 +22,7 @@ import seedu.address.ui.Mode;
 public class StockCommand extends Command {
 
     public static final String COMMAND_WORD = "stock";
-    public static final String SUGGESTION = "stock n/<book name>\n" + "stock i/<isbn>\n"
-            + "stock n/<book name> stock i/<isbn>";
+    public static final String SUGGESTION = "stock n/<book name>\n" + "stock i/<isbn>\n";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Search for the stocking of all the books with"
             + "the corresponding keyword and shows them as a list.\n"

@@ -23,8 +23,8 @@ public class ResultDisplay extends UiPart<Region> {
         super(FXML);
     }
 
-    public void setSuggestionList(List<String> messageUsage) {
-        this.suggestions = messageUsage;
+    public void setSuggestionList(List<String> suggestions) {
+        this.suggestions = suggestions;
     }
 
     public void setFeedbackToUser(String feedbackToUser) {
