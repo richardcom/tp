@@ -15,7 +15,7 @@ public class ViewProblemCommand extends Command {
     public static final String SUGGESTION = "view";
 
     /**
-     * Execute usage command on model and return with result.
+     * Executes view command.
      *
      * @param model {@code Model} which the command should operate on.
      * @return a new CommandResult object

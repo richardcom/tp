@@ -14,8 +14,6 @@ import seedu.address.model.book.Book;
 import seedu.address.model.category.Category;
 import seedu.address.ui.Mode;
 
-
-
 /**
  * Finds and lists all books with the maximum number of times that was borrowed.
  * Keyword matching is case insensitive.
@@ -38,6 +36,12 @@ public class FindMostPopularCommand extends Command {
         this.category = category;
     }
 
+    /**
+     * Executes find most popular command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

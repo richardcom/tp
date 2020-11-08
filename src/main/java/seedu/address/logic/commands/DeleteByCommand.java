@@ -45,6 +45,13 @@ public class DeleteByCommand extends Command {
         this.attribute = attribute;
     }
 
+    /**
+     * Executes deleteBy problem command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if book cannot be found or book found invalid
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

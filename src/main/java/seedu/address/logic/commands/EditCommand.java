@@ -81,6 +81,13 @@ public class EditCommand extends Command {
         this.editBookDescriptor = new EditBookDescriptor(editBookDescriptor);
     }
 
+    /**
+     * Executes edit command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if invalid index
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

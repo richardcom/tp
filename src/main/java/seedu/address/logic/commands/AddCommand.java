@@ -60,7 +60,7 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Execute usage command on model and return with result.
+     * Executes add command on model and return with result.
      *
      * @param model {@code Model} which the command should operate on
      * @return a new CommandResult object

@@ -16,7 +16,7 @@ public class ListCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Listed all books";
 
     /**
-     * Execute usage command on model and return with result.
+     * Executes list command on model.
      *
      * @param model {@code Model} which the command should operate on.
      * @return a new CommandResult object

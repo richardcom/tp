@@ -31,6 +31,13 @@ public class DeleteCommand extends Command {
         this.targetIndex = targetIndex;
     }
 
+    /**
+     * Executes delete command on model and return with result.
+     *
+     * @param model {@code Model} which the command should operate on
+     * @return a new CommandResult object
+     * @throws CommandException if illegal index
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

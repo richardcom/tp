@@ -18,7 +18,7 @@ public class HistoryCommand extends Command {
     public static final String COMMAND_WORD = "history";
 
     /**
-     * Execute usage command on model and return with result.
+     * Executes history command.
      *
      * @param model {@code Model} which the command should operate on.
      * @return a new CommandResult object
