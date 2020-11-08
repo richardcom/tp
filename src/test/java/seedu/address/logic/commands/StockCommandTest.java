@@ -93,6 +93,8 @@ class StockCommandTest {
 
         StockCommand newCommand = new StockCommand(Arrays.asList("Elle"), Arrays.asList("9482224"));
 
+        newCommand.setPredicate(originalCommand.getPredicate());
+
         // same object -> returns true
         assertTrue(originalCommand.equals(originalCommand));
 
