@@ -274,7 +274,11 @@ If more than one `n/` is present, only the last `n/` will be taken. This is simi
 
     * For example, `9780553175219` contains `9780553175219` and `7805`.
 
-The reason for the design used is that the searching can be more consistent. The more and the longer the search key is, the more specific the search result will be. This is reasonable since it is often the case that the librarian has already known what the book is before trying to find out the stock information of that particular book. 
+The book name string following `n/` needs to follow the format of book name and the ISBN string following `i/` needs to follow the format of ISBN number.
+
+The reason for the design used is that the searching can meet the need of the librarian. The more and the longer the search key is, the more specific the search result will be. 
+
+This will be helpful for librarian, since when doing book purchases, a librarian usually have both the need to check the stocking of all the books and get a summary information, and the need to check the stocking information of a particular book. 
 
 If both the name and the ISBN are used in the command, then the result will be the stocking information of the books that satisfy **both** of the conditions.
 
@@ -579,7 +583,7 @@ The book cover of a book depends on the categories of the book.
 
 The category name is case insensitive, but the category name needs to match **exactly**, and there cannot be white space in between the category words.
 
-The following are **invalid** examples of category which will not reflect the intention of the user of adding `ModernWar`.
+The following are **invalid** examples of category which will not reflect the intention of the user of adding the `ModernWar` category to the book.
 
 * `Modern war`
 * `Modern war in Asia`
