@@ -43,7 +43,7 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
     public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<language> t/<times>"
-            + "/<category>… s/<stocking> a/<author> p/<publisher>";
+            + "c/<category>… s/<stocking> a/<author> p/<publisher>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
             + "by the index number used in the displayed book list. "

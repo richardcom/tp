@@ -27,15 +27,18 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`list`** : Lists all books in the library.
 
-   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/xxxxx c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
+   * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
    * **`clear`** : Deletes all books.
 
    * **`exit`** : Exits the app.
+   
+6. The system will detect user input as you type the command and give smart suggestions as respond even before you hit enter. 
+   Note that in smart suggestions, only compulsory fields of a command is shown. To see full usage of commands, go to step 7.
 
-6. Refer to the [Features](#features) below for details of all the commands.
+7. Refer to the [Features](#features) below for details of all the commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
