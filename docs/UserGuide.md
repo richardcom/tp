@@ -210,7 +210,7 @@ Examples:
 
 Deletes the specified book(s) from the library.
 
-##### Delete a book by its index in the current list `delete`
+##### By its index in the current list `delete`
 
 Format: `delete INDEX`
 
@@ -226,7 +226,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
 * `find novel` followed by `delete 1` deletes the 1st book in the results of the `find` command.
 
-##### Delete a book by other attributes: `deleteBy`
+##### By other attributes: `deleteBy`
 
 Delete book(s) from the library.
 
@@ -313,7 +313,7 @@ Checks usage times of a certain book specified by user. Book is specified by any
 
 Note that `usageBy` commands are less sensitive and you will need to match exactly book name or isbn to get book usage.
 
-##### By Index
+##### By its index in the current list
 Format:
 * `usage INDEX`
 
@@ -523,7 +523,7 @@ Examples:
 ![view problems](images/view_problem.png)
 
 
-#### Locating reports by keyword: `findpr`
+#### Locate reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
@@ -544,7 +544,7 @@ Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
 * `findpr table chair` returns `table`, `chair`
 
-#### Deleting a report : `deletepr`
+#### Delete a report : `deletepr`
 
 Deletes the specified problem report from library management system.
 
