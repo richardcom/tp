@@ -501,7 +501,7 @@ they have **both** the same severity and the same description.
 
 Examples:
 * `report s/high d/book is broken`
-![report problem](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/docs/images/report_problem.png)
+![report problem](images/report_problem.png)
 
 #### View problems: `view`
 
@@ -511,7 +511,7 @@ Format: `view`
 
 Examples:
 * `view`
-![view problems](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/docs/images/view_problem.png)
+![view problems](images/view_problem.png)
 
 
 #### Locating reports by keyword: `findpr`
