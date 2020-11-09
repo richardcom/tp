@@ -120,10 +120,6 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the intellibrary data in json format and read it back.
 
-### Common classes
-
-Classes used by multiple components are in the `seedu.address.commons` package.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
