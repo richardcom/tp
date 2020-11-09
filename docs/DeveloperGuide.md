@@ -258,7 +258,9 @@ These operations are incorporated into the storage read and write process in the
 
 ##### Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
-Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
+The diagram describes the process in Step 2 and Step 3. 
+
+Step 1. The user launches the application and types command `edit 1 s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
 Step 2. The edit command parser calls the ParseUtil, which parses the string and returns a stocking
 
@@ -268,7 +270,9 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-#### Given below is an example usage scenario of how the stocking command will be executed, 
+##### Given below is an example usage scenario of how the stocking command will be executed. 
+
+The diagram describes the process in Step 2.
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -302,11 +306,13 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-#### Given below is an example usage scenario of adding a review to a book.
+##### Given below is an example usage scenario of adding a review to a book.
+
+The diagram describes the process in Step 2.
 
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
-Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
+Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the `Rating` and `ReviewContent` respectively, and the add review command parser will use the `Rating` and `ReviewContent` to create a new review. The add review command will be created using this new review.
 
 ![The creation of the add review command](images/AddReviewParserSequenceDiagram.png)
 
@@ -314,27 +320,27 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-#### Given below is an example usage scenario of editing a review of a book.
+##### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
-Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `Review`.
+Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `ReviewContent`.
 
-Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
+Step 3. The edit review command parser returns an edit review command with a new `Rating` object of rating `5` and a new `ReviewContent` object with review content `Make review`.
 
 Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
-#### Given below is description of deleting review of a book.
+##### Given below is description of the process of deleting a book using deleteReview .
 
 The process is similar to edit review command.
 
-The difference is that in Step 2, the delete review command parser will only parses the index of the book and the review number of the review to delete, which will be used to create a delete command.
+The difference is that in Step 2, the delete review command parser will only parse the index of the book and the review number of the review to delete, which will be used to create a delete command.
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-#### Given below is description of searching review of a book.
+##### Given below is description of the process of searching for certain books using searchReview.
 
-Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
+Please refer to the stock command because the execution process is similar to execution process of a stock command.
 
 #### Design consideration:
 
@@ -562,84 +568,6 @@ Step 2. Logic Manager would parse the input `deletepr 2`, and determines that it
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
 Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressbook`. It extends `Addressbook` with an undo/redo history, stored internally as an `addressbookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressbook#commit()` — Saves the current intellibrary state in its history.
-* `VersionedAddressbook#undo()` — Restores the previous intellibrary state from its history.
-* `VersionedAddressbook#redo()` — Restores a previously undone intellibrary state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressbook()`, `Model#undoAddressbook()` and `Model#redoAddressbook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressbook` will be initialized with the initial intellibrary state, and the `currentStatePointer` pointing to that single intellibrary state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th book in the intellibrary. The `delete` command calls `Model#commitAddressbook()`, causing the modified state of the intellibrary after the `delete 5` command executes to be saved in the `addressbookStateList`, and the `currentStatePointer` is shifted to the newly inserted intellibrary state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressbook()`, causing another modified intellibrary state to be saved into the `addressbookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressbook()`, so the intellibrary state will not be saved into the `addressbookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressbook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intellibrary state, and restores the intellibrary to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Addressbook state, then there are no previous Addressbook states to restore. The `undo` command uses `Model#canUndoAddressbook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressbook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intellibrary to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressbookStateList.size() - 1`, pointing to the latest intellibrary state, then there are no undone Addressbook states to restore. The `redo` command uses `Model#canRedoAddressbook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the intellibrary, such as `list`, will usually not call `Model#commitAddressbook()`, `Model#undoAddressbook()` or `Model#redoAddressbook()`. Thus, the `addressbookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressbook()`. Since the `currentStatePointer` is not pointing at the end of the `addressbookStateList`, all intellibrary states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire intellibrary.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the book being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -987,7 +915,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1c. The new review given by the user is equivalent to the original review.
+* 1d. The new review given by the user is equivalent to the original review.
 
     * 1c1. IntelliBrary shows an error message that the review given by the user does not make changes to the original review and the value of the edited review needs to be different. 
 
