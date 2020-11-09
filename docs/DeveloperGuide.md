@@ -1027,6 +1027,12 @@ Use case ends.
     
       Use case ends.
       
+* 1c. The newly reported problems has the same description with an existing problem.
+
+    * 1c1. IntelliBrary shows a message that duplicate problem is detected.
+    
+      Use case ends.
+      
 **Use case: UC12 - View a problem**
 
 **MSS**
@@ -1056,7 +1062,7 @@ Use case ends.
 
 **MSS**
   1. User requests to find reports that the descriptions matches certain keywords.
-  2. IntelliBrary finds reports which descriptions matches the keywords.
+  2. IntelliBrary returns the reports whose descriptions match the keywords.
 
   Use case ends. 
   
@@ -1064,7 +1070,7 @@ Use case ends.
 
 * 1a. No problem reports that the description matches the keyword is found.
 
-    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+    * 1a1. IntelliBrary shows a message that no matching reports are found.
 
       Use case ends.
       
@@ -1087,7 +1093,7 @@ Use case ends.
     
 * 1b. There are currently no books of the category.
     
-    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    * 1b1. IntelliBrary shows a message saying that zero book is listed.
     
       Use case ends.
     
@@ -1117,15 +1123,15 @@ Use case ends.
 
 **MSS**
   1. User seeks help regarding how to use IntelliBrary.
-  2. IntelliBrary redirects the user to the reference documentation.
+  2. IntelliBrary provides the URL to User Guide.
   
      Use case ends.
      
 **Use case: UC18 - Clear all the books**
 
 **MSS**
-  1. User requests clear all the books in the library.
-  2. IntelliBrary deletes all the books available.
+  1. User requests to clear all the books and problems in the library.
+  2. IntelliBrary deletes all the books and problems available.
   
      Use case ends.
      
@@ -1148,9 +1154,9 @@ Use case ends.
      
 **Extensions**
 
-* 1a. No book whose description matches the keyword is found.
+* 1a. No book matches the keyword.
 
-    * 1a1. IntelLiBrary shows a message that no matching boos are found.
+    * 1a1. IntelliBrary shows a message that no matching books are found.
 
       Use case ends.
       
@@ -1158,7 +1164,7 @@ Use case ends.
 
 **MSS**
   1. User requests to exit the program.
-  2. IntelliBrary closes itself.
+  2. IntelliBrary closes its window and terminates the process.
   
      Use case ends.
 
@@ -1218,7 +1224,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Deleting a book using `delete`
 
-   1. Prerequisites: List all books using the `list` command. Multiple books in the list.
+   1. Prerequisites: List all books using the `list` command. At least one book in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First book is deleted from the list. Details of the deleted book shown in the status message.
@@ -1259,31 +1265,31 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a book using `find`
 
-    1. Prerequisites: Multiple books in the library.
+    1. Prerequisites: At least one book in the library.
 
     1. Test case: `find science`
-       Expected: Return books where the name contains the case-insensitive `Science`.
+       Expected: Return books whose name contains the case-insensitive `Science`.
            
     1. Test case: `find Math`
-       Expected: Return books where the name contains the case-insensitive `Math`.
+       Expected: Return books whose name contains the case-insensitive `Math`.
                
     1. Other incorrect commands to try: `find`
 
 2. Finding the most popular book using `findpop`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
     1. Test case: `findpop Math`
        Expected: The most popular book of the `Math` category is listed in the list.
                
     1. Test case: `findpop Science`
-       Expected: The most popular book of the `Science` category is listed in the list.
+       Expected: The most popular book of the `Science` category is shown in the list.
               
     1. Other incorrect commands to try: `findpop -2d3d_-`, `findpop --9`, etc.
 
 3. Finding a random book of a given category using `random`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
      1. Test case: `random Math`
            Expected: A random book of the `Math` category is listed in the list.
@@ -1320,7 +1326,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the stocking of a book using `stock`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
 
     1. Test case: `stock n/Time`<br>
        Expected: Shows the stocking information of the books whose names contain the word `Time`, case insensitive. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
@@ -1338,7 +1344,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the usage of a book according to its displayed index using `usage`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usage 1`<br>
        Expected: the number of borrowed times of book with index 1 in the list (1-based)
@@ -1347,7 +1353,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 2. Finding the usage of a book according to its name or ISBN using `usageBy`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usageBy n/Pride and Prejudice` <br>
        Expected: the number of borrowed times of book with book name "Pride and Prejudice"
@@ -1359,9 +1365,9 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 ### Finding all the reviews of a book
 
-1. Finding aLL the reviews using `searchReivew`
+1. Finding all the reviews using `searchReivew`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `searchReview n/Time` <br>
        Expected: Shows the review list of the books whose names contain the word `Time`, case insensitive. The review list of book with no review will be empty. The number of books listed is shown in the status message. 
@@ -1426,25 +1432,25 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Reporting a problem using `report`
     
-    i. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
+    1. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
 
-    ii. Test case: `report s/high d/book is broken`
+    1. Test case: `report s/high d/book is broken`
         Expected: Problem successfully added, detailed information shown in the status bar.
       
-    iii. Test case: enter `report s/medium d/book is broken` after the previous test case.
+    1. Test case: enter `report s/medium d/book is broken` after the previous test case.
         Expected: Duplicate problem detected, as shown in the status bar.
        
-    iv. Test case: `report d/floor is dirty s/medium`
+    1. Test case: `report d/floor is dirty s/medium`
         Expected: Problem successfully added, detailed information shown in the status bar.
                      
-    v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
+    1. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
 
 ### Viewing reported problems
 1. Viewing reported problems using `view`
     
-    i. Prerequisites: NA.
+    1. Prerequisites: NA.
     
-    ii. Test case: `view`
+    1. Test case: `view`
         Expected: All reported problems shown in the problem section (the right side of the window). If no problem has yet been reported, the problem section will be empty.
 
 ### Deleting a problem report
@@ -1465,7 +1471,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a problem report using `findpr`
 
-    1. Prerequisites: The reports in the library is not empty.
+    1. Prerequisites: There is at least one problem in the library.
 
     1. Test case: `findpr lost`
        Expected: The report which has the description matching the keyword is shown.
@@ -1480,7 +1486,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a problem report using `editpr`
 
-    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+    1. Prerequisites: View all reports using the `view` command. There is at least one problem in the library.
 
     1. Test case: `editpr 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1488,4 +1494,4 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Test case: `editpr 0 s/high`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list)
+    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list).
