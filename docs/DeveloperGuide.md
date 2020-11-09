@@ -259,7 +259,7 @@ The relationship between the book and the stocking and other components
 
 These operations are incorporated into the storage read and write process in the execution.
 
-#####Given below is an example usage scenario of how stocking information with be parsed when editing a book.
+##### Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
 Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
@@ -271,7 +271,7 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-#####Given below is an example usage scenario of how the stocking command will be executed, 
+##### Given below is an example usage scenario of how the stocking command will be executed, 
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -305,7 +305,7 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-#####Given below is an example usage scenario of adding a review to a book.
+##### Given below is an example usage scenario of adding a review to a book.
 
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
@@ -317,7 +317,7 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-#####Given below is an example usage scenario of editing a review of a book.
+##### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
@@ -327,7 +327,7 @@ Step 3. The edit review command parser returns an edit review command with a new
 
 Step 4. The edit review command is executed and updates the review at postion `4` in the review list of the book with index `1` in the currently shown book list.
 
-#####Given below is description of deleting review of a book.
+##### Given below is description of deleting review of a book.
 
 The process is similar to edit review command.
 
@@ -335,7 +335,7 @@ The difference is that in Step 2, the delete review command parser will only par
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-#####Given below is description of searching review of a book.
+##### Given below is description of searching review of a book.
 
 Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
 
