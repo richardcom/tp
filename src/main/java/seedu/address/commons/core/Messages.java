@@ -35,8 +35,9 @@ public class Messages {
     public static final String MESSAGE_REPORT_LISTED_OVERVIEW = "%1$d reports listed!";
     public static final String MESSAGE_BORROWING_TIMES_HISTORY = "All history borrowing times sum up to %1$d";
     public static final String MESSAGE_USAGE = "usage"
-            + ": Usages the book identified by the index number used in the displayed book list.\n"
+            + ": the index number must be within the displayed book list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: usage 1";
     public static final String MESSAGE_USAGE_BOOK_SUCCESS = "Usage of selected book: %1$s";
+    public static final String MESSAGE_INVALID_USAGE_BY = "Invalid book name or isbn";
 }

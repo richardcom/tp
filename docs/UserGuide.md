@@ -306,12 +306,19 @@ Visual Example:
 
 #### Check usage `usage` and `usageBy`
 
-Checks usage times of a certain book specified by user. Book is specified by any of the followings:
-* one base index in storage.
+Checks borrowed times of a certain book specified by user. Book is specified by any of the followings:
+* one-base index in the book list
 * book isbn
 * book name
 
 Note that `usageBy` commands are less sensitive and you will need to match exactly book name or isbn to get book usage.
+
+If the index provided is invalid, a message saying `The book index provided is invalid` will be displayed.
+
+If the book specified by isbn or name is not found, a message saying `The book to check is not found` will be displayed.
+
+As checking usage is a comparably simple feature, we suppose you can know the syntax of correctly calling of these commands.
+Thus, redundant information will not be provided after you key in invalid input. If you need help, please see in the user guide.
 
 ##### By its index in the current list
 Format:
