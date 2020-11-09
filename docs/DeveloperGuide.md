@@ -262,7 +262,9 @@ These operations are incorporated into the storage read and write process in the
 
 ##### Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
-Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
+The diagram describes the process in Step 2 and Step 3. 
+
+Step 1. The user launches the application and types command `edit 1 s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
 Step 2. The edit command parser calls the ParseUtil, which parses the string and returns a stocking
 
@@ -272,7 +274,9 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-##### Given below is an example usage scenario of how the stocking command will be executed, 
+##### Given below is an example usage scenario of how the stocking command will be executed. 
+
+The diagram describes the process in Step 2.
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -308,9 +312,11 @@ The class diagram for `Review`
 
 ##### Given below is an example usage scenario of adding a review to a book.
 
+The diagram describes the process in Step 2.
+
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
-Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
+Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the `Rating` and `ReviewContent` respectively, and the add review command parser will use the `Rating` and `ReviewContent` to create a new review. The add review command will be created using this new review.
 
 ![The creation of the add review command](images/AddReviewParserSequenceDiagram.png)
 
@@ -322,23 +328,23 @@ Step 4. The add review command is executed, which adds the review with the ratin
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
-Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `Review`.
+Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `ReviewContent`.
 
-Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
+Step 3. The edit review command parser returns an edit review command with a new `Rating` object of rating `5` and a new `ReviewContent` object with review content `Make review`.
 
 Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
-##### Given below is description of deleting review of a book.
+##### Given below is description of the process of deleting a book using deleteReview .
 
 The process is similar to edit review command.
 
-The difference is that in Step 2, the delete review command parser will only parses the index of the book and the review number of the review to delete, which will be used to create a delete command.
+The difference is that in Step 2, the delete review command parser will only parse the index of the book and the review number of the review to delete, which will be used to create a delete command.
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-##### Given below is description of searching review of a book.
+##### Given below is description of the process of searching for certain books using searchReview.
 
-Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
+Please refer to the stock command because the execution process is similar to execution process of a stock command.
 
 #### Design consideration:
 
