@@ -1392,12 +1392,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Getting the total number of times of borrowing of all the books using `history`
     
-    1. Prerequisites:
+    1. Prerequisites: NA
 
-    1. Test case:
-       Expected:
+    1. Test case: `history`
+       Expected: shows total borrowed times of all books
                   
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `histories`, `sum`, etc.
 
 ### Updating the borrowed times of a book
 
@@ -1432,27 +1432,24 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the usage of a book according to its displayed index using `usage`
 
-    1. Prerequisites:    
+    1. Prerequisites: There are some books in the application storage.
     
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
+    1. Test case: `usage 1`<br>
+       Expected: the number of borrowed times of book with index 1 in the list (1-based)
+              
+    1. Other incorrect commands to try: `usage 0`, `usage a`, etc
    
 2. Finding the usage of a book according to its name or ISBN using `usageBy`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books in the application storage.
     
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
+    1. Test case: `usageBy n/Pride and Prejudice` <br>
+       Expected: the number of borrowed times of book with book name "Pride and Prejudice"
+       
+    1. Test case: `usageBy i/9780141439518` <br>
+       Expected: the number of borrowed times of book with book isbn "9780141439518"
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `usageBy Pride and Prejudice`, `usageBy i/Pride and Prejudice`, etc
    
 ### Finding all the reviews of a book
 
