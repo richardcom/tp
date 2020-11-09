@@ -387,9 +387,9 @@ Examples:
 * `findpop Classics`
 * `findpop Science`
 
-## Features related to Review
+### Features related to Review
 
-##### _Introduction_
+#### _Introduction_
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -405,7 +405,7 @@ The created time and last edited time in a review refers to the time when the re
 
 The execution of every review command will display the list of review of the books that are involved in the command.
 
-##### Search for review of book: `searchReview`
+#### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
 
@@ -427,7 +427,7 @@ Visual Example:
 
 ![](./images/searchReviewCommandUserInterface.png)
 
-##### Add review: `addReview`
+#### Add review: `addReview`
 
 Add a review to a certain book. 
 
@@ -451,7 +451,7 @@ If the index is not in the currently shown book list, then a corresponding excep
 Examples:
 * `addReview 1 ra/5 re/The book is interesing`
 
-##### Delete review: `deleteReview`
+#### Delete review: `deleteReview`
 
 Delete a review of a certain book.
 
@@ -471,7 +471,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-##### Edit review: `editReview`
+#### Edit review: `editReview`
 
 Edit a review of a certain book. 
 
