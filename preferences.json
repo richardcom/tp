@@ -1,10 +1,10 @@
 {
   "guiSettings" : {
     "windowWidth" : 1140.0,
-    "windowHeight" : 578.0,
+    "windowHeight" : 564.0,
     "windowCoordinates" : {
-      "x" : 486,
-      "y" : 184
+      "x" : 408,
+      "y" : 251
     }
   },
   "libraryFilePath" : "data\\IntelliBrary.json"
