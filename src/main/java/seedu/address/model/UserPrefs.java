@@ -14,11 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-<<<<<<< HEAD
     private Path libraryFilePath = Paths.get("data" , "IntelliBrary.json");
-=======
-    private Path libraryFilePath = Paths.get("data" , "intellibrary.json");
->>>>>>> 0987c10cad4fda43321ca8dc68e686c213236b92
 
     /**
      * Creates a {@code UserPrefs} with default values.
