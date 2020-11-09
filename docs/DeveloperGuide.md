@@ -850,13 +850,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>efficiently reset the app            </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 </tbody>
 </table>
 <p><em>{More to be added}</em></p>
-
-*{More to be added}*
 
 
 ### Use cases
