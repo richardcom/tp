@@ -16,7 +16,6 @@ import seedu.address.model.book.Book;
 public class BookListPanel extends UiPart<Region> {
     private static final String FXML = "BookListPanel.fxml";
     private static Mode mode = Mode.NORMAL;
-    private final Logger logger = LogsCenter.getLogger(BookListPanel.class);
 
     @FXML
     private ListView<Book> bookListView;
