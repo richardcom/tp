@@ -22,7 +22,7 @@ import seedu.address.testutil.BookBuilder;
 
 
 /**
- * Contains integration tests (interaction with the Model) for {@code RandomCommand}.
+ * Contains integration tests (interaction with the Model) for {@code FindMostPopularCommand}.
  */
 public class FindMostPopularCommandTest {
     private static final String LARGE_POPULAR_TIMES = String.valueOf(Integer.MAX_VALUE);
@@ -36,9 +36,9 @@ public class FindMostPopularCommandTest {
         Set<Category> categories = book.getCategories();
         Category category = categories.iterator().next();
         model.addBook(book);
-        FindMostPopularCommand findpopCommand = new FindMostPopularCommand(category);
+        FindMostPopularCommand findPopCommand = new FindMostPopularCommand(category);
         // As the book is the most popular one in the model, it shall be selected by FindMostPopularCommand
-        findpopCommand.execute(model);
+        findPopCommand.execute(model);
         Book expectedBook = model.getFilteredBookList().get(0);
         // expectedBook shall be the same with the most popular book after FindMostPopularCommand Command
         assertEquals(book, expectedBook);
@@ -52,7 +52,7 @@ public class FindMostPopularCommandTest {
         FindMostPopularCommand commandWithSameValues = new FindMostPopularCommand(new Category(VALID_CATEGORY_MATH));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
-        // same object -> retuArns true
+        // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
 
         // null -> returns false
