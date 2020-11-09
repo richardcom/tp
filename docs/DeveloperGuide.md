@@ -573,84 +573,6 @@ Step 3. DeleteProblemCommandParser would parse the index of the report to be del
 
 Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
 
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressbook`. It extends `Addressbook` with an undo/redo history, stored internally as an `addressbookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressbook#commit()` — Saves the current intellibrary state in its history.
-* `VersionedAddressbook#undo()` — Restores the previous intellibrary state from its history.
-* `VersionedAddressbook#redo()` — Restores a previously undone intellibrary state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressbook()`, `Model#undoAddressbook()` and `Model#redoAddressbook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressbook` will be initialized with the initial intellibrary state, and the `currentStatePointer` pointing to that single intellibrary state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th book in the intellibrary. The `delete` command calls `Model#commitAddressbook()`, causing the modified state of the intellibrary after the `delete 5` command executes to be saved in the `addressbookStateList`, and the `currentStatePointer` is shifted to the newly inserted intellibrary state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressbook()`, causing another modified intellibrary state to be saved into the `addressbookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressbook()`, so the intellibrary state will not be saved into the `addressbookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressbook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intellibrary state, and restores the intellibrary to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Addressbook state, then there are no previous Addressbook states to restore. The `undo` command uses `Model#canUndoAddressbook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressbook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intellibrary to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressbookStateList.size() - 1`, pointing to the latest intellibrary state, then there are no undone Addressbook states to restore. The `redo` command uses `Model#canRedoAddressbook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the intellibrary, such as `list`, will usually not call `Model#commitAddressbook()`, `Model#undoAddressbook()` or `Model#redoAddressbook()`. Thus, the `addressbookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressbook()`. Since the `currentStatePointer` is not pointing at the end of the `addressbookStateList`, all intellibrary states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire intellibrary.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the book being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -998,7 +920,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1c. The new review given by the user is equivalent to the original review.
+* 1d. The new review given by the user is equivalent to the original review.
 
     * 1c1. IntelliBrary shows an error message that the review given by the user does not make changes to the original review and the value of the edited review needs to be different. 
 
