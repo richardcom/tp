@@ -2,8 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -19,7 +17,6 @@ import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
