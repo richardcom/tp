@@ -1343,15 +1343,15 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a book
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
+    1. Test case: `edit 1 c/`
+       Expected: Clearing all the categories of the first book in the library. 
            
-    1. Test case:
-       Expected:
+    1. Test case: `edit 2 l/Chinese`
+       Expected: The langusge of the second book in the library is changed to Chinese.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try:  `edit`, `edit n/intro to math`, etc.
     
 ### Finding a certain book
 
@@ -1406,15 +1406,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Updating the borrowed times of a book given a shown book list using `times`
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
+    1. Test case: `times 1 t/498`
+       Expected: Updates the number of times borrowed to 498 for the first book in the library.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `times`, `times 1 4743`, etc.
    
 #### Finding the stocking of a book
 
@@ -1585,9 +1582,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a problem report using `editProblemReport`
 
-
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
-
 
     1. Test case: `editProblemReport 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1596,9 +1591,3 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: Invalid command format.
                      
     1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
-    
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
