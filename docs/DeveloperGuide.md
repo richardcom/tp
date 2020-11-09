@@ -1295,6 +1295,20 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### Adding a book
+
+1. Adding a book
+
+    1. Prerequisites: No duplicates books with the same ISBN exists.
+    
+    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+           Expected: Book successfully added, detailed information shown in the status bar.
+           
+    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+                  Expected: Book successfully added, detailed information shown in the status bar.
+               
+    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
+    
 ### Deleting a book
 
 1. Deleting a book using `delete`
@@ -1321,20 +1335,6 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: `The Great Gatsby` is deleted from the list. Details of the deleted book shown in the status message.
            
     1. Other incorrect commands to try: `deleteBy`, `deleteBy t/-1` ... etc.
-
-### Adding a book
-
-1. Adding a book
-
-    1. Prerequisites: No duplicates books with the same ISBN exists.
-    
-    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-           Expected: Book successfully added, detailed information shown in the status bar.
-           
-    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-                  Expected: Book successfully added, detailed information shown in the status bar.
-               
-    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
     
 ### Editing a book
 
@@ -1454,7 +1454,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try:
    
-### Finding aLL the reviews of a book
+### Finding all the reviews of a book
 
 1. Finding aLL the reviews using `searchReivew`
 
@@ -1518,21 +1518,44 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try: `editReview`, `editReview 1 rn/3` <br>
        Expected: The exception message is shown in the status message. The book list shown is not changed. 
-   
-### Viewing the recorded problem reports
 
-1. Viewing the recorded problem reports using `view`
+### Reporting a problem
 
-    1. Prerequisites:
+1. Reporting a problem using `report`
+    i. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
 
-    1. Test case:
-       Expected:
+    ii. Test case: `report s/high d/book is broken`
+        Expected: Problem successfully added, detailed information shown in the status bar.
       
-    1. Test case:
-       Expected:
+    iii. Test case: enter `report s/medium d/book is broken` after the previous test case.
+        Expected: Duplicate problem detected, as shown in the status bar.
+       
+    iv. Test case: `report d/floor is dirty s/medium`
+        Expected: Problem successfully added, detailed information shown in the status bar.
                      
-    1. Other incorrect commands to try:
+    v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
+
+### Viewing reported problems
+1. Viewing reported probems using `view`
+    i. Prerequisites: NA.
     
+    ii. Test case: `view`
+        Expected: All reported problems shown in the problem section (the right side of the window). If no problem has yet been reported, the problem section will be empty.
+
+### Deleting a problem report
+
+1. Deleting a problem report using `deleteProblemReport`
+
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+
+    1. Test case: `deleteProblemReport 1`
+       Expected: The details of the deleted report is shown in the status bar.
+      
+    1. Test case: `deleteProblemReport 0`
+       Expected: Invalid command format.
+                     
+    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.    
+
 ### Finding a problem report
 
 1. Finding a problem report using `findProblemReport`
@@ -1547,33 +1570,6 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
     
-### Reporting a problem
-
-1. Reporting a problem using `report`
-
-    1. Prerequisites:
-
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
-    
-### Deleting a problem report
-
-1. Deleting a problem report using `deleteProblemReport`
-
-    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
-
-    1. Test case: `deleteProblemReport 1`
-       Expected: The details of the deleted report is shown in the status bar.
-      
-    1. Test case: `deleteProblemReport 0`
-       Expected: Invalid command format.
-                     
-    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.
     
 ### Editing a problem report
 
