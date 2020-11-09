@@ -1301,10 +1301,10 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
     1. Prerequisites: No duplicates books with the same ISBN exists.
     
-    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 45 a/Victor p/pku`
            Expected: Book successfully added, detailed information shown in the status bar.
            
-    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 HSSMLb 45 a/Victor p/pku`
                   Expected: Book successfully added, detailed information shown in the status bar.
                
     1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
@@ -1417,7 +1417,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Prerequisites: There are some books in the application storage.
 
     1. Test case: `stock n/Time`<br>
-       Expected: Shows the stocking information of the books whose names contain the word `Time`. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
+       Expected: Shows the stocking information of the books whose names contain the word `Time`, case insensitive. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
       
     1. Test case: `stock i/97805`<br>
        Expected: Shows the stocking information of the books where `97805` is a substring of their ISBN strings. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
@@ -1458,15 +1458,15 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Prerequisites: There are some books in the application storage.
     
     1. Test case: `searchReview n/Time` <br>
-       Expected: Shows the review list of the books whose names contain the word `Time`. The number of books listed is shown in the status message. 
+       Expected: Shows the review list of the books whose names contain the word `Time`, case insensitive. The review list of book with no review will be empty. The number of books listed is shown in the status message. 
       
     1. Test case: `searchReview i/97805` <br>
-       Expected: Shows the review list of the books where `97805` is a substring of their ISBN strings. The number of books listed is shown in the status message. 
+       Expected: Shows the review list of the books where `97805` is a substring of their ISBN strings. The review list of book with no review will be empty. The number of books listed is shown in the status message. 
     
     1. Test case: `searchReview` <br>
-       Expected: Shows the review list of all the books. The number of books listed is shown in the status message.
+       Expected: Shows the review list of all the books. The review list of book with no review will be empty. The number of books listed is shown in the status message.
        
-    1. Other incorrect commands to try: `searchReview n/`, `searchReview i/`
+    1. Other incorrect commands to try: `searchReview n/`, `searchReview i/` <br>
        Expected: The exception message is shown in the status message. The current book list is not changed.
 
 ### Adding a review to a book
@@ -1478,10 +1478,10 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Test case: `addReview 1 ra/5 re/The book is interesting`, and there is at least 1 book in the current shown list.<br>
        Expected: The review is appended to the review list of the book at index 1, with the created time of when the command is executed. The current shown list will be updated to a list containing only the book that has the new review. The book information will be shown in the status message.
     
-    1. Test case: `addReview 6 ra/5 re/The book is interesting`, and there are 3 books in the current shown list.<br>
+    1. Test case: `addReview 12 ra/5 re/The book is interesting`, and there are no more than 11 books in the current shown list.<br>
        Expected: The review is not added to any of the books. The exception message is shown in the status message. The current shown list is not changed.
                  
-    1. Other incorrect commands to try: `addReview`, `addReview 1 ra/6 re/The book is interesting` (where x is larger than the number of books in the current shown list)<br>
+    1. Other incorrect commands to try: `addReview`, `addReview 1 ra/6 re/The book is interesting`<br>
        Expected: The exception message is shown in the status message. The book list shown is not changed.
        
 ### Deleting a review from the review list of a book
@@ -1493,10 +1493,10 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Test case: `deleteReview 1 rn/2`, and the first book in the current shown list has at least 2 reviews.<br>
        Expected: The second review of the first book is deleted. The current shown list will be updated to a list containing only the book that has the review deleted. The review index of reviews after the deleted one will be set again. The information of the affected book will be shown in the status message.
       
-    1. Test case: `deleteReview 6 rn/1`, and there are 3 books in the current shown list.<br>
+    1. Test case: `deleteReview 12 rn/1`, and there are no more than 11 books in the current shown list.<br>
        Expected: The review is not deleted from any of the books. The exception message is shown in the status message. The current shown list is not changed.
                      
-    1. Other incorrect commands to try: `deleteReview 1 rn/6`, and there are 4 reviews for the first book in the current shown list.<br>
+    1. Other incorrect commands to try: `deleteReview 1 rn/6`, and there are no more than 5 reviews for the first book in the current shown list.<br>
        Expected: The exception message is shown in the status message. The book list shown is not changed. 
     
 ### Editing a review of a book
@@ -1505,12 +1505,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
     1. Prerequisites: There are some books the current shown list. Note that the book index in this command is restricted to the current shown list.
     
-    1. Test case: `editReview 1 rn/3 ra/5 re/The book is quite interesting`, and the original corresponding review has a rating of `4` and the review content `The book is interesting` <br>
-       Expected: The third review of the first book is edited to have a rating of `5` and the new review content, with the last edited time of when the command is executed.
+    1. Test case: `editReview 1 rn/3 ra/5 re/The book is quite interesting`, and the corresponding review of the first book in the current shown list has a rating of `4` and the review content `The book is interesting` <br>
+       Expected: The third review of the first book is edited to have a rating of `5` and the new review content, with the last edited time updated to the time when the command is executed.
             The current shown list will be updated to a list containing only the book that has the review edited. 
             The information of the affected book will be shown in the status message.
       
-    1. Test case: `editReview 6 rn/3 ra/5 re/ The book is quite interesting`, and there are 4 books in the current shown list.
+    1. Test case: `editReview 12 rn/3 ra/5 re/The book is quite interesting`, and there are no more than 11 books in the current shown list. <br>
        Expected: No books will have their review deleted. The exception message and explanation is shown in the status message. The current shown list is not changed.
                      
     1. Other incorrect commands to try: `editReview`, `editReview 1 rn/3` <br>

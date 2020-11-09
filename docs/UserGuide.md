@@ -321,9 +321,9 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
-This command usage is similar to the stock command.
+The usage of the prefix `n/` and `i/` in this command is the same as the usage of `n/` and `i/` in the stock command.
 
-The review list of the book with no review will be empty.
+The shown review list of the book with no review will be empty.
 </div>
 
 Examples:
@@ -367,6 +367,8 @@ Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
+If more than 1 `rn/` is present, only the last `rn/` will be used.
+
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
 
 If other command is executed before the delete review command, then only the index corresponding to the book shown in the current book list will be valid.
@@ -391,7 +393,7 @@ If neither rating or review content is present, then an exception message will b
 
 If the edited review is the same as the original review, then a corresponding exception message will be shown.
 
-If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `rn/` and `re/`.
 </div>
 
 Examples:
