@@ -9,7 +9,7 @@ IntelliBrary is a desktop library management application used for library admini
 * **Code contributed(contributed 4800 lines of code)**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
  
  
-* **New Features** Created new Storage and UI for problem reports; In addition, implemented Search (`findpr`), edit (`editProblemReport`), and delete (`deletepr`) problem reports.
+* **New Features** Created new Storage and UI for problem reports; In addition, implemented Search (`findpr`), edit (`editpr`), and delete (`deletepr`) problem reports.
     * What it does: Stores reports and better UI; Allows the librarian to search for reports that contain keywords, edit the reports, and delete reports.
     * Justification: This feature improves the product significantly because it librarians are now able to manage problem reports besides books management. They can also gather relevant problem reports for more efficient processing.
     * Highlights: The implementation affects the structure of storage and UI of the application. In-depth analysis of the storage structure and UI structure is needed during implementation. 
@@ -22,7 +22,7 @@ IntelliBrary is a desktop library management application used for library admini
     * What it does: allows the librarian directly delete a book by name or ISBN. Librarians can also delete all unpopular books which are rarely borrowed.
     * Justification: This feature improves the product significantly because it makes it easier for librarians to efficiently delete books without the need to find it first. Librarians
     can also efficiently batch manage and clean up unpopular books.
-* **Tests**  Created and added tests for `add`, `deleteBy`, `findpr`, `deletepr`, `editProblemReport`, `random`, and `findpop` commands, which improve the test coverage of our application.
+* **Tests**  Created and added tests for `add`, `deleteBy`, `findpr`, `deletepr`, `editpr`, `random`, and `findpop` commands, which improve the test coverage of our application.
 * **Enhancements to existing features**:
   * Enhanced the original `add`. Created new Model `Author` and allow `add` to add a Book Model. Set new constraints for book's attributes.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
   * Created new user interface MainWindow and Problem card to accommodate book and report management. Fixed previous UI bugs. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
@@ -37,12 +37,12 @@ IntelliBrary is a desktop library management application used for library admini
     * Explained the constraints on `add` command and relating attributes.
     * Explained `random`, and `findpop` commands and the usage for target users.
     * Explained `deleteBy` command and its behaviors in different situations.
-    * Explained `findpr`, `deletepr`, `editProblemReport` commands.
+    * Explained `findpr`, `deletepr`, `editpr` commands.
     * Updated command summary, added visual illustrations, and formatted User Guide styling.
   * Developer Guide:
     * Upadated `Architecture` and `Logic` Component, corresponding Logic Component diagrams, and example sequence diagrams of delete, class diagram for Problem Model.
-    * Created sequence diagrams for `add`, `deleteBy`, `findpr`, `editProblemReport`, `random`, and `findpop` commands, and class diagram for Problem class.
-    * Explained `add`, `deleteBy`, `findpr`, `deletepr`, `editProblemReport`, `random`, and `findpop` commands.
+    * Created sequence diagrams for `add`, `deleteBy`, `findpr`, `editpr`, `random`, and `findpop` commands, and class diagram for Problem class.
+    * Explained `add`, `deleteBy`, `findpr`, `deletepr`, `editpr`, `random`, and `findpop` commands.
     * Added six user stories and six use cases.
     * Created Non-Functional Requirements.
 

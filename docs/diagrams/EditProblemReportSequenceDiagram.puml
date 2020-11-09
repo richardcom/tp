@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("editProblemReport 3 s/low")
+[-> LogicManager : execute("editpr 3 s/low")
 activate LogicManager
 
-LogicManager -> LibraryParser : parseCommand("editProblemReport 3 s/low")
+LogicManager -> LibraryParser : parseCommand("editpr 3 s/low")
 activate LibraryParser
 
 create EditProblemCommandParser
@@ -48,7 +48,7 @@ deactivate LibraryParser
 LogicManager -> EditProblemCommand : execute()
 activate EditProblemCommand
 
-EditProblemCommand -> Model : editProblemReport(3, editProblemDescriptor)
+EditProblemCommand -> Model : editpr(3, editProblemDescriptor)
 activate Model
 
 Model --> EditProblemCommand

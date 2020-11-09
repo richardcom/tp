@@ -552,19 +552,19 @@ Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
 * `findpr table` followed by `deletepr 2` deletes the 2nd report in the results of the `findpr` command.`
 
-#### Editing a problem report : `editProblemReport`
+#### Editing a problem report : `editpr`
 
 Edits the information of an existing problem report in the library.
 
-Format: `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]`
+Format: `editpr INDEX [s/SEVERITY] [d/DESCRIPTION]`
 
 * Edits the report at the specified `INDEX`. The index refers to the index number shown in the displayed report list. The index **must be a positive integer** 1, 2, 3...
 * All fields are optional but at least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
 Examples:
-* `editProblemReport 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
-* `editProblemReport 3 s/low` Edits the severity of the 3rd report in the current report list.
+* `editpr 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
+* `editpr 3 s/low` Edits the severity of the 3rd report in the current report list.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -623,7 +623,7 @@ Action | Format, Examples
 **DeleteProblemReport** | `deletepr INDEX` <br> e.g., `deletepr 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
-**EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
+**EditProblemReport** | `editpr INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editpr 2 s/high d/light at the first floor is broken`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesting`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`

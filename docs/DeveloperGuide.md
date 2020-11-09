@@ -510,9 +510,9 @@ or both attributes at the same time.
 
 Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
 
-Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
+Step 1. User input an input: `editpr 2 s/high d/light at the first floor is broken`
 
-Step 2. Logic Manager would parse the input `editProblemReport 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
+Step 2. Logic Manager would parse the input `editpr 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
 
 Step 3. EditProblemCommandParser would then parse string input and call the EditProblemCommand.
 
@@ -521,7 +521,7 @@ and updated according to user input.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![EditProblemReportSequenceDiagram](images/EditProblemReportSequenceDiagram.png)
+![EditProblemReportSequenceDiagram](images/editProblemReportSequenceDiagram.png)
 
 ### \[New\] Find Problem Report feature
 
@@ -1572,14 +1572,14 @@ F
     
 ### Editing a problem report
 
-1. Editing a problem report using `editProblemReport`
+1. Editing a problem report using `editpr`
 
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case: `editProblemReport 1 s/low`
+    1. Test case: `editpr 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
       
-    1. Test case: `editProblemReport 0 s/high`
+    1. Test case: `editpr 0 s/high`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
+    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list)
