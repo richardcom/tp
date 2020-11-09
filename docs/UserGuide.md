@@ -184,7 +184,7 @@ Examples:
     * A book has exactly 1 stocking, which stores all the stocking information of the same book in every location. This is not only appropriate but also necessary because the list of library locations in stocking are specific to libraries in NUS and it is fixed, which is contrary to categories, where user can add new categories dynamically.
     * `s/centralLb 30 scienceLb 20 HSSMLb 10` brings more convenience to the user since there is less work in typing.
 
-Examples:
+##### Storage Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
 * `s/scienceLb 20 HSSMLb 10`
 * `s/centralLb 10`
