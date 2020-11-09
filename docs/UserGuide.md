@@ -535,8 +535,6 @@ Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
 * `findpr table chair` returns `table`, `chair`
 
-
-
 #### Deleting a report : `deletepr`
 
 Deletes the specified problem report from library management system.
@@ -546,6 +544,9 @@ Format: `deletepr INDEX`
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is incorrect all the time.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+
 
 Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
