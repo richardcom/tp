@@ -26,8 +26,8 @@ public class EditProblemCommand extends Command {
     public static final String COMMAND_WORD = "editpr";
     public static final String SUGGESTION = "editpr <index> s/<severity> d/<description>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits severity and description of the specific report "
-            + "identified by the index number in the current report list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits severity and description of the specific report"
+            + " identified by the index number in the current report list. "
             + "Current severity and description will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_SEVERITY + "SEVERITY] "
@@ -44,7 +44,7 @@ public class EditProblemCommand extends Command {
     private final EditProblemDescriptor editProblemDescriptor;
 
     /**
-     * @param index of the report in the filtered book list to edit
+     * @param index of the report in the filtered report list to edit
      * @param editProblemDescriptor details to edit the report with
      */
     public EditProblemCommand(Index index, EditProblemDescriptor editProblemDescriptor) {
@@ -163,12 +163,10 @@ public class EditProblemCommand extends Command {
             if (other == this) {
                 return true;
             }
-
             // instanceof handles nulls
             if (!(other instanceof EditProblemDescriptor)) {
                 return false;
             }
-
             // state check
             EditProblemDescriptor e = (EditProblemDescriptor) other;
 
