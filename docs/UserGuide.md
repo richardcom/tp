@@ -105,13 +105,9 @@ Format: `list`
 
 Adds a book to the book list.
 
-<<<<<<< HEAD
-Duplicate book will be rejected.
+(Duplicate book will be rejected. Definition of "duplicate" is explained in the following part.)
 
 Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]... t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
-=======
-Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
->>>>>>> 9b4427baf034e87d3829dc88434417b3a6677302
 
 * ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long.
@@ -123,13 +119,10 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
  And the prefix tag ```s/``` is compulsory when adding a book, please refer to the detailed format explanation in the later stocking part.
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
-<<<<<<< HEAD
-* Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we store books separately as long as they have different ISBN, even if they share the same name.
-=======
+
 * Duplicate book will be rejected. Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
->>>>>>> 9b4427baf034e87d3829dc88434417b3a6677302
+Thus, we store books separately as long as they have different ISBN, even if they share the same name.
+
 * All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
 * A space shall always be left before the above attributes prefixes. 
 
@@ -224,15 +217,11 @@ Format: `delete INDEX`
 
 * Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
-<<<<<<< HEAD
+
 * The index **must be a positive integer** e.g, 1, 2, 3, …
 * If the user input a non-positive integer, an error message indicating `Invalid command format!` would pop up as this is always incorrect.
 * If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
-=======
-* The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as the command format is always incorrect.
-* If the user input index is larger than the size of the current list, an error message saying that the index provided is invalid would pop up.
->>>>>>> 9b4427baf034e87d3829dc88434417b3a6677302
+
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
@@ -245,11 +234,8 @@ Delete book(s) from the library.
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose exactly one of the three prefixes in the command)  
 
-<<<<<<< HEAD
 * All three prefixes are optional but exactly one of the three prefixes must be selected to delete books that match the command.
-=======
-* One of the three prefixes must be selected to delete book(s) that match the command.
->>>>>>> 9b4427baf034e87d3829dc88434417b3a6677302
+
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
 for all the books which the number of times borrowed is fewer or equal to the user input will be deleted.
 * Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
