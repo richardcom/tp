@@ -46,6 +46,7 @@ existing relevant files. I also wrote corresponding test code for this feature.
     * User Guide:
         I wrote the sections of `ReportProblem` and `ViewProblem` features.
     * Developer Guide:
+        * I was in charge of the `Model` section, where I also drew a class diagram.
         * I drew the sequence diagrams for `ReportProblem` and `ViewProblem`.
         * I wrote the section of `ReportProblem`. I explicitly showed the processing steps and explained why it was implemented
         this way (e.g. have the attribute `severity`) and proposed an alternative (i.e. 
