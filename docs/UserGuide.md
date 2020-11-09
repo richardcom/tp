@@ -110,8 +110,8 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 
 * ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long
-* ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book. We decide to accept a one-word input as language and it is restricted to character string and no space allowed.
+* ```e/``` is followed by the email of the book dealer, which shall follow the valid format of email address.
+* ```l/``` is followed by the language of the book. It takes in alphabets(spaces not allowed) and should not be blank.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
@@ -121,7 +121,7 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
 Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
 * All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
-* A space shall always be left before the prefix, otherwise an error message saying `Invalid command format!` would pop up.
+* A space shall always be left before the above attributes prefixes, otherwise an error message saying `Invalid command format!` would pop up.
 Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
@@ -215,7 +215,7 @@ Format: `delete INDEX`
 * Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
 * The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is incorrect all the time.
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
 * If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
 
 Examples:
@@ -229,9 +229,9 @@ Delete a book from the library.
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
-* one of the three prefixes must be selected to delete a list of books that match the command.
+* One of the three prefixes must be selected to delete a list of books that match the command.
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
-for all the books which has times of been borrowed less or equal to the user input will be deleted.
+for all the books which has borrowed times fewer or equal to the user input will be deleted.
 * Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
 However, we allow if the user enters multiple same prefixes at a time, only the newest(the last prefix input) will be considered and others are neglected.
 
@@ -544,7 +544,7 @@ Format: `deletepr INDEX`
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is incorrect all the time.
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
 * If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
 
 
@@ -615,7 +615,7 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
