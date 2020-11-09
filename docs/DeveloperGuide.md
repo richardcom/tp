@@ -1192,39 +1192,39 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    1. Prerequisites: List all books using the `list` command. Multiple books in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First book is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First book is deleted from the list. Details of the deleted book shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No book is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No book is deleted. Error details shown in the status message.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
 1. Deleting a book using `deleteBy`
 
-    1. Prerequisites:
+    1. Prerequisites: Multiple books in the library.
 
-    1. Test case:
-       Expected:
-       
-    1. Test case:
-       Expected:
+    1. Test case: `deleteBy n/Pride and Prejudice`
+       Expected: `Pride and Prejudice` is deleted from the list. Details of the deleted book shown in the status message.
+
+    1. Test case: `deleteBy i/9780743273565`
+       Expected: `The Great Gatsby` is deleted from the list. Details of the deleted book shown in the status message.
            
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `deleteBy`, `deleteBy t/-1` ... etc.
 
 ### Adding a book
 
 1. Adding a book
 
-    1. Prerequisites:
+    1. Prerequisites: No duplicates books with the same ISBN exists.
     
-    1. Test case:
-           Expected:
+    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+           Expected: Book successfully added, detailed information shown in the status bar.
            
-    1. Test case:
-           Expected:
+    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+                  Expected: Book successfully added, detailed information shown in the status bar.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
     
 ### Editing a book
 
@@ -1307,15 +1307,19 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the stocking of a book using `stock`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books in the application storage.
 
     1. Test case: `stock n/Time`<br>
-       Expected: 
+       Expected: Shows the stocking information of the books whose names contain the word `Time`. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
       
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
+    1. Test case: `stock i/97805`<br>
+       Expected: Shows the stocking information of the books where `97805` is a substring of their ISBN strings. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
+    
+    1. Test case: `stock`<br>
+       Expected: The stocking information of all the books are shown. The number of books listed is shown in the status message.
+               
+    1. Other incorrect commands to try: `stock i/`, `stock n/`, `stock i/12` (A valid ISBN will have at least 3 digits)<br>
+       Expected: The exception message is shown in the status message. The current book list is not changed.
    
 ### Finding the usage of a book
 
@@ -1347,57 +1351,66 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding aLL the reviews using `searchReivew`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books in the application storage.
     
-    1. Test case:
-       Expected:
+    1. Test case: `searchReview n/Time` <br>
+       Expected: Shows the review list of the books whose names contain the word `Time`. The number of books listed is shown in the status message. 
       
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
+    1. Test case: `searchReview i/97805` <br>
+       Expected: Shows the review list of the books where `97805` is a substring of their ISBN strings. The number of books listed is shown in the status message. 
+    
+    1. Test case: `searchReview` <br>
+       Expected: Shows the review list of all the books. The number of books listed is shown in the status message.
+       
+    1. Other incorrect commands to try: `searchReview n/`, `searchReview i/`
+       Expected: The exception message is shown in the status message. The current book list is not changed.
 
 ### Adding a review to a book
 
 1. Adding a review to a book using `addReivew`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books the current shown list. Note that the book index in this command is restricted to the current shown list.
     
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
-
+    1. Test case: `addReview 1 ra/5 re/The book is interesting`, and there is at least 1 book in the current shown list.<br>
+       Expected: The review is appended to the review list of the book at index 1, with the created time of when the command is executed. The current shown list will be updated to a list containing only the book that has the new review. The book information will be shown in the status message.
+    
+    1. Test case: `addReview 6 ra/5 re/The book is interesting`, and there are 3 books in the current shown list.<br>
+       Expected: The review is not added to any of the books. The exception message is shown in the status message. The current shown list is not changed.
+                 
+    1. Other incorrect commands to try: `addReview`, `addReview 1 ra/6 re/The book is interesting` (where x is larger than the number of books in the current shown list)<br>
+       Expected: The exception message is shown in the status message. The book list shown is not changed.
+       
 ### Deleting a review from the review list of a book
 
 1. Deleting a review from the review list of a book using `deleteReivew`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books the current shown list. Note that the book index in this command is restricted to the current shown list.
     
-    1. Test case:
-       Expected:
+    1. Test case: `deleteReview 1 rn/2`, and the first book in the current shown list has at least 2 reviews.<br>
+       Expected: The second review of the first book is deleted. The current shown list will be updated to a list containing only the book that has the review deleted. The review index of reviews after the deleted one will be set again. The information of the affected book will be shown in the status message.
       
-    1. Test case:
-       Expected:
+    1. Test case: `deleteReview 6 rn/1`, and there are 3 books in the current shown list.<br>
+       Expected: The review is not deleted from any of the books. The exception message is shown in the status message. The current shown list is not changed.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `deleteReview 1 rn/6`, and there are 4 reviews for the first book in the current shown list.<br>
+       Expected: The exception message is shown in the status message. The book list shown is not changed. 
     
 ### Editing a review of a book
 
 1. Editing a review of a book using `editReivew`
 
-    1. Prerequisites:
+    1. Prerequisites: There are some books the current shown list. Note that the book index in this command is restricted to the current shown list.
     
-    1. Test case:
-       Expected:
+    1. Test case: `editReview 1 rn/3 ra/5 re/The book is quite interesting`, and the original corresponding review has a rating of `4` and the review content `The book is interesting` <br>
+       Expected: The third review of the first book is edited to have a rating of `5` and the new review content, with the last edited time of when the command is executed.
+            The current shown list will be updated to a list containing only the book that has the review edited. 
+            The information of the affected book will be shown in the status message.
       
-    1. Test case:
-       Expected:
+    1. Test case: `editReview 6 rn/3 ra/5 re/ The book is quite interesting`, and there are 4 books in the current shown list.
+       Expected: No books will have their review deleted. The exception message and explanation is shown in the status message. The current shown list is not changed.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `editReview`, `editReview 1 rn/3` <br>
+       Expected: The exception message is shown in the status message. The book list shown is not changed. 
    
 ### Viewing the recorded problem reports
 
@@ -1417,15 +1430,15 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a problem report using `findProblemReport`
 
-    1. Prerequisites:
+    1. Prerequisites: The reports in the library is not empty.
 
-    1. Test case:
-       Expected:
+    1. Test case: `findProblemReport lost`
+       Expected: The report which has the description matching the keyword is shown.
       
-    1. Test case:
-       Expected:
+    1. Test case: `findProblemReport not-exist`
+       Expected: If there is no report containing `not-exist`, then 0 reports listed is shown
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
     
 ### Reporting a problem
 
@@ -1445,29 +1458,31 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Deleting a problem report using `deleteProblemReport`
 
-    1. Prerequisites:
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case:
-       Expected:
+    1. Test case: `deleteProblemReport 1`
+       Expected: The details of the deleted report is shown in the status bar.
       
-    1. Test case:
-       Expected:
+    1. Test case: `deleteProblemReport 0`
+       Expected: Invalid command format.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.
     
 ### Editing a problem report
 
 1. Editing a problem report using `editProblemReport`
 
-    1. Prerequisites:
 
-    1. Test case:
-       Expected:
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+
+
+    1. Test case: `editProblemReport 1 s/low`
+       Expected: Details of the edited report is shown in the status bar.
       
-    1. Test case:
-       Expected:
+    1. Test case: `editProblemReport 0 s/high`
+       Expected: Invalid command format.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
     
 ### Saving data
 

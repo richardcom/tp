@@ -39,8 +39,8 @@ public class AddReviewCommand extends Command {
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
             + "Parameters: "
             + "INDEX "
-            + "[" + CliSyntax.PREFIX_RATING + "RATING] "
-            + "[" + CliSyntax.PREFIX_REVIEW + "REVIEW_CONTENT]\n"
+            + CliSyntax.PREFIX_RATING + "RATING "
+            + CliSyntax.PREFIX_REVIEW + "REVIEW_CONTENT\n"
             + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_RATING + "5" + " " + CliSyntax.PREFIX_REVIEW
             + "The book is interesting";
 

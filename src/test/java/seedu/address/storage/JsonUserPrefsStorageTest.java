@@ -73,7 +73,11 @@ public class JsonUserPrefsStorageTest {
     private UserPrefs getTypicalUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
         userPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));
+<<<<<<< HEAD
         userPrefs.setLibraryFilePath(Paths.get("data/IntelliBrary.json"));
+=======
+        userPrefs.setLibraryFilePath(Paths.get("data/intellibrary.json"));
+>>>>>>> 0987c10cad4fda43321ca8dc68e686c213236b92
         return userPrefs;
     }
 
