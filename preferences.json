@@ -7,5 +7,10 @@
       "y" : -7
     }
   },
+<<<<<<< HEAD
+  "libraryFilePath" : "data/IntelliBrary.json"
+}
+=======
   "libraryFilePath" : "data\\IntelliBrary.json"
 }
+>>>>>>> 0987c10cad4fda43321ca8dc68e686c213236b92
