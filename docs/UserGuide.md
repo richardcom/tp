@@ -109,18 +109,19 @@ Duplicate book will be rejected.
 Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
 * ```n/``` is followed by the book name, it is case sensitive.
-* ```i/``` is followed by the ISBN of the book, which is restricted to digits.
+* ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long
 * ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book. We decide to accept any string input as language because there are hundreds of languages in the world, and it would be inefficient to store all of them.
+* ```l/``` is followed by the language of the book. We decide to accept a one-word input as language and it is restricted to character string and no space allowed.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
- And the prefix tag ```s/``` is compulsory when adding a book.
+ And the prefix tag ```s/``` is compulsory when adding a book, please refer to the detailed format explanation in the later stocking part.
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
 Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
-
+* All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
+* A space shall always be left before the prefix, otherwise an error message saying `Invalid command format!` would pop up.
 Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
@@ -320,9 +321,9 @@ Format: `searchReview [n/BOOK_NAME] [i/ISBN]`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
-This command usage is similar to the stock command.
+The usage of the prefix `n/` and `i/` in this command is the same as the usage of `n/` and `i/` in the stock command.
 
-The review list of the book with no review will be empty.
+The shown review list of the book with no review will be empty.
 </div>
 
 Examples:
@@ -366,6 +367,8 @@ Format: `deleteReview INDEX rn/REVIEW_INDEX`
 
 <div markdown="1" class="alert alert-primary">:bulb: **Tip:**
 
+If more than 1 `rn/` is present, only the last `rn/` will be used.
+
 The book review will be deleted from the review list of the book according to the index of the book and the index of the review in the review list of the book.
 
 If other command is executed before the delete review command, then only the index corresponding to the book shown in the current book list will be valid.
@@ -390,7 +393,7 @@ If neither rating or review content is present, then an exception message will b
 
 If the edited review is the same as the original review, then a corresponding exception message will be shown.
 
-If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `re/`.
+If more than 1 `ra/` is present, then only the last `ra/` will be used. This is similar for `rn/` and `re/`.
 </div>
 
 Examples:

@@ -92,7 +92,7 @@ public class BookCoverManager {
     public Image getCategoryBookCover(String bookName, Set<Category> categorySet) {
         assert bookName != null;
         if (categorySet == null || categorySet.size() == 0) {
-            int number = (bookName.hashCode() % GENERAL_COVER.length);
+            int number = Math.abs(bookName.hashCode() % GENERAL_COVER.length);
             return new Image(this.getClass().getResourceAsStream((CATEGORY_MAP.get(GENERAL))[number]));
         }
 
