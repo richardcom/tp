@@ -57,4 +57,4 @@ This is a team project done to fulfill the requirement of Module CS2103.
 [[github](http://github.com/davidsqf)] [[portfolio](team/davidsqf.md)]
 
 * Role: Developer
-* Responsibilities: Deliverables and deadlines. In charge of Logic.
+* Responsibilities: Deliverable-related tasks and deadlines. In charge of Logic.

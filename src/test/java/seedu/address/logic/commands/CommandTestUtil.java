@@ -77,7 +77,7 @@ public class CommandTestUtil {
     public static final String PUBLISHER_DESC_BOOK1 = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_BOOK1;
     public static final String PUBLISHER_DESC_BOOK2 = " " + PREFIX_PUBLISHER + VALID_PUBLISHER_BOOK2;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
-    public static final String INVALID_ISBN_DESC = " " + PREFIX_ISBN + "911a"; // 'a' not allowed in isbns
+    public static final String INVALID_ISBN_DESC = " " + PREFIX_ISBN + "911a"; // 'a' not allowed in isbn
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_LANGUAGE_DESC = " " + PREFIX_LANGUAGE; // empty string not allowed for languages
     public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "novels*"; // '*' not allowed in

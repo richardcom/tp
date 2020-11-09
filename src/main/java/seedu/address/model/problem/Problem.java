@@ -8,7 +8,7 @@ public class Problem {
 
     /**
      * Creates a problem object.
-     * @param severity serverity of object.
+     * @param severity severity of object.
      * @param description description of object.
      */
     public Problem(Severity severity, Description description) {
