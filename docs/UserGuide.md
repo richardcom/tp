@@ -484,7 +484,7 @@ Examples:
 * `findpop Classics`
 * `findpop Science`
 
-### Features related to reporting problems
+### Commands relating to problem reports
 
 #### Report problems: `report`
 
