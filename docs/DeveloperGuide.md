@@ -310,7 +310,7 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-#### Given below is an example usage scenario of adding a review to a book.
+##### Given below is an example usage scenario of adding a review to a book.
 
 The diagram describes the process in Step 2.
 
@@ -324,7 +324,7 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-#### Given below is an example usage scenario of editing a review of a book.
+##### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
