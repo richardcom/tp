@@ -538,7 +538,7 @@ Format: `findpr KEYWORD [MORE_KEYWORDS]`
 
 Visual View of finding report reports that is related to `level 1`:
 
-![Find Report View](images/FindReport.png)
+![Find Report View](images/findReport.png)
 
 Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
