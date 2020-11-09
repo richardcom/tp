@@ -690,4 +690,3 @@ Use cases:
 4.  Quality requirements: a user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 5.  Process requirements: the project is expected to adhere to the course schedule and delivers weekly tasks on time.
 6.  Domain rules: the number of books at each library cannot be less than three.
-            
