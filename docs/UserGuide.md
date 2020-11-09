@@ -306,12 +306,19 @@ Visual Example:
 
 #### Check usage `usage` and `usageBy`
 
-Checks usage times of a certain book specified by user. Book is specified by any of the followings:
-* one base index in storage.
+Checks borrowed times of a certain book specified by user. Book is specified by any of the followings:
+* one-base index in the book list
 * book isbn
 * book name
 
 Note that `usageBy` commands are less sensitive and you will need to match exactly book name or isbn to get book usage.
+
+If the index provided is invalid, a message saying `The book index provided is invalid` will be displayed.
+
+If the book specified by isbn or name is not found, a message saying `The book to check is not found` will be displayed.
+
+As checking usage is a comparably simple feature, we suppose you can know the syntax of correctly calling of these commands.
+Thus, redundant information will not be provided after you key in invalid input. If you need help, please see in the user guide.
 
 ##### By its index in the current list
 Format:
@@ -387,9 +394,9 @@ Examples:
 * `findpop Classics`
 * `findpop Science`
 
-## Features related to Review
+### Features related to Review
 
-##### _Introduction_
+#### _Introduction_
 
 The purpose of the review functionality is for librarian to collect and record review and feedback from readers about a certain book, and estimates the general rating and popularity of the book among readers.
 
@@ -405,7 +412,7 @@ The created time and last edited time in a review refers to the time when the re
 
 The execution of every review command will display the list of review of the books that are involved in the command.
 
-##### Search for review of book: `searchReview`
+#### Search for review of book: `searchReview`
 
 Check the list of reviews of certain book.
 
@@ -427,7 +434,7 @@ Visual Example:
 
 ![](./images/searchReviewCommandUserInterface.png)
 
-##### Add review: `addReview`
+#### Add review: `addReview`
 
 Add a review to a certain book. 
 
@@ -451,7 +458,7 @@ If the index is not in the currently shown book list, then a corresponding excep
 Examples:
 * `addReview 1 ra/5 re/The book is interesing`
 
-##### Delete review: `deleteReview`
+#### Delete review: `deleteReview`
 
 Delete a review of a certain book.
 
@@ -471,7 +478,7 @@ If the index is not in the currently shown book list, then an exception message 
 Examples:
 * `deleteReview 1 rn/1`
 
-##### Edit review: `editReview`
+#### Edit review: `editReview`
 
 Edit a review of a certain book. 
 
