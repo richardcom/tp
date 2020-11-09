@@ -139,8 +139,8 @@ The current implementation of the AddCommand is supported by `AddCommand.java`, 
 
 The relevant methods are:
 
-*`AddCommandParser#parse(String args)` --- Parses the book's detailed information.
-*`AddCommand#execute(Model model)` --- Checks for duplication and adds the book to the library.
+* `AddCommandParser#parse(String args)` --- Parses the book's detailed information.
+* `AddCommand#execute(Model model)` --- Checks for duplication and adds the book to the library.
 
 Given below is an example usage scenario and how the AddCommand mechanism behaves at each step.
 
@@ -172,8 +172,8 @@ The implementation of the DeleteBy command is supported by `DeleteByCommand.java
 
 The relevant methods are:
 
-*`DeleteByCommandParser#parse(String args)` --- Parses the user input: book name, ISBN, or number of borrowed times.
-*`DeleteByCommand#execute(Model model)` --- Deletes the book from the library.
+* `DeleteByCommandParser#parse(String args)` --- Parses the user input: book name, ISBN, or number of borrowed times.
+* `DeleteByCommand#execute(Model model)` --- Deletes the book from the library.
 
 Given below is an example usage scenario and how the DeleteBy mechanism behaves at each step.
 
@@ -185,7 +185,8 @@ Step 3. DeleteByCommandParser would then parse the book name and call the delete
 
 Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
 
-The following sequence diagram summarizes what happens when a user executes a new command:
+The following sequence diagram summarizes what happens when a user executes a new command(For simplicity rules mentioned in CS2103 website, 
+the diagram omits other attributes and only use book name as an example):
 
 ![DeleteByCommandDiagram](images/DeleteBySequenceDiagram.png)
 
@@ -361,24 +362,24 @@ The implementation of the FindMostPopular command is supported by `FindMostPopul
 
 The relevant methods are:
 
-*`FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
-*`FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
+* `FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
+* `FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
 
 
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
-Step 1. User input an input: `findMostPopular science`
+Step 1. User input an input: `findpop Science`
 
-Step 2. Logic Manager would parse the input `findMostPopular science`, and determines that it is a findMostPopular command.
+Step 2. Logic Manager would parse the input `findpop Science`, and determines that it is a findpop command.
 
-Step 3. FindMostPopularCommandParser would then parse the category type and call the findMostPopular Command.
+Step 3. FindMostPopularCommandParser would then parse the category type and call the findpop Command.
 
-Step 4. Execution of findMostPopular would take place. The most popular book(borrowed the most number of times) will be found
+Step 4. Execution of findpop would take place. The most popular book(borrowed the most number of times) will be found
  and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![findMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
+![FindMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
 
 #### Design consideration:
 
@@ -400,8 +401,8 @@ The implementation of the Random command is supported by `RandomCommand.java` an
 
 The relevant methods are:
 
-*`RandomCommandParser#parse(String args)` --- Parses the input into book category.
-*`RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
+* `RandomCommandParser#parse(String args)` --- Parses the input into book category.
+* `RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
 
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
@@ -510,9 +511,9 @@ or both attributes at the same time.
 
 Given below is an example usage scenario and how the edit problem report mechanism behaves at each step.
 
-Step 1. User input an input: `editProblemReport 2 s/high d/light at the first floor is broken`
+Step 1. User input an input: `editpr 2 s/high d/light at the first floor is broken`
 
-Step 2. Logic Manager would parse the input `editProblemReport 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
+Step 2. Logic Manager would parse the input `editpr 2 s/high d/light at the first floor is broken`, and determines that it is a EditProblemCommand command.
 
 Step 3. EditProblemCommandParser would then parse string input and call the EditProblemCommand.
 
@@ -531,15 +532,15 @@ The implementation of the Find Problem Report command is supported by `FindProbl
 
 The relevant methods are:
 
-*`FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
-*`FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
+* `FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+* `FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
 
 
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
-Step 1. User input an input: `findProblemReport chair`
+Step 1. User input an input: `findpr chair`
 
-Step 2. Logic Manager would parse the input `findProblemReport chair`, and determines that it is a FindProblemCommand command.
+Step 2. Logic Manager would parse the input `findpr chair`, and determines that it is a FindProblemCommand command.
 
 Step 3. FindProblemCommandParser would then parse string input and call the FindProblemCommand.
 
@@ -548,7 +549,7 @@ will be displayed.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![EditProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
+![FindProblemReportSequenceDiagram](images/findProblemReportSequenceDiagram.png)
 
 
 ### \[New\] Delete Problem Report feature
@@ -559,14 +560,14 @@ The implementation of the DeleteProblem command is supported by `DeleteProblemCo
 
 The relevant methods are:
 
-*`DeleteProblemCommandParser#parse(String args)` --- Parses the user input index.
-*`DeleteProblemCommand#execute(Model model)` --- Deletes the report of the input index from the library.
+* `DeleteProblemCommandParser#parse(String args)` --- Parses the user input index.
+* `DeleteProblemCommand#execute(Model model)` --- Deletes the report of the input index from the library.
 
 Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
 
-Step 1. User input an input: `deleteProblemReport 2`
+Step 1. User input an input: `deletepr 2`
 
-Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determines that it is a delete problem command.
+Step 2. Logic Manager would parse the input `deletepr 2`, and determines that it is a deleteProblem command.
 
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
@@ -1354,39 +1355,40 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a book using `find`
 
-    1. Prerequisites:
+    1. Prerequisites: Multiple books in the library.
 
-    1. Test case:
-       Expected: 
+    1. Test case: `find science`
+       Expected: Return books where the name contains the case-insensitive `Science`.
            
-    1. Test case:
-       Expected:
+    1. Test case: `find Math`
+       Expected: Return books where the name contains the case-insensitive `Math`.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `find`
 
-2. Finding the most popular book using `findMostPopular`
+2. Finding the most popular book using `findpop`
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected: 
+    1. Test case: `findpop Math`
+       Expected: The most popular book of the `Math` category is listed in the list.
                
-    1. Test case:
-       Expected:
+    1. Test case: `findpop Science`
+       Expected: The most popular book of the `Science` category is listed in the list.
               
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `findpop -2d3d_-`, `findpop --9`, etc.
 
 3. Finding a random book of a given category using `random`
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected: 
-               
-    1. Test case:
-       Expected:
-              
-    1. Other incorrect commands to try:
+     1. Test case: `random Math`
+           Expected: A random book of the `Math` category is listed in the list.
+                   
+     1. Test case: `random Science`
+           Expected: A random book of the `Science` category is listed in the list.
+                  
+     1. Other incorrect commands to try: `random -2d_-`, `random --`, etc.
+
 
 ### Getting the total number of times of borrowing of all the books
 
@@ -1543,43 +1545,43 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 ### Deleting a problem report
 
-1. Deleting a problem report using `deleteProblemReport`
+1. Deleting a problem report using `deletepr`
 
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case: `deleteProblemReport 1`
+    1. Test case: `deletepr 1`
        Expected: The details of the deleted report is shown in the status bar.
       
-    1. Test case: `deleteProblemReport 0`
+    1. Test case: `deletepr 0`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.    
+    1. Other incorrect commands to try: `deletepr -1`, `deletepr`, etc.    
 
 ### Finding a problem report
 
-1. Finding a problem report using `findProblemReport`
+1. Finding a problem report using `findpr`
 
     1. Prerequisites: The reports in the library is not empty.
 
-    1. Test case: `findProblemReport lost`
+    1. Test case: `findpr lost`
        Expected: The report which has the description matching the keyword is shown.
       
-    1. Test case: `findProblemReport not-exist`
+    1. Test case: `findpr not-exist`
        Expected: If there is no report containing `not-exist`, then 0 reports listed is shown
                      
-    1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
+    1. Other incorrect commands to try: `findpr`, `findprtable`, etc.
     
     
 ### Editing a problem report
 
-1. Editing a problem report using `editProblemReport`
+1. Editing a problem report using `editpr`
 
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case: `editProblemReport 1 s/low`
+    1. Test case: `editpr 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
       
-    1. Test case: `editProblemReport 0 s/high`
+    1. Test case: `editpr 0 s/high`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
+    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list)

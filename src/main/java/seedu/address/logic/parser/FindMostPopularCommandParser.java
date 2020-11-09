@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import seedu.address.logic.commands.FindMostPopularCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.category.Category;
 
 
 /**
@@ -22,10 +23,13 @@ public class FindMostPopularCommandParser implements Parser<FindMostPopularComma
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindMostPopularCommand.MESSAGE_USAGE));
         }
-
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-
-        return new FindMostPopularCommand(nameKeywords[nameKeywords.length - 1]);
+        String temp = trimmedArgs;
+        if (!Category.isValidCategoryName(temp)) {
+            throw new ParseException(
+                    String.format(Category.MESSAGE_CONSTRAINTS));
+        }
+        Category category = new Category(temp);
+        return new FindMostPopularCommand(category);
     }
 
 }
