@@ -31,7 +31,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](https://github.com/AY2021S1-CS2103-F09-3/tp/tree/master/src/main/java/seedu/address/commons) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
@@ -152,7 +152,8 @@ Step 3. AddCommandParser would then parse the book attributes and call the Add C
 
 Step 4. Execution of Add would take place and the result will be updated in the filtered book list in Model.
 
-The following sequence diagram summarizes what happens when a user executes a new command:
+The following sequence diagram summarizes what happens when a user executes a new command.(For simplicity rules mentioned in CS2103 website, 
+    the diagram omits other attributes and only use book name as an example):
 
 ![AddCommandSequenceDiagram](images/AddCommandSimplifiedSequenceDiagram.png)
 
@@ -183,10 +184,9 @@ Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and det
 
 Step 3. DeleteByCommandParser would then parse the book name and call the deleteBy Command.
 
-Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
+Step 4. Execution of deleteBy would take place and the result will be updated in the filtered list in Model.
 
-The following sequence diagram summarizes what happens when a user executes a new command(For simplicity rules mentioned in CS2103 website, 
-the diagram omits other attributes and only use book name as an example):
+The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![DeleteByCommandDiagram](images/DeleteBySequenceDiagram.png)
 
@@ -194,7 +194,7 @@ the diagram omits other attributes and only use book name as an example):
 
 ##### Aspect: How deleteBy executes
 
-* **Alternative 1 :** Adopts the delete function of the original project
+* **Alternative 1 :** Adopts the delete function of the original AB3 project
   * Pros: Easy to implement.
   * Cons: Not convenient for expert users and fast input, does not allow deleting multiple books at a time.
 
@@ -501,8 +501,8 @@ The implementation of the Edit Problem Report command is supported by `EditProbl
 
 The relevant methods are:
 
-*`EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
-*`EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
+* `EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+* `EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
 
 Below is the diagram illustrating the Problem Report Model. The EditProblemCommand allows for edit of either one attribute
 or both attributes at the same time.
@@ -549,7 +549,7 @@ will be displayed.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![FindProblemReportSequenceDiagram](images/findProblemReportSequenceDiagram.png)
+![FindProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
 
 
 ### \[New\] Delete Problem Report feature
@@ -1263,12 +1263,10 @@ Use case ends.
 3.  Performance requirements: for core functions, the system should respond within two seconds.
 4.  Quality requirements: a user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 5.  Process requirements: the project is expected to adhere to the course schedule and delivers weekly tasks on time.
-6.  Domain rules: the number of books at each library cannot be less than three.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 

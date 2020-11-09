@@ -104,8 +104,6 @@ Format: `list`
 
 Adds a book to the book list.
 
-Duplicate book will be rejected.
-
 Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
 
 * ```n/``` is followed by the book name, it is case sensitive.
@@ -118,10 +116,11 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
  And the prefix tag ```s/``` is compulsory when adding a book, please refer to the detailed format explanation in the later stocking part.
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
-* Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
+* Duplicate book will be rejected. Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
 Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
 * All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
-* A space shall always be left before the above attributes prefixes, otherwise an error message saying `Invalid command format!` would pop up.
+* A space shall always be left before the above attributes prefixes. 
+
 Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
@@ -215,8 +214,8 @@ Format: `delete INDEX`
 * Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
 * The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
-* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as the command format is always incorrect.
+* If the user input index is larger than the size of the current list, an error message saying that the index provided is invalid would pop up.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
@@ -224,14 +223,14 @@ Examples:
 
 ##### Deleting a book by other attributes: `deleteBy`
 
-Delete a book from the library.
+Delete book(s) from the library.
 
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
-* One of the three prefixes must be selected to delete a list of books that match the command.
+* One of the three prefixes must be selected to delete book(s) that match the command.
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
-for all the books which has borrowed times fewer or equal to the user input will be deleted.
+for all the books which the number of times borrowed is fewer or equal to the user input will be deleted.
 * Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
 However, we allow if the user enters multiple same prefixes at a time, only the newest(the last prefix input) will be considered and others are neglected.
 
@@ -464,6 +463,7 @@ Format: `random CATEGORY`
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no book's category matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
 
 Examples:
 * `random Classics`
@@ -479,6 +479,7 @@ Format: `findpop CATEGORY`
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no books matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
 
 Examples:
 * `findpop Classics`
@@ -544,8 +545,8 @@ Format: `deletepr INDEX`
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
-* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as the command format is always invalid.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. 
 
 
 Examples:
