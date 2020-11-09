@@ -36,9 +36,9 @@ public class FindMostPopularCommandTest {
         Set<Category> categories = book.getCategories();
         Category category = categories.iterator().next();
         model.addBook(book);
-        FindMostPopularCommand findMostPopularCommand = new FindMostPopularCommand(category);
+        FindMostPopularCommand findpopCommand = new FindMostPopularCommand(category);
         // As the book is the most popular one in the model, it shall be selected by FindMostPopularCommand
-        findMostPopularCommand.execute(model);
+        findpopCommand.execute(model);
         Book expectedBook = model.getFilteredBookList().get(0);
         // expectedBook shall be the same with the most popular book after FindMostPopularCommand Command
         assertEquals(book, expectedBook);

@@ -470,19 +470,19 @@ Examples:
 * `random Science`
 
 
-#### Find the most popular book of a specific category `findMostPopular`
+#### Find the most popular book of a specific category `findpop`
 
 Find and select the most popular book of a specific category from the library.
 
-Format: `findMostPopular CATEGORY`
+Format: `findpop CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no books matching the user input, `0 books listed!` will pop up.
 
 Examples:
-* `findMostPopular Classics`
-* `findMostPopular Science`
+* `findpop Classics`
+* `findpop Science`
 
 ### Features related to reporting problems
 
@@ -626,7 +626,7 @@ Action | Format, Examples
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesting`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**FindMostPopular** | `findMostPopular CATEGORY` <br> e.g., `findMostPopular Science`
+**FindMostPopular** | `findpop CATEGORY` <br> e.g., `findpop Science`
 **FindProblemReport** | `findProblemReport KEYWORD [MORE_KEYWORDS]` <br> e.g., `findProblemReport chair`
 **Help** | `help`
 **History**| `history`

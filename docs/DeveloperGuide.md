@@ -367,18 +367,18 @@ The relevant methods are:
 
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
-Step 1. User input an input: `findMostPopular science`
+Step 1. User input an input: `findpop science`
 
-Step 2. Logic Manager would parse the input `findMostPopular science`, and determines that it is a findMostPopular command.
+Step 2. Logic Manager would parse the input `findpop science`, and determines that it is a findpop command.
 
-Step 3. FindMostPopularCommandParser would then parse the category type and call the findMostPopular Command.
+Step 3. FindMostPopularCommandParser would then parse the category type and call the findpop Command.
 
-Step 4. Execution of findMostPopular would take place. The most popular book(borrowed the most number of times) will be found
+Step 4. Execution of findpop would take place. The most popular book(borrowed the most number of times) will be found
  and the result will be updated in the filtered list in Model.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![findMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
+![findpopSequenceDiagram](images/findpopSequenceDiagram.png)
 
 #### Design consideration:
 
@@ -1364,7 +1364,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                
     1. Other incorrect commands to try:
 
-2. Finding the most popular book using `findMostPopular`
+2. Finding the most popular book using `findpop`
 
     1. Prerequisites:
 
