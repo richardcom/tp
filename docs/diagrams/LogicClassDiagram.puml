@@ -8,11 +8,7 @@ package Logic {
 
 package Parser {
 Interface Parser <<Interface>>
-<<<<<<< HEAD
 Class LibraryParser
-=======
-Class AddressbookParser
->>>>>>> 4bcbad1ff3c3f8a8bc2d14b3101e588c01ce947d
 Class XYZCommandParser
 Class CliSyntax
 Class ParserUtil
