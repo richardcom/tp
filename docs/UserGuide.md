@@ -537,19 +537,19 @@ Examples:
 
 
 
-#### Deleting a report : `deleteProblemReport`
+#### Deleting a report : `deletepr`
 
 Deletes the specified problem report from library management system.
 
-Format: `deleteProblemReport INDEX`
+Format: `deletepr INDEX`
 
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
-* `findpr chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findpr` command.`
-* `findpr table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findpr` command.`
+* `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+* `findpr table` followed by `deletepr 2` deletes the 2nd report in the results of the `findpr` command.`
 
 #### Editing a problem report : `editProblemReport`
 
@@ -619,7 +619,7 @@ Action | Format, Examples
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
-**DeleteProblemReport** | `deleteProblemReport INDEX` <br> e.g., `deleteProblemReport 1`
+**DeleteProblemReport** | `deletepr INDEX` <br> e.g., `deletepr 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
 **EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`

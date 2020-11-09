@@ -564,9 +564,9 @@ The relevant methods are:
 
 Given below is an example usage scenario and how the delete problem report mechanism behaves at each step.
 
-Step 1. User input an input: `deleteProblemReport 2`
+Step 1. User input an input: `deletepr 2`
 
-Step 2. Logic Manager would parse the input `deleteProblemReport 2`, and determines that it is a delete problem command.
+Step 2. Logic Manager would parse the input `deletepr 2`, and determines that it is a delete problem command.
 
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
@@ -1543,17 +1543,17 @@ F
 
 ### Deleting a problem report
 
-1. Deleting a problem report using `deleteProblemReport`
+1. Deleting a problem report using `deletepr`
 
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
 
-    1. Test case: `deleteProblemReport 1`
+    1. Test case: `deletepr 1`
        Expected: The details of the deleted report is shown in the status bar.
       
-    1. Test case: `deleteProblemReport 0`
+    1. Test case: `deletepr 0`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.    
+    1. Other incorrect commands to try: `deletepr -1`, `deletepr`, etc.    
 
 ### Finding a problem report
 

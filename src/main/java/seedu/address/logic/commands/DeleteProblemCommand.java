@@ -12,8 +12,8 @@ import seedu.address.model.problem.Problem;
 
 public class DeleteProblemCommand extends Command {
 
-    public static final String COMMAND_WORD = "deleteProblemReport";
-    public static final String SUGGESTION = "deleteProblemReport <index>";
+    public static final String COMMAND_WORD = "deletepr";
+    public static final String SUGGESTION = "deletepr <index>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the problems identified by the index number used in the displayed problem list.\n"
