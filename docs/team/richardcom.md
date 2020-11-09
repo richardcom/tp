@@ -31,6 +31,7 @@ IntelliBrary is a desktop library management application used for library admini
 * **Project management**:
   * Managed the issue tracking of and project task of Milestone v1.4
 
+
 * **Documentation** (Contributed 1300 lines to documentation according to Reposense):
   * User Guide:
     * Explained the constraints on `add` command and relating attributes.
