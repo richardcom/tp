@@ -10,7 +10,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Language {
 
-    public static final String MESSAGE_CONSTRAINTS = "Languages can take only characters and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Languages can take only a one-word input without space or symbols"
+            + " containing only characters and it should not be blank";
 
     public static final String VALIDATION_REGEX = "^[A-Za-z]+$";
 
