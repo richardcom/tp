@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_BOOK;
 
 import java.util.Arrays;
 import java.util.Collections;
-//import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
