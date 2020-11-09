@@ -69,7 +69,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 ### Viewing sample data
 
 Have a look at the sample data for the application when opening the app for the first time.
-*  The sample data will only show up if there is no local data file of IntelliBrary
+
 
 ### Viewing help : `help`
 
@@ -501,6 +501,7 @@ they have **both** the same severity and the same description.
 
 Examples:
 * `report s/high d/book is broken`
+![report problem](https://github.com/davidsqf/tp/blob/v1.4-UG/docs/images/report_problem.png)
 
 #### View problems: `view`
 
@@ -510,6 +511,7 @@ Format: `view`
 
 Examples:
 * `view`
+![view problems](https://github.com/davidsqf/tp/blob/v1.4-UG/docs/images/view_problem.png)
 
 
 #### Locating reports by keyword: `findProblemReport`

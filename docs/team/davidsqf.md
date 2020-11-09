@@ -46,6 +46,7 @@ existing relevant files. I also wrote corresponding test code for this feature.
     * User Guide:
         * I wrote the sections of `ReportProblem` and `ViewProblem` features.
         * I proofread user guide, spot and fixed hidden problems like unavailable urls, typos, and not up-to-date or not reader-friendly sentences.
+        * I updated the out-of-date images.
     * Developer Guide:
         * I was in charge of the `Model` section, where I also drew a class diagram.
         * I drew the sequence diagrams for `ReportProblem` and `ViewProblem`.
