@@ -42,7 +42,7 @@ import seedu.address.ui.Mode;
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
-    public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> ad/<language> t/<times>"
+    public static final String SUGGESTION = "edit <index> n/<name> i</isbn> e/<email> l/<language> t/<times>"
             + "c/<category>… s/<stocking> a/<author> p/<publisher>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the book identified "
