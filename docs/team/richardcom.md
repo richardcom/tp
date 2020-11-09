@@ -6,6 +6,9 @@ title: Liu Yangming's Project Portfolio Page
 
 IntelliBrary is a desktop library management application used for library administrators to manage books. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and uses JavaFX for the GUI. Listed below are my contributions to this project.
 
+* **Code contributed(contributed 4800 lines of code)**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+ 
+ 
 * **New Features** Created new Storage and UI for problem reports; In addition, implemented Search (`findProblemReport`), edit (`editProblemReport`), and delete (`deleteProblemReport`) problem reports.
     * What it does: Stores reports and better UI; Allows the librarian to search for reports that contain keywords, edit the reports, and delete reports.
     * Justification: This feature improves the product significantly because it librarians are now able to manage problem reports besides books management. They can also gather relevant problem reports for more efficient processing.
@@ -22,15 +25,13 @@ IntelliBrary is a desktop library management application used for library admini
 * **Tests**  Created and added tests for `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands, which improve the test coverage of our application.
 * **Enhancements to existing features**:
   * Enhanced the original `add`. Created new Model `Author` and allow `add` to add a Book Model. Set new constraints for book's attributes.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
-  * Created new user interface MainWindow and Problem card to accommodate book and report management. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
+  * Created new user interface MainWindow and Problem card to accommodate book and report management. Fixed previous UI bugs. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
     * Implemented UI component `ProblemReportListCard` and `ProblemReportListPanel`
 
- **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=richardcom&tabRepo=AY2021S1-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
- 
 * **Project management**:
   * Managed the issue tracking of and project task of Milestone v1.4
 
-* **Documentation** (In total 1320 lines contributed to UG & DG):
+* **Documentation** (Contributed 1300 lines to documentation):
   * User Guide:
     * Explained the constraints on `add` command and relating attributes.
     * Explained `random`, and `findMostPopular` commands and the usage for target users.
@@ -38,17 +39,17 @@ IntelliBrary is a desktop library management application used for library admini
     * Explained `findProblemReport`, `deleteProblemReport`, `editProblemReport` commands.
     * Updated command summary, added visual illustrations, and formatted User Guide styling.
   * Developer Guide:
-    * Upadated `Architecture` and `Logic` Component of DG.
-    * Explained `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands.
+    * Upadated `Architecture` and `Logic` Component, corresponding Logic Component diagrams, and example sequence diagrams of delete, class diagram for Problem Model.
     * Created sequence diagrams for `add`, `deleteBy`, `findProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands, and class diagram for Problem class.
+    * Explained `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands.
     * Added six user stories and six use cases.
     * Created Non-Functional Requirements.
 
 * **Contributions to the Team-Based Tasks**:
     * Morph the original AB3 from `Person` to the new `Book`.
     * Managed branch protection.
-    * Worked with teammates to git reset our master branch to resolve Reposense detection errors.
-    * Worked with teammates to manage Milestone v1.4.
+    * Reset(Git) our master branch to resolve Reposense detection errors.
+    * Manage Milestone v1.4 and helped release v1.3 Jar File.
     * Changed footer of the application `intellibrary`
 
    
@@ -62,6 +63,6 @@ IntelliBrary is a desktop library management application used for library admini
 
 * **Community contributions**
 
-Helped classmates on forum: [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue107](https://github.com/nus-cs2103-AY2021S1/forum/issues/107), [issue15](https://github.com/nus-cs2103-AY2021S1/forum/issues/15)
+Helped classmates on forum: [issue359](https://github.com/nus-cs2103-AY2021S1/forum/issues/359), [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue221](https://github.com/nus-cs2103-AY2021S1/forum/issues/221), [issue107](https://github.com/nus-cs2103-AY2021S1/forum/issues/107), [issue15](https://github.com/nus-cs2103-AY2021S1/forum/issues/15)
 
 Helped other teams identify flaws: [issue195](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/195), [issue194](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/194), [issue191](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/191), , [issue192](https://github.com/AY2021S1-CS2103-F10-2/tp/issues/192), etc.
