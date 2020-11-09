@@ -3,11 +3,10 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -20,7 +19,6 @@ import seedu.address.model.book.Email;
 import seedu.address.model.book.Isbn;
 import seedu.address.model.book.Language;
 import seedu.address.model.book.Name;
-import seedu.address.model.book.NameMatchesKeywordPredicate;
 import seedu.address.model.book.Publisher;
 import seedu.address.model.book.Stocking;
 import seedu.address.model.book.Times;
@@ -94,11 +92,14 @@ public class EditReviewCommand extends Command {
                 throw new CommandException(Messages.MESSAGE_INVALID_REVIEW_DISPLAYED_INDEX);
             }
             Book reviewedBook = createdChangedBook(bookToReview, reviewNumber, rating, reviewContent);
-            model.setBook(bookToReview, reviewedBook);
-            List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
-            NameMatchesKeywordPredicate nameMatchedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-            model.updateFilteredBookList(nameMatchedKeywordsPredicate, Mode.REVIEW);
 
+            model.setBook(bookToReview, reviewedBook);
+            model.updateFilteredBookList(new Predicate<Book>() {
+                @Override
+                public boolean test(Book book) {
+                    return book.getIsbn().value.equals(reviewedBook.getIsbn().value);
+                }
+            }, Mode.REVIEW);
             return new CommandResult(String.format(MESSAGE_EDIT_REVIEW_SUCCESS, reviewedBook));
         } catch (CommandException commandException) {
             throw commandException;
