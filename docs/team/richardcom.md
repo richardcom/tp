@@ -14,7 +14,7 @@ IntelliBrary is a desktop library management application used for library admini
     * Justification: This feature improves the product significantly because it librarians are now able to manage problem reports besides books management. They can also gather relevant problem reports for more efficient processing.
     * Highlights: The implementation affects the structure of storage and UI of the application. In-depth analysis of the storage structure and UI structure is needed during implementation. 
     
-* **New Features** Find the most popular book `findMostPopular`; Randomized selection of books `random`.
+* **New Features** Find the most popular book `findpop`; Randomized selection of books `random`.
     * What it does: 1. allows the librarian to find the most popular book of each category; 2. allows librarians to have randomized selection of books of each categories.
     * Justification: This feature improves the product significantly because it enables librarians to analyze popularity of books of various categories, and conveniently conduct valid random sampling data analysis.
 
@@ -22,7 +22,7 @@ IntelliBrary is a desktop library management application used for library admini
     * What it does: allows the librarian directly delete a book by name or ISBN. Librarians can also delete all unpopular books which are rarely borrowed.
     * Justification: This feature improves the product significantly because it makes it easier for librarians to efficiently delete books without the need to find it first. Librarians
     can also efficiently batch manage and clean up unpopular books.
-* **Tests**  Created and added tests for `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands, which improve the test coverage of our application.
+* **Tests**  Created and added tests for `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findpop` commands, which improve the test coverage of our application.
 * **Enhancements to existing features**:
   * Enhanced the original `add`. Created new Model `Author` and allow `add` to add a Book Model. Set new constraints for book's attributes.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
   * Created new user interface MainWindow and Problem card to accommodate book and report management. Fixed previous UI bugs. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
@@ -35,14 +35,14 @@ IntelliBrary is a desktop library management application used for library admini
 * **Documentation** (Contributed 1300 lines to documentation according to Reposense):
   * User Guide:
     * Explained the constraints on `add` command and relating attributes.
-    * Explained `random`, and `findMostPopular` commands and the usage for target users.
+    * Explained `random`, and `findpop` commands and the usage for target users.
     * Explained `deleteBy` command and its behaviors in different situations.
     * Explained `findProblemReport`, `deleteProblemReport`, `editProblemReport` commands.
     * Updated command summary, added visual illustrations, and formatted User Guide styling.
   * Developer Guide:
     * Upadated `Architecture` and `Logic` Component, corresponding Logic Component diagrams, and example sequence diagrams of delete, class diagram for Problem Model.
-    * Created sequence diagrams for `add`, `deleteBy`, `findProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands, and class diagram for Problem class.
-    * Explained `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findMostPopular` commands.
+    * Created sequence diagrams for `add`, `deleteBy`, `findProblemReport`, `editProblemReport`, `random`, and `findpop` commands, and class diagram for Problem class.
+    * Explained `add`, `deleteBy`, `findProblemReport`, `deleteProblemReport`, `editProblemReport`, `random`, and `findpop` commands.
     * Added six user stories and six use cases.
     * Created Non-Functional Requirements.
 

@@ -14,10 +14,10 @@ participant ":Model" as Model MODEL_COLOR
 end box
 
 
-[-> LogicManager : execute("find Science")
+[-> LogicManager : execute("findpop Science")
 activate LogicManager
 
-LogicManager -> LibraryParser : parseCommand("find Science")
+LogicManager -> LibraryParser : parseCommand("findpop Science")
 activate LibraryParser
 
 create FindMostPopularCommandParser
