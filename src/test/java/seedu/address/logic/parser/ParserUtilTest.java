@@ -30,11 +30,10 @@ public class ParserUtilTest {
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_ISBN = "123456";
-    private static final String VALID_LANGUAGE = "123 Main Street #0505";
+    private static final String VALID_LANGUAGE = "English";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_CATEGORY_1 = "friend";
     private static final String VALID_CATEGORY_2 = "neighbour";
-    private static final String VALID_STOCKING = "central library 0 science library 0";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -118,13 +117,6 @@ public class ParserUtilTest {
     public void parseLanguage_validValueWithoutWhitespace_returnsLanguage() throws Exception {
         Language expectedLanguage = new Language(VALID_LANGUAGE);
         assertEquals(expectedLanguage, ParserUtil.parseLanguage(VALID_LANGUAGE));
-    }
-
-    @Test
-    public void parseLanguage_validValueWithWhitespace_returnsTrimmedLanguage() throws Exception {
-        String languageWithWhitespace = WHITESPACE + VALID_LANGUAGE + WHITESPACE;
-        Language expectedLanguage = new Language(VALID_LANGUAGE);
-        assertEquals(expectedLanguage, ParserUtil.parseLanguage(languageWithWhitespace));
     }
 
     @Test
