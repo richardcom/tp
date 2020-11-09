@@ -706,7 +706,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>keep in the information in IntelLibrary application up to date  </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -715,7 +714,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>efficiently keep the record up to date and cleans unpopular books from the system efficiently  </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -724,7 +722,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>efficiently increase the stockings of those very popular books to meet the demand of the readers   </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -733,7 +730,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>know what books to purchase in the future        </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -742,7 +738,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>estimate the popularity of the book among the readers and decide whether to bring in more copies of the book according to the reader need</td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -751,7 +746,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>keep the review record for future evaluation of the book quality and popularity among the readers</td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -760,7 +754,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>keep the book information in the database up to date                                                                      </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -769,7 +762,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>easier to implement random sampling for library book data analysis  </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -778,7 +770,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>keep track of and update the problems and prioritize them by their severity levels                          </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -787,7 +778,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>know what problems need to be solved  </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -796,7 +786,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>keep the report information in record up to date  </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -805,7 +794,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>fast access and find relevant problems at a time </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* *</code></td>
@@ -814,7 +802,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>it is more time efficient            </td>
 </tr>
 <tr>
-<td></td>
+
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -823,7 +811,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>get a rough idea of how the project will look like                     </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -832,7 +819,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>quickly get used to the command line formats                     </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>* * *</code></td>
@@ -841,7 +827,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <td>tell students whether they can borrow this book or not            </td>
 </tr>
 <tr>
-<td></td>
 </tr>
 <tr>
 <td><code>*</code></td>
