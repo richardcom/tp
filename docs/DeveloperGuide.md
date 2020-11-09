@@ -1419,7 +1419,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
             The information of the affected book will be shown in the status message.
       
     1. Test case: `editReview 12 rn/3 ra/5 re/The book is quite interesting`, and there are no more than 11 books in the current shown list. <br>
-       Expected: No books will have their review deleted. The exception message and explanation is shown in the status message. The current shown list is not changed.
+       Expected: No books will have their review edited. The exception message and explanation is shown in the status message. The current shown list is not changed.
                      
     1. Other incorrect commands to try: `editReview`, `editReview 1 rn/3` <br>
        Expected: The exception message is shown in the status message. The book list shown is not changed. 
