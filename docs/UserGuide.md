@@ -115,7 +115,7 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]... t/TIMES s/STOCKING
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
- And the prefix tag ```s/``` is compulsory when adding a book, please refer to the detailed format explanation in the later stocking part.
+ And the prefix tag ```s/``` is compulsory when adding a book, please refer to the format examples and explanation in stocking part. [Storage format](#storage-examples)
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 
@@ -154,7 +154,7 @@ Restrictions:
 * ```l/``` is followed by the language of the book, it should only contain alphabetical characters (spaces are not allowed), and it should not be blank.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
-* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added (please refer to the stocking part for more details).
+* ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added (please refer to the stocking part for more details).[Storage format](#storage-examples)
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 
