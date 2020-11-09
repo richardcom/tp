@@ -691,13 +691,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                     | I want to …​                                                                                                           | So that I can…​                                                        
 | -------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------
-| `* * *`  | library administrator                      | add new books or delete original books in the library                                                                   | keep in the information in IntelLibrary application up to date  
+| `* * *`  | library administrator                      | add new books or delete original books in the library                                                                 | keep in the information in IntelLibrary application up to date  
 |
 | `* * *`  | library administrator                      | delete all unpopular books at a time                                                                                  | efficiently keep the record up to date and cleans unpopular books from the system efficiently  
 |
 | `* * *`  | library administrator                      | check the stocking of books in every location(e.g. Central library, Hon Sui Sen Memorial Library) of each book        | efficiently increase the stockings of those very popular books to meet the demand of the readers   
 |
-| `* *`    | library administrator                      | get the most popular book in each category                                                                       | know what books to purchase in the future        
+| `* *`    | library administrator                      | get the most popular book in each category                                                                            | know what books to purchase in the future        
 |
 | `* *`    | library administrator                      | view the book rating and reviews collected from the readers                                                           | estimate the popularity of the book among the readers and decide whether to bring in more copies of the book according to the reader need
 |

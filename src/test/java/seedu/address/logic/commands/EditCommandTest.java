@@ -34,25 +34,6 @@ public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalLibrary(), new UserPrefs());
 
-    /*
-    Editing times is currently not allowed in the current editing function, that may explain why this test case fails.
-    We can consider removing this test case or implement our "editing times" function later on.
-    We shall see how it goes.
-    @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Book editedBook = new BookBuilder().build();
-        EditBookDescriptor descriptor = new EditBookDescriptorBuilder(editedBook).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_BOOK, descriptor);
-
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
-
-        Model expectedModel = new ModelManager(new Addressbook(model.getAddressbook()), new UserPrefs());
-        expectedModel.setBook(model.getFilteredBookList().get(0), editedBook);
-
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-    }
-    */
-
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
         Index indexLastBook = Index.fromOneBased(model.getFilteredBookList().size());
