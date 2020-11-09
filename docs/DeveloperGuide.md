@@ -235,7 +235,7 @@ The current enhancement is in alignment with other components of the book, which
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
-  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+  * Cons: More efforts are required in order to adjust the newly added classes / attributes to the previous ones.
 
 * **Alternative 2:** Tweak the format of the edit command
   * Pros: The design will be more user-friendly and user-oriented.
@@ -272,7 +272,7 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-##### Given below is an example usage scenario of how the stocking command will be executed, 
+#### Given below is an example usage scenario of how the stocking command will be executed, 
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -286,7 +286,7 @@ Step 3. The stock command is returned and executed, updating the book list shown
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes and what the user expects
+#### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -306,7 +306,7 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-##### Given below is an example usage scenario of adding a review to a book.
+#### Given below is an example usage scenario of adding a review to a book.
 
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
@@ -318,7 +318,7 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-##### Given below is an example usage scenario of editing a review of a book.
+#### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
@@ -328,7 +328,7 @@ Step 3. The edit review command parser returns an edit review command with a new
 
 Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
-##### Given below is description of deleting review of a book.
+#### Given below is description of deleting review of a book.
 
 The process is similar to edit review command.
 
@@ -336,7 +336,7 @@ The difference is that in Step 2, the delete review command parser will only par
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-##### Given below is description of searching review of a book.
+#### Given below is description of searching review of a book.
 
 Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
 
@@ -344,7 +344,7 @@ Please refer to the stock command because the process is similar to the creation
 
 The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: What is the length of the review content
+#### Aspect: What is the length of the review content
 
 * **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
   * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
@@ -365,7 +365,6 @@ The relevant methods are:
 * `FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
 * `FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
 
-
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findpop Science`
@@ -383,7 +382,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How find Most Popular executes
+#### Aspect: How find Most Popular executes
 
 * **Alternative 1 :** Stores the most popular book as an attribute of each category
   * Pros: Easy to retrieve the most popular book.
@@ -403,7 +402,6 @@ The relevant methods are:
 
 * `RandomCommandParser#parse(String args)` --- Parses the input into book category.
 * `RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
-
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -464,7 +462,6 @@ is created.
 * There can be multiple problems, therefore `problem` is managed
 inside a list.
 
-
 * **Alternative 1 :** Link `problem` to `book`
   * What: Problems in library are often related to books, for these
   kind of book-related problems, we can store the (`problem` - `book`)
@@ -491,7 +488,6 @@ Step 3. Execution of ViewProblemCommand would take place.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
-
 
 ### \[New\] Edit Problem Report feature
 
@@ -535,7 +531,6 @@ The relevant methods are:
 * `FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
 * `FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
 
-
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findpr chair`
@@ -550,7 +545,6 @@ will be displayed.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![FindProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
-
 
 ### \[New\] Delete Problem Report feature
 
@@ -685,7 +679,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
-
 
 <table>
 <thead>
@@ -1106,6 +1099,12 @@ Use case ends.
     
       Use case ends.
       
+* 1c. The newly reported problems has the same description with an existing problem.
+
+    * 1c1. IntelliBrary shows a message that duplicate problem is detected.
+    
+      Use case ends.
+      
 **Use case: UC12 - View a problem**
 
 **MSS**
@@ -1135,7 +1134,7 @@ Use case ends.
 
 **MSS**
   1. User requests to find reports that the descriptions matches certain keywords.
-  2. IntelliBrary finds reports which descriptions matches the keywords.
+  2. IntelliBrary returns the reports whose descriptions match the keywords.
 
   Use case ends. 
   
@@ -1143,7 +1142,7 @@ Use case ends.
 
 * 1a. No problem reports that the description matches the keyword is found.
 
-    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+    * 1a1. IntelliBrary shows a message that no matching reports are found.
 
       Use case ends.
       
@@ -1166,7 +1165,7 @@ Use case ends.
     
 * 1b. There are currently no books of the category.
     
-    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    * 1b1. IntelliBrary shows a message saying that zero book is listed.
     
       Use case ends.
     
@@ -1196,15 +1195,15 @@ Use case ends.
 
 **MSS**
   1. User seeks help regarding how to use IntelliBrary.
-  2. IntelliBrary redirects the user to the reference documentation.
+  2. IntelliBrary provides the URL to User Guide.
   
      Use case ends.
      
 **Use case: UC18 - Clear all the books**
 
 **MSS**
-  1. User requests clear all the books in the library.
-  2. IntelliBrary deletes all the books available.
+  1. User requests to clear all the books and problems in the library.
+  2. IntelliBrary deletes all the books and problems available.
   
      Use case ends.
      
@@ -1227,9 +1226,9 @@ Use case ends.
      
 **Extensions**
 
-* 1a. No book whose description matches the keyword is found.
+* 1a. No book matches the keyword.
 
-    * 1a1. IntelLiBrary shows a message that no matching boos are found.
+    * 1a1. IntelliBrary shows a message that no matching books are found.
 
       Use case ends.
       
@@ -1237,7 +1236,7 @@ Use case ends.
 
 **MSS**
   1. User requests to exit the program.
-  2. IntelliBrary closes itself.
+  2. IntelliBrary closes its window and terminates the process.
   
      Use case ends.
 
@@ -1297,7 +1296,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Deleting a book using `delete`
 
-   1. Prerequisites: List all books using the `list` command. Multiple books in the list.
+   1. Prerequisites: List all books using the `list` command. At least one book in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First book is deleted from the list. Details of the deleted book shown in the status message.
@@ -1338,31 +1337,31 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a book using `find`
 
-    1. Prerequisites: Multiple books in the library.
+    1. Prerequisites: At least one book in the library.
 
     1. Test case: `find science`
-       Expected: Return books where the name contains the case-insensitive `Science`.
+       Expected: Return books whose name contains the case-insensitive `Science`.
            
     1. Test case: `find Math`
-       Expected: Return books where the name contains the case-insensitive `Math`.
+       Expected: Return books whose name contains the case-insensitive `Math`.
                
     1. Other incorrect commands to try: `find`
 
 2. Finding the most popular book using `findpop`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
     1. Test case: `findpop Math`
        Expected: The most popular book of the `Math` category is listed in the list.
                
     1. Test case: `findpop Science`
-       Expected: The most popular book of the `Science` category is listed in the list.
+       Expected: The most popular book of the `Science` category is shown in the list.
               
     1. Other incorrect commands to try: `findpop -2d3d_-`, `findpop --9`, etc.
 
 3. Finding a random book of a given category using `random`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
      1. Test case: `random Math`
            Expected: A random book of the `Math` category is listed in the list.
@@ -1399,7 +1398,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the stocking of a book using `stock`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
 
     1. Test case: `stock n/Time`<br>
        Expected: Shows the stocking information of the books whose names contain the word `Time`, case insensitive. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
@@ -1417,7 +1416,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the usage of a book according to its displayed index using `usage`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usage 1`<br>
        Expected: the number of borrowed times of book with index 1 in the list (1-based)
@@ -1426,7 +1425,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 2. Finding the usage of a book according to its name or ISBN using `usageBy`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usageBy n/Pride and Prejudice` <br>
        Expected: the number of borrowed times of book with book name "Pride and Prejudice"
@@ -1438,9 +1437,9 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 ### Finding all the reviews of a book
 
-1. Finding aLL the reviews using `searchReivew`
+1. Finding all the reviews using `searchReivew`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `searchReview n/Time` <br>
        Expected: Shows the review list of the books whose names contain the word `Time`, case insensitive. The review list of book with no review will be empty. The number of books listed is shown in the status message. 
@@ -1505,25 +1504,25 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Reporting a problem using `report`
     
-    i. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
+    1. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
 
-    ii. Test case: `report s/high d/book is broken`
+    1. Test case: `report s/high d/book is broken`
         Expected: Problem successfully added, detailed information shown in the status bar.
       
-    iii. Test case: enter `report s/medium d/book is broken` after the previous test case.
+    1. Test case: enter `report s/medium d/book is broken` after the previous test case.
         Expected: Duplicate problem detected, as shown in the status bar.
        
-    iv. Test case: `report d/floor is dirty s/medium`
+    1. Test case: `report d/floor is dirty s/medium`
         Expected: Problem successfully added, detailed information shown in the status bar.
                      
-    v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
+    1. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
 
 ### Viewing reported problems
 1. Viewing reported problems using `view`
     
-    i. Prerequisites: NA.
+    1. Prerequisites: NA.
     
-    ii. Test case: `view`
+    1. Test case: `view`
         Expected: All reported problems shown in the problem section (the right side of the window). If no problem has yet been reported, the problem section will be empty.
 
 ### Deleting a problem report
@@ -1544,7 +1543,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a problem report using `findpr`
 
-    1. Prerequisites: The reports in the library is not empty.
+    1. Prerequisites: There is at least one problem in the library.
 
     1. Test case: `findpr lost`
        Expected: The report which has the description matching the keyword is shown.
@@ -1559,7 +1558,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a problem report using `editpr`
 
-    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+    1. Prerequisites: View all reports using the `view` command. There is at least one problem in the library.
 
     1. Test case: `editpr 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1567,4 +1566,4 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Test case: `editpr 0 s/high`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list)
+    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list).

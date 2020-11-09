@@ -74,10 +74,8 @@ public class FindMostPopularCommand extends Command {
         List<Book> lastShownList = model.getFilteredBookList();
         int maxTime = -1;
         for (Book b : lastShownList) {
-            if (b.getCategories().contains(category)) {
-                if (Integer.parseInt(b.getTimes().value) > maxTime) {
-                    maxTime = Integer.parseInt(b.getTimes().value);
-                }
+            if (b.getCategories().contains(category) && Integer.parseInt(b.getTimes().value) > maxTime) {
+                maxTime = Integer.parseInt(b.getTimes().value);
             }
         }
         return maxTime;

@@ -59,34 +59,34 @@ public class DeleteByCommand extends Command {
         model.updateFilteredBookList((book -> false), Mode.NORMAL);
         model.updateFilteredBookList(PREDICATE_SHOW_ALL_BOOKS, Mode.NORMAL);
         List<Book> lastShownList = model.getFilteredBookList();
-        List<Book> deleteList = new ArrayList<>();
+        List<Book> booksToDelete = new ArrayList<>();
 
         for (Book book : lastShownList) {
             switch (attribute) {
             case 0:
                 if (book.getName().fullName.equals(target)) {
-                    deleteList.add(book);
+                    booksToDelete.add(book);
                 }
                 break;
             case 1:
                 if (book.getIsbn().value.equals(target)) {
-                    deleteList.add(book);
+                    booksToDelete.add(book);
                 }
                 break;
             default:
                 if (Integer.parseInt(book.getTimes().value) <= Integer.parseInt(target)) {
-                    deleteList.add(book);
+                    booksToDelete.add(book);
                 }
                 break;
             }
         }
-        if (deleteList.isEmpty()) {
+        if (booksToDelete.isEmpty()) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DELETE_NAME);
         }
-        for (Book book : deleteList) {
+        for (Book book : booksToDelete) {
             model.deleteBook(book);
         }
-        return new CommandResult(String.format(MESSAGE_DELETE_BOOK_SUCCESS, deleteList.toString()));
+        return new CommandResult(String.format(MESSAGE_DELETE_BOOK_SUCCESS, booksToDelete.toString()));
     }
 
     @Override

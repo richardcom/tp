@@ -604,9 +604,7 @@ Note that categories that are not in the list is still a valid category, but the
 * `Chemistry`
 * `Physics`
 
-The book cover of a book depends on the categories of the book.
-
-The category name is case insensitive, but the category name needs to match **exactly**, and there cannot be white space in between the category words.
+The book cover of a book depends on the categories of the book(implemented in case-insensitive way), but the category name needs to match **exactly**, and there cannot be white space in between the category words.
 
 The following are **invalid** examples of category which will not reflect the intention of the user of adding the `ModernWar` category to the book.
 
