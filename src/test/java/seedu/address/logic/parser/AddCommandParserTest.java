@@ -88,7 +88,7 @@ public class AddCommandParserTest {
                         + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK2,
                 new AddCommand(expectedBook));
 
-        // multiple languagees - last language accepted
+        // multiple languages - last language accepted
         assertParseSuccess(parser, NAME_DESC_BOOK2 + ISBN_DESC_BOOK2 + EMAIL_DESC_BOOK2 + LANGUAGE_DESC_BOOK1
                 + LANGUAGE_DESC_BOOK2 + CATEGORY_DESC_FRIEND + TIMES_DESC_BOOK2 + STOCKING_DESC_BOOK2
                         + AUTHOR_DESC_BOOK2 + PUBLISHER_DESC_BOOK1,

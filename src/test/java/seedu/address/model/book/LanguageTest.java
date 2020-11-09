@@ -24,14 +24,14 @@ public class LanguageTest {
         // null language
         assertThrows(NullPointerException.class, () -> Language.isValidLanguage(null));
 
-        // invalid languagees
+        // invalid languages
         assertFalse(Language.isValidLanguage("")); // empty string
         assertFalse(Language.isValidLanguage(" ")); // spaces only
+        assertFalse(Language.isValidLanguage("123")); // numbers
 
-        // valid languagees
-        assertTrue(Language.isValidLanguage("Blk 456, Den Road, #01-355"));
-        assertTrue(Language.isValidLanguage("-")); // one character
-        assertTrue(Language.isValidLanguage("Leng Inc; 1234 Market St; "
-                + "San Francisco CA 2349879; USA")); // long language
+        // valid languages
+        assertTrue(Language.isValidLanguage("English"));
+        assertTrue(Language.isValidLanguage("chinese")); // one character
+        assertTrue(Language.isValidLanguage("thisisalanguage")); // long language
     }
 }
