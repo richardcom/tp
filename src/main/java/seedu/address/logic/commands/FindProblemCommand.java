@@ -12,7 +12,7 @@ public class FindProblemCommand extends Command {
     public static final String COMMAND_WORD = "findpr";
     public static final String SUGGESTION = "findpr <keyword>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all problem reports whose description contain "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all problem reports which description contains "
             + "any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " table";

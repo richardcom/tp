@@ -235,7 +235,7 @@ The current enhancement is in alignment with other components of the book, which
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
-  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+  * Cons: More efforts are required in order to adjust the newly added classes / attributes to the previous ones.
 
 * **Alternative 2:** Tweak the format of the edit command
   * Pros: The design will be more user-friendly and user-oriented.
@@ -272,7 +272,7 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-##### Given below is an example usage scenario of how the stocking command will be executed, 
+#### Given below is an example usage scenario of how the stocking command will be executed, 
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -286,7 +286,7 @@ Step 3. The stock command is returned and executed, updating the book list shown
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes and what the user expects
+#### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -306,7 +306,7 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-##### Given below is an example usage scenario of adding a review to a book.
+#### Given below is an example usage scenario of adding a review to a book.
 
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
@@ -318,7 +318,7 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-##### Given below is an example usage scenario of editing a review of a book.
+#### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
@@ -328,7 +328,7 @@ Step 3. The edit review command parser returns an edit review command with a new
 
 Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
-##### Given below is description of deleting review of a book.
+#### Given below is description of deleting review of a book.
 
 The process is similar to edit review command.
 
@@ -336,7 +336,7 @@ The difference is that in Step 2, the delete review command parser will only par
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-##### Given below is description of searching review of a book.
+#### Given below is description of searching review of a book.
 
 Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
 
@@ -344,7 +344,7 @@ Please refer to the stock command because the process is similar to the creation
 
 The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: What is the length of the review content
+#### Aspect: What is the length of the review content
 
 * **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
   * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
@@ -365,7 +365,6 @@ The relevant methods are:
 * `FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
 * `FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
 
-
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findpop Science`
@@ -383,7 +382,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How find Most Popular executes
+#### Aspect: How find Most Popular executes
 
 * **Alternative 1 :** Stores the most popular book as an attribute of each category
   * Pros: Easy to retrieve the most popular book.
@@ -403,7 +402,6 @@ The relevant methods are:
 
 * `RandomCommandParser#parse(String args)` --- Parses the input into book category.
 * `RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
-
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -464,7 +462,6 @@ is created.
 * There can be multiple problems, therefore `problem` is managed
 inside a list.
 
-
 * **Alternative 1 :** Link `problem` to `book`
   * What: Problems in library are often related to books, for these
   kind of book-related problems, we can store the (`problem` - `book`)
@@ -491,7 +488,6 @@ Step 3. Execution of ViewProblemCommand would take place.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
-
 
 ### \[New\] Edit Problem Report feature
 
@@ -535,7 +531,6 @@ The relevant methods are:
 * `FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
 * `FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
 
-
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findpr chair`
@@ -550,7 +545,6 @@ will be displayed.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![FindProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
-
 
 ### \[New\] Delete Problem Report feature
 
@@ -685,7 +679,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
-
 
 <table>
 <thead>
