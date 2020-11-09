@@ -1,6 +1,6 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -23,7 +23,7 @@ public class UsageCommandParser implements Parser<UsageCommand> {
             return new UsageCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, Messages.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_BOOK_DISPLAYED_INDEX, Messages.MESSAGE_USAGE), pe);
         }
     }
 

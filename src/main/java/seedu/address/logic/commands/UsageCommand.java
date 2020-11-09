@@ -1,8 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_USAGE_BOOK_SUCCESS;
+import static seedu.address.commons.core.Messages.*;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class UsageCommand extends Command {
         int size = lastShownList.size();
 
         if (invalidSizeComparedTo(size)) {
-            throw new CommandException(MESSAGE_INVALID_BOOK_DISPLAYED_INDEX);
+            throw new CommandException(String.format(MESSAGE_INVALID_BOOK_DISPLAYED_INDEX, MESSAGE_USAGE));
         }
 
         return new CommandResult(String.format(MESSAGE_USAGE_BOOK_SUCCESS,

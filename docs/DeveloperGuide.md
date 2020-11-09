@@ -90,7 +90,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+Note: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 
 ### Model component
@@ -119,10 +119,6 @@ The `Model`,
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the intellibrary data in json format and read it back.
-
-### Common classes
-
-Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -235,7 +231,7 @@ The current enhancement is in alignment with other components of the book, which
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
-  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+  * Cons: More efforts are required in order to adjust the newly added classes / attributes to the previous ones.
 
 * **Alternative 2:** Tweak the format of the edit command
   * Pros: The design will be more user-friendly and user-oriented.
@@ -262,7 +258,9 @@ These operations are incorporated into the storage read and write process in the
 
 ##### Given below is an example usage scenario of how stocking information with be parsed when editing a book.
 
-Step 1. The user launches the application and types command edit with `s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
+The diagram describes the process in Step 2 and Step 3. 
+
+Step 1. The user launches the application and types command `edit 1 s/scienceLb 10 centralLb 30`, and the logic manager calls the library parser, which calls the edit command parser.
 
 Step 2. The edit command parser calls the ParseUtil, which parses the string and returns a stocking
 
@@ -272,7 +270,9 @@ Step 3. The edit command parser uses the stocking and returns an edit command, a
 
 Step 4. The edit command is executed and the stocking of the original book in the model will be updated.
 
-##### Given below is an example usage scenario of how the stocking command will be executed, 
+##### Given below is an example usage scenario of how the stocking command will be executed. 
+
+The diagram describes the process in Step 2.
 
 Step 1. The user types `Stock n/Guns`, and the logic manager calls the library parser, which calls the stock command parser.
 
@@ -286,7 +286,7 @@ Step 3. The stock command is returned and executed, updating the book list shown
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes and what the user expects
+#### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -308,9 +308,11 @@ The class diagram for `Review`
 
 ##### Given below is an example usage scenario of adding a review to a book.
 
+The diagram describes the process in Step 2.
+
 Step 1. The user launches the application and types command `addReview 1 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the add review command parser.
 
-Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the review and rating respectively, and the add review command parser will use the rating and review content to create a new review.
+Step 2. The add review command parser calls the ParseUtil, which parses the string and returns the `Rating` and `ReviewContent` respectively, and the add review command parser will use the `Rating` and `ReviewContent` to create a new review. The add review command will be created using this new review.
 
 ![The creation of the add review command](images/AddReviewParserSequenceDiagram.png)
 
@@ -322,29 +324,29 @@ Step 4. The add review command is executed, which adds the review with the ratin
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
-Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `Review`.
+Step 2. The edit review command parser calls the ParseUtil and other methods to get the book index, `ReviewNumber`, new `Rating`, and new `ReviewContent`.
 
-Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
+Step 3. The edit review command parser returns an edit review command with a new `Rating` object of rating `5` and a new `ReviewContent` object with review content `Make review`.
 
 Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
-##### Given below is description of deleting review of a book.
+##### Given below is description of the process of deleting a book using deleteReview .
 
 The process is similar to edit review command.
 
-The difference is that in Step 2, the delete review command parser will only parses the index of the book and the review number of the review to delete, which will be used to create a delete command.
+The difference is that in Step 2, the delete review command parser will only parse the index of the book and the review number of the review to delete, which will be used to create a delete command.
 
 In Step 4, the execution of the delete command deletes the review from the review list of the book in the currently shown book list according to the book index and review number.
 
-##### Given below is description of searching review of a book.
+##### Given below is description of the process of searching for certain books using searchReview.
 
-Please refer to the stock command because the process is similar to the creation and execution process of a stock command.
+Please refer to the stock command because the execution process is similar to execution process of a stock command.
 
 #### Design consideration:
 
 The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: What is the length of the review content
+#### Aspect: What is the length of the review content
 
 * **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
   * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
@@ -365,7 +367,6 @@ The relevant methods are:
 * `FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
 * `FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
 
-
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findpop Science`
@@ -383,7 +384,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How find Most Popular executes
+#### Aspect: How find Most Popular executes
 
 * **Alternative 1 :** Stores the most popular book as an attribute of each category
   * Pros: Easy to retrieve the most popular book.
@@ -403,7 +404,6 @@ The relevant methods are:
 
 * `RandomCommandParser#parse(String args)` --- Parses the input into book category.
 * `RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
-
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -464,7 +464,6 @@ is created.
 * There can be multiple problems, therefore `problem` is managed
 inside a list.
 
-
 * **Alternative 1 :** Link `problem` to `book`
   * What: Problems in library are often related to books, for these
   kind of book-related problems, we can store the (`problem` - `book`)
@@ -491,7 +490,6 @@ Step 3. Execution of ViewProblemCommand would take place.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
-
 
 ### \[New\] Edit Problem Report feature
 
@@ -535,7 +533,6 @@ The relevant methods are:
 * `FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
 * `FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
 
-
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findpr chair`
@@ -550,7 +547,6 @@ will be displayed.
 The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![FindProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
-
 
 ### \[New\] Delete Problem Report feature
 
@@ -572,84 +568,6 @@ Step 2. Logic Manager would parse the input `deletepr 2`, and determines that it
 Step 3. DeleteProblemCommandParser would parse the index of the report to be deleted.
 
 Step 4. Execution of DeleteProblem would take place and the result will be updated in the filtered list in Model.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressbook`. It extends `Addressbook` with an undo/redo history, stored internally as an `addressbookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressbook#commit()` — Saves the current intellibrary state in its history.
-* `VersionedAddressbook#undo()` — Restores the previous intellibrary state from its history.
-* `VersionedAddressbook#redo()` — Restores a previously undone intellibrary state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressbook()`, `Model#undoAddressbook()` and `Model#redoAddressbook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressbook` will be initialized with the initial intellibrary state, and the `currentStatePointer` pointing to that single intellibrary state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th book in the intellibrary. The `delete` command calls `Model#commitAddressbook()`, causing the modified state of the intellibrary after the `delete 5` command executes to be saved in the `addressbookStateList`, and the `currentStatePointer` is shifted to the newly inserted intellibrary state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new book. The `add` command also calls `Model#commitAddressbook()`, causing another modified intellibrary state to be saved into the `addressbookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressbook()`, so the intellibrary state will not be saved into the `addressbookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the book was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressbook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous intellibrary state, and restores the intellibrary to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial Addressbook state, then there are no previous Addressbook states to restore. The `undo` command uses `Model#canUndoAddressbook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressbook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the intellibrary to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressbookStateList.size() - 1`, pointing to the latest intellibrary state, then there are no undone Addressbook states to restore. The `redo` command uses `Model#canRedoAddressbook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the intellibrary, such as `list`, will usually not call `Model#commitAddressbook()`, `Model#undoAddressbook()` or `Model#redoAddressbook()`. Thus, the `addressbookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressbook()`. Since the `currentStatePointer` is not pointing at the end of the `addressbookStateList`, all intellibrary states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire intellibrary.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the book being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -685,7 +603,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
-
 
 <table>
 <thead>
@@ -998,7 +915,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1c. The new review given by the user is equivalent to the original review.
+* 1d. The new review given by the user is equivalent to the original review.
 
     * 1c1. IntelliBrary shows an error message that the review given by the user does not make changes to the original review and the value of the edited review needs to be different. 
 
@@ -1106,6 +1023,12 @@ Use case ends.
     
       Use case ends.
       
+* 1c. The newly reported problems has the same description with an existing problem.
+
+    * 1c1. IntelliBrary shows a message that duplicate problem is detected.
+    
+      Use case ends.
+      
 **Use case: UC12 - View a problem**
 
 **MSS**
@@ -1135,7 +1058,7 @@ Use case ends.
 
 **MSS**
   1. User requests to find reports that the descriptions matches certain keywords.
-  2. IntelliBrary finds reports which descriptions matches the keywords.
+  2. IntelliBrary returns the reports whose descriptions match the keywords.
 
   Use case ends. 
   
@@ -1143,7 +1066,7 @@ Use case ends.
 
 * 1a. No problem reports that the description matches the keyword is found.
 
-    * 1a1. IntelLiBrary shows a message that no matching reports are found.
+    * 1a1. IntelliBrary shows a message that no matching reports are found.
 
       Use case ends.
       
@@ -1166,7 +1089,7 @@ Use case ends.
     
 * 1b. There are currently no books of the category.
     
-    * 1b1. IntelliBrary shows a message saying that zero books are listed.
+    * 1b1. IntelliBrary shows a message saying that zero book is listed.
     
       Use case ends.
     
@@ -1196,15 +1119,15 @@ Use case ends.
 
 **MSS**
   1. User seeks help regarding how to use IntelliBrary.
-  2. IntelliBrary redirects the user to the reference documentation.
+  2. IntelliBrary provides the URL to User Guide.
   
      Use case ends.
      
 **Use case: UC18 - Clear all the books**
 
 **MSS**
-  1. User requests clear all the books in the library.
-  2. IntelliBrary deletes all the books available.
+  1. User requests to clear all the books and problems in the library.
+  2. IntelliBrary deletes all the books and problems available.
   
      Use case ends.
      
@@ -1227,9 +1150,9 @@ Use case ends.
      
 **Extensions**
 
-* 1a. No book whose description matches the keyword is found.
+* 1a. No book matches the keyword.
 
-    * 1a1. IntelLiBrary shows a message that no matching boos are found.
+    * 1a1. IntelliBrary shows a message that no matching books are found.
 
       Use case ends.
       
@@ -1237,7 +1160,7 @@ Use case ends.
 
 **MSS**
   1. User requests to exit the program.
-  2. IntelliBrary closes itself.
+  2. IntelliBrary closes its window and terminates the process.
   
      Use case ends.
 
@@ -1297,7 +1220,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Deleting a book using `delete`
 
-   1. Prerequisites: List all books using the `list` command. Multiple books in the list.
+   1. Prerequisites: List all books using the `list` command. At least one book in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First book is deleted from the list. Details of the deleted book shown in the status message.
@@ -1338,31 +1261,31 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a book using `find`
 
-    1. Prerequisites: Multiple books in the library.
+    1. Prerequisites: At least one book in the library.
 
     1. Test case: `find science`
-       Expected: Return books where the name contains the case-insensitive `Science`.
+       Expected: Return books whose name contains the case-insensitive `Science`.
            
     1. Test case: `find Math`
-       Expected: Return books where the name contains the case-insensitive `Math`.
+       Expected: Return books whose name contains the case-insensitive `Math`.
                
     1. Other incorrect commands to try: `find`
 
 2. Finding the most popular book using `findpop`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
     1. Test case: `findpop Math`
        Expected: The most popular book of the `Math` category is listed in the list.
                
     1. Test case: `findpop Science`
-       Expected: The most popular book of the `Science` category is listed in the list.
+       Expected: The most popular book of the `Science` category is shown in the list.
               
     1. Other incorrect commands to try: `findpop -2d3d_-`, `findpop --9`, etc.
 
 3. Finding a random book of a given category using `random`
 
-    1. Prerequisites: There are books in the library.
+    1. Prerequisites: At least one book of the requested category is in the library.
 
      1. Test case: `random Math`
            Expected: A random book of the `Math` category is listed in the list.
@@ -1399,7 +1322,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the stocking of a book using `stock`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
 
     1. Test case: `stock n/Time`<br>
        Expected: Shows the stocking information of the books whose names contain the word `Time`, case insensitive. Stocking in all the 3 locations will be shown. The number of books listed is shown in the status message. 
@@ -1417,7 +1340,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding the usage of a book according to its displayed index using `usage`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usage 1`<br>
        Expected: the number of borrowed times of book with index 1 in the list (1-based)
@@ -1426,7 +1349,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 2. Finding the usage of a book according to its name or ISBN using `usageBy`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `usageBy n/Pride and Prejudice` <br>
        Expected: the number of borrowed times of book with book name "Pride and Prejudice"
@@ -1438,9 +1361,9 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    
 ### Finding all the reviews of a book
 
-1. Finding aLL the reviews using `searchReivew`
+1. Finding all the reviews using `searchReivew`
 
-    1. Prerequisites: There are some books in the application storage.
+    1. Prerequisites: There is at least one book in the library.
     
     1. Test case: `searchReview n/Time` <br>
        Expected: Shows the review list of the books whose names contain the word `Time`, case insensitive. The review list of book with no review will be empty. The number of books listed is shown in the status message. 
@@ -1505,25 +1428,25 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Reporting a problem using `report`
     
-    i. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
+    1. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
 
-    ii. Test case: `report s/high d/book is broken`
+    1. Test case: `report s/high d/book is broken`
         Expected: Problem successfully added, detailed information shown in the status bar.
       
-    iii. Test case: enter `report s/medium d/book is broken` after the previous test case.
+    1. Test case: enter `report s/medium d/book is broken` after the previous test case.
         Expected: Duplicate problem detected, as shown in the status bar.
        
-    iv. Test case: `report d/floor is dirty s/medium`
+    1. Test case: `report d/floor is dirty s/medium`
         Expected: Problem successfully added, detailed information shown in the status bar.
                      
-    v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
+    1. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
 
 ### Viewing reported problems
 1. Viewing reported problems using `view`
     
-    i. Prerequisites: NA.
+    1. Prerequisites: NA.
     
-    ii. Test case: `view`
+    1. Test case: `view`
         Expected: All reported problems shown in the problem section (the right side of the window). If no problem has yet been reported, the problem section will be empty.
 
 ### Deleting a problem report
@@ -1544,7 +1467,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Finding a problem report using `findpr`
 
-    1. Prerequisites: The reports in the library is not empty.
+    1. Prerequisites: There is at least one problem in the library.
 
     1. Test case: `findpr lost`
        Expected: The report which has the description matching the keyword is shown.
@@ -1559,7 +1482,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a problem report using `editpr`
 
-    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+    1. Prerequisites: View all reports using the `view` command. There is at least one problem in the library.
 
     1. Test case: `editpr 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1567,4 +1490,4 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     1. Test case: `editpr 0 s/high`
        Expected: Invalid command format.
                      
-    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list)
+    1. Other incorrect commands to try: `editpr x s/high` (x is larger than the size of the report list).
