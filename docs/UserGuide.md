@@ -502,7 +502,7 @@ they have **both** the same severity and the same description.
 
 Examples:
 * `report s/high d/book is broken`
-![report problem](https://github.com/davidsqf/tp/blob/v1.4-UG/docs/images/report_problem.png)
+![report problem](images/report_problem.png)
 
 #### View problems: `view`
 
@@ -512,7 +512,7 @@ Format: `view`
 
 Examples:
 * `view`
-![view problems](https://github.com/davidsqf/tp/blob/v1.4-UG/docs/images/view_problem.png)
+![view problems](images/view_problem.png)
 
 
 #### Locating reports by keyword: `findpr`
@@ -616,8 +616,13 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
+<<<<<<< HEAD
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesting`
+=======
 **Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
+>>>>>>> 8fc02bb380a038f357038e1d130f6ea902b81bb7
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
@@ -635,7 +640,7 @@ Action | Format, Examples
 **List** | `list`
 **Random** | `random CATEGORY` <br> e.g., `random Classics`
 **ReportProblem** | `report s/SEVERITY d/DESCRIPTION` <br> e.g., `report s/medium d/book is broken`
-**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
+**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Usage**| `usage INDEX` <br> e.g., `usage 1`
