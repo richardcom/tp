@@ -31,7 +31,7 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](https://github.com/AY2021S1-CS2103-F09-3/tp/tree/master/src/main/java/seedu/address/commons) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
@@ -66,7 +66,7 @@ The sections below give more details of each component.
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `BookListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/language/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/src/main/java/seedu/language/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -152,7 +152,8 @@ Step 3. AddCommandParser would then parse the book attributes and call the Add C
 
 Step 4. Execution of Add would take place and the result will be updated in the filtered book list in Model.
 
-The following sequence diagram summarizes what happens when a user executes a new command:
+The following sequence diagram summarizes what happens when a user executes a new command.(For simplicity rules mentioned in CS2103 website, 
+    the diagram omits other attributes and only use book name as an example):
 
 ![AddCommandSequenceDiagram](images/AddCommandSimplifiedSequenceDiagram.png)
 
@@ -183,10 +184,9 @@ Step 2. Logic Manager would parse the input `deleteBy n/Linear Algebra`, and det
 
 Step 3. DeleteByCommandParser would then parse the book name and call the deleteBy Command.
 
-Step 4. Execution of delete would take place and the result will be updated in the filtered list in Model.
+Step 4. Execution of deleteBy would take place and the result will be updated in the filtered list in Model.
 
-The following sequence diagram summarizes what happens when a user executes a new command(For simplicity rules mentioned in CS2103 website, 
-the diagram omits other attributes and only use book name as an example):
+The following sequence diagram summarizes what happens when a user executes a new command:
 
 ![DeleteByCommandDiagram](images/DeleteBySequenceDiagram.png)
 
@@ -194,7 +194,7 @@ the diagram omits other attributes and only use book name as an example):
 
 ##### Aspect: How deleteBy executes
 
-* **Alternative 1 :** Adopts the delete function of the original project
+* **Alternative 1 :** Adopts the delete function of the original AB3 project
   * Pros: Easy to implement.
   * Cons: Not convenient for expert users and fast input, does not allow deleting multiple books at a time.
 
@@ -235,7 +235,7 @@ The current enhancement is in alignment with other components of the book, which
 
 * **Alternative 1 (current choice):** Adopt the original format and structure.
   * Pros: It is easier to make sure that the integration will go smoothly.
-  * Cons: More efforts are required in order to adjust the newly added classes / attribute to the previous ones
+  * Cons: More efforts are required in order to adjust the newly added classes / attributes to the previous ones.
 
 * **Alternative 2:** Tweak the format of the edit command
   * Pros: The design will be more user-friendly and user-oriented.
@@ -290,7 +290,7 @@ Step 3. The stock command is returned and executed, updating the book list shown
 
 The current implementation of the stocking is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: How stocking executes and what the user expects
+#### Aspect: How stocking executes and what the user expects
 
 * **Alternative 1 (current choice):** Requires the user to type out the library name to specify the stocking in a location.
   * Pros: The command is clear and understandable.
@@ -310,7 +310,7 @@ The class diagram for `Review`
 
 ![The class diagram for review](images/ModelClassBookReviewDiagram.png)
 
-##### Given below is an example usage scenario of adding a review to a book.
+#### Given below is an example usage scenario of adding a review to a book.
 
 The diagram describes the process in Step 2.
 
@@ -324,7 +324,7 @@ Step 3. The add review command parser returns an add review command, and this is
 
 Step 4. The add review command is executed, which adds the review with the rating `5` and the review content `Make review` the book with index `1` shown in the current book list.
 
-##### Given below is an example usage scenario of editing a review of a book.
+#### Given below is an example usage scenario of editing a review of a book.
 
 Step 1. The user launches the application and types command `editReview 1 rn/4 ra/5 re/Make review`, and the logic manager calls the library parser, which calls the edit review command parser.
 
@@ -350,7 +350,7 @@ Please refer to the stock command because the execution process is similar to ex
 
 The current implementation of the reviewing is consistent with other components of the book, which brings convenience to the program integration.
 
-##### Aspect: What is the length of the review content
+#### Aspect: What is the length of the review content
 
 * **Alternative 1 (current choice):** Requires the user to type no more than 300 characters in the review.
   * Pros: The review is more concise, which will make it more convenient for the librarian to summarize the review.
@@ -371,7 +371,6 @@ The relevant methods are:
 * `FindMostPopularCommandParser#parse(String args)` --- Parses the input into book category.
 * `FindMostPopularCommand#execute(Model model)` --- Finds the most popular book of the specified category and updates the filtered book list.
 
-
 Given below is an example usage scenario and how the FindMostPopular mechanism behaves at each step.
 
 Step 1. User input an input: `findpop Science`
@@ -389,7 +388,7 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 #### Design consideration:
 
-##### Aspect: How find Most Popular executes
+#### Aspect: How find Most Popular executes
 
 * **Alternative 1 :** Stores the most popular book as an attribute of each category
   * Pros: Easy to retrieve the most popular book.
@@ -409,7 +408,6 @@ The relevant methods are:
 
 * `RandomCommandParser#parse(String args)` --- Parses the input into book category.
 * `RandomCommand#execute(Model model)` --- Randomly selects a book of the specified category and updates the filtered book list.
-
 
 Given below is an example usage scenario and how the Random mechanism behaves at each step.
 
@@ -470,7 +468,6 @@ is created.
 * There can be multiple problems, therefore `problem` is managed
 inside a list.
 
-
 * **Alternative 1 :** Link `problem` to `book`
   * What: Problems in library are often related to books, for these
   kind of book-related problems, we can store the (`problem` - `book`)
@@ -498,7 +495,6 @@ The following sequence diagram summarizes what happens when a user executes a ne
 
 ![ViewProblemSequenceDiagram](images/ViewProblemSequenceDiagram.png)
 
-
 ### \[New\] Edit Problem Report feature
 
 ####  Implementation
@@ -507,8 +503,8 @@ The implementation of the Edit Problem Report command is supported by `EditProbl
 
 The relevant methods are:
 
-*`EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
-*`EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
+* `EditProblemCommandParser#parse(String args)` --- Parses the user input arguments.
+* `EditProblemCommand#execute(Model model)` --- Edits the book with the user input and updates the book list of the library.
 
 Below is the diagram illustrating the Problem Report Model. The EditProblemCommand allows for edit of either one attribute
 or both attributes at the same time.
@@ -541,7 +537,6 @@ The relevant methods are:
 * `FindProblemCommandParser#parse(String args)` --- Parses the user input arguments.
 * `FindProblemCommand#execute(Model model)` --- Finds the problem report which has the description that matches the user input.
 
-
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
 Step 1. User input an input: `findpr chair`
@@ -555,8 +550,7 @@ will be displayed.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![FindProblemReportSequenceDiagram](images/findProblemReportSequenceDiagram.png)
-
+![FindProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
 
 ### \[New\] Delete Problem Report feature
 
@@ -613,7 +607,6 @@ Step 4. Execution of DeleteProblem would take place and the result will be updat
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
-
 
 <table>
 <thead>
@@ -932,22 +925,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC07 - View Sample Data**
-
-**MSS**
-
-1.  User requests to view the sample data of the app
-2.  IntelliBrary shows the information of a list of books
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. Sample Data is missing.
-
-  Use case ends.
-  
-**Use case UC08 - Delete a book**
+**Use case UC07 - Delete a book**
 
 **MSS**
 
@@ -970,7 +948,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: UC09 - Edit a book**
+**Use case: UC08 - Edit a book**
 
 **MSS**
 
@@ -993,7 +971,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
       
-**Use case: UC10 - Get usage times of a book**
+**Use case: UC09 - Get usage times of a book**
 
 **MSS**
   1. User requests to get the usage times of a book and input index/book title/book isbn.
@@ -1019,7 +997,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.   
       
-**Use case: UC11 - Get number of books borrowed**
+**Use case: UC10 - Get number of books borrowed**
 
 **MSS**
   1. User requests to get the number of books borrowed by the whole borrower cluster.
@@ -1027,7 +1005,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Use case ends.  
 
-**Use case: UC12 - Report a problem**
+**Use case: UC11 - Report a problem**
 
 **MSS**
   1. User requests to report a problem.
@@ -1049,7 +1027,7 @@ Use case ends.
     
       Use case ends.
       
-**Use case: UC13 - View a problem**
+**Use case: UC12 - View a problem**
 
 **MSS**
   1. User requests to view problems.
@@ -1057,7 +1035,7 @@ Use case ends.
 
   Use case ends.
   
-**Use case: UC14 - Delete a problem report**
+**Use case: UC13 - Delete a problem report**
 
 **MSS**
   1. User requests to delete a problem report by index.
@@ -1074,7 +1052,7 @@ Use case ends.
       Use case ends.
     
     
-**Use case: UC15 - Find a problem report by description**
+**Use case: UC14 - Find a problem report by description**
 
 **MSS**
   1. User requests to find reports that the descriptions matches certain keywords.
@@ -1091,7 +1069,7 @@ Use case ends.
       Use case ends.
       
       
-**Use case: UC16 - Find Most popular book of a category**
+**Use case: UC15 - Find Most popular book of a category**
 
 **MSS**
   1. User requests to find the most popular book of a category.
@@ -1113,7 +1091,7 @@ Use case ends.
     
       Use case ends.
     
-**Use case: UC17 - Randomized selection of a book of a category**
+**Use case: UC16 - Randomized selection of a book of a category**
 
 **MSS**
   1. User requests to randomly select a book of a specified category.
@@ -1135,7 +1113,7 @@ Use case ends.
     
       Use case ends.      
 
-**Use case: UC18 - Seek help**
+**Use case: UC17 - Seek help**
 
 **MSS**
   1. User seeks help regarding how to use IntelliBrary.
@@ -1143,7 +1121,7 @@ Use case ends.
   
      Use case ends.
      
-**Use case: UC19 - Clear all the books**
+**Use case: UC18 - Clear all the books**
 
 **MSS**
   1. User requests clear all the books in the library.
@@ -1151,7 +1129,7 @@ Use case ends.
   
      Use case ends.
      
-**Use case: UC20 - Check history**
+**Use case: UC19 - Check history**
 
 **MSS**
   1. User requests to check the history of borrowing.
@@ -1159,7 +1137,7 @@ Use case ends.
   
      Use case ends.
      
-**Use case: UC21 - Find a book**
+**Use case: UC20 - Find a book**
 
 **MSS**
   1. User requests to find a book according to the search of keywords.
@@ -1176,7 +1154,7 @@ Use case ends.
 
       Use case ends.
       
-**Use case: UC22 - Exit the program**
+**Use case: UC21 - Exit the program**
 
 **MSS**
   1. User requests to exit the program.
@@ -1191,12 +1169,10 @@ Use case ends.
 3.  Performance requirements: for core functions, the system should respond within two seconds.
 4.  Quality requirements: a user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 5.  Process requirements: the project is expected to adhere to the course schedule and delivers weekly tasks on time.
-6.  Domain rules: the number of books at each library cannot be less than three.
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 

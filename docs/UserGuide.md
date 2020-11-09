@@ -29,7 +29,6 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
    * **`add`**`n/Linear Algebra i/98765432 e/seller@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku` : Adds a Book named `Linear Algebra` to the Library.
 
-
    * **`delete`**`3` : Deletes the 3rd book shown in the current list.
 
    * **`clear`** : Deletes all books and problems.
@@ -66,50 +65,51 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 
 </div>
 
-### Viewing sample data
+### Basic features
+
+#### View sample data
 
 Have a look at the sample data for the application when opening the app for the first time.
 
 
-### Viewing help : `help`
+#### View help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message about how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
-### Exiting the program : `exit`
+#### Clear all entries : `clear`
+
+_Tentative_ : Clears all entries from the library, including books and problems.
+
+Format: `clear`
+
+#### Exit the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Clearing all entries : `clear`
+### Features related to library book management
 
-Clears all entries from the library, including books and problems.
-
-Format: `clear`
-
-### Commands relating to library book management
-
-
-#### Listing all books : `list`
+#### List all books : `list`
 
 Shows a list of all books in the library.
 
 Format: `list`
 
-#### Adding a book : `add`
+#### Add a book : `add`
 
 Adds a book to the book list.
 
-Duplicate book will be rejected.
+(Duplicate book will be rejected. Definition of "duplicate" is explained in the following part.)
 
-Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER`
+Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]... t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER`
 
 * ```n/``` is followed by the book name, it is case sensitive.
-* ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long
+* ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long.
 * ```e/``` is followed by the email of the book dealer, which shall follow the valid format of email address.
 * ```l/``` is followed by the language of the book. It takes in alphabets(spaces not allowed) and should not be blank.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
@@ -118,10 +118,13 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
  And the prefix tag ```s/``` is compulsory when adding a book, please refer to the detailed format explanation in the later stocking part.
 * ```a/``` is followed by the author of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
 * ```p/``` is followed by the publisher of the book, it should only contain alphanumeric characters and spaces, and it should not be blank.
-* Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
-Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
+
+* Duplicate book will be rejected. Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
+Thus, we store books separately as long as they have different ISBN, even if they share the same name.
+
 * All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
-* A space shall always be left before the above attributes prefixes, otherwise an error message saying `Invalid command format!` would pop up.
+* A space shall always be left before the above attributes prefixes. 
+
 Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
@@ -131,15 +134,15 @@ Examples:
 
 * `add n/Artificial Intelligence i/9780134610993 e/Pearson@example.com l/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
 
-#### Editing a book : `edit`
+#### Edit a book : `edit`
 
 Edits the information of an existing book in the library.
 
 Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`
 
-* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** 1, 2, 3...
+* Edits the book at the specified `INDEX`. The index refers to the index number shown in the displayed book list. The index **must be a positive integer** e.g, 1, 2, 3...
 * All fields are optional but at least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Existing values will be purged and new values will be written as the newly input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
 * Changing the categories of a book can change its book cover. The book cover is for decoration purposes and it is meant to show the category of a book instead of identifying a particular book.
@@ -148,8 +151,7 @@ Restrictions:
 * ```n/``` is followed by the book name.
 * ```i/``` is followed by the ISBN of the book, which is restricted to digits.
 * ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book, as we assume the library may take in books of various languages besides those that are mainly used. 
-Thus, we decide to restrict it as a string of characters and not to set any other additional constraints.
+* ```l/``` is followed by the language of the book, it should only contain alphabetical characters (spaces are not allowed), and it should not be blank.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added (please refer to the stocking part for more details).
@@ -160,7 +162,7 @@ Examples:
 * `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
 * `edit 3 p/Scribner Publisher c/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
-#### _Additional information regarding stocking in add and edit command_
+##### _Additional information regarding stocking in add and edit command_
 
 * The library location name is case sensitive, and the location name needs to match exactly.
 
@@ -168,7 +170,7 @@ Examples:
 
 * Given that there are only 3 locations available, the number of location argument can be at most 3.
 
-* If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will cover the previous one.
+* If there are duplicate location argument, such as centralLb 10 centralLb 20, then the later one will shadow the previous one.
 
 * If the stocking information of some of the libraries is not provided or if the number of stocking is 0, then the stocking information shown for the book in that location will be: `Not Available`
 
@@ -179,15 +181,15 @@ Examples:
 * If multiple `s/` is present, only the information in the last `s/` will be recorded. 
 
 * There are 2 reasons why stocking does not use syntax similar to categories, such as `s/centralLb 40 s/scienceLb 20 s/HSSMLb 30`
-    * A book has exactly 1 stocking, which stores all the stocking information of the book in every location. This is both appropriate and necessary because the list of library locations in stocking are specific to libraries in NUS and it is static, which is contrary to categories, where user can add new categories dynamically.
-    * `s/centralLb 30 scienceLb 20 HSSMLb 10` brings more convenience to the user since there is less typing.
+    * A book has exactly 1 stocking, which stores all the stocking information of the same book in every location. This is not only appropriate but also necessary because the list of library locations in stocking are specific to libraries in NUS and it is fixed, which is contrary to categories, where user can add new categories dynamically.
+    * `s/centralLb 30 scienceLb 20 HSSMLb 10` brings more convenience to the user since there is less work in typing.
 
 Examples:
 * `s/centralLb 30 scienceLb 20 HSSMLb 10`
 * `s/scienceLb 20 HSSMLb 10`
 * `s/centralLb 10`
 
-#### Locating books by name: `find`
+#### Locate books by name: `find`
 
 Finds books whose names contain any of the given keywords.
 
@@ -195,7 +197,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `novel` can match `Novel`
 * The order of the keywords does not matter. e.g. `Linear Algebra` will match `Algebra Linear`
-* Only the names are searched.
+* Only the book names are searched.
 * Only full words will be matched e.g. `Novel` will not match `Novels`
 * Books matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Linear Algebra` will return `Basic Algebra`, `Linear Mathematics`
@@ -204,34 +206,37 @@ Examples:
 * `find science` returns `Introduction to Science` and `Computer Science`
 * `find linear algebra` returns `Basic Algebra`, `linear math`
 
-#### Deleting books(s) from the library `delete` and `deleteby`
+#### Delete book(s) from the library `delete` and `deleteby`
 
 Deletes the specified book(s) from the library.
 
-##### Deletes a book by its index in the current list `delete`
+##### By its index in the current list `delete`
 
 Format: `delete INDEX`
 
 * Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
-* The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
+
+* The index **must be a positive integer** e.g, 1, 2, 3, …
+* If the user input a non-positive integer, an error message indicating `Invalid command format!` would pop up as this is always incorrect.
 * If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
 * `find novel` followed by `delete 1` deletes the 1st book in the results of the `find` command.
 
-##### Deleting a book by other attributes: `deleteBy`
+##### By other attributes: `deleteBy`
 
-Delete a book from the library.
+Delete book(s) from the library.
 
 Format:  
-`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
+`deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose exactly one of the three prefixes in the command)  
 
-* One of the three prefixes must be selected to delete a list of books that match the command.
+* All three prefixes are optional but exactly one of the three prefixes must be selected to delete books that match the command.
+
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
-for all the books which has borrowed times fewer or equal to the user input will be deleted.
+for all the books which the number of times borrowed is fewer or equal to the user input will be deleted.
 * Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
 However, we allow if the user enters multiple same prefixes at a time, only the newest(the last prefix input) will be considered and others are neglected.
 
@@ -299,7 +304,90 @@ Visual Example:
 
 ![](./images/stockCommandUserInterface.png)
 
-#### Features related to Review
+#### Check usage `usage` and `usageBy`
+
+Checks usage times of a certain book specified by user. Book is specified by any of the followings:
+* one base index in storage.
+* book isbn
+* book name
+
+Note that `usageBy` commands are less sensitive and you will need to match exactly book name or isbn to get book usage.
+
+##### By its index in the current list
+Format:
+* `usage INDEX`
+
+Examples:
+* `usage 2`
+
+##### By Book Name or ISBN
+Format: 
+* `usageBy i/ISBN`
+* `usageBy n/BOOK_NAME`
+
+Examples:
+* `usageBy i/9780141439518`
+* `usageBy n/Pride and Prejudice`
+
+#### Check history: `history`
+
+Checks total borrowing times of all books.
+
+Format: `history`
+
+Examples:
+* `history`
+
+#### Random Selection of books `random`
+
+Randomly select a book of a specific category from the library.
+
+Introduction: the `random` command is implemented for librarians for two situations:
+1. Random sampling. 
+
+One of the librarians' job is to conduct statistical analysis of the books' data
+in the library. For example, a librarian needs to gather data of a certain category of books
+(average rating, times borrowed, etc). However, as libraries normally contain tens thousands or millions 
+of books, random sampling technique is widely adopted. Thus, the `random` command allows
+librarians to randomly select a book from a certain category. This greatly boosts the efficiency and ensures
+randomness of random sampling.
+
+2. Random recommendation: 
+
+For a certain category of books, some books may remain in the library without gathering much
+attention, which causes waste for the library. Thus, the `random` command allows the 
+librarian to pick a random book of a specific 
+category and gives every book the same probability to be promoted to public.
+
+
+Format: `random CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no book's category matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
+
+Examples:
+* `random Classics`
+* `random Science`
+
+
+#### Find the most popular book of a specific category `findpop`
+
+Find and select the most popular book of a specific category from the library.
+
+Format: `findpop CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
+
+Examples:
+* `findpop Classics`
+* `findpop Science`
+
+## Features related to Review
 
 ##### _Introduction_
 
@@ -405,86 +493,7 @@ Examples:
 * `editReview 1 rn/7 ra/5`
 * `editReview 1 rn/7 re/The book is interesting`
 
-#### Check usage `usage` and `usageBy`
-
-Checks usage times of a certain book specified by user. Book is specified by any of the followings:
-* one base index in storage.
-* book isbn
-* book name
-
-##### by Index
-Format:
-* `usage INDEX`
-
-Examples:
-* `usage 2`
-
-##### by Book Name or ISBN
-Format: 
-* `usageBy i/ISBN`
-* `usageBy n/BOOK_NAME`
-
-Examples:
-* `usageBy i/9780141439518`
-* `usageBy n/Pride and Prejudice`
-
-#### Check history: `history`
-
-Checks borrowing times during the whole timeline.
-
-Format: `history`
-
-Examples:
-* `history`
-
-#### Random Selection of books `random`
-
-Randomly select a book of a specific category from the library.
-
-Introduction: the `random` command is implemented for librarians for two situations:
-1. Random sampling. 
-
-One of the librarians' job is to conduct statistical analysis of the books' data
-in the library. For example, a librarian needs to gather data of a certain category of books
-(average rating, times borrowed, etc). However, as libraries normally contain tens thousands or millions 
-of books, random sampling technique is widely adopted. Thus, the `random` command allows
-librarians to randomly select a book from a certain category. This greatly boosts the efficiency and ensures
-randomness of random sampling.
-
-2. Random recommendation: 
-
-For a certain category of books, some books may remain in the library without gathering much
-attention, which causes waste for the library. Thus, the `random` command allows the 
-librarian to pick a random book of a specific 
-category and gives every book the same probability to be promoted to public.
-
-
-Format: `random CATEGORY`
-
-* The category name is matched using case-sensitive approach. For example, `Classics` is different
-from `classics`
-* If there are no book's category matching the user input, `0 books listed!` will pop up.
-
-Examples:
-* `random Classics`
-* `random Science`
-
-
-#### Find the most popular book of a specific category `findpop`
-
-Find and select the most popular book of a specific category from the library.
-
-Format: `findpop CATEGORY`
-
-* The category name is matched using case-sensitive approach. For example, `Classics` is different
-from `classics`
-* If there are no books matching the user input, `0 books listed!` will pop up.
-
-Examples:
-* `findpop Classics`
-* `findpop Science`
-
-### Commands relating to problem reports
+### Features related to problem reports
 
 #### Report problems: `report`
 
@@ -514,7 +523,7 @@ Examples:
 ![view problems](images/view_problem.png)
 
 
-#### Locating reports by keyword: `findpr`
+#### Locate reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
@@ -529,13 +538,13 @@ Format: `findpr KEYWORD [MORE_KEYWORDS]`
 
 Visual View of finding report reports that is related to `level 1`:
 
-![Find Report View](images/findReport.png)
+![Find Report View](images/FindReport.png)
 
 Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
 * `findpr table chair` returns `table`, `chair`
 
-#### Deleting a report : `deletepr`
+#### Delete a report : `deletepr`
 
 Deletes the specified problem report from library management system.
 
@@ -544,15 +553,15 @@ Format: `deletepr INDEX`
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
-* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
-* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as the command format is always invalid.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. 
 
 
 Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
 * `findpr table` followed by `deletepr 2` deletes the 2nd report in the results of the `findpr` command.`
 
-#### Editing a problem report : `editpr`
+#### Edit a problem report : `editpr`
 
 Edits the information of an existing problem report in the library.
 
@@ -588,9 +597,7 @@ Note that categories that are not in the list is still a valid category, but the
 * `Chemistry`
 * `Physics`
 
-The book cover of a book depends on the categories of the book.
-
-The category name is case insensitive, but the category name needs to match **exactly**, and there cannot be white space in between the category words.
+The book cover of a book depends on the categories of the book(implemented in case-insensitive way), but the category name needs to match **exactly**, and there cannot be white space in between the category words.
 
 The following are **invalid** examples of category which will not reflect the intention of the user of adding the `ModernWar` category to the book.
 
@@ -615,13 +622,8 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-<<<<<<< HEAD
-**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-**AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesting`
-=======
-**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
->>>>>>> 8fc02bb380a038f357038e1d130f6ea902b81bb7
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
