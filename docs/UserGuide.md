@@ -92,8 +92,7 @@ Exits the program.
 
 Format: `exit`
 
-### Commands related to library book management
-
+### Features related to library book management
 
 #### List all books : `list`
 
@@ -135,7 +134,7 @@ Examples:
 
 * `add n/Artificial Intelligence i/9780134610993 e/Pearson@example.com l/English c/Science t/20 s/centralLb 2 scienceLb 3 HSSMLb 4 a/Stuart Russell p/PEARSON`
 
-#### Editing a book : `edit`
+#### Edit a book : `edit`
 
 Edits the information of an existing book in the library.
 
@@ -163,7 +162,7 @@ Examples:
 * `edit 2 n/A Brief History of Time e/abhot@gmail.com` Edits the name and contact email language of the 2nd book to be A Brief History of Time and abhot@gmail.com respectively.
 * `edit 3 p/Scribner Publisher c/` Edits the publisher of the 3rd book to be Scribner Publisher and clears all existing tags.
 
-#### _Additional information regarding stocking in add and edit command_
+##### _Additional information regarding stocking in add and edit command_
 
 * The library location name is case sensitive, and the location name needs to match exactly.
 
@@ -207,11 +206,11 @@ Examples:
 * `find science` returns `Introduction to Science` and `Computer Science`
 * `find linear algebra` returns `Basic Algebra`, `linear math`
 
-#### Deletes books(s) from the library `delete` and `deleteby`
+#### Delete book(s) from the library `delete` and `deleteby`
 
 Deletes the specified book(s) from the library.
 
-##### Deletes a book by its index in the current list `delete`
+##### By its index in the current list `delete`
 
 Format: `delete INDEX`
 
@@ -227,7 +226,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
 * `find novel` followed by `delete 1` deletes the 1st book in the results of the `find` command.
 
-##### Deletes a book by other attributes: `deleteBy`
+##### By other attributes: `deleteBy`
 
 Delete book(s) from the library.
 
@@ -305,7 +304,90 @@ Visual Example:
 
 ![](./images/stockCommandUserInterface.png)
 
-#### Features related to Review
+#### Check usage `usage` and `usageBy`
+
+Checks usage times of a certain book specified by user. Book is specified by any of the followings:
+* one base index in storage.
+* book isbn
+* book name
+
+Note that `usageBy` commands are less sensitive and you will need to match exactly book name or isbn to get book usage.
+
+##### By its index in the current list
+Format:
+* `usage INDEX`
+
+Examples:
+* `usage 2`
+
+##### By Book Name or ISBN
+Format: 
+* `usageBy i/ISBN`
+* `usageBy n/BOOK_NAME`
+
+Examples:
+* `usageBy i/9780141439518`
+* `usageBy n/Pride and Prejudice`
+
+#### Check history: `history`
+
+Checks total borrowing times of all books.
+
+Format: `history`
+
+Examples:
+* `history`
+
+#### Random Selection of books `random`
+
+Randomly select a book of a specific category from the library.
+
+Introduction: the `random` command is implemented for librarians for two situations:
+1. Random sampling. 
+
+One of the librarians' job is to conduct statistical analysis of the books' data
+in the library. For example, a librarian needs to gather data of a certain category of books
+(average rating, times borrowed, etc). However, as libraries normally contain tens thousands or millions 
+of books, random sampling technique is widely adopted. Thus, the `random` command allows
+librarians to randomly select a book from a certain category. This greatly boosts the efficiency and ensures
+randomness of random sampling.
+
+2. Random recommendation: 
+
+For a certain category of books, some books may remain in the library without gathering much
+attention, which causes waste for the library. Thus, the `random` command allows the 
+librarian to pick a random book of a specific 
+category and gives every book the same probability to be promoted to public.
+
+
+Format: `random CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no book's category matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
+
+Examples:
+* `random Classics`
+* `random Science`
+
+
+#### Find the most popular book of a specific category `findpop`
+
+Find and select the most popular book of a specific category from the library.
+
+Format: `findpop CATEGORY`
+
+* The category name is matched using case-sensitive approach. For example, `Classics` is different
+from `classics`
+* If there are no books matching the user input, `0 books listed!` will pop up.
+* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
+
+Examples:
+* `findpop Classics`
+* `findpop Science`
+
+## Features related to Review
 
 ##### _Introduction_
 
@@ -411,88 +493,7 @@ Examples:
 * `editReview 1 rn/7 ra/5`
 * `editReview 1 rn/7 re/The book is interesting`
 
-#### Check usage `usage` and `usageBy`
-
-Checks usage times of a certain book specified by user. Book is specified by any of the followings:
-* one base index in storage.
-* book isbn
-* book name
-
-##### By Index
-Format:
-* `usage INDEX`
-
-Examples:
-* `usage 2`
-
-##### By Book Name or ISBN
-Format: 
-* `usageBy i/ISBN`
-* `usageBy n/BOOK_NAME`
-
-Examples:
-* `usageBy i/9780141439518`
-* `usageBy n/Pride and Prejudice`
-
-#### Check history: `history`
-
-Checks borrowing times during the whole timeline.
-
-Format: `history`
-
-Examples:
-* `history`
-
-#### Random Selection of books `random`
-
-Randomly select a book of a specific category from the library.
-
-Introduction: the `random` command is implemented for librarians for two situations:
-1. Random sampling. 
-
-One of the librarians' job is to conduct statistical analysis of the books' data
-in the library. For example, a librarian needs to gather data of a certain category of books
-(average rating, times borrowed, etc). However, as libraries normally contain tens thousands or millions 
-of books, random sampling technique is widely adopted. Thus, the `random` command allows
-librarians to randomly select a book from a certain category. This greatly boosts the efficiency and ensures
-randomness of random sampling.
-
-2. Random recommendation: 
-
-For a certain category of books, some books may remain in the library without gathering much
-attention, which causes waste for the library. Thus, the `random` command allows the 
-librarian to pick a random book of a specific 
-category and gives every book the same probability to be promoted to public.
-
-
-Format: `random CATEGORY`
-
-* The category name is matched using case-sensitive approach. For example, `Classics` is different
-from `classics`
-* If there are no book's category matching the user input, `0 books listed!` will pop up.
-* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
-
-Examples:
-* `random Classics`
-* `random Science`
-
-
-#### Find the most popular book of a specific category `findpop`
-
-Find and select the most popular book of a specific category from the library.
-
-Format: `findpop CATEGORY`
-
-* The category name is matched using case-sensitive approach. For example, `Classics` is different
-from `classics`
-* If there are no books matching the user input, `0 books listed!` will pop up.
-* Only one valid category keyword(Categories names should be alphanumeric and should be a single word) is allowed to be entered.
-
-Examples:
-* `findpop Classics`
-* `findpop Science`
-
-### Commands related to problem reports
+### Features related to problem reports
 
 #### Report problems: `report`
 
@@ -522,7 +523,7 @@ Examples:
 ![view problems](images/view_problem.png)
 
 
-#### Locating reports by keyword: `findpr`
+#### Locate reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
@@ -543,7 +544,7 @@ Examples:
 * `findpr chair` returns report containing `chair` and `fix chair`
 * `findpr table chair` returns `table`, `chair`
 
-#### Deleting a report : `deletepr`
+#### Delete a report : `deletepr`
 
 Deletes the specified problem report from library management system.
 
@@ -560,7 +561,7 @@ Examples:
 * `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
 * `findpr table` followed by `deletepr 2` deletes the 2nd report in the results of the `findpr` command.`
 
-#### Editing a problem report : `editpr`
+#### Edit a problem report : `editpr`
 
 Edits the information of an existing problem report in the library.
 
@@ -623,7 +624,7 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/STOCKINGS a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
