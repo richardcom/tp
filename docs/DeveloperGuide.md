@@ -104,11 +104,8 @@ The `Model`,
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the intellibrary data.
 * exposes an unmodifiable `ObservableList<Book>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* exposes an unmodifiable `ObservableList<Problem>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `Library`, which `Book` references. This allows `Library` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
 
@@ -688,26 +685,157 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | library administrator                      | Add new books, delete original books in the library   | keep in the information in IntelLibrary application up to date  |
-| `* * *`  | library administrator                      | Delete all unpopular books at a time   | efficiently keep the record up to date and cleans unpopular books from the system efficiently  |
-| `* * *`  | library administrator                      | check the stocking of books in every location(e.g. central library, Hon Sui Sen Memorial Library) of each book   | efficiently increase the stockings of those very popular books to meet the demand of the readers   |
-| `* *`    | library administrator                      | get the most popular book in each categories                                     | know what books to purchase in the future        |
-| `* *`    | library administrator                      | view the book rating and reviews collected from the readers                    | estimate the popularity of the book among the readers and decide whether to bring in more copys of the book accroding to the reader need|
-| `* *`    | library administrator                      | add, delete, and edit book rating and reviews collected from the readers                    | keep the review record for future evaluation of the book quality and popularity among the readers|
-| `* *`    | library administrator                      | edit the information of a book                                                        | keep the book information in the database up to date                                                                      |
-| `* * `   | library administrator                      | get a randomly selected book from specified category at a time   | easier to implement random sampling for library book data analysis  |
-| `* * *`  | library administrator                      | report, delete problems found in libraries along with their severities                   |keep track of and update the problems and prioritize them by their severity levels                          |
-| `* * *`  | library administrator                      | view all the reported problems                                                 | know what problems need to be solved  |
-| `* * *`  | library administrator                      | edit the information of reported problems                                                 | keep the report information in record up to date  |
-| `* * *`  | library administrator                      | get the report which description contains keywords                        | fast access and find relevant problems at a time |
-| `* *`    | expert user                                | delete multiple books by condition within one command      | it is more time efficient            |
-| `* * *`  | first time user                            | view the list of sample data   | get a rough idea of how the project will look like                     |
-| `* * *`  | first time user                            | see smart suggestions for the command line formats   | quickly get used to the command line formats                     |
-| `* * *`  | library administrator                      | check the borrowing status of a certain book       |tell students whether they can borrow this book or not            |
-| `*`  | library administrator                      | clear all data within one command       |efficiently reset the app            |
-*{More to be added}*
+
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>As a …​</th>
+<th>I want to …​</th>
+<th>So that I can…​                                                        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>add new books or delete original books in the library</td>
+<td>keep in the information in IntelLibrary application up to date  </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>delete all unpopular books at a time</td>
+<td>efficiently keep the record up to date and cleans unpopular books from the system efficiently  </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>check the stocking of books in every location(e.g. Central library, Hon Sui Sen Memorial Library) of each book</td>
+<td>efficiently increase the stockings of those very popular books to meet the demand of the readers   </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>library administrator</td>
+<td>get the most popular book in each category</td>
+<td>know what books to purchase in the future        </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>library administrator</td>
+<td>view the book rating and reviews collected from the readers</td>
+<td>estimate the popularity of the book among the readers and decide whether to bring in more copies of the book according to the reader need</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>library administrator</td>
+<td>add, delete, and edit book rating and reviews collected from the readers</td>
+<td>keep the review record for future evaluation of the book quality and popularity among the readers</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>library administrator</td>
+<td>edit the information of a book</td>
+<td>keep the book information in the database up to date                                                                      </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>library administrator</td>
+<td>get a randomly selected book from specified category at a time</td>
+<td>easier to implement random sampling for library book data analysis  </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>report, delete problems found in libraries along with their severities</td>
+<td>keep track of and update the problems and prioritize them by their severity levels                          </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>view all the reported problems</td>
+<td>know what problems need to be solved  </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>edit the information of reported problems</td>
+<td>keep the report information in record up to date  </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>get the report which description contains keywords</td>
+<td>fast access and find relevant problems at a time </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* *</code></td>
+<td>expert user</td>
+<td>delete multiple books by condition within one command</td>
+<td>it is more time efficient            </td>
+</tr>
+<tr>
+
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>first time user</td>
+<td>view the list of sample data</td>
+<td>get a rough idea of how the project will look like                     </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>first time user</td>
+<td>see smart suggestions for the command line formats</td>
+<td>quickly get used to the command line formats                     </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>* * *</code></td>
+<td>library administrator</td>
+<td>check the borrowing status of a certain book</td>
+<td>tell students whether they can borrow this book or not            </td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>library administrator</td>
+<td>clear all data within one command</td>
+<td>efficiently reset the app            </td>
+</tr>
+<tr>
+</tr>
+</tbody>
+</table>
+<p><em>{More to be added}</em></p>
 
 
 ### Use cases
@@ -1212,15 +1340,15 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a book
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
+    1. Test case: `edit 1 c/`
+       Expected: Clearing all the categories of the first book in the library. 
            
-    1. Test case:
-       Expected:
+    1. Test case: `edit 2 l/Chinese`
+       Expected: The langusge of the second book in the library is changed to Chinese.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try:  `edit`, `edit n/intro to math`, etc.
     
 ### Finding a certain book
 
@@ -1275,15 +1403,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Updating the borrowed times of a book given a shown book list using `times`
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
+    1. Test case: `times 1 t/498`
+       Expected: Updates the number of times borrowed to 498 for the first book in the library.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `times`, `times 1 4743`, etc.
    
 #### Finding the stocking of a book
 
@@ -1454,9 +1579,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Editing a problem report using `editProblemReport`
 
-
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
-
 
     1. Test case: `editProblemReport 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1465,9 +1588,3 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: Invalid command format.
                      
     1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
-    
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
