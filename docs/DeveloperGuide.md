@@ -826,7 +826,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <tr>
 </tr>
 <tr>
-<td><code>*</code></td>
+<td><code>* *</code></td>
 <td>library administrator</td>
 <td>clear all data within one command</td>
 <td>efficiently reset the app            </td>
