@@ -50,7 +50,7 @@ public class UsageCommand extends Command {
     }
 
     /**
-     * Checks whether user input size is invalid compared to legel size.
+     * Checks whether user input size is invalid compared to legal size.
      *
      * @param size upper limit size
      * @return boolean value indicating validity

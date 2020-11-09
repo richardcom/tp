@@ -95,6 +95,7 @@ public class EditReviewCommand extends Command {
                 throw new CommandException(Messages.MESSAGE_INVALID_REVIEW_DISPLAYED_INDEX);
             }
             Book reviewedBook = createdChangedBook(bookToReview, reviewNumber, rating, reviewContent);
+
             model.setBook(bookToReview, reviewedBook);
             model.updateFilteredBookList(new Predicate<Book>() {
                 @Override

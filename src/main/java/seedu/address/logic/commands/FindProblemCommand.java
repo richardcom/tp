@@ -9,8 +9,8 @@ import seedu.address.ui.Mode;
 
 public class FindProblemCommand extends Command {
 
-    public static final String COMMAND_WORD = "findProblemReport";
-    public static final String SUGGESTION = "findProblemReport <keyword>";
+    public static final String COMMAND_WORD = "findpr";
+    public static final String SUGGESTION = "findpr <keyword>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all problem reports whose description contain "
             + "any of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"

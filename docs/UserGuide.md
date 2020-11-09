@@ -69,7 +69,7 @@ Targeted at users who can type fast, IntelliBrary can get your library managemen
 ### Viewing sample data
 
 Have a look at the sample data for the application when opening the app for the first time.
-*  The sample data will only show up if there is no local data file of IntelliBrary
+
 
 ### Viewing help : `help`
 
@@ -110,8 +110,8 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 
 * ```n/``` is followed by the book name, it is case sensitive.
 * ```i/``` is followed by the ISBN of the book, which is restricted to numbers, and it should be at least 3 digits long
-* ```e``` is followed by the email of the book dealer, which shall follow the valid format of email address.
-* ```l/``` is followed by the language of the book. We decide to accept a one-word input as language and it is restricted to character string and no space allowed.
+* ```e/``` is followed by the email of the book dealer, which shall follow the valid format of email address.
+* ```l/``` is followed by the language of the book. It takes in alphabets(spaces not allowed) and should not be blank.
 * ```c/``` is the category of the book and is optional. For restrictions on categories, please refer to the detailed explanation in the later category part.
 * ```t/``` is followed by the number of times that the book is borrowed, it is restricted to a non-negative integer.
 * ```s/``` is followed by the stocking information, stockings at 0 to 3 specified libraries can be added(please refer to the stocking part for more details).
@@ -121,7 +121,7 @@ Format: `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKING
 * Duplicate book is judged by the ISBN, as ISBN is the unique identification for books of different versions, editions, and variations.
 Thus, we store books seperately as long as they have different ISBN, even if they share the same name.
 * All prefixes excluding `c/` are compulsory when adding a book, if there are missing prefixes, an error message saying `Invalid command format!` would pop up.
-* A space shall always be left before the prefix, otherwise an error message saying `Invalid command format!` would pop up.
+* A space shall always be left before the above attributes prefixes, otherwise an error message saying `Invalid command format!` would pop up.
 Visual View after entering the first example command:
 
 ![Add View](images/add_command.png)
@@ -212,9 +212,11 @@ Deletes the specified book(s) from the library.
 
 Format: `delete INDEX`
 
-* Deletes the book at the specified `INDEX`.
+* Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
@@ -227,10 +229,11 @@ Delete a book from the library.
 Format:  
 `deleteBy [n/NAME] [i/ISBN] [t/TIMES]` (choose one of the three prefixes in the command)  
 
-* one of the three prefixes must be selected to delete a list of books that match the command.
+* One of the three prefixes must be selected to delete a list of books that match the command.
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
-for all the books which has times of been borrowed less or equal to the user input will be deleted.
-* Notice: if the user enters multiple prefixes at a time, only the last prefix input will be considered.
+for all the books which has borrowed times fewer or equal to the user input will be deleted.
+* Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
+However, we allow if the user enters multiple same prefixes at a time, only the newest(the last prefix input) will be considered and others are neglected.
 
 Examples:
 * `deleteBy n/Linear Algebra`
@@ -460,31 +463,28 @@ Format: `random CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
-* If there are no books matching the user input, `0 books listed!` will pop up.
-* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
-
+* If there are no book's category matching the user input, `0 books listed!` will pop up.
 
 Examples:
 * `random Classics`
 * `random Science`
 
 
-#### Find the most popular book of a specific category `findMostPopular`
+#### Find the most popular book of a specific category `findpop`
 
 Find and select the most popular book of a specific category from the library.
 
-Format: `findMostPopular CATEGORY`
+Format: `findpop CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
 * If there are no books matching the user input, `0 books listed!` will pop up.
-* If multiple categories are entered and separated by a space, only the last category will be processed by the command.
 
 Examples:
-* `findMostPopular Classics`
-* `findMostPopular Science`
+* `findpop Classics`
+* `findpop Science`
 
-### Features related to reporting problems
+### Commands relating to problem reports
 
 #### Report problems: `report`
 
@@ -501,6 +501,7 @@ they have **both** the same severity and the same description.
 
 Examples:
 * `report s/high d/book is broken`
+![report problem](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/docs/images/report_problem.png)
 
 #### View problems: `view`
 
@@ -510,13 +511,14 @@ Format: `view`
 
 Examples:
 * `view`
+![view problems](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/docs/images/view_problem.png)
 
 
-#### Locating reports by keyword: `findProblemReport`
+#### Locating reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
-Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
+Format: `findpr KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `chair` will match `Chair`
 * The order of the keywords does not matter. e.g. `table chair` will match `chair table`
@@ -530,38 +532,39 @@ Visual View of finding report reports that is related to `level 1`:
 ![Find Report View](images/findReport.png)
 
 Examples:
-* `findProblemReport chair` returns report containing `chair` and `fix chair`
-* `findProblemReport table chair` returns `table`, `chair`
+* `findpr chair` returns report containing `chair` and `fix chair`
+* `findpr table chair` returns `table`, `chair`
 
-
-
-#### Deleting a report : `deleteProblemReport`
+#### Deleting a report : `deletepr`
 
 Deletes the specified problem report from library management system.
 
-Format: `deleteProblemReport INDEX`
+Format: `deletepr INDEX`
 
 * Deletes the report at the specified `INDEX`.
 * The index refers to the index number shown in the displayed problem report list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is always incorrect.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
+
 
 Examples:
-* `findProblemReport chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findProblemReport` command.`
-* `findProblemReport table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findProblemReport` command.`
+* `findpr chair` followed by `deletepr 1` deletes the 1st report in the results of the `findpr` command.`
+* `findpr table` followed by `deletepr 2` deletes the 2nd report in the results of the `findpr` command.`
 
-#### Editing a problem report : `editProblemReport`
+#### Editing a problem report : `editpr`
 
 Edits the information of an existing problem report in the library.
 
-Format: `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]`
+Format: `editpr INDEX [s/SEVERITY] [d/DESCRIPTION]`
 
 * Edits the report at the specified `INDEX`. The index refers to the index number shown in the displayed report list. The index **must be a positive integer** 1, 2, 3...
 * All fields are optional but at least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
 Examples:
-* `editProblemReport 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
-* `editProblemReport 3 s/low` Edits the severity of the 3rd report in the current report list.
+* `editpr 2 s/high d/light at the first floor is broken` Edits the severity and description of the 2nd report in the current report list.
+* `editpr 3 s/low` Edits the severity of the 3rd report in the current report list.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -612,26 +615,31 @@ Commands are listed in alphabetical order.
 
 Action | Format, Examples
 --------|------------------
+<<<<<<< HEAD
 **Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com lang/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+**AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesting`
+=======
+**Add** | `add n/NAME i/ISBN e/EMAIL l/LANGUAGE [c/CATEGORY]...t/TIMES s/[STOCKINGS] a/AUTHOR p/PUBLISHER` <br> e.g., `add n/Linear Algebra i/98765432 e/xxxxxx@example.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
 **AddReview** | `addReview INDEX ra/RATING re/REVIEW_CONTENT` <br> e.g., `addReview 1 ra/5 re/The book is interesing`
+>>>>>>> 8fc02bb380a038f357038e1d130f6ea902b81bb7
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **DeleteBy** | `deleteBy [n/NAME] [i/ISBN] [t/TIMES]`(one prefix must be selected) <br> e.g., `deleteBy n/Linear Algebra`
-**DeleteProblemReport** | `deleteProblemReport INDEX` <br> e.g., `deleteProblemReport 1`
+**DeleteProblemReport** | `deletepr INDEX` <br> e.g., `deletepr 1`
 **DeleteReview** | `deleteReview INDEX rn/REVIEW_INDEX` <br> e.g., `deleteReview 1 rn/1`
 **Edit** | `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGORY]… [s/STOCKING] [a/AUTHOR] [p/PUBLISHER]`<br> e.g.,`edit 3 p/Scribner Publisher c/`
-**EditProblemReport** | `editProblemReport INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editProblemReport 2 s/high d/light at the first floor is broken`
+**EditProblemReport** | `editpr INDEX [s/SEVERITY] [d/DESCRIPTION]` <br> e.g., `editpr 2 s/high d/light at the first floor is broken`
 **EditReview** | `editReview INDEX rn/REVIEW_INDEX [ra/RATING] [re/REVIEW_CONTENT]` <br> e.g., `editReview 1 rn/7 ra/5 re/The book is interesting`
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**FindMostPopular** | `findMostPopular CATEGORY` <br> e.g., `findMostPopular Science`
-**FindProblemReport** | `findProblemReport KEYWORD [MORE_KEYWORDS]` <br> e.g., `findProblemReport chair`
+**FindMostPopular** | `findpop CATEGORY` <br> e.g., `findpop Science`
+**FindProblemReport** | `findpr KEYWORD [MORE_KEYWORDS]` <br> e.g., `findpr chair`
 **Help** | `help`
 **History**| `history`
 **List** | `list`
 **Random** | `random CATEGORY` <br> e.g., `random Classics`
 **ReportProblem** | `report s/SEVERITY d/DESCRIPTION` <br> e.g., `report s/medium d/book is broken`
-**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time i/9780553175219`
+**SearchReview** | `searchReview [n/BOOK NAME] [i/ISBN]` <br> e.g., `searchReview n/A brief history of time`
 **Stock** | `stock [n/BOOK NAME] [i/ISBN]` <br> e.g., `stock n/A brief history of time i/9780553175219`
 **Times**| `times INDEX t/TIMES` <br> e.g., `times 1 t/5`
 **Usage**| `usage INDEX` <br> e.g., `usage 1`

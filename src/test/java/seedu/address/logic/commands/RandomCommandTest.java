@@ -32,7 +32,7 @@ public class RandomCommandTest {
         Book book = model.getFilteredBookList().get(0);
         Set<Category> categories = book.getCategories();
         Category category = categories.iterator().next();
-        RandomCommand randomCommand = new RandomCommand(category.categoryName);
+        RandomCommand randomCommand = new RandomCommand(category);
         // As the book is the only one of its category, it shall be selected after random
         randomCommand.execute(model);
         Model newModel = new ModelManager(new Library(model.getLibrary()), new UserPrefs());
@@ -43,10 +43,10 @@ public class RandomCommandTest {
 
     @Test
     public void equals() {
-        final RandomCommand standardCommand = new RandomCommand(VALID_CATEGORY_MATH);
+        final RandomCommand standardCommand = new RandomCommand(new Category(VALID_CATEGORY_MATH));
 
         // same values -> returns true
-        RandomCommand commandWithSameValues = new RandomCommand(VALID_CATEGORY_MATH);
+        RandomCommand commandWithSameValues = new RandomCommand(new Category(VALID_CATEGORY_MATH));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> retuArns true
@@ -56,7 +56,7 @@ public class RandomCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different values -> return false
-        RandomCommand commandWithDifferentValues = new RandomCommand(VALID_CATEGORY_SCIENCE);
+        RandomCommand commandWithDifferentValues = new RandomCommand(new Category(VALID_CATEGORY_SCIENCE));
         assertFalse(standardCommand.equals(commandWithDifferentValues));
     }
 }

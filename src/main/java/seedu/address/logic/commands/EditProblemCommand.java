@@ -23,8 +23,8 @@ import seedu.address.ui.Mode;
  */
 public class EditProblemCommand extends Command {
 
-    public static final String COMMAND_WORD = "editProblemReport";
-    public static final String SUGGESTION = "editProblemReport <index> s/<severity> d/<description>";
+    public static final String COMMAND_WORD = "editpr";
+    public static final String SUGGESTION = "editpr <index> s/<severity> d/<description>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits severity and description of the specific report "
             + "identified by the index number in the current report list. "
