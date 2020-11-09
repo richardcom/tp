@@ -62,7 +62,7 @@ The sections below give more details of each component.
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/language/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `BookListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
@@ -78,7 +78,7 @@ The `UI` component,
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/language/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 1. `Logic` uses the `LibraryParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
@@ -97,18 +97,15 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/language/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the intellibrary data.
 * exposes an unmodifiable `ObservableList<Book>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* exposes an unmodifiable `ObservableList<Problem>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Category` list in the `Library`, which `Book` references. This allows `Library` to only require one `Category` object per unique `Category`, instead of each `Book` needing their own `Category` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
 
@@ -1298,6 +1295,20 @@ testers are expected to do more *exploratory* testing. Command that exists in th
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### Adding a book
+
+1. Adding a book
+
+    1. Prerequisites: No duplicates books with the same ISBN exists.
+    
+    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+           Expected: Book successfully added, detailed information shown in the status bar.
+           
+    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
+                  Expected: Book successfully added, detailed information shown in the status bar.
+               
+    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
+    
 ### Deleting a book
 
 1. Deleting a book using `delete`
@@ -1324,34 +1335,20 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: `The Great Gatsby` is deleted from the list. Details of the deleted book shown in the status message.
            
     1. Other incorrect commands to try: `deleteBy`, `deleteBy t/-1` ... etc.
-
-### Adding a book
-
-1. Adding a book
-
-    1. Prerequisites: No duplicates books with the same ISBN exists.
-    
-    1. Test case: `add n/Linear Algebra i/13098765432 e/thisbook@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-           Expected: Book successfully added, detailed information shown in the status bar.
-           
-    1. Test case: `add n/Intro to Math i/13098765466 e/pearson@publisher.com l/English c/Science c/Math t/20 s/centralLb 30 scienceLb 15 a/Victor p/pku`
-                  Expected: Book successfully added, detailed information shown in the status bar.
-               
-    1. Other incorrect commands to try: `add`, `add n/intro to math`, etc.
     
 ### Editing a book
 
 1. Editing a book
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
+    1. Test case: `edit 1 c/`
+       Expected: Clearing all the categories of the first book in the library. 
            
-    1. Test case:
-       Expected:
+    1. Test case: `edit 2 l/Chinese`
+       Expected: The langusge of the second book in the library is changed to Chinese.
                
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try:  `edit`, `edit n/intro to math`, etc.
     
 ### Finding a certain book
 
@@ -1406,15 +1403,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
 
 1. Updating the borrowed times of a book given a shown book list using `times`
 
-    1. Prerequisites:
+    1. Prerequisites: There are books in the library.
 
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
+    1. Test case: `times 1 t/498`
+       Expected: Updates the number of times borrowed to 498 for the first book in the library.
                      
-    1. Other incorrect commands to try:
+    1. Other incorrect commands to try: `times`, `times 1 4743`, etc.
    
 #### Finding the stocking of a book
 
@@ -1460,7 +1454,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try:
    
-### Finding aLL the reviews of a book
+### Finding all the reviews of a book
 
 1. Finding aLL the reviews using `searchReivew`
 
@@ -1524,21 +1518,46 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try: `editReview`, `editReview 1 rn/3` <br>
        Expected: The exception message is shown in the status message. The book list shown is not changed. 
-   
-### Viewing the recorded problem reports
 
-1. Viewing the recorded problem reports using `view`
+### Reporting a problem
 
-    1. Prerequisites:
-
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
+1. Reporting a problem using `report`
     
+    i. Prerequisites: No duplicate problem with the same description exists. Severity must be `high`, `medium`, or `low`, case-insensitive.
+
+    ii. Test case: `report s/high d/book is broken`
+        Expected: Problem successfully added, detailed information shown in the status bar.
+      
+    iii. Test case: enter `report s/medium d/book is broken` after the previous test case.
+        Expected: Duplicate problem detected, as shown in the status bar.
+       
+    iv. Test case: `report d/floor is dirty s/medium`
+        Expected: Problem successfully added, detailed information shown in the status bar.
+                     
+    v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
+
+### Viewing reported problems
+1. Viewing reported probems using `view`
+    
+    i. Prerequisites: NA.
+    
+    ii. Test case: `view`
+        Expected: All reported problems shown in the problem section (the right side of the window). If no problem has yet been reported, the problem section will be empty.
+
+### Deleting a problem report
+
+1. Deleting a problem report using `deleteProblemReport`
+
+    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
+
+    1. Test case: `deleteProblemReport 1`
+       Expected: The details of the deleted report is shown in the status bar.
+      
+    1. Test case: `deleteProblemReport 0`
+       Expected: Invalid command format.
+                     
+    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.    
+
 ### Finding a problem report
 
 1. Finding a problem report using `findProblemReport`
@@ -1553,41 +1572,12 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
     
-### Reporting a problem
-
-1. Reporting a problem using `report`
-
-    1. Prerequisites:
-
-    1. Test case:
-       Expected:
-      
-    1. Test case:
-       Expected:
-                     
-    1. Other incorrect commands to try:
-    
-### Deleting a problem report
-
-1. Deleting a problem report using `deleteProblemReport`
-
-    1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
-
-    1. Test case: `deleteProblemReport 1`
-       Expected: The details of the deleted report is shown in the status bar.
-      
-    1. Test case: `deleteProblemReport 0`
-       Expected: Invalid command format.
-                     
-    1. Other incorrect commands to try: `deleteProblemReport -1`, `deleteProblemReport`, etc.
     
 ### Editing a problem report
 
 1. Editing a problem report using `editProblemReport`
 
-
     1. Prerequisites: view all reports using the `view` command. Multiple reports in the list.
-
 
     1. Test case: `editProblemReport 1 s/low`
        Expected: Details of the edited report is shown in the status bar.
@@ -1596,9 +1586,3 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: Invalid command format.
                      
     1. Other incorrect commands to try: `editProblemReport x s/high` (x is larger than the size of the report list)
-    
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
