@@ -107,7 +107,7 @@ class AddProblemCommandTest {
         }
 
         @Override
-        public void setLibraryFilePath(Path addressbookFilePath) {
+        public void setLibraryFilePath(Path filePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -180,7 +180,7 @@ class AddProblemCommandTest {
         /**
          * Replaces the given book {@code target} with {@code editedBook}.
          * {@code target} must exist in the library.
-         * The book identity of {@code editedBook} must not be the same as another existing book in the Llibrary.
+         * The book identity of {@code editedBook} must not be the same as another existing book in the library.
          *
          * @param target
          * @param problem
