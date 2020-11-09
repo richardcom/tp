@@ -21,7 +21,7 @@ import seedu.address.ui.Mode;
 public class FindMostPopularCommand extends Command {
 
     public static final String COMMAND_WORD = "findMostPopular";
-    public static final String SUGGESTION = "findMostPopular <keywords>";
+    public static final String SUGGESTION = "findMostPopular <category>";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Find the list of books"
             + "of a certain category that is most popular(borrowed most number of times).\n"
