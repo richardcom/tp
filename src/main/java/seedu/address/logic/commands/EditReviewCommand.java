@@ -36,7 +36,7 @@ public class EditReviewCommand extends Command {
     public static final String COMMAND_WORD = "editReview";
     public static final String SUGGESTION = "editReview <index> rn/<review number> ra/<rating> re/<review content>";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit the review to the book at "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit the review of the book at "
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
             + "Parameters: "
             + "INDEX "
