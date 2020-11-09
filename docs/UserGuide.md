@@ -142,6 +142,7 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGO
 * Existing values will be updated to the input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
+* Changing the categories of a book can change its book cover. The book cover is for decoration purposes and it is meant to show the category of a book instead of identifying a particular book.
 
 Restrictions:
 * ```n/``` is followed by the book name.
@@ -211,9 +212,11 @@ Deletes the specified book(s) from the library.
 
 Format: `delete INDEX`
 
-* Deletes the book at the specified `INDEX`.
+* Deletes the book at the specified `INDEX`, it is invalid to enter multiple indexes.
 * The index refers to the index number shown in the displayed book list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If the user input a non-positive integer, an error message saying `Invalid command format!` would pop up as this is incorrect all the time.
+* If the user input index is larger than the size of the current list, an error message saying `index provided is invalid` would pop up. As this depends on the current list size.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd book in the library.
@@ -229,7 +232,8 @@ Format:
 * one of the three prefixes must be selected to delete a list of books that match the command.
 * The command allows batch deletion of a list of books. Especially in ```deleteBy t/TIMES```, 
 for all the books which has times of been borrowed less or equal to the user input will be deleted.
-* Notice: if the user enters multiple prefixes at a time, only the last prefix input will be considered.
+* Notice: We disallow entering multiple distinct prefixes at a time, the command input is invalid and an error message will pop up.
+However, we allow if the user enters multiple same prefixes at a time, only the newest(the last prefix input) will be considered and others are neglected.
 
 Examples:
 * `deleteBy n/Linear Algebra`
@@ -565,6 +569,8 @@ Examples:
 --------------------------------------------------------------------------------------------------------------------
 
 ## Additional information regarding categories and book cover
+
+The book cover is for decoration purposes and it is meant to show the category of a book instead of identifying a particular book.
 
 The list of relevant categories are given below in ascending order with respect to the priority of the category.
 
