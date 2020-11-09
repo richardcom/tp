@@ -4,8 +4,8 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-LanguageBook *-right-> "1" UniqueBookList
-LanguageBook *-right-> "1" UniqueCategoryList
+Library *-right-> "1" UniqueBookList
+Library *-right-> "1" UniqueCategoryList
 UniqueCategoryList -[hidden]down- UniqueBookList
 UniqueCategoryList -[hidden]down- UniqueBookList
 
