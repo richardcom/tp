@@ -10,6 +10,8 @@ src/main/resources/docs/
 
 # Storage/log files
 /data/
+/config/footer/config.json
+/config/footer/preferences.json
 /*.log.*
 
 # Test sandbox files

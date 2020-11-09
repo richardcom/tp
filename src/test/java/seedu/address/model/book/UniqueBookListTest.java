@@ -3,7 +3,7 @@ package seedu.address.model.book;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalBooks.BOOK1;
@@ -43,7 +43,7 @@ public class UniqueBookListTest {
     public void contains_bookWithSameIdentityFieldsInList_returnsTrue() {
         uniqueBookList.add(BOOK1);
         Book editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
         assertTrue(uniqueBookList.contains(editedAlice));
     }
 
@@ -86,7 +86,7 @@ public class UniqueBookListTest {
     public void setBook_editedBookHasSameIdentity_success() {
         uniqueBookList.add(BOOK1);
         Book editedAlice = new BookBuilder(BOOK1).withLanguage(VALID_LANGUAGE_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
         uniqueBookList.setBook(BOOK1, editedAlice);
         UniqueBookList expectedUniqueBookList = new UniqueBookList();
         expectedUniqueBookList.add(editedAlice);

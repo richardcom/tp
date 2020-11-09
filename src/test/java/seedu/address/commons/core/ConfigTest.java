@@ -1,6 +1,5 @@
 package seedu.address.commons.core;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,9 +10,8 @@ public class ConfigTest {
     @Test
     public void toString_defaultObject_stringReturned() {
         String defaultConfigAsString = "Current log level : INFO\n"
-                + "Preference file Location : config/footer/preferences.json";
-
-        assertEquals(defaultConfigAsString, new Config().toString());
+                + "Preference file Location : preferences.json";
+        assertTrue(defaultConfigAsString.equals(new Config().toString()));
     }
 
     @Test
@@ -22,6 +20,4 @@ public class ConfigTest {
         assertNotNull(defaultConfig);
         assertTrue(defaultConfig.equals(defaultConfig));
     }
-
-
 }

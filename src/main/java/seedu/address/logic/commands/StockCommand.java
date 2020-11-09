@@ -72,6 +72,14 @@ public class StockCommand extends Command {
                 model.getFilteredBookList().size()));
     }
 
+    public Predicate<Book> getPredicate() {
+        return predicate;
+    }
+
+    public void setPredicate(Predicate<Book> predicate) {
+        this.predicate = predicate;
+    }
+
     @Override
     public boolean equals(Object other) {
         return this == other

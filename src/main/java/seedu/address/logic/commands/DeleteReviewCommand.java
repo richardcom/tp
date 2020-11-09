@@ -39,7 +39,7 @@ public class DeleteReviewCommand extends Command {
             + "the corresponding position in the list.\n"
             + "Parameters: "
             + "INDEX "
-            + "[" + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW_INDEX]\n"
+            + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW_INDEX\n"
             + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_REVIEWNUMBER + "5";
 
     public static final String MESSAGE_DELETE_REVIEW_SUCCESS = "The review has been deleted for the book %1$s";
