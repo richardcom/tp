@@ -91,7 +91,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</div>
+
 
 ### Model component
 
@@ -325,7 +325,7 @@ Step 2. The edit review command parser calls the ParseUtil and other methods to 
 
 Step 3. The edit review command parser returns an edit review command with a new rating object of rating `5` and a new review content object with review content `Make review`.
 
-Step 4. The edit review command is executed and updates the review at postion `4` in the review list of the book with index `1` in the currently shown book list.
+Step 4. The edit review command is executed and updates the review at position `4` in the review list of the book with index `1` in the currently shown book list.
 
 ##### Given below is description of deleting review of a book.
 
@@ -826,7 +826,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <tr>
 </tr>
 <tr>
-<td><code>*</code></td>
+<td><code>* *</code></td>
 <td>library administrator</td>
 <td>clear all data within one command</td>
 <td>efficiently reset the app            </td>
@@ -847,7 +847,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
   1. User request to add a new book into the library.
 
-  2. IntelliBrary adds the book to the library and shows a successfull message to the user.
+  2. IntelliBrary adds the book to the library and shows a successful message to the user.
   
      Use case ends.
   
@@ -1102,7 +1102,7 @@ Use case ends.
 
 **MSS**
   1. User requests to report a problem.
-  2. IntelliBrary adds the problem and shows a successfull message to the user.
+  2. IntelliBrary adds the problem and shows a successful message to the user.
 
   Use case ends. 
   
@@ -1124,7 +1124,7 @@ Use case ends.
 
 **MSS**
   1. User requests to view problems.
-  2. IntelliBrary shows the problem list and shows a successfull message to the user.
+  2. IntelliBrary shows the problem list and shows a successful message to the user.
 
   Use case ends.
   
@@ -1132,7 +1132,7 @@ Use case ends.
 
 **MSS**
   1. User requests to delete a problem report by index.
-  2. IntelliBrary deletes the problem report and shows a successfull message to the user.
+  2. IntelliBrary deletes the problem report and shows a successful message to the user.
 
   Use case ends. 
   
@@ -1218,7 +1218,7 @@ Use case ends.
 
 **MSS**
   1. User requests clear all the books in the library.
-  2. IntelliBrary deletes all the books avaliable.
+  2. IntelliBrary deletes all the books available.
   
      Use case ends.
      
@@ -1346,7 +1346,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: Clearing all the categories of the first book in the library. 
            
     1. Test case: `edit 2 l/Chinese`
-       Expected: The langusge of the second book in the library is changed to Chinese.
+       Expected: The language of the second book in the library is changed to Chinese.
                
     1. Other incorrect commands to try:  `edit`, `edit n/intro to math`, etc.
     
@@ -1410,7 +1410,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
                      
     1. Other incorrect commands to try: `times`, `times 1 4743`, etc.
    
-#### Finding the stocking of a book
+### Finding the stocking of a book
 
 1. Finding the stocking of a book using `stock`
 
@@ -1534,7 +1534,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
     v. Other incorrect commands to try:`report`, `report s/important d/book is lost`, etc.
 
 ### Viewing reported problems
-1. Viewing reported probems using `view`
+1. Viewing reported problems using `view`
     
     i. Prerequisites: NA.
     

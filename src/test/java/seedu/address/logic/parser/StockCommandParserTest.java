@@ -64,7 +64,7 @@ class StockCommandParserTest {
     }
 
     @Test
-    void parse_invalidAftervalidArgs_failure() {
+    void parse_invalidAfterValidArgs_failure() {
         assertParseFailure(stockCommandParser, NAME_DESC_BOOK1 + INVALID_NAME_DESC,
                 Name.MESSAGE_CONSTRAINTS);
 

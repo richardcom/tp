@@ -86,8 +86,8 @@ public class AddReviewCommand extends Command {
 
             List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
 
-            NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-            model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
+            NameMatchesKeywordPredicate nameMatchedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
+            model.updateFilteredBookList(nameMatchedKeywordsPredicate, Mode.REVIEW);
 
             return new CommandResult(String.format(MESSAGE_ADD_REVIEW_SUCCESS, reviewedBook));
         } catch (Exception exception) {
