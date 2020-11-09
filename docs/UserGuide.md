@@ -514,11 +514,11 @@ Examples:
 ![view problems](https://github.com/davidsqf/tp/blob/v1.4-UG/docs/images/view_problem.png)
 
 
-#### Locating reports by keyword: `findProblemReport`
+#### Locating reports by keyword: `findpr`
 
 Finds reports whose descriptions contain any of the given keywords.
 
-Format: `findProblemReport KEYWORD [MORE_KEYWORDS]`
+Format: `findpr KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `chair` will match `Chair`
 * The order of the keywords does not matter. e.g. `table chair` will match `chair table`
@@ -532,8 +532,8 @@ Visual View of finding report reports that is related to `level 1`:
 ![Find Report View](images/findReport.png)
 
 Examples:
-* `findProblemReport chair` returns report containing `chair` and `fix chair`
-* `findProblemReport table chair` returns `table`, `chair`
+* `findpr chair` returns report containing `chair` and `fix chair`
+* `findpr table chair` returns `table`, `chair`
 
 
 
@@ -548,8 +548,8 @@ Format: `deleteProblemReport INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 Examples:
-* `findProblemReport chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findProblemReport` command.`
-* `findProblemReport table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findProblemReport` command.`
+* `findpr chair` followed by `deleteProblemReport 1` deletes the 1st report in the results of the `findpr` command.`
+* `findpr table` followed by `deleteProblemReport 2` deletes the 2nd report in the results of the `findpr` command.`
 
 #### Editing a problem report : `editProblemReport`
 
@@ -627,7 +627,7 @@ Action | Format, Examples
 **Exit** | `exit`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **FindMostPopular** | `findpop CATEGORY` <br> e.g., `findpop Science`
-**FindProblemReport** | `findProblemReport KEYWORD [MORE_KEYWORDS]` <br> e.g., `findProblemReport chair`
+**FindProblemReport** | `findpr KEYWORD [MORE_KEYWORDS]` <br> e.g., `findpr chair`
 **Help** | `help`
 **History**| `history`
 **List** | `list`

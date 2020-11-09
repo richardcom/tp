@@ -378,7 +378,7 @@ Step 4. Execution of findpop would take place. The most popular book(borrowed th
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![FindMostPopularSequenceDiagram](images/FindMostPopularSequenceDiagram.png)
+![FindMostPopularSequenceDiagram](images/findMostPopularSequenceDiagram.png)
 
 #### Design consideration:
 
@@ -537,9 +537,9 @@ The relevant methods are:
 
 Given below is an example usage scenario and how the find problem report mechanism behaves at each step.
 
-Step 1. User input an input: `findProblemReport chair`
+Step 1. User input an input: `findpr chair`
 
-Step 2. Logic Manager would parse the input `findProblemReport chair`, and determines that it is a FindProblemCommand command.
+Step 2. Logic Manager would parse the input `findpr chair`, and determines that it is a FindProblemCommand command.
 
 Step 3. FindProblemCommandParser would then parse string input and call the FindProblemCommand.
 
@@ -548,7 +548,7 @@ will be displayed.
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![EditProblemReportSequenceDiagram](images/FindProblemReportSequenceDiagram.png)
+![EditProblemReportSequenceDiagram](images/findProblemReportSequenceDiagram.png)
 
 
 ### \[New\] Delete Problem Report feature
@@ -1557,17 +1557,17 @@ F
 
 ### Finding a problem report
 
-1. Finding a problem report using `findProblemReport`
+1. Finding a problem report using `findpr`
 
     1. Prerequisites: The reports in the library is not empty.
 
-    1. Test case: `findProblemReport lost`
+    1. Test case: `findpr lost`
        Expected: The report which has the description matching the keyword is shown.
       
-    1. Test case: `findProblemReport not-exist`
+    1. Test case: `findpr not-exist`
        Expected: If there is no report containing `not-exist`, then 0 reports listed is shown
                      
-    1. Other incorrect commands to try: `findProblemReport`, `findProblemReporttable`, etc.
+    1. Other incorrect commands to try: `findpr`, `findprtable`, etc.
     
     
 ### Editing a problem report
