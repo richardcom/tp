@@ -378,7 +378,7 @@ Step 4. Execution of findpop would take place. The most popular book(borrowed th
 
 The following sequence diagram summarizes what happens when a user executes a new command:
 
-![findpopSequenceDiagram](images/findpopSequenceDiagram.png)
+![FindMostPopularSequenceDiagram](images/FindMostPopularSequenceDiagram.png)
 
 #### Design consideration:
 
@@ -1296,7 +1296,7 @@ testers are expected to do more *exploratory* testing. Command that exists in th
        Expected: The most recent window size and location is retained.
 
 ### Adding a book
-
+F
 1. Adding a book
 
     1. Prerequisites: No duplicates books with the same ISBN exists.
