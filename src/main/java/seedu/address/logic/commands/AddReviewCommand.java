@@ -7,22 +7,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.Model;
-import seedu.address.model.book.Author;
-import seedu.address.model.book.Book;
-import seedu.address.model.book.Email;
-import seedu.address.model.book.Isbn;
-import seedu.address.model.book.Language;
-import seedu.address.model.book.Name;
-import seedu.address.model.book.NameMatchesKeywordPredicate;
-import seedu.address.model.book.Publisher;
-import seedu.address.model.book.Stocking;
-import seedu.address.model.book.Times;
+import seedu.address.model.book.*;
 import seedu.address.model.category.Category;
 import seedu.address.model.review.Review;
 import seedu.address.ui.Mode;
@@ -83,12 +75,12 @@ public class AddReviewCommand extends Command {
             Book reviewedBook = createdChangedBook(bookToReview, review);
 
             model.setBook(bookToReview, reviewedBook);
-
-            List<String> keywords = new ArrayList<>(Arrays.asList((reviewedBook.getName().fullName).split(" ")));
-
-            NameMatchesKeywordPredicate nameMacthedKeywordsPredicate = new NameMatchesKeywordPredicate(keywords);
-            model.updateFilteredBookList(nameMacthedKeywordsPredicate, Mode.REVIEW);
-
+            model.updateFilteredBookList(new Predicate<Book>() {
+                @Override
+                public boolean test(Book book) {
+                    return book.getIsbn().value.equals(reviewedBook.getIsbn().value);
+                }
+            }, Mode.REVIEW);
             return new CommandResult(String.format(MESSAGE_ADD_REVIEW_SUCCESS, reviewedBook));
         } catch (Exception exception) {
             throw new CommandException(Messages.MESSAGE_INVALID_BOOK_DISPLAYED_INDEX_IN_REVIEW);
