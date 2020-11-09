@@ -10,13 +10,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Language {
 
-    public static final String MESSAGE_CONSTRAINTS = "Languagees can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Languages can take only characters and it should not be blank";
 
-    /*
-     * The first character of the language must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[A-Za-z]+$";
 
     public final String value;
 
