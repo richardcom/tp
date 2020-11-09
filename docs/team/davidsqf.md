@@ -15,7 +15,7 @@ See the link [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard
 
 * **Enhancements Implemented**: 
 
-    * Create Model: Problem:
+    * Create a series of Model: Problem:
 
         * I proposed to create the `Problem` series of features.
 
