@@ -24,6 +24,7 @@ IntelliBrary is a desktop library management application used for library admini
     can also efficiently batch manage and clean up unpopular books.
 * **Tests**  Created and added tests for `add`, `deleteBy`, `findpr`, `deletepr`, `editpr`, `random`, and `findpop` commands, which improve the test coverage of our application.
 * **Enhancements to existing features**:
+<div style="page-break-after: always;"></div>
   * Enhanced the original `add`. Created new Model `Author` and allow `add` to add a Book Model. Set new constraints for book's attributes.(pull requests [#88](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/88))
   * Created new user interface MainWindow and Problem card to accommodate book and report management. Fixed previous UI bugs. (pull requests [#222](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/222) [#224](https://github.com/AY2021S1-CS2103-F09-3/tp/pull/224))
     * Implemented UI component `ProblemReportListCard` and `ProblemReportListPanel`
