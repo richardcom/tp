@@ -543,7 +543,7 @@ Format: `findpr KEYWORD [MORE_KEYWORDS]`
 * Report descriptions matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `table chair` will return `chair light`, `light table`
 
-Visual View of finding report reports that is related to `level 1`:
+Visual View of finding problem reports that are related to `level 1`:
 
 ![Find Report View](images/findReport.png)
 
