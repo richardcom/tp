@@ -24,8 +24,8 @@ import static seedu.address.logic.commands.CommandTestUtil.PUBLISHER_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.STOCKING_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.TIMES_DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK1;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_SCIENCE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK1;
@@ -145,7 +145,7 @@ public class EditCommandParserTest {
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK1)
                 .withIsbn(VALID_ISBN_BOOK2).withEmail(VALID_EMAIL_BOOK1).withLanguage(VALID_LANGUAGE_BOOK1)
-                .withCategories(VALID_CATEGORY_HUSBAND, VALID_CATEGORY_FRIEND).build();
+                .withCategories(VALID_CATEGORY_MATH, VALID_CATEGORY_SCIENCE).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -192,7 +192,7 @@ public class EditCommandParserTest {
 
         // categories
         userInput = targetIndex.getOneBased() + CATEGORY_DESC_FRIEND;
-        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_CATEGORY_FRIEND).build();
+        descriptor = new EditBookDescriptorBuilder().withCategories(VALID_CATEGORY_SCIENCE).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -229,8 +229,8 @@ public class EditCommandParserTest {
                 + ISBN_DESC_BOOK2 + LANGUAGE_DESC_BOOK2 + EMAIL_DESC_BOOK2 + CATEGORY_DESC_HUSBAND;
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withIsbn(VALID_ISBN_BOOK2)
-                .withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2).withCategories(VALID_CATEGORY_FRIEND,
-                 VALID_CATEGORY_HUSBAND).build();
+                .withEmail(VALID_EMAIL_BOOK2).withLanguage(VALID_LANGUAGE_BOOK2).withCategories(VALID_CATEGORY_SCIENCE,
+                        VALID_CATEGORY_MATH).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_AUTHOR_BOOK1;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LANGUAGE_BOOK2;
@@ -55,7 +55,7 @@ public class EditBookDescriptorTest {
         assertFalse(DESC_BOOK1.equals(editedAmy));
 
         // different categories -> returns false
-        editedAmy = new EditBookDescriptorBuilder(DESC_BOOK1).withCategories(VALID_CATEGORY_HUSBAND).build();
+        editedAmy = new EditBookDescriptorBuilder(DESC_BOOK1).withCategories(VALID_CATEGORY_MATH).build();
         assertFalse(DESC_BOOK1.equals(editedAmy));
 
         // different times -> returns false

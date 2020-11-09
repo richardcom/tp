@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK1;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOOK2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CATEGORY_MATH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ISBN_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOOK2;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -34,25 +34,6 @@ public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalLibrary(), new UserPrefs());
 
-    /*
-    Editing times is currently not allowed in the current editing function, that may explain why this test case fails.
-    We can consider removing this test case or implement our "editing times" function later on.
-    We shall see how it goes.
-    @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Book editedBook = new BookBuilder().build();
-        EditBookDescriptor descriptor = new EditBookDescriptorBuilder(editedBook).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_BOOK, descriptor);
-
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);
-
-        Model expectedModel = new ModelManager(new Addressbook(model.getAddressbook()), new UserPrefs());
-        expectedModel.setBook(model.getFilteredBookList().get(0), editedBook);
-
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-    }
-    */
-
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
         Index indexLastBook = Index.fromOneBased(model.getFilteredBookList().size());
@@ -60,10 +41,10 @@ public class EditCommandTest {
 
         BookBuilder bookInList = new BookBuilder(lastBook);
         Book editedBook = bookInList.withName(VALID_NAME_BOOK2).withIsbn(VALID_ISBN_BOOK2)
-                .withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withCategories(VALID_CATEGORY_MATH).build();
 
         EditBookDescriptor descriptor = new EditBookDescriptorBuilder().withName(VALID_NAME_BOOK2)
-                .withIsbn(VALID_ISBN_BOOK2).withCategories(VALID_CATEGORY_HUSBAND).build();
+                .withIsbn(VALID_ISBN_BOOK2).withCategories(VALID_CATEGORY_MATH).build();
         EditCommand editCommand = new EditCommand(indexLastBook, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_BOOK_SUCCESS, editedBook);

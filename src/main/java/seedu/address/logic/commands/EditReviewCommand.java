@@ -40,7 +40,7 @@ public class EditReviewCommand extends Command {
             + "the corresponding position in the list, where the rating is an integer between 0 and 5.\n"
             + "Parameters: "
             + "INDEX "
-            + "[" + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW_NUMBER] "
+            + CliSyntax.PREFIX_REVIEWNUMBER + "REVIEW_NUMBER "
             + "[" + CliSyntax.PREFIX_RATING + "RATING] "
             + "[" + CliSyntax.PREFIX_REVIEW + "REVIEW_CONTENT]\n"
             + "Example: " + COMMAND_WORD + " 1 " + CliSyntax.PREFIX_REVIEWNUMBER + "1" + " "
