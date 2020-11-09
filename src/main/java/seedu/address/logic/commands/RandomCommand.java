@@ -33,10 +33,10 @@ public class RandomCommand extends Command {
             + "Example: " + COMMAND_WORD + " Novels";
 
     private static Logger logger = Logger.getLogger(RandomCommand.class.getName());
-    private final String category;
+    private final Category category;
 
 
-    public RandomCommand(String category) {
+    public RandomCommand(Category category) {
         this.category = category;
     }
 
@@ -77,7 +77,7 @@ public class RandomCommand extends Command {
         Random random = new Random();
         Optional<Book> randomBook = Optional.empty();
         for (Book b : lastShownList) {
-            if (b.getCategories().contains(new Category(category))) {
+            if (b.getCategories().contains(category)) {
                 matchingBooks.add(b);
             }
         }

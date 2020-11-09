@@ -29,10 +29,10 @@ public class FindMostPopularCommand extends Command {
             + "Example: " + COMMAND_WORD + " Novels";
 
     private static Logger logger = Logger.getLogger(FindMostPopularCommand.class.getName());
-    private final String category;
+    private final Category category;
 
 
-    public FindMostPopularCommand(String category) {
+    public FindMostPopularCommand(Category category) {
         this.category = category;
     }
 
@@ -50,7 +50,7 @@ public class FindMostPopularCommand extends Command {
         logger.log(Level.INFO, "going to start to find max times");
         int maxTimes = findMaxTimes(model);
         logger.log(Level.INFO, "max time has been found");
-        Predicate<Book> predicate = book -> book.getCategories().contains(new Category(category))
+        Predicate<Book> predicate = book -> book.getCategories().contains(category)
                         && (Integer.parseInt(book.getTimes().value) == maxTimes);
 
         model.updateFilteredBookList(predicate, Mode.NORMAL);
@@ -74,7 +74,7 @@ public class FindMostPopularCommand extends Command {
         List<Book> lastShownList = model.getFilteredBookList();
         int maxTime = -1;
         for (Book b : lastShownList) {
-            if (b.getCategories().contains(new Category(category))) {
+            if (b.getCategories().contains(category)) {
                 if (Integer.parseInt(b.getTimes().value) > maxTime) {
                     maxTime = Integer.parseInt(b.getTimes().value);
                 }

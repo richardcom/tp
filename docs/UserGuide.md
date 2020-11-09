@@ -463,7 +463,7 @@ Format: `random CATEGORY`
 
 * The category name is matched using case-sensitive approach. For example, `Classics` is different
 from `classics`
-* If there are no books matching the user input, `0 books listed!` will pop up.
+* If there are no book's category matching the user input, `0 books listed!` will pop up.
 * If multiple categories are entered and separated by a space, only the last category will be processed by the command.
 
 

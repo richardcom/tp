@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import seedu.address.logic.commands.RandomCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.category.Category;
 
 
 
@@ -23,10 +24,13 @@ public class RandomCommandParser implements Parser<RandomCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, RandomCommand.MESSAGE_USAGE));
         }
-
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-
-        return new RandomCommand(nameKeywords[nameKeywords.length - 1]);
+        String temp = trimmedArgs;
+        if (!Category.isValidCategoryName(temp)) {
+            throw new ParseException(
+                    String.format(Category.MESSAGE_CONSTRAINTS));
+        }
+        Category category = new Category(temp);
+        return new RandomCommand(category);
     }
 
 }

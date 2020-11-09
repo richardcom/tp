@@ -36,7 +36,7 @@ public class FindMostPopularCommandTest {
         Set<Category> categories = book.getCategories();
         Category category = categories.iterator().next();
         model.addBook(book);
-        FindMostPopularCommand findMostPopularCommand = new FindMostPopularCommand(category.categoryName);
+        FindMostPopularCommand findMostPopularCommand = new FindMostPopularCommand(category);
         // As the book is the most popular one in the model, it shall be selected by FindMostPopularCommand
         findMostPopularCommand.execute(model);
         Book expectedBook = model.getFilteredBookList().get(0);
@@ -46,10 +46,10 @@ public class FindMostPopularCommandTest {
 
     @Test
     public void equals() {
-        final FindMostPopularCommand standardCommand = new FindMostPopularCommand(VALID_CATEGORY_MATH);
+        final FindMostPopularCommand standardCommand = new FindMostPopularCommand(new Category(VALID_CATEGORY_MATH));
 
         // same values -> returns true
-        FindMostPopularCommand commandWithSameValues = new FindMostPopularCommand(VALID_CATEGORY_MATH);
+        FindMostPopularCommand commandWithSameValues = new FindMostPopularCommand(new Category(VALID_CATEGORY_MATH));
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> retuArns true
@@ -59,7 +59,8 @@ public class FindMostPopularCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different values -> return false
-        FindMostPopularCommand commandWithDifferentValues = new FindMostPopularCommand(VALID_CATEGORY_SCIENCE);
+        FindMostPopularCommand commandWithDifferentValues =
+                new FindMostPopularCommand(new Category(VALID_CATEGORY_SCIENCE));
         assertFalse(standardCommand.equals(commandWithDifferentValues));
     }
 }
