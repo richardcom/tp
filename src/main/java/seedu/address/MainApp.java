@@ -152,7 +152,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("problem while reading from the file. Will be starting with an empty Addressbook");
+            logger.warning("problem while reading from the file. Will be starting with an empty library");
             initializedPrefs = new UserPrefs();
         }
 
