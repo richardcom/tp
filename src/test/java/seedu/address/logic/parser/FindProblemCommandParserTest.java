@@ -22,9 +22,9 @@ public class FindProblemCommandParserTest {
 
     @Test
     public void parse_validArguments_returnsFindCommand() {
-        FindProblemCommand expectedFindCommand =
+        FindProblemCommand expectedCommand =
                 new FindProblemCommand(new DescriptionContainsKeywordsPredicate(Arrays.asList("table", "chair")));
-        assertParseSuccess(parser, "  table  \t chair  \t", expectedFindCommand);
+        assertParseSuccess(parser, "  table  \t chair  \t", expectedCommand);
     }
 
 }

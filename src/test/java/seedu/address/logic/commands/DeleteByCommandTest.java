@@ -21,8 +21,8 @@ import seedu.address.model.book.Book;
 
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code DeleteCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * {@code DeleteByCommand}.
  */
 public class DeleteByCommandTest {
 
