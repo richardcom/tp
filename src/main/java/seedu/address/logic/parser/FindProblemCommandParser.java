@@ -14,8 +14,8 @@ import seedu.address.model.problem.DescriptionContainsKeywordsPredicate;
 public class FindProblemCommandParser implements Parser<FindProblemCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the FindCommand
-     * and returns a FindCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the FindProblemCommand
+     * and returns a FindProblemCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindProblemCommand parse(String args) throws ParseException {

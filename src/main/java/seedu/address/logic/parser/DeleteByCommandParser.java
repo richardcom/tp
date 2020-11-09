@@ -18,26 +18,47 @@ import seedu.address.model.book.Times;
  * Parses input arguments and creates a new DeleteByCommand object
  */
 public class DeleteByCommandParser implements Parser<DeleteByCommand> {
+    private String content = "";
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
+     * Parses the given {@code String} of arguments in the context of the DeleteByCommand
      * and returns a DeleteByCommand object for execution.
      * * @return DeleteByCommand.
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteByCommand parse(String args) throws ParseException {
+        int attribute = decideAttribute(args);
+        try {
+            String trimmedArgs = content.trim();
+            if (trimmedArgs.isEmpty()) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteByCommand.MESSAGE_USAGE));
+            }
+            return new DeleteByCommand(trimmedArgs, attribute);
+        } catch (ParseException pe) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteByCommand.MESSAGE_USAGE), pe);
+        }
+    }
+
+    private static boolean isPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
+        return argumentMultimap.getValue(prefix).isPresent();
+    }
+
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+    private int decideAttribute(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ISBN, PREFIX_TIMES);
-        int attribute = 0;
-        String content = "";
-
         boolean isNamePresent = isPrefixesPresent(argMultimap, PREFIX_NAME)
                 && !arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES);
         boolean isIsbnPresent = isPrefixesPresent(argMultimap, PREFIX_ISBN)
                 && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES);
         boolean isTimesPresent = isPrefixesPresent(argMultimap, PREFIX_TIMES)
                 && !arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ISBN);
-
+        int attribute = 0;
 
         if ((arePrefixesPresent(argMultimap, PREFIX_ISBN, PREFIX_TIMES)
                 || arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TIMES)
@@ -60,25 +81,8 @@ public class DeleteByCommandParser implements Parser<DeleteByCommand> {
             content = times.value;
             attribute = 2;
         }
-        try {
-            String trimmedArgs = content.trim();
-            if (trimmedArgs.isEmpty()) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteByCommand.MESSAGE_USAGE));
-            }
-            return new DeleteByCommand(trimmedArgs, attribute);
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteByCommand.MESSAGE_USAGE), pe);
-        }
-    }
 
-    private static boolean isPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
-        return argumentMultimap.getValue(prefix).isPresent();
-    }
-
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+        return attribute;
     }
 
 }
