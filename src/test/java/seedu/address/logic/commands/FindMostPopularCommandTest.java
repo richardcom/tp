@@ -11,42 +11,45 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.Library;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.book.Book;
 import seedu.address.model.category.Category;
+import seedu.address.testutil.BookBuilder;
+
 
 
 
 /**
  * Contains integration tests (interaction with the Model) for {@code RandomCommand}.
  */
-public class RandomCommandTest {
+public class FindMostPopularCommandTest {
+    private static final String LARGE_POPULAR_TIMES = String.valueOf(Integer.MAX_VALUE);
     private Model model = new ModelManager(getTypicalLibrary(), new UserPrefs());
 
+
     @Test
-    public void execute_uniqueBookFilteredList_success() {
-        // every book in the model(Typical Library) is the unique one of its own category.
-        Book book = model.getFilteredBookList().get(0);
+    public void execute_mostPopularBookFilteredList_success() {
+        // create a new book with the maximum borrowed number of times
+        Book book = new BookBuilder().withCategories(VALID_CATEGORY_MATH).withTimes(LARGE_POPULAR_TIMES).build();
         Set<Category> categories = book.getCategories();
         Category category = categories.iterator().next();
-        RandomCommand randomCommand = new RandomCommand(category.categoryName);
-        // As the book is the only one of its category, it shall be selected after random
-        randomCommand.execute(model);
-        Model newModel = new ModelManager(new Library(model.getLibrary()), new UserPrefs());
-        Book expectedBook = newModel.getFilteredBookList().get(0);
-        // expectedBook shall be the same with the book selected after random Command
+        model.addBook(book);
+        FindMostPopularCommand findMostPopularCommand = new FindMostPopularCommand(category.categoryName);
+        // As the book is the most popular one in the model, it shall be selected by FindMostPopularCommand
+        findMostPopularCommand.execute(model);
+        Book expectedBook = model.getFilteredBookList().get(0);
+        // expectedBook shall be the same with the most popular book after FindMostPopularCommand Command
         assertEquals(book, expectedBook);
     }
 
     @Test
     public void equals() {
-        final RandomCommand standardCommand = new RandomCommand(VALID_CATEGORY_MATH);
+        final FindMostPopularCommand standardCommand = new FindMostPopularCommand(VALID_CATEGORY_MATH);
 
         // same values -> returns true
-        RandomCommand commandWithSameValues = new RandomCommand(VALID_CATEGORY_MATH);
+        FindMostPopularCommand commandWithSameValues = new FindMostPopularCommand(VALID_CATEGORY_MATH);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> retuArns true
@@ -56,7 +59,7 @@ public class RandomCommandTest {
         assertFalse(standardCommand.equals(null));
 
         // different values -> return false
-        RandomCommand commandWithDifferentValues = new RandomCommand(VALID_CATEGORY_SCIENCE);
+        FindMostPopularCommand commandWithDifferentValues = new FindMostPopularCommand(VALID_CATEGORY_SCIENCE);
         assertFalse(standardCommand.equals(commandWithDifferentValues));
     }
 }
