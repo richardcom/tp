@@ -142,6 +142,7 @@ Format: `edit INDEX [n/NAME] [i/ISBN] [e/EMAIL] [l/LANGUAGE] [t/TIMES] [c/CATEGO
 * Existing values will be updated to the input values.
 * When editing categories, the existing categories of the book will be removed i.e adding of categories is not cumulative.
 * You can remove all the book’s categories by typing `c/` without specifying any categories after it.
+* Changing the categories of a book can change its book cover. The book cover is for decoration purposes and it is meant to show the category of a book instead of identifying a particular book.
 
 Restrictions:
 * ```n/``` is followed by the book name.
@@ -568,6 +569,8 @@ Examples:
 --------------------------------------------------------------------------------------------------------------------
 
 ## Additional information regarding categories and book cover
+
+The book cover is for decoration purposes and it is meant to show the category of a book instead of identifying a particular book.
 
 The list of relevant categories are given below in ascending order with respect to the priority of the category.
 

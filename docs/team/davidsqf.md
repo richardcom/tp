@@ -15,7 +15,7 @@ See the link [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard
 
 * **Enhancements Implemented**: 
 
-    * Create Model: Problem:
+    * Create a series of Model: Problem:
 
         * I proposed to create the `Problem` series of features.
 
@@ -44,7 +44,8 @@ existing relevant files. I also wrote corresponding test code for this feature.
 * **Contributions to Documentation**:
 
     * User Guide:
-        I wrote the sections of `ReportProblem` and `ViewProblem` features.
+        * I wrote the sections of `ReportProblem` and `ViewProblem` features.
+        * I proofread user guide, spot and fixed hidden problems like unavailable urls, typos, and not up-to-date or not reader-friendly sentences.
     * Developer Guide:
         * I was in charge of the `Model` section, where I also drew a class diagram.
         * I drew the sequence diagrams for `ReportProblem` and `ViewProblem`.
